@@ -1,0 +1,229 @@
+.view-container {
+    padding: .7rem 1rem;
+    min-width: 854px;
+    .page-title {
+        h2 {
+            padding: 0;
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+    }
+}
+
+.page{
+    max-width: 854px;
+}
+
+.overview-image{
+    width:800px;
+    margin-top:15px;
+    img{
+        width:800px;
+    }
+}
+
+.overview-brief{
+    max-width: 854px;
+}
+
+#centered {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.block-section {
+    background-color: $clouds-grey;
+    padding: 1.5rem 2rem;
+    border: 2px solid $silver-grey;
+    display: inline-block;
+}
+
+.block-section-width {
+    background-color: $clouds-grey;
+    padding: 1rem;
+    border: 2px solid $silver-grey;
+    display: block;
+}
+
+.top-bar {
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: $wetAsphalt;
+    h1 {
+        color: #fff;
+        line-height: 3rem;
+        vertical-align: middle;
+        margin: 0 0 0 .5rem;
+        padding: 0;
+    }
+}
+
+.side-nav {
+    width: 200px;
+    min-height: 1500px;
+    background-color: $clouds-grey;
+    button {
+        width: 200px;
+        border-radius: 0;
+        border-bottom: 1px solid $asbestos-grey;
+        height: 2rem;
+        padding: 0;
+    }
+}
+
+.standardParagraph {
+    margin-top: .9rem;
+    p {
+        font-size: .9rem;
+        display: block;
+        margin: 0 0 7px 0;
+        color: #000000;
+    }
+    .hilite {
+        color: $tertiary-color;
+        font-weight: bold;
+    }
+}
+
+//////////////////////////////FlexBox
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+// This will center a single item in a div
+.centered-item {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex-row {
+    display: flex;
+}
+
+.flex-row-start {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    div {
+        margin-right: 1rem;
+    }
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-space-between {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.spec-tables {
+    display: flex;
+    div {
+        margin-right: 10px;
+    }
+}
+
+///////////////////////////////////// Fonts, Text
+body {
+    font-family: 'Jaldi', sans-serif;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.tinyFont {
+    font-size: 11px;
+    margin: 0;
+    line-height: 1;
+    padding: 0;
+}
+
+.hrule {
+    border-top: 1px solid $asbestos-grey;
+    width: 100%;
+    clear: both;
+    content: '';
+    display: block;
+}
+
+
+
+$job-item-height:28px;
+
+.checklist-item-container {
+    display: flex;
+    margin: 0 0 0 0;
+    height: $job-item-height;
+    background-color: $clouds-grey;
+    color: #000;
+    border-bottom: 1px solid $asbestos-grey;
+
+    .item-description {
+        height: $job-item-height;
+        width: 400px;
+        
+        padding-left: 3px;
+        background-color: $clouds-grey;
+        overflow: hidden;
+        h3 {
+            line-height: $job-item-height;
+            vertical-align: middle;
+            text-align: left;
+        }
+    }
+    .item-action {
+        height: $job-item-height;
+        width: 400px;
+        background-color: $clouds-grey;
+       
+        h3 {
+            color: $wisteria-purple;
+            line-height: $job-item-height;
+            vertical-align: middle;
+            text-align: center;
+        }
+    }
+    .item-icon-high {
+        height: 24px;
+        width: 24px;
+        margin: 0 4px 0 0;
+        padding: 2px 0;
+        display: flex;
+        justify-content: space-around;
+        background-color: $tertiary-color;
+        i {
+            font-size: 24px;
+            color: #fff;
+        }
+    }
+    .item-icon-low {
+        height: 24px;
+        width: 24px;
+        margin: 0 4px 0 0;
+        padding: 2px 0;
+        display: flex;
+        justify-content: space-around;
+        
+        background-color: $peterRiver-blue;
+        i {
+            font-size: 24px;
+            color: #fff;
+        }
+    }
+}
+
+.search-icon{
+    margin:0 0 0 5px;
+    font-size: 24px;
+    line-height: 1;
+}

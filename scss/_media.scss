@@ -1,0 +1,55 @@
+
+
+// max-width ----- "If [screen width] is less than or equal to [specified #], then do {...}"
+
+// min-width means "If [screen width] is greater than or equal to [specified #], then do {...}" 
+
+@media all and ( max-height: 900px ) {
+	#centered{
+		margin-left:0;
+		margin-right:0;
+	}
+	
+	#footer{
+		display:none;
+	}
+}
+
+@media all and ( min-width: 1701px ) {
+	#centered{
+		margin-left:10%;
+		margin-right:10%;
+	}
+	
+}
+
+@media all and ( max-width: 1700px ) {
+	#centered{
+		margin-left:10%;
+		margin-right:10%;
+	}
+	
+}
+
+@media all and ( max-width: 1360px ) {
+	#centered{
+		margin-left:8%;
+		margin-right:8%;
+	}
+	
+}
+
+@media all and ( max-width: 1024px ) {
+	#centered{
+		margin-left:5%;
+		margin-right:5%;
+		min-height:600px;
+	}
+	
+
+	#footer{
+		display:none;
+	}
+}
+
+

@@ -437,7 +437,7 @@ body {
     margin: 0; }
   .side-nav .section-label {
     background-color: #FF5252;
-    height: 26px;
+    height: 36px;
     width: 200px;
     display: flex;
     justify-content: space-around;

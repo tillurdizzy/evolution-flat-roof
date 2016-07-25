@@ -65,8 +65,8 @@
         </div>
         <div class="item-unit">
             <h3>Qty</h3></div>
-        <div class="item-select">
-            <md-select ng-model="Ctrl.PARAMS.Drains" placeholder="Select size">
+        <div class="item-select-small">
+            <md-select ng-model="Ctrl.PARAMS.Drains" placeholder="size">
                 <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.drainSizes">{{ opt.label }}</md-option>
             </md-select>
         </div>
@@ -75,12 +75,11 @@
         <div class="item-name">
             <h3>Scupper 10'</h3></div>
         <div class="item-input">
-            <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.VENTS_LG">
-        </div>
+            <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.VENTS_LG"></div>
         <div class="item-unit">
             <h3>Qty</h3></div>
-        <div class="item-select">
-            <md-select ng-model="Ctrl.PARAMS.Drains" placeholder="Select size">
+        <div class="item-select-small">
+            <md-select ng-model="Ctrl.PARAMS.Drains" placeholder="size">
                 <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.drainSizes">{{ opt.label }}</md-option>
             </md-select>
         </div>
@@ -88,16 +87,72 @@
     <div class="form-input">
         <div class="item-name">
             <h3>Star Caps</h3></div>
+        <div class="item-input">
+            <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.STARCAPS"></div>
+        <div class="item-unit">
+            <h3>Qty</h3></div>
     </div>
-    <div class="indent">
+    <div class="indent" ng-show="Ctrl.PARAMS.STARCAPS!='0'">
         <div class="form-input">
             <div class="item-select">
-                <md-select ng-model="Ctrl.PARAMS.STAR1_QTY" placeholder="Select size">
+                <md-select ng-model="Ctrl.PARAMS.STAR1_DIA" placeholder="Select size">
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.sizeInches">{{ opt.label }}</md-option>
                 </md-select>
             </div>
             <div class="item-input">
-                <input type="tel" ng-model="Ctrl.PARAMS.STAR1_DIA">
+                <input type="tel" ng-model="Ctrl.PARAMS.STAR1_QTY">
+            </div>
+            <div class="item-unit">
+                <h3>Qty</h3></div>
+        </div>
+
+        <div class="form-input" ng-show="Ctrl.PARAMS.STAR1_QTY!='0'">
+            <div class="item-select">
+                <md-select ng-model="Ctrl.PARAMS.STAR2_DIA" placeholder="Select size">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.sizeInches">{{ opt.label }}</md-option>
+                </md-select>
+            </div>
+            <div class="item-input">
+                <input type="tel" ng-model="Ctrl.PARAMS.STAR2_QTY">
+            </div>
+            <div class="item-unit">
+                <h3>Qty</h3></div>
+        </div>
+
+        <div class="form-input" ng-show="Ctrl.PARAMS.STAR2_QTY!='0'">
+            <div class="item-select">
+                <md-select ng-model="Ctrl.PARAMS.STAR3_DIA" placeholder="Select size">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.sizeInches">{{ opt.label }}</md-option>
+                </md-select>
+            </div>
+            <div class="item-input">
+                <input type="tel" ng-model="Ctrl.PARAMS.STAR3_QTY">
+            </div>
+            <div class="item-unit">
+                <h3>Qty</h3></div>
+        </div>
+
+        <div class="form-input" ng-show="Ctrl.PARAMS.STAR3_QTY!='0'">
+            <div class="item-select">
+                <md-select ng-model="Ctrl.PARAMS.STAR4_DIA" placeholder="Select size">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.sizeInches">{{ opt.label }}</md-option>
+                </md-select>
+            </div>
+            <div class="item-input">
+                <input type="tel" ng-model="Ctrl.PARAMS.STAR4_QTY">
+            </div>
+            <div class="item-unit">
+                <h3>Qty</h3></div>
+        </div>
+
+        <div class="form-input" ng-show="Ctrl.PARAMS.STAR4_QTY!='0'">
+            <div class="item-select">
+                <md-select ng-model="Ctrl.PARAMS.STAR5_DIA" placeholder="Select size">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.sizeInches">{{ opt.label }}</md-option>
+                </md-select>
+            </div>
+            <div class="item-input">
+                <input type="tel" ng-model="Ctrl.PARAMS.STAR5_QTY">
             </div>
             <div class="item-unit">
                 <h3>Qty</h3></div>

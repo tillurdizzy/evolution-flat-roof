@@ -2,52 +2,51 @@
     <div class="page-title">
         <h4>Polyisocyanurate Insulation</h4></div>
     <div>
-        <div>
+        <div class="form-input">
+            <div class="item-name">
+                <h3>ISO Thickness</h3></div>
+            <div class="item-select">
+                <md-select ng-model="Ctrl.SELECT.thickness" placeholder="Select thickness" ng-change="Ctrl.selectThickness()">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ISO">{{ opt.label }}</md-option>
+                </md-select>
+            </div>
+        </div>
+        <div class="form-input">
+            <div class="item-name">
+                <h3>Adhere</h3></div>
+            <div class="item-select">
+                <md-select ng-model="Ctrl.SELECT.adhereMethod" placeholder="Select method" ng-change="Ctrl.selectAdhereMethod()">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.adhereMethod">{{ opt.label }}</md-option>
+                </md-select>
+            </div>
+        </div>
+        <add-space heightpx="10"></add-space>
+        <div class="form-input">
+            <div class="item-name">
+                <h3>Special Taper</h3></div>
+        </div>
+        <div class="indent">
             <div class="form-input">
                 <div class="item-name">
-                    <h3>ISO Thickness</h3></div>
-                <div class="item-select">
-                    <md-select ng-model="Ctrl.SELECT.thickness" placeholder="Select thickness" ng-change="Ctrl.selectThickness()">
-                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ISO">{{ opt.label }}</md-option>
-                    </md-select>
+                    <h3>Quote</h3></div>
+                <div class="item-input">
+                    <input type="text" ng-model="Ctrl.PARAMS.SPxxxxxxCTYPE">
                 </div>
             </div>
             <div class="form-input">
                 <div class="item-name">
-                    <h3>Adhere</h3></div>
-                <div class="item-select">
-                    <md-select ng-model="Ctrl.SELECT.adhereMethod" placeholder="Select method" ng-change="Ctrl.selectAdhereMethod()">
-                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.adhereMethod">{{ opt.label }}</md-option>
-                    </md-select>
+                    <h3>Supplier</h3></div>
+                <div class="item-input">
+                    <input type="text" ng-model="Ctrl.PARAMS.xxx">
                 </div>
             </div>
-            <add-space heightpx="10"></add-space>
             <div class="form-input">
                 <div class="item-name">
-                    <h3>Special Taper</h3></div>
-            </div>
-            <div class="indent">
-                <div class="form-input">
-                    <div class="item-name-indent">
-                        <h3>Quote</h3></div>
-                    <div class="item-input">
-                        <input type="text" ng-model="Ctrl.PARAMS.SPxxxxxxCTYPE">
-                    </div>
-                </div>
-                <div class="form-input">
-                    <div class="item-name-indent">
-                        <h3>Supplier</h3></div>
-                    <div class="item-input">
-                        <input type="text" ng-model="Ctrl.PARAMS.xxx">
-                    </div>
-                </div>
-                <div class="form-input">
-                    <div class="item-name-indent">
-                        <h3>Price</h3></div>
-                    <div class="item-input">
-                        <input type="text" ng-model="Ctrl.PARAMS.xxx">
-                    </div>
+                    <h3>Price</h3></div>
+                <div class="item-input">
+                    <input type="text" ng-model="Ctrl.PARAMS.xxx">
                 </div>
             </div>
         </div>
     </div>
+</div>

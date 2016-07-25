@@ -2,8 +2,6 @@
     <div class="page-title">
         <h4>Perimiter and Edges</h4></div>
     <div>
-       <div class="form-label">
-            <h2>Perimiter Edge</h2></div>
         <div class="form-input">
             <div class="item-name">
                 <h3>Term Bar</h3></div>
@@ -12,15 +10,17 @@
             </div>
             <div class="item-unit">
                 <h3>Ft</h3></div>
-            <md-select ng-model="Ctrl.PARAMS.TERMBARSIZE" placeholder="Select size">
-                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.termBarSize">{{ opt.label }}</md-option>
-            </md-select>
+            <div class="item-select-small">    
+                <md-select ng-model="Ctrl.PARAMS.TERMBARSIZE" placeholder="size">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.termBarSize">{{ opt.label }}</md-option>
+                </md-select>
+            </div>
         </div>
         <div class="form-input">
             <div class="item-name">
                 <h3>Clad Metal</h3></div>
             <div class="item-input">
-                <input type="tel" ng-model="Ctrl.PARAMS.TERMBAR">
+                <input type="tel" ng-model="Ctrl.PARAMS.CLADMETAL">
             </div>
             <div class="item-unit">
                 <h3>Ft</h3></div>
@@ -29,28 +29,27 @@
             <div class="item-name">
                 <h3>Special Type</h3></div>
             <div class="item-input">
-                <input type="tel" ng-model="Ctrl.PARAMS.SPxxxxxCTYPE">
+                <input type="tel" ng-model="Ctrl.PARAMS.SPECTYPE_FT">
             </div>
             <div class="item-unit">
                 <h3>Ft</h3></div>
         </div>
-        <div class="indent">
+        <div class="indent" ng-show="Ctrl.PARAMS.SPECTYPE_FT!='0'">
             <div class="form-input">
                 <div class="item-name">
-                    <h3>Type</h3></div>
+                    <h3>Description</h3></div>
                 <div class="item-input">
-                    <input type="text" ng-model="Ctrl.PARAMS.SPxxxxxxCTYPE">
+                    <input type="text" ng-model="Ctrl.PARAMS.SPECTYPE_DES">
                 </div>
             </div>
-            
             <div class="form-input">
                 <div class="item-name">
-                    <h3>Cost PF</h3></div>
+                    <h3>Cost Per Ft</h3></div>
                 <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.PARAMS.xxx">
+                    <input type="tel" ng-model="Ctrl.PARAMS.SPECTYPE_COST">
                 </div>
                 <div class="item-unit">
-                <h3>$</h3></div>
+                    <h3>$</h3></div>
             </div>
         </div>
         <div class="form-input">
@@ -66,11 +65,10 @@
             <div class="item-name">
                 <h3>Cap Metal</h3></div>
             <div class="item-input">
-                <input type="tel" ng-model="Ctrl.PARAMS.TERMINATION">
+                <input type="tel" ng-model="Ctrl.PARAMS.CAPMETAL">
             </div>
             <div class="item-unit">
                 <h3>Ft</h3></div>
         </div>
-    </div>
     </div>
 </div>

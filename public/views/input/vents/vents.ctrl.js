@@ -28,12 +28,19 @@ function myCtrlFunction(ListSrvc,SharedSrvc) {
 
 
 	var reset = function(){
-		vm.PARAMS.BOOTS_SM = 0;
-		vm.PARAMS.BOOTS_LG = 0;
-		vm.PARAMS.VENTS_SM = 0;
-		vm.PARAMS.VENTS_LG = 0;
+		vm.PARAMS.BOOTS_SM = '0';
+		vm.PARAMS.BOOTS_LG = '0';
+		vm.PARAMS.VENTS_SM = '0';
+		vm.PARAMS.VENTS_LG = '0';
 		vm.PARAMS.VENTS_SM_DETAILS = [];
 		vm.PARAMS.VENTS_LG_DETAILS = [];
+
+		vm.PARAMS.STARCAPS ="0";
+		vm.PARAMS.STAR1_QTY ="0";
+		vm.PARAMS.STAR2_QTY ="0";
+		vm.PARAMS.STAR3_QTY ="0";
+		vm.PARAMS.STAR4_QTY ="0";
+		vm.PARAMS.STAR5_QTY ="0";
 	}
 
 	reset();

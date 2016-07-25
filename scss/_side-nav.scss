@@ -1,8 +1,10 @@
 $side-nav-width:200px;
+
 .side-nav {
     width: $side-nav-width;
     min-height: 1500px;
     background-color: #dddddd;
+
     .btn {
         width: $side-nav-width;
         margin: 0;
@@ -10,7 +12,7 @@ $side-nav-width:200px;
 
     .section-label {
         background-color: $material-accent-200;
-        height: 26px;
+        height: 36px;
         width: $side-nav-width;
         display: flex;
         justify-content: space-around;

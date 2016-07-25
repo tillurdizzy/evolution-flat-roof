@@ -1,114 +1,145 @@
 'use strict';
-angular.module('app').service('ListSrvc',[function sharedLists(){
-	var self = this;
+angular.module('app').service('ListSrvc', [function sharedLists() {
+    var self = this;
 
-	self.template = [
-		{item:"XXX",data:"XXX",color:"normal"},
-		{item:"XXX",data:"XXX",color:"normal"},
-		{item:"XXX",data:"XXX",color:"normal"},
-		{item:"XXX",data:"XXX",color:"normal"},
-		{item:"XXX",data:"XXX",color:"normal"},
-		{item:"XXX",data:"XXX",color:"normal"},
-		{item:"XXX",data:"XXX",color:"normal"},
-		{item:"XXX",data:"XXX",color:"normal"},
-		{item:"XXX",data:"XXX",color:"normal"},
-		{item:"XXX",data:"XXX",color:"normal"},
-		{item:"XXX",data:"XXX",color:"normal"},
-		{item:"XXX",data:"XXX",color:"normal"}
-	];
+    self.template = [
+        { item: "XXX", data: "XXX", color: "normal" },
+        { item: "XXX", data: "XXX", color: "normal" },
+        { item: "XXX", data: "XXX", color: "normal" },
+        { item: "XXX", data: "XXX", color: "normal" },
+        { item: "XXX", data: "XXX", color: "normal" },
+        { item: "XXX", data: "XXX", color: "normal" },
+        { item: "XXX", data: "XXX", color: "normal" },
+        { item: "XXX", data: "XXX", color: "normal" },
+        { item: "XXX", data: "XXX", color: "normal" },
+        { item: "XXX", data: "XXX", color: "normal" },
+        { item: "XXX", data: "XXX", color: "normal" },
+        { item: "XXX", data: "XXX", color: "normal" }
+    ];
 
-  self.roofLayers = [
-    {label:"None",id:"NONE"},
-    {label:"Tar & Gravel",id:"TRGRVL"},
-    {label:"Modified Bitumen",id:"MODBTMN"},
-    {label:"TPO / PVC",id:"PCV"},
-    {label:"Insulation",id:"INSLTN"}
-  ];
+    self.membraneTypes=[
+    	{ label: "TPO - D4434", id: "TPO" }, 
+    	{ label: "PVC - D4434", id: "PVC" }, 
+    	{ label: "E/PVC - D4434", id: "EPVC1" }, 
+    	{ label: "E/PVC - 6722", id: "EPVC2" }
+    ];
 
-  self.ventShapes = [
-    {label:"Round",id:"RD"},
-    {label:"Square",id:"SQ"},
-  ];
+    self.membraneThickness=[
+    	{ label: "45 mil", id: "45M" }, 
+    	{ label: "50 mil", id: "50M" }, 
+    	{ label: "60 mil", id: "60M" }, 
+    	{ label: "80 mil", id: "80M" }
+    ];
 
-  self.drainSizes = [
-    {label:"1.5 in.",id:"1.5"},
-    {label:"2 in.",id:"2"},
-    {label:"3 in.",id:"3"},
-    {label:"4 in.",id:"4"},
-    {label:"6 in.",id:"6"},
-    {label:"8 in.",id:"8"}
-  ];
+    self.ISO=[
+    	{ label: "1", id: "1" }, 
+    	{ label: "2", id: "2" }, 
+    	{ label: "3", id: "3" }, 
+    	{ label: "3.1", id: "3.1" }
+    ];
 
-  self.termBarSize = [
-    {label:"1.5 in.",id:"1.5"},
-    {label:"4 in.",id:"4"}
-  ];
+    self.adhereMethod=[
+        { label: "Screws", id: "screw" }, 
+        { label: "Foam A & B", id: "foam" }
+    ];
 
-  self.sizeInches = [
-    {label:"1 in.",id:"1"},
-    {label:"2 in.",id:"2"},
-    {label:"3 in.",id:"3"},
-    {label:"4 in.",id:"4"},
-    {label:"5 in.",id:"5"},
-    {label:"6 in.",id:"6"},
-    {label:"7 in.",id:"7"},
-    {label:"8 in.",id:"8"}
-  ];
+    self.roofLayers = [
+        { label: "None", id: "NONE" },
+        { label: "Tar & Gravel", id: "TRGRVL" },
+        { label: "Modified Bitumen", id: "MODBTMN" },
+        { label: "TPO / PVC", id: "PCV" },
+        { label: "Insulation", id: "INSLTN" }
+    ];
 
-	
-	self.numbersToTwelve = [
-		{label:"One",id:1},{label:"Two",id:2},{label:"Three",id:3},{label:"Four",id:4},{label:"Five",id:5},
-		{label:"Six",id:6},{label:"Seven",id:7},{label:"Eight",id:8},{label:"Nine",id:9},{label:"Ten",id:10},
-		{label:"Eleven",id:11},{label:"Twelve+",id:12}];
+    self.ventShapes = [
+        { label: "Round", id: "RD" },
+        { label: "Square", id: "SQ" },
+    ];
 
-	self.numbersToFive = [
-		{label:"One",id:1},{label:"Two",id:2},{label:"Three",id:3},{label:"Four",id:4},{label:"Five",id:5}];
+    self.drainSizes = [
+        { label: "1.5 in.", id: "1.5" },
+        { label: "2 in.", id: "2" },
+        { label: "3 in.", id: "3" },
+        { label: "4 in.", id: "4" },
+        { label: "6 in.", id: "6" },
+        { label: "8 in.", id: "8" }
+    ];
 
-	self.numbersToTen = [
-		{label:"Zero",id:0},{label:"One",id:1},{label:"Two",id:2},{label:"Three",id:3},{label:"Four",id:4},{label:"Five",id:5},
-		{label:"Six",id:6},{label:"Seven",id:7},{label:"Eight",id:8},{label:"Nine",id:9},{label:"Ten",id:10}];
-	
-	
-	self.trueFalse = [
-		{label:"False",id:0},
-		{label:"True",id:1}];
+    self.termBarSize = [
+        { label: "1.5 in.", id: "1.5" },
+        { label: "4 in.", id: "4" }
+    ];
 
-	self.yesNo = [
-		{label:"No",id:0},
-		{label:"Yes",id:1}];
+    self.sizeInches = [
+        { label: "1 in.", id: "1" },
+        { label: "2 in.", id: "2" },
+        { label: "3 in.", id: "3" },
+        { label: "4 in.", id: "4" },
+        { label: "5 in.", id: "5" },
+        { label: "6 in.", id: "6" },
+        { label: "7 in.", id: "7" },
+        { label: "8 in.", id: "8" }
+    ];
 
-	
-	self.returnIdValue = function(set,id){
-		var rtnObj = {};
-		for (var i = 0; i < set.length; i++) {
-			if (set[i].id == id) {
-				rtnObj = set[i];
-			}
-		}
-		return rtnObj;
-	};
 
-	self.returnObjById = function(set,id){
-		var rtnObj = {};
-		for (var i = 0; i < set.length; i++) {
-			if (set[i].id == id) {
-				rtnObj = set[i];
-			}
-		}
-		return rtnObj;
-	};
+    self.numbersToTwelve = [
+        { label: "One", id: 1 }, { label: "Two", id: 2 }, { label: "Three", id: 3 }, { label: "Four", id: 4 }, { label: "Five", id: 5 },
+        { label: "Six", id: 6 }, { label: "Seven", id: 7 }, { label: "Eight", id: 8 }, { label: "Nine", id: 9 }, { label: "Ten", id: 10 },
+        { label: "Eleven", id: 11 }, { label: "Twelve+", id: 12 }
+    ];
 
-	self.returnObjByLabel = function(set,lbl){
-		var rtnObj = {};
-		for (var i = 0; i < set.length; i++) {
-			if (set[i].label == lbl) {
-				rtnObj = set[i];
-				break;
-			}
-		}
-		return rtnObj;
-	};
+    self.numbersToFive = [
+        { label: "One", id: 1 }, { label: "Two", id: 2 }, { label: "Three", id: 3 }, { label: "Four", id: 4 }, { label: "Five", id: 5 }
+    ];
 
-	
+    self.numbersToTen = [
+        { label: "Zero", id: 0 }, { label: "One", id: 1 }, { label: "Two", id: 2 }, { label: "Three", id: 3 }, { label: "Four", id: 4 }, { label: "Five", id: 5 },
+        { label: "Six", id: 6 }, { label: "Seven", id: 7 }, { label: "Eight", id: 8 }, { label: "Nine", id: 9 }, { label: "Ten", id: 10 }
+    ];
+
+
+    self.trueFalse = [
+        { label: "False", id: 0 },
+        { label: "True", id: 1 }
+    ];
+
+    self.yesNo = [
+        { label: "No", id: 0 },
+        { label: "Yes", id: 1 }
+    ];
+
+
+    self.returnIdValue = function(set, id) {
+        var rtnObj = {};
+        for (var i = 0; i < set.length; i++) {
+            if (set[i].id == id) {
+                rtnObj = set[i];
+            }
+        }
+        return rtnObj;
+    };
+
+    self.returnObjById = function(set, id) {
+        var rtnObj = {};
+        for (var i = 0; i < set.length; i++) {
+            if (set[i].id == id) {
+                rtnObj = set[i];
+            }
+        }
+        return rtnObj;
+    };
+
+    self.returnObjByLabel = function(set, lbl) {
+        var rtnObj = {};
+        for (var i = 0; i < set.length; i++) {
+            if (set[i].label == lbl) {
+                rtnObj = set[i];
+                break;
+            }
+        }
+        return rtnObj;
+    };
+
+
 
 }]);

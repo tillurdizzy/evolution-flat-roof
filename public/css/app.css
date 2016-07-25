@@ -428,84 +428,6 @@ body {
   content: '';
   display: block; }
 
-.indent {
-  margin-left: 30px; }
-
-.form-label h2 {
-  line-height: 1;
-  font-size: 1.2rem;
-  padding: 0;
-  margin: 15px 0 0 0;
-  font-weight: 600;
-  font-family: 'Jaldi', sans-serif; }
-
-.form-input {
-  display: flex;
-  margin: 4px 0 0 0;
-  height: 30px; }
-  .form-input md-select {
-    margin: 0;
-    min-width: 170px; }
-  .form-input .job-item-name {
-    height: 30px;
-    width: 200px;
-    background-color: #37474F;
-    color: #fff;
-    margin: 0 4px 0 0;
-    padding-left: 3px;
-    overflow: hidden; }
-    .form-input .job-item-name h3 {
-      margin: 0;
-      line-height: 30px;
-      vertical-align: middle;
-      text-align: left;
-      font-weight: 400; }
-  .form-input .job-item-name-indent {
-    height: 30px;
-    width: 170px;
-    background-color: #37474F;
-    color: #fff;
-    margin: 0 4px 0 0;
-    padding-left: 3px;
-    overflow: hidden; }
-    .form-input .job-item-name-indent h3 {
-      margin: 0;
-      line-height: 30px;
-      vertical-align: middle;
-      text-align: left;
-      font-weight: 400; }
-  .form-input .job-item-unit {
-    height: 30px;
-    width: 60px;
-    background-color: #37474F;
-    color: #fff;
-    margin: 0;
-    padding: 0 0 0 4px; }
-    .form-input .job-item-unit h3 {
-      margin: 0;
-      line-height: 30px;
-      vertical-align: middle;
-      text-align: left;
-      font-weight: 400; }
-  .form-input .job-item-input {
-    width: 60px;
-    height: 30px;
-    margin: 0 4px 0 0;
-    padding: 1px 9px;
-    box-sizing: border-box; }
-    .form-input .job-item-input input[type="tel"] {
-      height: 22px;
-      display: inline-block;
-      width: 40px;
-      text-align: right;
-      font-size: 20px; }
-  .form-input .job-item-select {
-    width: 180px;
-    height: 30px;
-    margin: 0 4px 0 0;
-    padding: 1px 5px;
-    box-sizing: border-box; }
-
 .side-nav {
   width: 200px;
   min-height: 1500px;
@@ -526,3 +448,91 @@ body {
       padding: 0;
       margin: 0;
       font-weight: 600; }
+
+.form-label h2 {
+  line-height: 1;
+  font-size: 1.2rem;
+  padding: 0;
+  margin: 15px 0 0 0;
+  font-weight: 600;
+  font-family: 'Jaldi', sans-serif; }
+
+.form-input {
+  display: flex;
+  margin: 4px 0 0 0;
+  height: 30px; }
+  .form-input md-select {
+    margin: 0;
+    min-width: 100px; }
+  .form-input h3 {
+    margin: 0;
+    line-height: 30px;
+    vertical-align: middle;
+    text-align: left;
+    font-weight: 400; }
+  .form-input .item-name {
+    height: 30px;
+    width: 200px;
+    background-color: #37474F;
+    color: #fff;
+    margin: 0;
+    padding-left: 5px;
+    overflow: hidden; }
+  .form-input .item-name-small {
+    height: 30px;
+    width: 100px;
+    background-color: #37474F;
+    color: #fff;
+    margin: 0;
+    padding-left: 5px;
+    overflow: hidden; }
+  .form-input .item-unit {
+    height: 30px;
+    width: 60px;
+    background-color: #37474F;
+    color: #fff;
+    margin-left: 5px;
+    padding: 0 0 0 5px; }
+  .form-input .item-input {
+    width: 60px;
+    height: 30px;
+    margin-left: 5px;
+    padding: 1px 9px;
+    box-sizing: border-box; }
+    .form-input .item-input input[type="tel"] {
+      height: 22px;
+      display: inline-block;
+      width: 40px;
+      text-align: right;
+      font-size: 20px; }
+    .form-input .item-input input[type="text"] {
+      height: 22px;
+      display: block;
+      text-align: left;
+      font-size: 20px; }
+  .form-input .item-select {
+    width: 170px;
+    height: 30px;
+    margin-left: 5px;
+    padding: 0; }
+    .form-input .item-select md-select {
+      min-width: 170px; }
+  .form-input .item-select-small {
+    width: 100px;
+    height: 30px;
+    margin-left: 5px;
+    padding: 0; }
+    .form-input .item-select-small md-select {
+      width: 100px; }
+
+/* change size and bkg clr when indented */
+.indent {
+  margin-left: 30px; }
+
+.indent .form-input .item-name {
+  width: 170px;
+  background-color: #607D8B; }
+
+.indent .form-input .item-name-small {
+  width: 80px;
+  background-color: #607D8B; }

@@ -2,110 +2,105 @@
     <div class="page-title">
         <h4>Pipes and Vents</h4></div>
     <div class="form-input">
-        <div class="job-item-name">
+        <div class="item-name">
             <h3>Pipe Boots 0"- 3"</h3></div>
-        <div class="job-item-input">
+        <div class="item-input">
             <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.BOOTS_SM">
         </div>
-        <div class="job-item-unit">
+        <div class="item-unit">
             <h3>Qty</h3></div>
     </div>
     <div class="form-input">
-        <div class="job-item-name">
+        <div class="item-name">
             <h3>Pipe Boots 3"- 8"</h3></div>
-        <div class="job-item-input">
+        <div class="item-input">
             <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.BOOTS_LG">
         </div>
-        <div class="job-item-unit">
+        <div class="item-unit">
             <h3>Qty</h3></div>
     </div>
     <div class="form-input">
-        <div class="job-item-name">
+        <div class="item-name">
             <h3>Vents 0"- 8"</h3></div>
-        <div class="job-item-input">
+        <div class="item-input">
             <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.VENTS_SM" ng-change="Ctrl.smallVentChange()">
         </div>
-        <div class="job-item-unit">
+        <div class="item-unit">
             <h3>Qty</h3></div>
     </div>
-    <div ng-show="Ctrl.PARAMS.VENTS_SM > 0">
-        <md-list>
-            <md-list-item class="md-2-line" ng-repeat="item in Ctrl.PARAMS.VENTS_SM_DETAILS track by item.id">
-                <md-select ng-model="Ctrl.SELECT.layerOne" placeholder="Select size" ng-change="Ctrl.selectVentSize()">
+    <div class="indent" ng-show="Ctrl.PARAMS.VENTS_SM > 0">
+        <div ng-repeat="item in Ctrl.PARAMS.VENTS_SM_DETAILS track by item.id">
+            <div class="form-input">
+                <div class="item-name-small">
+                    <h3>Size</h3></div>
+                <div class="item-select-small">
+                    <md-select ng-model="Ctrl.SELECT.layerOne" placeholder="Select" ng-change="Ctrl.selectVentSize()">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.sizeInches">{{ opt.label }}</md-option>
+                    </md-select>
+                </div>
+                <div class="item-name-small">
+                    <h3>Shape</h3></div>
+                <div class="item-select-small">
+                    <md-select ng-model="Ctrl.SELECT.layerOne" placeholder="Select" ng-change="Ctrl.selectVentShape()">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ventShapes">{{ opt.label }}</md-option>
+                    </md-select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Vents 8" - 12"</h3></div>
+        <div class="item-input">
+            <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.VENTS_LG">
+        </div>
+        <div class="item-unit">
+            <h3>Qty</h3></div>
+    </div>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Drains</h3></div>
+        <div class="item-input">
+            <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.VENTS_LG">
+        </div>
+        <div class="item-unit">
+            <h3>Qty</h3></div>
+        <div class="item-select">
+            <md-select ng-model="Ctrl.PARAMS.Drains" placeholder="Select size">
+                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.drainSizes">{{ opt.label }}</md-option>
+            </md-select>
+        </div>
+    </div>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Scupper 10'</h3></div>
+        <div class="item-input">
+            <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.VENTS_LG">
+        </div>
+        <div class="item-unit">
+            <h3>Qty</h3></div>
+        <div class="item-select">
+            <md-select ng-model="Ctrl.PARAMS.Drains" placeholder="Select size">
+                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.drainSizes">{{ opt.label }}</md-option>
+            </md-select>
+        </div>
+    </div>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Star Caps</h3></div>
+    </div>
+    <div class="indent">
+        <div class="form-input">
+            <div class="item-select">
+                <md-select ng-model="Ctrl.PARAMS.STAR1_QTY" placeholder="Select size">
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.sizeInches">{{ opt.label }}</md-option>
                 </md-select>
-                <md-select ng-model="Ctrl.SELECT.layerOne" placeholder="Select shape" ng-change="Ctrl.selectVentShape()">
-                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ventShapes">{{ opt.label }}</md-option>
-                </md-select>
-            </md-list-item>
-        </md-list>
-    </div>
-    <div class="form-input">
-        <div class="job-item-name">
-            <h3>Vents 8" - 12"</h3></div>
-        <div class="job-item-input">
-            <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.VENTS_LG">
-        </div>
-        <div class="job-item-unit">
-            <h3>Qty</h3></div>
-    </div>
-    <div class="form-input">
-        <div class="job-item-name">
-            <h3>Drains</h3></div>
-        <div class="job-item-input">
-            <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.VENTS_LG">
-        </div>
-        <div class="job-item-unit">
-            <h3>Qty</h3></div>
-        <div class="job-item-input">
-            <md-select ng-model="Ctrl.PARAMS.Drains" placeholder="Select size">
-                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.drainSizes">{{ opt.label }}</md-option>
-            </md-select>
+            </div>
+            <div class="item-input">
+                <input type="tel" ng-model="Ctrl.PARAMS.STAR1_DIA">
+            </div>
+            <div class="item-unit">
+                <h3>Qty</h3></div>
         </div>
     </div>
-    <div class="form-input">
-        <div class="job-item-name">
-            <h3>Scupper 10'</h3></div>
-        <div class="job-item-input">
-            <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.VENTS_LG">
-        </div>
-        <div class="job-item-unit">
-            <h3>Qty</h3></div>
-        <div class="job-item-input">
-            <md-select ng-model="Ctrl.PARAMS.Drains" placeholder="Select size">
-                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.drainSizes">{{ opt.label }}</md-option>
-            </md-select>
-        </div>
-    </div>
-
-    <div class="form-input">
-        <div class="job-item-name">
-            <h3>Star Cap</h3></div>
-        <div class="job-item-input">
-            <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.VENTS_LG">
-        </div>
-        <div class="job-item-unit">
-            <h3>Qty</h3></div>
-        <div class="job-item-input">
-            <md-select ng-model="Ctrl.PARAMS.Drains" placeholder="Select size">
-                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.drainSizes">{{ opt.label }}</md-option>
-            </md-select>
-        </div>
-    </div>
-
-    <div class="form-input">
-        <div class="job-item-name">
-            <h3>HVAC</h3></div>
-        <div class="job-item-input">
-            <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.VENTS_LG">
-        </div>
-        <div class="job-item-unit">
-            <h3>Qty</h3></div>
-        <div class="job-item-input">
-            <md-select ng-model="Ctrl.PARAMS.Drains" placeholder="Select size">
-                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.drainSizes">{{ opt.label }}</md-option>
-            </md-select>
-        </div>
-    </div>
-    
 </div>

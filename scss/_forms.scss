@@ -1,0 +1,116 @@
+$input-line-height:30px;
+.form-label {
+    h2 {
+        line-height: 1;
+        font-size: 1.2rem;
+        padding: 0;
+        margin: 15px 0 0 0;
+        font-weight: 600;
+        font-family: 'Jaldi', sans-serif;
+    }
+}
+
+.form-input {
+    display: flex;
+    margin: 4px 0 0 0;
+    height: $input-line-height;
+    md-select {
+        margin: 0;
+        min-width: 100px;
+    }
+
+    h3 {
+        margin: 0;
+        line-height: $input-line-height;
+        vertical-align: middle;
+        text-align: left;
+        font-weight: 400;
+    }
+
+    .item-name {
+        height: $input-line-height;
+        width: 200px;
+        background-color: $material-pallette-800;
+        color: #fff;
+        margin: 0;
+        padding-left: 5px;
+        overflow: hidden;
+    }
+
+    .item-name-small {
+        height: $input-line-height;
+        width: 100px;
+        background-color: $material-pallette-800;
+        color: #fff;
+        margin: 0;
+        padding-left: 5px;
+        overflow: hidden;
+    }
+
+    .item-unit {
+        height: $input-line-height;
+        width: 60px;
+        background-color: $material-pallette-800;
+        color: #fff;
+        margin-left: 5px;
+        padding: 0 0 0 5px;
+    }
+
+    .item-input {
+        width: 60px;
+        height: $input-line-height;
+        margin-left: 5px;
+        padding: 1px 9px;
+        box-sizing: border-box;
+        input[type="tel"] {
+            height: 22px;
+            display: inline-block;
+            width: 40px;
+            text-align: right;
+            font-size: 20px;
+        }
+        input[type="text"] {
+            height: 22px;
+            display: block;
+            text-align: left;
+            font-size: 20px;
+        }
+    }
+    .item-select {
+        width: 170px;
+        height: $input-line-height;
+        margin-left: 5px;
+        padding: 0;
+        md-select {
+            min-width: 170px;
+        }
+    }
+
+    .item-select-small {
+        width: 100px;
+        height: $input-line-height;
+        margin-left: 5px;
+        padding: 0;
+        md-select {
+            width: 100px;
+        }
+    }
+
+}
+
+
+/* change size and bkg clr when indented */
+
+.indent {
+    margin-left: 30px;
+}
+
+.indent .form-input .item-name {
+    width: 170px;
+    background-color: $material-pallette-500;
+}
+
+.indent .form-input .item-name-small {
+    width: 80px;
+    background-color: $material-pallette-500;
+}

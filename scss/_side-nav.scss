@@ -1,0 +1,27 @@
+$side-nav-width:200px;
+.side-nav {
+    width: $side-nav-width;
+    min-height: 1500px;
+    background-color: #dddddd;
+    .btn {
+        width: $side-nav-width;
+        margin: 0;
+    }
+
+    .section-label {
+        background-color: $material-accent-200;
+        height: 26px;
+        width: $side-nav-width;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        h4 {
+            line-height: 1;
+            font-size: 1rem;
+            padding: 0;
+            margin: 0;
+            font-weight: 600;
+           
+        }
+    }
+}

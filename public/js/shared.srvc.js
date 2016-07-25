@@ -1,45 +1,47 @@
 'use strict';
+angular.module('app').factory('SharedSrvc', SharedSrvc);
 
-app.service('SharedSrvc', ['$rootScope', 'ListSrvc', function sharedSrvc($rootScope, ListSrvc) {
+SharedSrvc.$inject = ['$rootScope'];
+
+function SharedSrvc($rootScope) {
     var self = this;
 
     self.myID = "SharedVars: ";
-    self.L = ListSrvc;
    
-    self.returnIdValue = function(set, id) {
-        var rtnObj = {};
-        for (var i = 0; i < set.length; i++) {
-            if (set[i].id == id) {
-                rtnObj = set[i];
-            }
+   
+    self.clone = function(obj) {
+        var copy;
+
+        // Handle the 3 simple types, and null or undefined
+        if (null == obj || "object" != typeof obj) return obj;
+
+        // Handle Date
+        if (obj instanceof Date) {
+            copy = new Date();
+            copy.setTime(obj.getTime());
+            return copy;
         }
-        return rtnObj;
+
+        // Handle Array
+        if (obj instanceof Array) {
+            copy = [];
+            for (var i = 0, len = obj.length; i < len; i++) {
+                copy[i] = self.clone(obj[i]);
+            }
+            return copy;
+        }
+
+        // Handle Object
+        if (obj instanceof Object) {
+            copy = {};
+            for (var attr in obj) {
+                if (obj.hasOwnProperty(attr)) copy[attr] = self.clone(obj[attr]);
+            }
+            return copy;
+        }
+
+        throw new Error("Unable to copy obj! Its type isn't supported.");
     };
 
-    self.returnObjByLabel = function(set, lbl) {
-        var rtnObj = {};
-        for (var i = 0; i < set.length; i++) {
-            if (set[i].label == lbl) {
-                rtnObj = set[i];
-                break;
-            }
-        }
-        return rtnObj;
-    };
-
-    self.returnObjById = function(set, id) {
-        var rtnObj = {};
-        for (var i = 0; i < set.length; i++) {
-            if (set[i].id == id) {
-                rtnObj = set[i];
-                break;
-            }
-        }
-        return rtnObj;
-    };
-
-
-
-
-
-}]);
+    return this;
+};

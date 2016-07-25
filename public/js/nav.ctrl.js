@@ -1,6 +1,9 @@
 'use strict';
+angular.module('app').controller('NavCtrl',myFunction);
 
-app.controller('NavCtrl',['$state',function ($state) {
+myFunction.$inject = ['$state','$location'];
+
+function myFunction($state,$location) { 
 	
 	var Me = this;
 	
@@ -8,5 +11,10 @@ app.controller('NavCtrl',['$state',function ($state) {
 		$state.transitionTo(st);
 	};
 
+	Me.isCurrentPath = function (path) {
+        var x = $location.path();
+        return $location.path() == path;
+    };
 
- }]);
+
+ };

@@ -2,47 +2,42 @@
 <html lang="en">
 
 <head>
-    <title>Flightsim Aircraft Resource Center (FARC)</title>
+    <title>Evolution Flat Roof Bid Application</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0">
     <meta http-equiv="pragma" content="no-cache">
-    <!--Dependencies; AngularJS etc.-->
     <script src="bundle.js?v=1"></script>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,600' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700italic' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Jaldi:400,700' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/ngDialog.min.css" />
-    <link rel="stylesheet" href="css/ngDialog-theme-default.min.css" />
-    <link rel="stylesheet" href="css/ngDialog-theme-alert.css" />
-    <link rel="stylesheet" href="css/ngDialog-theme-calm.css" />
     <link rel="stylesheet" href="css/app.css?v=5" />
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
-<body ng-app="MyApp" class="flex-column">
+<body ng-app="app" layout="column" ng-cloak>
     <div class="top-bar">
         <div>
-            <h1>Flightsim Aircraft Resource Center</h1></div>
+            <h1 class="md-title">Evolution Flat Roof Bid Application</h1></div>
     </div>
     <div class="flex-row">
         <div class="side-nav" ng-controller="NavCtrl as Ctrl">
-            <div>
-                <button  ng-click="Ctrl.goNav('home')">Home</button>
-            </div>
-            <div>
-                <button ng-click="Ctrl.goNav('grnd')">Ground School</button>
-            </div>
-            <div>
-                <button ng-click="Ctrl.goNav('aircraft')">Aircraft</button>
-            </div>
-           
-            
+            <div class="section-label"><h4>Input</h4></div>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/layers')}" ng-click="Ctrl.goNav('layers');"> Layers </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/field')}" ng-click="Ctrl.goNav('field');"> Field </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/perimiter')}" ng-click="Ctrl.goNav('perimiter');"> Perimiter </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/vents')}" ng-click="Ctrl.goNav('vents');"> Pipes and Vents </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/hvac')}" ng-click="Ctrl.goNav('hvac');"> HVAC </md-button>
+            <div class="section-label"><h4>Design</h4></div>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/membrane')}" ng-click="Ctrl.goNav('membrane');"> Membrane </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/iso')}" ng-click="Ctrl.goNav('iso');"> ISO </md-button>
         </div>
         <div ui-view class="view-container"></div>
     </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
     <script src="myApp.js?v=3"></script>
     <!--Global Services-->
     <script src="js/data.srvc.js?v=3"></script>
@@ -51,25 +46,19 @@
     <script src="js/list.srvc.js?v=3"></script>
     <script src="js/tabbedMenu.ctrl.js?v=3"></script>
     <script src="js/nav.ctrl.js?v=1"></script>
-    <script src="views/login/login.ctrl.js?v=4"></script>
     <!--Directives-->
     <script src="js/directives/hrule.dir.js?v=1"></script>
     <script src="js/directives/space.dir.js?v=1"></script>
-    <script src="js/directives/checklistItem.dir.js?v=1"></script>
-
     <!--Modules-->
-    <script src="js/directives/ng-youtube-embed.js?v=1"></script>
-    <script src="https://rawgithub.com/Pleasurazy/angularjs-media/master/app/lib/angularjs.media.directives.js" ></script>
-
     <!--Controllers-->
-    <script src="views/C172/C172Module.js?v=1"></script>
-    <script src="views/C172/AirFoilC172.ctrl.js?v=1"></script>
-    <script src="views/C172/C172Lists.srvc.js?v=1"></script>
-    <script src="views/C208B/C208B.ctrl.js?v=1"></script>
-    <script src="views/C208B/C208BLists.srvc.js?v=1"></script>
-    <script src="views/EMB110/EMB110.ctrl.js?v=1"></script>
-    <script src="views/Grnd/grnd.ctrl.js?v=1"></script>
-    <script src="views/Grnd/acronyms/acronyms.ctrl.js?v=1"></script>
+    <script src="views/home/home.ctrl.js?v=1"></script>
+    <script src="views/input/field/field.ctrl.js?v=1"></script>
+    <script src="views/input/vents/vents.ctrl.js?v=1"></script>
+    <script src="views/input/layers/layers.ctrl.js?v=1"></script>
+    <script src="views/input/perimiter/perimiter.ctrl.js?v=1"></script>
+    <script src="views/input/hvac/hvac.ctrl.js?v=1"></script>
+    <script src="views/design/membrane/membrane.ctrl.js?v=1"></script>
+    <script src="views/design/iso/iso.ctrl.js?v=1"></script>
 </body>
 
 </html>

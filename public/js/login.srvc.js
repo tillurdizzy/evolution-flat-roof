@@ -1,5 +1,5 @@
 'use strict';
-app.service('LogInSrvc',[function logInSrvc(){
+angular.module('app').service('LogInSrvc',[function logInSrvc(){
 	var self = this;
 	
 	self.loggedIn = false;

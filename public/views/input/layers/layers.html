@@ -1,0 +1,77 @@
+<div ng-controller="LayersCtrl as Ctrl">
+    <div class="page-title"><h4>Existing Roof Assembly Layers</h4></div>
+    <div>
+        <div class="form-input">
+            <div class="job-item-name">
+                <h3>1st Layer</h3></div>
+            <div class="job-item-select">
+                <md-select ng-model="Ctrl.SELECT.layerOne" placeholder="NONE" ng-change="Ctrl.selectLayerOne()">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayers">{{ opt.label }}</md-option>
+                </md-select>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="form-input">
+            <div class="job-item-name">
+                <h3>2nd Layer</h3></div>
+            <div class="job-item-select">
+                <md-select ng-model="Ctrl.SELECT.layerTwo" placeholder="NONE" ng-change="Ctrl.selectLayerTwo()">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayers">{{ opt.label }}</md-option>
+                </md-select>
+            </div>
+            <div ng-show="Ctrl.PARAMS.layerTwo=='INSLTN'" class="job-item-select">
+                <md-select ng-model="Ctrl.SELECT.layerTwoDepth" placeholder="Select Depth">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.sizeInches">{{ opt.label }}</md-option>
+                </md-select>
+            </div>
+        </div>
+    </div>
+    <div ng-show="Ctrl.DOM.layerThree">
+        <div class="form-input">
+            <div class="job-item-name">
+                <h3>3rd Layer</h3></div>
+            <div class="job-item-select">
+                <md-select ng-model="Ctrl.SELECT.layerThree" placeholder="NONE" ng-change="Ctrl.selectLayerThree()">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayers">{{ opt.label }}</md-option>
+                </md-select>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="Ctrl.DOM.layerFour">
+        <div class="form-input">
+            <div class="job-item-name">
+                <h3>4th Layer</h3></div>
+            <div class="job-item-select">
+                <md-select ng-model="Ctrl.SELECT.layerFour" placeholder="NONE" ng-change="Ctrl.selectLayerFour()">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayers">{{ opt.label }}</md-option>
+                </md-select>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="Ctrl.DOM.layerFive">
+        <div class="form-input">
+            <div class="job-item-name">
+                <h3>5th Layer</h3></div>
+            <div class="job-item-select">
+                <md-select ng-model="Ctrl.SELECT.layerFive" placeholder="NONE" ng-change="Ctrl.selectLayerFive()">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayers">{{ opt.label }}</md-option>
+                </md-select>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="Ctrl.DOM.layerSix">
+        <div class="form-input">
+            <div class="job-item-name">
+                <h3>6th Layer</h3></div>
+            <div class="job-item-select">
+                <md-select ng-model="Ctrl.SELECT.layerSix" placeholder="NONE" ng-change="Ctrl.selectLayerSix()">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayers">{{ opt.label }}</md-option>
+                </md-select>
+            </div>
+        </div>
+    </div>
+</div>

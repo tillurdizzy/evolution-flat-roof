@@ -10,7 +10,6 @@ var postcss			= require('gulp-postcss');
 var csswring		= require('csswring');
 var autoprefixer	= require('autoprefixer');
 var browserify 		= require('browserify');
-var buffer 			= require('vinyl-buffer');
 
 /* tasks */
 gulp.task('devjs', function () {
@@ -27,19 +26,15 @@ gulp.task('devjs', function () {
 /* vendor dependencies */
 gulp.task('jsbundle',function(){
 	return gulp.src([
-		'bower_components/jsPDF/jspdf.min.js',
-		'bower_components/modernizr/modernizr.js',
-		'bower_components/jquery/dist/jquery.min.js',
-		'bower_components/angular/angular.min.js',
-		'bower_components/angular-sanitize/angular-sanitize.min.js',
-		'bower_components/ng-underscore/build/ng-underscore.min.js',
-		'bower_components/angular-ui-router/release/angular-ui-router.min.js',
-		'bower_components/angular-directive.g-signin/google-plus-signin.js',
-		'bower_components/ng-dialog/ngDialog.min.js',
-		'bower_components/angularjs-plugin/wrappers/angularjs/angular-fusioncharts.min.js',
-		'bower_components/fusioncharts-suite-xt/js/fusioncharts.js',
-		'bower_components/fusioncharts-suite-xt/js/fusioncharts.charts.js',
-		'bower_components/angular-smart-table/dist/smart-table.min.js'])
+		'public/bower_components/modernizr/modernizr.js',
+		'public/bower_components/jquery/dist/jquery.min.js',
+		'public/node_modules/angular/angular.js',
+		'public/node_modules/angular-animate/angular-animate.js',
+		'public/node_modules/angular-aria/angular-aria.js',
+		'public/node_modules/angular-material/angular-material.js',
+		'public/bower_components/ng-underscore/build/ng-underscore.min.js',
+		'public/bower_components/angular-ui-router/release/angular-ui-router.min.js',
+		'public/bower_components/angular-smart-table/dist/smart-table.min.js'])
 	.pipe(concat('bundle.js'))
 	.pipe(gulp.dest('public'));
 });

@@ -1,16 +1,17 @@
 'use strict';
+angular.module('app').service('DB', eventQueries);
 
-app.service('DB', ['$http', '$q',function eventQueries($http, $q) {
+eventQueries.$inject = ['$http', '$q'];
+
+function eventQueries($http, $q) {
     var self = this;
     self.ME = "DB: ";
-    
-   
+
     var globalPathPrefix = "js/php/";
     var httpPathPrefix = "http/";
 
     var queryPaths = {
         getRoof: httpPathPrefix + "getRoof.php",
-       
     };
 
     self.query = function(query, dataObj) {
@@ -31,7 +32,4 @@ app.service('DB', ['$http', '$q',function eventQueries($http, $q) {
         return deferred.promise;
     };
 
-
-
-    return self;
-}]);
+};

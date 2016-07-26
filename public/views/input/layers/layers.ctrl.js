@@ -1,9 +1,9 @@
 'use strict';
 angular.module('app').controller('LayersCtrl', myFunction);
 
-myFunction.$inject = ['ListSrvc','SharedSrvc'];
+myFunction.$inject = ['$scope','ListSrvc','SharedSrvc'];
 
-function myFunction(ListSrvc,SharedSrvc) { 
+function myFunction($scope,ListSrvc,SharedSrvc) { 
 	var vm = this;
 	vm.L = ListSrvc;
 

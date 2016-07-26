@@ -1,32 +1,44 @@
 'use strict';
-angular.module('app').controller('MeasureCtrl', myFunction);
+angular.module('app').controller('MembraneCtrl', myFunction);
 
 myFunction.$inject = ['ListSrvc','SharedSrvc'];
 
-function myFunction(ListSrvc,SharedSrvc) { 
-	var vm = this;
+function myFunction($scope,ListSrvc,SharedSrvc) { 
+	var vm =this;
 	vm.L = ListSrvc;
+	var S = SharedSrvc;
 
 	vm.SELECT = {};
 	vm.PARAMS = {};
 
-	vm.selectMembrane=function(){
-		vm.PARAMS.layerOne = vm.SELECT.membrane.id;
+	// Extract id from user Selected Object
+	function getSelectData(){
+		vm.PARAMS.membrane = vm.SELECT.membrane.id;
+		vm.PARAMS.thickness = vm.SELECT.thickness.id;
 	};
 
-	vm.selectThickness=function(){
-		vm.PARAMS.layerTwo = vm.SELECT.thickness.id;
+	// Set Selected Object from saved data
+	function setSelectData(){
+		vm.SELECT.membrane = vm.L.returnObjById(vm.L.membrane,vm.PARAMS.membrane);
+		vm.SELECT.thickness = vm.L.returnObjById(vm.L.membraneThickness,vm.PARAMS.thickness);
 	};
 
-	var resetMe = function(){
-		vm.SELECT = {
-			membrane:null,
-			thickness:null
-		};
+	function pushToShared(){
+		getSelectData();
+		S.pushData(vm.PARAMS,'MEMBRN');
+	};
 
-		vm.PARAMS.membrane = "";
-		vm.PARAMS.thickness = "";
-	}
+	function pullFromShared(){
+		vm.PARAMS = S.returnData('MEMBRN');
+		setSelectData();
+	};
 
-	resetMe();
-}
+	$scope.$on("$destroy", function(){
+        pushToShared();
+    });
+
+    $scope.$watch('$viewContentLoaded', function() {
+ 		pullFromShared();
+    });
+
+};

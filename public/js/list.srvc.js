@@ -32,10 +32,44 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
     ];
 
     self.ISO=[
-    	{ label: "1", id: "1" }, 
-    	{ label: "2", id: "2" }, 
-    	{ label: "3", id: "3" }, 
-    	{ label: "3.1", id: "3.1" }
+    	{ label: "0.50 in.", id: ".5" },
+        { label: "0.75 in.", id: ".75" },
+    	{ label: "1.0 in.", id: "1" }, 
+    	{ label: "1.1 in.", id: "1.1" }, 
+    	{ label: "1.2 in.", id: "1.2" },
+        { label: "1.25 in.", id: "1.25" },
+        { label: "1.3 in.", id: "1.3" },
+        { label: "1.4 in.", id: "1.4" },
+        { label: "1.5 in.", id: "1.5" },
+        { label: "1.6 in.", id: "1.6" },
+        { label: "1.7 in.", id: "1.7" },
+        { label: "1.8 in.", id: "1.8" },
+        { label: "1.9 in.", id: "1.9" },
+        { label: "2.0 in.", id: "2" },
+        { label: "2.1 in.", id: "2.1" },
+        { label: "2.2 in.", id: "2.2" },
+        { label: "2.3 in.", id: "2.3" },
+        { label: "2.4 in.", id: "2.4" },
+        { label: "2.5 in.", id: "2.5" },
+        { label: "2.6 in.", id: "2.6" },
+        { label: "2.7 in.", id: "2.7" },
+        { label: "2.8 in.", id: "2.8" },
+        { label: "2.9 in.", id: "2.9" },
+        { label: "3.0 in.", id: "3" },
+        { label: "3.1 in.", id: "3.1" },
+        { label: "3.2 in.", id: "3.2" },
+        { label: "3.25 in.", id: "3.25" },
+        { label: "3.3 in.", id: "3.3" },
+        { label: "3.4 in.", id: "3.4" },
+        { label: "3.5 in.", id: "3.5" },
+        { label: "3.6 in.", id: "3.6" },
+        { label: "3.7 in.", id: "3.7" },
+        { label: "3.8 in.", id: "3.8" },
+        { label: "3.9 in.", id: "3.9" },
+        { label: "4.0 in.", id: "4" },
+        { label: "4.1 in.", id: "4.1" },
+        { label: "4.2 in.", id: "4.2" },
+        { label: "4.5 in.", id: "4.5" }
     ];
 
     self.adhereMethod=[
@@ -63,6 +97,22 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
         { label: "4 in.", id: "4" },
         { label: "6 in.", id: "6" },
         { label: "8 in.", id: "8" }
+    ];
+
+    self.stretchOut = [
+        { label: "16 in.", id: "16" },
+        { label: "18 in.", id: "18" },
+        { label: "20 in.", id: "20" },
+        { label: "22 in.", id: "22" },
+        { label: "24 in.", id: "24" },
+        { label: "26 in.", id: "26" },
+        { label: "28 in.", id: "28" },
+        { label: "30 in.", id: "30" },
+        { label: "32 in.", id: "32" },
+        { label: "34 in.", id: "34" },
+        { label: "36 in.", id: "36" },
+        { label: "38 in.", id: "38" },
+        { label: "40 in.", id: "40" }
     ];
 
     self.termBarSize = [
@@ -139,7 +189,5 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
         }
         return rtnObj;
     };
-
-
 
 }]);

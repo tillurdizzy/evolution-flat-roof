@@ -6,7 +6,7 @@
             <div class="item-name">
                 <h3>ISO Thickness</h3></div>
             <div class="item-select">
-                <md-select ng-model="Ctrl.SELECT.thickness" placeholder="Select thickness" ng-change="Ctrl.selectThickness()">
+                <md-select ng-model="Ctrl.SELECT.iso" placeholder="thickness">
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ISO">{{ opt.label }}</md-option>
                 </md-select>
             </div>
@@ -15,7 +15,7 @@
             <div class="item-name">
                 <h3>Adhere</h3></div>
             <div class="item-select">
-                <md-select ng-model="Ctrl.SELECT.adhereMethod" placeholder="Select method" ng-change="Ctrl.selectAdhereMethod()">
+                <md-select ng-model="Ctrl.SELECT.adhere" placeholder="method">
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.adhereMethod">{{ opt.label }}</md-option>
                 </md-select>
             </div>
@@ -30,21 +30,21 @@
                 <div class="item-name">
                     <h3>Quote</h3></div>
                 <div class="item-input">
-                    <input type="text" ng-model="Ctrl.PARAMS.SPxxxxxxCTYPE">
+                    <input type="text" ng-model="Ctrl.PARAMS.quote">
                 </div>
             </div>
             <div class="form-input">
                 <div class="item-name">
                     <h3>Supplier</h3></div>
                 <div class="item-input">
-                    <input type="text" ng-model="Ctrl.PARAMS.xxx">
+                    <input type="text" ng-model="Ctrl.PARAMS.supplier">
                 </div>
             </div>
             <div class="form-input">
                 <div class="item-name">
                     <h3>Price</h3></div>
                 <div class="item-input">
-                    <input type="text" ng-model="Ctrl.PARAMS.xxx">
+                    <input type="text" ng-model="Ctrl.PARAMS.price">
                 </div>
             </div>
         </div>

@@ -1,0 +1,19 @@
+.counter-component {
+	button{
+		height:28px;
+		width:28px;
+		margin:1px 1px;
+		background-color: $material-pallette-200;
+		color:#FFF;
+	}
+
+    input[type="tel"] {
+        height: 28px;
+        display: inline-block;
+        width: 40px;
+        text-align: center;
+        margin:1px 1px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+}

@@ -11,10 +11,13 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	vm.PARAMS = {};
 
 	vm.DOM = {};
-	
+	vm.count = 7;
+
+	vm.R_PANEL = {};
 	
 	vm.selectLayerOne=function(){
 		vm.PARAMS.layerOne = vm.SELECT.layerOne.id;
+
 	};
 
 	vm.selectLayerTwo=function(){
@@ -41,7 +44,7 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 		vm.PARAMS.layerSix = vm.SELECT.layerSix.id;
 	};
 
-	
+
 
 	var resetMe = function(){
 		vm.SELECT = {
@@ -66,6 +69,11 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 		vm.PARAMS.layerFour = vm.SELECT.layerFour.id;
 		vm.PARAMS.layerFour = vm.SELECT.layerFour.id;
 		vm.PARAMS.layerSix = vm.SELECT.layerSix.id;
+
+		vm.R_PANEL.height = 1.25;
+		vm.R_PANEL.width = 7;
+		vm.R_PANEL.winged = 'N';
+		vm.R_PANEL.topLayer = 1;
 
 		
 

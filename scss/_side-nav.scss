@@ -1,4 +1,5 @@
 $side-nav-width:200px;
+$button-width:196px;
 
 .side-nav {
     width: $side-nav-width;
@@ -6,8 +7,8 @@ $side-nav-width:200px;
     background-color: #dddddd;
 
     .btn {
-        width: $side-nav-width;
-        margin: 0;
+        width: $button-width;
+        margin: 1px 2px;
     }
 
     .section-label {

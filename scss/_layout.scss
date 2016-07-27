@@ -20,11 +20,13 @@ body {
 }
 
 .view-container {
-    margin: 26px 0 0 20px;
+    margin: 5px 0 0 20px;
+    min-width:700px;
 }
 
 .page-title {
     height: 26px;
+    margin:0 0 5px 0;
     background-color: $material-accent-light;
     display: flex;
     justify-content: space-around;

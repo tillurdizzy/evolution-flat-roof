@@ -373,10 +373,12 @@ body {
     font-size: 18px; }
 
 .view-container {
-  margin: 26px 0 0 20px; }
+  margin: 5px 0 0 20px;
+  min-width: 700px; }
 
 .page-title {
   height: 26px;
+  margin: 0 0 5px 0;
   background-color: #ffdada;
   display: flex;
   justify-content: space-around;
@@ -428,13 +430,27 @@ body {
   content: '';
   display: block; }
 
+.counter-component button {
+  height: 28px;
+  width: 28px;
+  margin: 1px 1px; }
+
+.counter-component input[type="tel"] {
+  height: 28px;
+  display: inline-block;
+  width: 40px;
+  text-align: center;
+  margin: 1px 1px;
+  font-size: 16px;
+  box-sizing: border-box; }
+
 .side-nav {
   width: 200px;
   min-height: 1500px;
   background-color: #dddddd; }
   .side-nav .btn {
-    width: 200px;
-    margin: 0; }
+    width: 196px;
+    margin: 1px 2px; }
   .side-nav .section-label {
     background-color: #FF5252;
     height: 36px;
@@ -459,7 +475,7 @@ body {
 
 .form-input {
   display: flex;
-  margin: 4px 0 0 0;
+  margin: 0 0 5px 0;
   height: 30px; }
   .form-input md-select {
     margin: 0;

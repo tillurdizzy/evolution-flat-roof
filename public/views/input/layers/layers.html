@@ -1,43 +1,46 @@
 <div ng-controller="LayersCtrl as Ctrl">
     <div class="page-title">
         <h4>Existing Roof Assembly Layers</h4></div>
-    <div class="indent">
-        <rpanel rheight="Ctrl.R_PANEL.height" rwidth='Ctrl.R_PANEL.width' toplayer='Ctrl.R_PANEL.topLayer'></rpanel>  
-    </div>
-    
-        <div class="form-input">
-            <div class="item-name">
-                <h3>1st Layer</h3></div>
-            <div class="item-select">
-                <md-select ng-model="Ctrl.SELECT.layerOne" placeholder="NONE" ng-change="Ctrl.selectLayerOne()">
-                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayers">{{ opt.label }}</md-option>
-                </md-select>
-            </div>
+    <!-- Layer One -->
+    <div class="form-input">
+        <div class="item-name">
+            <h3>1st Layer</h3></div>
+        <div class="item-select">
+            <md-select ng-model="Ctrl.SELECT.layerOne" placeholder="select" ng-change="Ctrl.selectLayerOne()">
+                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayers">{{ opt.label }}</md-option>
+            </md-select>
         </div>
     </div>
-    <div>
-        <div class="form-input">
-            <div class="item-name">
-                <h3>2nd Layer</h3></div>
-            <div class="item-select">
-                <md-select ng-model="Ctrl.SELECT.layerTwo" placeholder="NONE" ng-change="Ctrl.selectLayerTwo()">
-                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayers">{{ opt.label }}</md-option>
-                </md-select>
-            </div>
-            <div ng-show="Ctrl.PARAMS.layerTwo=='INSLTN'" class="item-select-small">
-                <md-select ng-model="Ctrl.SELECT.layerTwoDepth" placeholder="inches">
-                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ISO">{{ opt.label }}</md-option>
-                </md-select>
-            </div>
+    <div class="indent" ng-show="Ctrl.SELECT.layerOne.id=='RPANEL'">
+        <rpanel height="Ctrl.PARAMS.rPanel_height" width='Ctrl.PARAMS.rPanel_width' winged="Ctrl.PARAMS.rPanel_winged" insulation='Ctrl.PARAMS.rPanel_insulation'></rpanel>
+    </div>
 
+    <!-- Layer Two -->
+    <div class="form-input">
+        <div class="item-name">
+            <h3>2nd Layer</h3></div>
+        <div class="item-select">
+            <md-select ng-model="Ctrl.SELECT.layerTwo" placeholder="select" ng-change="Ctrl.selectLayerTwo()">
+                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayers">{{ opt.label }}</md-option>
+            </md-select>
+        </div>
+        <div ng-show="Ctrl.PARAMS.layerTwo=='INSLTN'" class="item-select-small">
+            <md-select ng-model="Ctrl.SELECT.layerTwoDepth" placeholder="inches">
+                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ISO">{{ opt.label }}</md-option>
+            </md-select>
         </div>
     </div>
+    <div class="indent" ng-show="Ctrl.SELECT.layerTwo.id=='RPANEL'">
+        <rpanel height="Ctrl.PARAMS.rPanel_height" width='Ctrl.PARAMS.rPanel_width' winged="Ctrl.PARAMS.rPanel_winged" insulation='Ctrl.PARAMS.rPanel_insulation'></rpanel>
+    </div>
+
+    <!-- Layer Three -->
     <div ng-show="Ctrl.DOM.layerThree">
         <div class="form-input">
             <div class="item-name">
                 <h3>3rd Layer</h3></div>
             <div class="item-select">
-                <md-select ng-model="Ctrl.SELECT.layerThree" placeholder="NONE" ng-change="Ctrl.selectLayerThree()">
+                <md-select ng-model="Ctrl.SELECT.layerThree" placeholder="select" ng-change="Ctrl.selectLayerThree()">
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayers">{{ opt.label }}</md-option>
                 </md-select>
             </div>
@@ -48,12 +51,14 @@
             </div>
         </div>
     </div>
+
+    <!-- Layer Four -->
     <div ng-show="Ctrl.DOM.layerFour">
         <div class="form-input">
             <div class="item-name">
                 <h3>4th Layer</h3></div>
             <div class="item-select">
-                <md-select ng-model="Ctrl.SELECT.layerFour" placeholder="NONE" ng-change="Ctrl.selectLayerFour()">
+                <md-select ng-model="Ctrl.SELECT.layerFour" placeholder="select" ng-change="Ctrl.selectLayerFour()">
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayers">{{ opt.label }}</md-option>
                 </md-select>
             </div>
@@ -64,12 +69,14 @@
             </div>
         </div>
     </div>
+
+    <!-- Layer Five -->
     <div ng-show="Ctrl.DOM.layerFive">
         <div class="form-input">
             <div class="item-name">
                 <h3>5th Layer</h3></div>
             <div class="item-select">
-                <md-select ng-model="Ctrl.SELECT.layerFive" placeholder="NONE" ng-change="Ctrl.selectLayerFive()">
+                <md-select ng-model="Ctrl.SELECT.layerFive" placeholder="select" ng-change="Ctrl.selectLayerFive()">
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayers">{{ opt.label }}</md-option>
                 </md-select>
             </div>
@@ -80,12 +87,14 @@
             </div>
         </div>
     </div>
+
+    <!-- Layer Six -->
     <div ng-show="Ctrl.DOM.layerSix">
         <div class="form-input">
             <div class="item-name">
                 <h3>6th Layer</h3></div>
             <div class="item-select">
-                <md-select ng-model="Ctrl.SELECT.layerSix" placeholder="NONE" ng-change="Ctrl.selectLayerSix()">
+                <md-select ng-model="Ctrl.SELECT.layerSix" placeholder="select" ng-change="Ctrl.selectLayerSix()">
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayers">{{ opt.label }}</md-option>
                 </md-select>
             </div>

@@ -11,24 +11,24 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	vm.SELECT = {};
 	vm.PARAMS = {};
 
-	// Extract id from user Selected Object
+	// Extract the string to be saved from the selected item in dataProvider
 	function getSelectData(){
 		
 	};
 
-	// Set Selected Object from saved data
-	function setSelectData(){
+	
+	function initView(){
 		
 	};
 
 	function pushToShared(){
 		getSelectData();
-		S.pushData(vm.PARAMS,'MEMBRN');
+		S.pushData(vm.PARAMS,'FIELD');
 	};
 
 	function pullFromShared(){
-		vm.PARAMS = S.returnData('MEMBRN');
-		setSelectData();
+		vm.PARAMS = S.returnData('FIELD');
+		initView();
 	};
 
 	$scope.$on("$destroy", function(){

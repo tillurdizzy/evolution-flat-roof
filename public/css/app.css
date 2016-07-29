@@ -433,7 +433,9 @@ body {
 .counter-component button {
   height: 28px;
   width: 28px;
-  margin: 1px 1px; }
+  margin: 1px 1px;
+  background-color: #B0BEC5;
+  color: #FFF; }
 
 .counter-component input[type="tel"] {
   height: 28px;
@@ -505,12 +507,13 @@ body {
   .form-input .item-unit {
     height: 30px;
     width: 60px;
-    background-color: #37474F;
-    color: #fff;
+    color: #455A64;
     margin-left: 5px;
     padding: 0 0 0 5px; }
+    .form-input .item-unit h3 {
+      font-size: 16px; }
   .form-input .item-input {
-    width: 60px;
+    width: 70px;
     height: 30px;
     margin-left: 5px;
     padding: 1px 9px;
@@ -518,14 +521,14 @@ body {
     .form-input .item-input input[type="tel"] {
       height: 22px;
       display: inline-block;
-      width: 40px;
+      width: 50px;
       text-align: right;
-      font-size: 20px; }
+      font-size: 18px; }
     .form-input .item-input input[type="text"] {
       height: 22px;
       display: block;
       text-align: left;
-      font-size: 20px; }
+      font-size: 18px; }
   .form-input .item-select {
     width: 170px;
     height: 30px;
@@ -543,7 +546,8 @@ body {
 
 /* change size and bkg clr when indented */
 .indent {
-  margin-left: 30px; }
+  border-bottom: 2px solid #455A64;
+  margin: 0 0 10px 30px; }
 
 .indent .form-input .item-name {
   width: 170px;

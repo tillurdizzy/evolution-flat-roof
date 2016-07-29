@@ -4,60 +4,78 @@ angular.module('app').factory('SharedSrvc', SharedSrvc);
 SharedSrvc.$inject = ['$rootScope'];
 
 function SharedSrvc($rootScope) {
-    var self = this;
-
-    self.myID = "SharedSrvc: ";
+    
+    var myID = "SharedSrvc: ";
 
     var LAYERS = {};
     var FIELD = {};
-    var PRMITR = {};
+    var PERIMITER = {};
     var VENTS = {};
     var HVAC = {};
     var MEMBRN = {};
     var ISO = {};
 
-    self.pushData = function(obj,set){
+    var service = {
+        pushData:pushData,
+        returnData:returnData,
+        setTempData:setTempData,
+        clone:clone
+    };
+
+    return service;
+
+    function pushData(obj,set){
         switch(set){
             case "ISO":ISO = obj;break;
             case "MEMBRN":MEMBRN = obj;break;
             case "HVAC":HVAC = obj;break;
             case "VENTS":VENTS = obj;break;
-            case "PRMITR":PRMITR = obj;break;
+            case "PERIMITER":PERIMITER = obj;break;
             case "FIELD":FIELD = obj;break;
             case "LAYERS":LAYERS = obj;break;
         }
     };
 
-    self.returnData = function(set){
+    function returnData(set){
         var rtnObj = {};
         switch(set){
             case "ISO":rtnObj=ISO;break;
             case "MEMBRN":rtnObj=MEMBRN;break;
             case "HVAC":rtnObj=HVAC;break;
             case "VENTS":rtnObj=VENTS;break;
-            case "PRMITR":rtnObj=PRMITR;break;
+            case "PERIMITER":rtnObj=PERIMITER;break;
             case "FIELD":rtnObj=FIELD;break;
             case "LAYERS":rtnObj=LAYERS;break;
         };
         return rtnObj;
     };
 
+    function setTempData(){
+        LAYERS = {layerOne:'',layerTwo:'',layerThree:'',layerFour:'',layerFive:'',layerSix:'',
+        rPanel_height:'',rPanel_width:'',rPanel_winged:'',rPanel_insulation:''};
+
+        FIELD = {SQUARES:'',CRNROUT:'',CRNRIN:''};
+
+        PERIMITER = {
+            EDGETERM:'TBAR',
+            TBAR:{STRETCHOUT:'3.5'},
+            CLADMETAL:{STRETCHOUT:'',STRIPIN:'2'},
+            CAPMETAL:{X:'No',STRETCHOUT:'0',CLEATED:'No'},
+            SPECIAL:{X:'No',DESCRIPTION:'',COST:''},
+            WALLTERM:{TBAR:{X:'',COUNTERFLASHING:'NA',REGLET:'',STRETCHOUT:'0'},
+        };
+    };
+
     
 
-    self.clone = function(obj) {
+    function clone(obj) {
         var copy;
-
-        // Handle the 3 simple types, and null or undefined
         if (null == obj || "object" != typeof obj) return obj;
-
-        // Handle Date
         if (obj instanceof Date) {
             copy = new Date();
             copy.setTime(obj.getTime());
             return copy;
         }
-
-        // Handle Array
         if (obj instanceof Array) {
             copy = [];
             for (var i = 0, len = obj.length; i < len; i++) {
@@ -65,8 +83,6 @@ function SharedSrvc($rootScope) {
             }
             return copy;
         }
-
-        // Handle Object
         if (obj instanceof Object) {
             copy = {};
             for (var attr in obj) {
@@ -74,9 +90,9 @@ function SharedSrvc($rootScope) {
             }
             return copy;
         }
-
         throw new Error("Unable to copy obj! Its type isn't supported.");
     };
 
-    return this;
+    
+
 };

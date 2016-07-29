@@ -2,122 +2,43 @@
 angular.module('app').service('ListSrvc', [function sharedLists() {
     var self = this;
 
-    self.template = [
-        { item: "XXX", data: "XXX", color: "normal" },
-        { item: "XXX", data: "XXX", color: "normal" },
-        { item: "XXX", data: "XXX", color: "normal" },
-        { item: "XXX", data: "XXX", color: "normal" },
-        { item: "XXX", data: "XXX", color: "normal" },
-        { item: "XXX", data: "XXX", color: "normal" },
-        { item: "XXX", data: "XXX", color: "normal" },
-        { item: "XXX", data: "XXX", color: "normal" },
-        { item: "XXX", data: "XXX", color: "normal" },
-        { item: "XXX", data: "XXX", color: "normal" },
-        { item: "XXX", data: "XXX", color: "normal" },
-        { item: "XXX", data: "XXX", color: "normal" }
-    ];
 
-    self.membraneTypes=[
-    	{ label: "TPO - D4434", id: "TPO" }, 
-    	{ label: "PVC - D4434", id: "PVC" }, 
-    	{ label: "E/PVC - D4434", id: "EPVC1" }, 
-    	{ label: "E/PVC - 6722", id: "EPVC2" }
-    ];
+    self.membraneTypes = ["TPO - D4434","PVC - D4434","E/PVC - D4434","E/PVC - 6722"];
 
-    self.membraneThickness=[
-    	{ label: "45 mil", id: "45M" }, 
-    	{ label: "50 mil", id: "50M" }, 
-    	{ label: "60 mil", id: "60M" }, 
-    	{ label: "80 mil", id: "80M" }
-    ];
+    self.membraneThickness = ["45 mil","50 mil","60 mil","80 mil"];
 
-    self.ISO=[
-    	{ label: "0.50 in.", id: ".5" },
-        { label: "0.75 in.", id: ".75" },
-    	{ label: "1.00 in.", id: "1" }, 
-        { label: "1.25 in.", id: "1.25" },
-        { label: "1.50 in.", id: "1.5" },
-        { label: "2.00 in.", id: "2" },
-        { label: "2.50 in.", id: "2.5" },
-       
-        { label: "3.00 in.", id: "3" },
-        { label: "3.10 in.", id: "3.1" },
-       
-        { label: "3.25 in.", id: "3.25" },
-       
-        { label: "3.50 in.", id: "3.5" },
-        
-        { label: "4.00 in.", id: "4" },
-       
-        { label: "4.50 in.", id: "4.5" }
-    ];
+    self.ISO = ["0.50","0.75","1.00","1.25","1.50","2.00","2.50","3.00","3.10","3.25","3.50","4.00","4.50"];
 
-    self.adhereMethod=[
-        { label: "Screws", id: "screw" }, 
-        { label: "Foam A & B", id: "foam" }
-    ];
+    self.adhereMethod = ["Screws","Foam A+B"];
 
     self.roofLayers = [
-        { label: "None", id: "NONE" },
+        { label: "TPO / PVC", id: "PCV" },
         { label: "Tar & Gravel", id: "TRGRVL" },
         { label: "Modified Bitumen", id: "MODBTMN" },
-        { label: "TPO / PVC", id: "PCV" },
+        { label: "Insulation", id: "INSLTN" },
         { label: "R-Panel", id: "RPANEL" },
-        { label: "Insulation", id: "INSLTN" }
+        { label: "None", id: "NONE" }
     ];
 
-    self.ventShapes = [
-        { label: "Round", id: "RD" },
-        { label: "Square", id: "SQ" },
-    ];
+    self.ventShapes = ["NA","Round", "Square"];
 
-    self.drainSizes = [
-        { label: "1.5 in.", id: "1.5" },
-        { label: "2 in.", id: "2" },
-        { label: "3 in.", id: "3" },
-        { label: "4 in.", id: "4" },
-        { label: "6 in.", id: "6" },
-        { label: "8 in.", id: "8" }
-    ];
+    self.coverType = ['NA',"Plastic", "Metal"];
 
-    self.stretchOut = [
-        { label: "16 in.", id: "16" },
-        { label: "18 in.", id: "18" },
-        { label: "20 in.", id: "20" },
-        { label: "22 in.", id: "22" },
-        { label: "24 in.", id: "24" },
-        { label: "26 in.", id: "26" },
-        { label: "28 in.", id: "28" },
-        { label: "30 in.", id: "30" },
-        { label: "32 in.", id: "32" },
-        { label: "34 in.", id: "34" },
-        { label: "36 in.", id: "36" },
-        { label: "38 in.", id: "38" },
-        { label: "40 in.", id: "40" }
-    ];
+    self.edgeTermination = ["NA","T-Bar","Clad Metal"];
 
-    self.termBarSize = [
-    { label: ".75 in.", id: ".75" },
-        { label: "1.75 in.", id: "1.75" },
-        { label: "4 in.", id: "4" }
-    ];
+    self.wallTermination = ["NA","T-Bar","Unknown"];
 
-    self.ventSizes = [
-        { label: "4 in.", id: "4" },
-        { label: "6 in.", id: "6" },
-        { label: "8 in.", id: "8" }
-    ];
+    self.drainSizes = ["1.5","2","3","4","6","8"];
 
-    self.sizeInches = [
-        { label: "1 in.", id: "1" },
-        { label: "2 in.", id: "2" },
-        { label: "3 in.", id: "3" },
-        { label: "4 in.", id: "4" },
-        { label: "5 in.", id: "5" },
-        { label: "6 in.", id: "6" },
-        { label: "7 in.", id: "7" },
-        { label: "8 in.", id: "8" }
-    ];
+    self.sixteenThruForty = ["16","18","20","22","24","26","28","30","32","34","36","38","40"];
+
+    self.twoThruFortyEight = ["2","4","6","8","10","12","14","16","18","20","22","24","26","28","30","32","34","36","38","40","42","44","46","48"];
+
+    self.termBarSize = [".75","1.75","4"];
+
+    self.ventSizes = ['4','6','8'];
+
+    self.oneThruEight = ['1','2','3','4','5','6','7','8'];
 
 
     self.numbersToTwelve = [
@@ -136,15 +57,9 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
     ];
 
 
-    self.trueFalse = [
-        { label: "False", id: 0 },
-        { label: "True", id: 1 }
-    ];
+    self.trueFalse = ["False","True"];
 
-    self.yesNo = [
-        { label: "No", id: 0 },
-        { label: "Yes", id: 1 }
-    ];
+    self.yesNo = ["No","Yes"];
 
 
     self.returnIdValue = function(set, id) {

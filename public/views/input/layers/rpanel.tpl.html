@@ -2,7 +2,7 @@
     <div class="item-name">
         <h3>Rib Height</h3></div>
     <div class="item-select">
-        <md-select ng-model="$ctrl.rheight" placeholder="inches">
+        <md-select ng-model="$ctrl.height" placeholder="inches">
             <md-option ng-value="{{opt}}" ng-repeat="opt in $ctrl.ribHeight_dp">{{ opt }}</md-option>
         </md-select>
     </div>
@@ -11,7 +11,7 @@
     <div class="item-name">
         <h3>Rib Width Top</h3></div>
     <div class="item-select">
-        <md-select ng-model="$ctrl.rwidth" placeholder="inches">
+        <md-select ng-model="$ctrl.width" placeholder="inches">
             <md-option ng-repeat="opt in $ctrl.ribWidth_dp">{{ opt }}</md-option>
         </md-select>
     </div>
@@ -21,7 +21,7 @@
         <h3>Winged Fill</h3></div>
     <div class="item-select">
         <md-select ng-model="$ctrl.winged" placeholder="select">
-            <md-option ng-value="opt" ng-repeat="opt in $ctrl.wFill_dp">{{ opt}}</md-option>
+            <md-option ng-value="opt" ng-repeat="opt in $ctrl.wingedFill_dp">{{ opt }}</md-option>
         </md-select>
     </div>
 </div>
@@ -29,8 +29,8 @@
     <div class="item-name">
         <h3>Top Insulation</h3></div>
     <div class="item-select">
-        <md-select ng-model="$ctrl.toplayer" placeholder="select">
-            <md-option ng-value="{{opt}}" ng-repeat="opt in $ctrl.topLayer_dp">{{ opt }}</md-option>
+        <md-select ng-model="$ctrl.insulation" placeholder="select">
+            <md-option ng-value="{{opt}}" ng-repeat="opt in $ctrl.insulation_dp">{{ opt }}</md-option>
         </md-select>
     </div>
 </div>

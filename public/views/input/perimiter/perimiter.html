@@ -4,64 +4,142 @@
     <div>
         <div class="form-input">
             <div class="item-name">
-                <h3>Termination Bar</h3></div>
-            <div class="item-input">
-                <input type="tel" ng-model="Ctrl.PARAMS.TERMBAR">
-            </div>
-            <div class="item-unit">
-                <h3>Ft</h3></div>
-            <div class="item-select-small">    
-                <md-select ng-model="Ctrl.PARAMS.TERMBARSIZE" placeholder="size">
-                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.termBarSize">{{ opt.label }}</md-option>
+                <h3>Edge Termination</h3></div>
+            <div class="item-select">
+                <md-select ng-model="Ctrl.PARAMS.EDGETERM" placeholder="select">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.edgeTermination">{{ opt }}</md-option>
                 </md-select>
             </div>
         </div>
-        <div class="form-input">
-            <div class="item-name">
-                <h3>Cap Metal</h3></div>
-            <div class="item-input">
-                <input type="tel" ng-model="Ctrl.PARAMS.CLADMETAL">
-            </div>
-            <div class="item-unit">
-                <h3>Ft</h3></div>
-            <div class="item-select-small">    
-                <md-select ng-model="Ctrl.PARAMS.TERMBARSIZE" placeholder="stretch-out">
-                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.stretchOut">{{ opt.label }}</md-option>
-                </md-select>
-            </div>
-        </div>
-        <div class="form-input">
-            <div class="item-name">
-                <h3>Special Type</h3></div>
-            <div class="item-input">
-                <input type="tel" ng-model="Ctrl.PARAMS.SPECTYPE_FT"></div>
-            <div class="item-unit">
-                <h3>Ft</h3></div>
-        </div>
-        <div class="indent" ng-show="Ctrl.PARAMS.SPECTYPE_FT!='0'">
+        <div class="indent" ng-show="Ctrl.PARAMS.EDGETERM=='T-Bar'">
             <div class="form-input">
                 <div class="item-name">
-                    <h3>Description</h3></div>
-                <div class="item-input">
-                    <input type="text" ng-model="Ctrl.PARAMS.SPECTYPE_DES"></div>
+                    <h3>Stretch-out</h3></div>
+               <div class="item-select">
+                    <md-select ng-model="Ctrl.PARAMS.TBAR.STRETCHOUT" placeholder="select">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.twoThruFortyEight">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+                <div class="item-unit">
+                    <h3>inches</h3>
+                </div>
+            </div>
+        </div>
+        <div class="indent" ng-show="Ctrl.PARAMS.EDGETERM=='Clad Metal'">
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Stretch-out</h3></div>
+                <div class="item-select">
+                    <md-select ng-model="Ctrl.PARAMS.CLADMETAL.STRETCHOUT" placeholder="select">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.twoThruFortyEight">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+                <div class="item-unit">
+                    <h3>inches</h3>
+                </div>
+            </div>
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Strip-in width</h3></div>
+                <div class="item-select">
+                    <md-select ng-model="Ctrl.PARAMS.CLADMETAL.STRIPIN" placeholder="select">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.twoThruFortyEight">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+                <div class="item-unit">
+                    <h3>inches</h3>
+                </div>
+            </div>
+        </div>
+
+         <div class="form-input">
+            <div class="item-name">
+                <h3>Wall Termination</h3></div>
+            <div class="item-select">
+                <md-select ng-model="Ctrl.PARAMS.WALLTERM.X" placeholder="select">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.yesNo">{{ opt }}</md-option>
+                </md-select>
+            </div>
+        </div>
+        <div class="indent" ng-show="Ctrl.PARAMS.WALLTERM.X=='Yes'">
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Counterflashing</h3></div>
+                <div class="item-select">
+                <md-select ng-model="Ctrl.PARAMS.WALLTERM.TBAR.COUNTERFLASHING" placeholder="select">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.coverType">{{ opt }}</md-option>
+                </md-select>
+            </div>
             </div>
             <div class="form-input">
                 <div class="item-name">
                     <h3>Cost Per Ft</h3></div>
                 <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.PARAMS.SPECTYPE_COST"></div>
+                    <input type="tel" ng-model="Ctrl.PARAMS.SPECIAL.COST">
+                </div>
                 <div class="item-unit">
                     <h3>$</h3></div>
             </div>
         </div>
+
         <div class="form-input">
             <div class="item-name">
-                <h3>Wall Termination</h3></div>
-            <div class="item-input">
-                <input type="tel" ng-model="Ctrl.PARAMS.TERMINATION">
+                <h3>Cap Metal</h3></div>
+            <div class="item-select">
+                <md-select ng-model="Ctrl.PARAMS.CAPMETAL.X" placeholder="select">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.yesNo">{{ opt }}</md-option>
+                </md-select>
             </div>
-            <div class="item-unit">
-                <h3>Ft</h3></div>
+        </div>
+        <div class="indent" ng-show="Ctrl.PARAMS.CAPMETAL.X=='Yes'">
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Stretch out</h3></div>
+                <div class="item-select">
+                    <md-select ng-model="Ctrl.PARAMS.CAPMETAL.STRETCHOUT" placeholder="select">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.twoThruFortyEight">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+                <div class="item-unit">
+                    <h3>inches</h3>
+                </div>
+            </div>
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Cleated</h3></div>
+                <div class="item-select">
+                    <md-select ng-model="Ctrl.PARAMS.CAPMETAL.CLEATED" placeholder="select">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.yesNo">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+            </div>
+        </div>
+        <div class="form-input">
+            <div class="item-name">
+                <h3>Special Type</h3></div>
+            <div class="item-select">
+                <md-select ng-model="Ctrl.PARAMS.SPECIAL.X" placeholder="select">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.yesNo">{{ opt }}</md-option>
+                </md-select>
+            </div>
+        </div>
+        <div class="indent" ng-show="Ctrl.PARAMS.SPECIAL.X=='Yes'">
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Description</h3></div>
+                <div class="item-input">
+                    <input type="text" ng-model="Ctrl.PARAMS.SPECIAL.DESCRIPTION">
+                </div>
+            </div>
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Cost Per Ft</h3></div>
+                <div class="item-input">
+                    <input type="tel" ng-model="Ctrl.PARAMS.SPECIAL.COST">
+                </div>
+                <div class="item-unit">
+                    <h3>$</h3></div>
+            </div>
         </div>
        
     </div>

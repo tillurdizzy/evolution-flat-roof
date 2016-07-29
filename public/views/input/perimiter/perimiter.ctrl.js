@@ -1,29 +1,52 @@
 'use strict';
 angular.module('app').controller('PrimiterCtrl', myFunction);
 
-myFunction.$inject = ['ListSrvc','SharedSrvc'];
+myFunction.$inject = ['$scope','ListSrvc','SharedSrvc'];
 
-function myFunction(ListSrvc,SharedSrvc) { 
+function myFunction($scope,ListSrvc,SharedSrvc) { 
 	var vm = this;
 	vm.L = ListSrvc;
-
+	vm.S = SharedSrvc;
 	vm.SELECT = {};
 	vm.PARAMS = {};
 	vm.DOM = {};
 	
-	var resetMe = function(){
-		vm.PARAMS.SPECIALTYPE = "0";
-		vm.PARAMS.TERMBAR = "0";
-		vm.PARAMS.CLADMETAL = "0";
-		vm.PARAMS.SPECTYPE_FT = "0";
-		vm.PARAMS.SPECTYPE_DES = "";
-		vm.PARAMS.SPECTYPE_COST = "0";
-		vm.PARAMS.TERMINATION = "0";
-		vm.PARAMS.CAPMETAL = "0";
-		vm.PARAMS.xxx = "0";
-		
-	}
+	
 
-	resetMe();
+	// Extract the string to be saved from the selected item in dataProvider
+	function getSelectData(){
+		vm.PARAMS.EDGETERM = vm.SELECT.edgeTermination.id;
+		vm.PARAMS.CAPMETAL = vm.SELECT.capMetal.id;
+		
+	};
+
+	
+	function initView(){
+		// Parse the saved data to set the view elements
+
+		// Set selected dataObj for Select input components
+		vm.SELECT.edgeTermination = vm.L.returnObjById(vm.L.edgeTermination,vm.PARAMS.EDGETERM);
+		vm.SELECT.capMetal = vm.L.returnObjById(vm.L.twoThruFortyEight,vm.PARAMS.CAPMTL);
+	
+
+	};
+
+	function pushToShared(){
+		getSelectData();
+		vm.S.pushData(vm.PARAMS,'PERIMITER');
+	};
+
+	function pullFromShared(){
+		vm.PARAMS = vm.S.returnData('PERIMITER');
+		initView();
+	};
+
+	$scope.$on("$destroy", function(){
+        pushToShared();
+    });
+
+    $scope.$watch('$viewContentLoaded', function() {
+ 		pullFromShared();
+    });
 
 };

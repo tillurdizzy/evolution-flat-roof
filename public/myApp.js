@@ -1,16 +1,20 @@
 'use strict';
 angular.module('app', ['ngMaterial', 'ui.router'])
+    .config(initRouter)
+    .config(mdTheme)
+    .run(runBlock);
 
+initRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-.config(function($stateProvider, $urlRouterProvider) {
+function initRouter($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise("/home");
 
     $stateProvider
-    .state('home', {
-        url: "/home",
-        templateUrl: "views/home/home.html"
-    })
+        .state('home', {
+            url: "/home",
+            templateUrl: "views/home/home.html"
+        })
 
     .state('layers', {
         url: "/layers",
@@ -47,10 +51,19 @@ angular.module('app', ['ngMaterial', 'ui.router'])
         templateUrl: "views/design/iso/iso.html"
     })
 
-})
+};
 
-.config(function($mdThemingProvider) {
-  $mdThemingProvider.theme('default')
-    .primaryPalette('blue-grey')
-    .accentPalette('red');
-});
+
+mdTheme.$inject = ['$mdThemingProvider'];
+
+function mdTheme($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+        .primaryPalette('blue-grey')
+        .accentPalette('red');
+};
+
+runBlock.$inject = ['SharedSrvc'];
+
+function runBlock(SharedSrvc) {
+    SharedSrvc.setTempData();
+};

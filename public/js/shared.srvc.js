@@ -62,7 +62,7 @@ function SharedSrvc($rootScope) {
             CLADMETAL:{STRETCHOUT:'',STRIPIN:'2'},
             CAPMETAL:{X:'No',STRETCHOUT:'0',CLEATED:'No'},
             SPECIAL:{X:'No',DESCRIPTION:'',COST:''},
-            WALLTERM:{TBAR:{X:'',COUNTERFLASHING:'NA',REGLET:'',STRETCHOUT:'0'},
+            WALLTERM:{TBAR:{X:'',COUNTERFLASHING:'NA',REGLET:'',STRETCHOUT:'0'}}
         };
     };
 

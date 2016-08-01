@@ -1,0 +1,72 @@
+<div ng-controller="EdgesCtrl as Ctrl">
+    <div class="page-title">
+        <h4>Perimiter, Edges and Intersections</h4></div>
+    <div>
+        <div class="form-input">
+            <div class="item-name">
+                <h3>Perimiter Edges</h3></div>
+            <div class="item-input">
+                <input type="tel" ng-model="Ctrl.PARAMS.PERIMITER">
+            </div>
+            <div class="item-unit">
+                <h3>Ft</h3></div>
+        </div>
+        <div class="form-input">
+            <div class="item-name">
+                <h3>Wall Intersection</h3></div>
+            <div class="item-input">
+                <input type="tel" ng-model="Ctrl.PARAMS.WALL">
+            </div>
+            <div class="item-unit">
+                <h3>Ft</h3></div>
+        </div>
+        <div class="form-input">
+            <div class="item-name">
+                <h3>Parapet</h3></div>
+            <div class="item-input">
+                <input type="tel" ng-model="Ctrl.PARAMS.PARAPET.QTY">
+            </div>
+            <div class="item-unit">
+                <h3>Ft</h3></div>
+        </div>
+        <div class="indent" ng-show="Ctrl.PARAMS.PARAPET.QTY > 0">
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Stretch-out</h3></div>
+                <div class="item-select">
+                    <md-select ng-model="Ctrl.PARAMS.TBAR.STRETCHOUT" placeholder="select">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.twoThruFortyEight">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+                <div class="item-unit">
+                    <h3>inches</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-input">
+            <div class="item-name">
+                <h3>Cap Metal</h3></div>
+            <div class="item-input">
+                <input type="tel" ng-model="Ctrl.PARAMS.CAPMETAL.QTY">
+            </div>
+            <div class="item-unit">
+                <h3>Ft</h3></div>
+        </div>
+        <div class="indent" ng-show="Ctrl.PARAMS.CAPMETAL.QTY > 0">
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Stretch-out</h3></div>
+                <div class="item-select">
+                    <md-select ng-model="Ctrl.PARAMS.TBAR.STRETCHOUT" placeholder="select">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.twoThruFortyEight">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+                <div class="item-unit">
+                    <h3>inches</h3>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

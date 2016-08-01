@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700italic' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Jaldi:400,700' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/app.css?v=5" />
+    
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
@@ -25,19 +26,24 @@
     </div>
     <div class="flex-row">
         <div class="side-nav" ng-controller="NavCtrl as Ctrl">
-            <div class="section-label"><h4>Input</h4></div>
+            <div class="section-label">
+                <h4>Input</h4></div>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/layers')}" ng-click="Ctrl.goNav('layers');"> Layers </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/field')}" ng-click="Ctrl.goNav('field');"> Field </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/perimiter')}" ng-click="Ctrl.goNav('perimiter');"> Perimiter </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/vents')}" ng-click="Ctrl.goNav('vents');"> Pipes and Vents </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/edges')}" ng-click="Ctrl.goNav('edges');"> Edges </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/penetrations')}" ng-click="Ctrl.goNav('penetrations');"> Penetrations </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/hvac')}" ng-click="Ctrl.goNav('hvac');"> HVAC </md-button>
-            <div class="section-label"><h4>Design</h4></div>
+            <div class="section-label">
+                <h4>Design</h4></div>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/membrane')}" ng-click="Ctrl.goNav('membrane');"> Membrane </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/iso')}" ng-click="Ctrl.goNav('iso');"> ISO </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/terminations')}" ng-click="Ctrl.goNav('terminations');"> Terminations </md-button>
         </div>
         <div ui-view class="view-container"></div>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
+    <script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0-rc.5/angular-material.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-messages.min.js"></script>
     <script src="myApp.js?v=3"></script>
     <!--Global Services-->
     <script src="js/data.srvc.js?v=3"></script>
@@ -55,11 +61,12 @@
     <!--Controllers-->
     <script src="views/home/home.ctrl.js?v=1"></script>
     <script src="views/input/field/field.ctrl.js?v=1"></script>
-    <script src="views/input/vents/vents.ctrl.js?v=1"></script>
+    <script src="views/input/penetrations/penetrations.ctrl.js?v=1"></script>
     <script src="views/input/layers/layers.ctrl.js?v=1"></script>
-    <script src="views/input/perimiter/perimiter.ctrl.js?v=1"></script>
+    <script src="views/input/edges/edges.ctrl.js?v=1"></script>
     <script src="views/input/hvac/hvac.ctrl.js?v=1"></script>
     <script src="views/design/membrane/membrane.ctrl.js?v=1"></script>
+    <script src="views/design/terminations/terminations.ctrl.js?v=1"></script>
     <script src="views/design/iso/iso.ctrl.js?v=1"></script>
 </body>
 

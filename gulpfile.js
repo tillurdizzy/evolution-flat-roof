@@ -31,7 +31,6 @@ gulp.task('jsbundle',function(){
 		'public/node_modules/angular/angular.js',
 		'public/node_modules/angular-animate/angular-animate.js',
 		'public/node_modules/angular-aria/angular-aria.js',
-		'public/node_modules/angular-material/angular-material.js',
 		'public/bower_components/ng-underscore/build/ng-underscore.min.js',
 		'public/bower_components/angular-ui-router/release/angular-ui-router.min.js',
 		'public/bower_components/angular-smart-table/dist/smart-table.min.js'])

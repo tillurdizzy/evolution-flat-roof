@@ -1,5 +1,5 @@
 'use strict';
-angular.module('app').controller('PrimiterCtrl', myFunction);
+angular.module('app').controller('EdgesCtrl', myFunction);
 
 myFunction.$inject = ['$scope','ListSrvc','SharedSrvc'];
 
@@ -11,12 +11,10 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	vm.PARAMS = {};
 	vm.DOM = {};
 	
-	
 
 	// Extract the string to be saved from the selected item in dataProvider
 	function getSelectData(){
-		vm.PARAMS.EDGETERM = vm.SELECT.edgeTermination.id;
-		vm.PARAMS.CAPMETAL = vm.SELECT.capMetal.id;
+		
 		
 	};
 
@@ -24,20 +22,18 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	function initView(){
 		// Parse the saved data to set the view elements
 
-		// Set selected dataObj for Select input components
-		vm.SELECT.edgeTermination = vm.L.returnObjById(vm.L.edgeTermination,vm.PARAMS.EDGETERM);
-		vm.SELECT.capMetal = vm.L.returnObjById(vm.L.twoThruFortyEight,vm.PARAMS.CAPMTL);
+		
 	
 
 	};
 
 	function pushToShared(){
 		getSelectData();
-		vm.S.pushData(vm.PARAMS,'PERIMITER');
+		vm.S.pushData(vm.PARAMS,'EDGES');
 	};
 
 	function pullFromShared(){
-		vm.PARAMS = vm.S.returnData('PERIMITER');
+		vm.PARAMS = vm.S.returnData('EDGES');
 		initView();
 	};
 

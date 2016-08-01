@@ -1,7 +1,7 @@
 'use strict';
 angular.module('app').controller('MembraneCtrl', myFunction);
 
-myFunction.$inject = ['ListSrvc','SharedSrvc'];
+myFunction.$inject = ['$scope','ListSrvc','SharedSrvc'];
 
 function myFunction($scope,ListSrvc,SharedSrvc) { 
 	var vm =this;
@@ -13,23 +13,21 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 
 	// Extract id from user Selected Object
 	function getSelectData(){
-		vm.PARAMS.membrane = vm.SELECT.membrane.id;
-		vm.PARAMS.thickness = vm.SELECT.thickness.id;
+		
 	};
 
 	// Set Selected Object from saved data
 	function setSelectData(){
-		vm.SELECT.membrane = vm.L.returnObjById(vm.L.membrane,vm.PARAMS.membrane);
-		vm.SELECT.thickness = vm.L.returnObjById(vm.L.membraneThickness,vm.PARAMS.thickness);
+		
 	};
 
 	function pushToShared(){
 		getSelectData();
-		S.pushData(vm.PARAMS,'MEMBRN');
+		S.pushData(vm.PARAMS,'MEMBRANE');
 	};
 
 	function pullFromShared(){
-		vm.PARAMS = S.returnData('MEMBRN');
+		vm.PARAMS = S.returnData('MEMBRANE');
 		setSelectData();
 	};
 

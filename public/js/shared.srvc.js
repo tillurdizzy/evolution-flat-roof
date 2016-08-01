@@ -9,11 +9,12 @@ function SharedSrvc($rootScope) {
 
     var LAYERS = {};
     var FIELD = {};
-    var PERIMITER = {};
-    var VENTS = {};
+    var EDGES = {};
+    var PENETRATIONS = {};
     var HVAC = {};
-    var MEMBRN = {};
+    var MEMBRANE = {};
     var ISO = {};
+    var TERMINATIONS = {};
 
     var service = {
         pushData:pushData,
@@ -27,12 +28,13 @@ function SharedSrvc($rootScope) {
     function pushData(obj,set){
         switch(set){
             case "ISO":ISO = obj;break;
-            case "MEMBRN":MEMBRN = obj;break;
+            case "MEMBRANE":MEMBRANE = obj;break;
             case "HVAC":HVAC = obj;break;
-            case "VENTS":VENTS = obj;break;
-            case "PERIMITER":PERIMITER = obj;break;
+            case "PENETRATIONS":PENETRATIONS = obj;break;
+            case "EDGES":EDGES = obj;break;
             case "FIELD":FIELD = obj;break;
             case "LAYERS":LAYERS = obj;break;
+            case "TERMINATIONS":TERMINATIONS = obj;break;
         }
     };
 
@@ -40,12 +42,13 @@ function SharedSrvc($rootScope) {
         var rtnObj = {};
         switch(set){
             case "ISO":rtnObj=ISO;break;
-            case "MEMBRN":rtnObj=MEMBRN;break;
+            case "MEMBRANE":rtnObj=MEMBRANE;break;
             case "HVAC":rtnObj=HVAC;break;
-            case "VENTS":rtnObj=VENTS;break;
-            case "PERIMITER":rtnObj=PERIMITER;break;
+            case "PENETRATIONS":rtnObj=PENETRATIONS;break;
+            case "EDGES":rtnObj=EDGES;break;
             case "FIELD":rtnObj=FIELD;break;
             case "LAYERS":rtnObj=LAYERS;break;
+            case "TERMINATIONS":rtnObj=TERMINATIONS;break;
         };
         return rtnObj;
     };
@@ -56,7 +59,18 @@ function SharedSrvc($rootScope) {
 
         FIELD = {SQUARES:'',CRNROUT:'',CRNRIN:''};
 
-        PERIMITER = {
+        EDGES = {
+            PERIMITER:'0',
+            WALL:'0',
+            PARAPET:{QTY:'0',STRETCHOUT:'0'},
+            CAPMETAL:{QTY:'0',STRETCHOUT:'0'}
+        };
+
+        PENETRATIONS = {
+            
+        }
+
+        TERMINATIONS = {
             EDGETERM:'TBAR',
             TBAR:{STRETCHOUT:'3.5'},
             CLADMETAL:{STRETCHOUT:'',STRIPIN:'2'},
@@ -64,6 +78,11 @@ function SharedSrvc($rootScope) {
             SPECIAL:{X:'No',DESCRIPTION:'',COST:''},
             WALLTERM:{TBAR:{X:'',COUNTERFLASHING:'NA',REGLET:'',STRETCHOUT:'0'}}
         };
+
+        MEMBRANE = {
+            MEMBRANE:'',
+            THICKNESS:''
+        }
     };
 
     

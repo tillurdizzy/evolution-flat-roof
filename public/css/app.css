@@ -374,7 +374,10 @@ body {
 
 .view-container {
   margin: 5px 0 0 20px;
-  min-width: 700px; }
+  width: 810px; }
+
+.photos {
+  width: 810px; }
 
 .page-title {
   height: 26px;
@@ -556,3 +559,8 @@ body {
 .indent .form-input .item-name-small {
   width: 80px;
   background-color: #607D8B; }
+
+.md-nav-bar ul {
+  list-style-type: none;
+  margin: 5px 10px;
+  padding-left: 0; }

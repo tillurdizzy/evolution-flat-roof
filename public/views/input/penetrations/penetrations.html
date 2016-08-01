@@ -1,0 +1,13 @@
+<div ng-controller="PenetrationsCtrl as Ctrl">
+    <div class="page-title">
+        <h4>Penetrations</h4></div>
+    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('penetrations.pipes')" name="pipes">PIPES</md-nav-item>
+        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('penetrations.vents')" name="vents">VENTS</md-nav-item>
+        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('penetrations.drains')" name="drains">DRAINS</md-nav-item>
+        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('penetrations.scuppers')" name="scuppers">SCUPPERS</md-nav-item>
+        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('penetrations.star')" name="scuppers">STAR CAPS</md-nav-item>
+        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('penetrations.other')" name="scuppers">OTHER</md-nav-item>
+    </md-nav-bar>
+    <div ui-view></div>
+</div>

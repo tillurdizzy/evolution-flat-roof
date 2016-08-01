@@ -26,14 +26,48 @@ function initRouter($stateProvider, $urlRouterProvider) {
         templateUrl: "views/input/field/field.html"
     })
 
-    .state('vents', {
-        url: "/vents",
-        templateUrl: "views/input/vents/vents.html"
+    .state('penetrations', {
+        url: "/penetrations",
+        templateUrl: "views/input/penetrations/penetrations.html"
     })
 
-    .state('perimiter', {
-        url: "/perimiter",
-        templateUrl: "views/input/perimiter/perimiter.html"
+    .state('penetrations.pipes', {
+        url: "/pipes",
+        templateUrl: "views/input/penetrations/pipes.html"
+    })
+
+    .state('penetrations.vents', {
+        url: "/vents",
+        templateUrl: "views/input/penetrations/vents.html"
+    })
+
+    .state('penetrations.drains', {
+        url: "/drains",
+        templateUrl: "views/input/penetrations/drains.html"
+    })
+    .state('penetrations.scuppers', {
+        url: "/scuppers",
+        templateUrl: "views/input/penetrations/scuppers.html"
+    })
+    .state('penetrations.star', {
+        url: "/star",
+        templateUrl: "views/input/penetrations/star.html"
+    })
+    .state('penetrations.other', {
+        url: "/other",
+        templateUrl: "views/input/penetrations/other.html"
+    })
+
+
+
+    .state('edges', {
+        url: "/edges",
+        templateUrl: "views/input/edges/edges.html"
+    })
+    
+    .state('terminations', {
+        url: "/terminations",
+        templateUrl: "views/design/terminations/terminations.html"
     })
 
     .state('hvac', {

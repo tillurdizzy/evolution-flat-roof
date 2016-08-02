@@ -1,7 +1,8 @@
 <div ng-controller="FieldCtrl as Ctrl">
     <div class="page-title">
-        <h4>Field Measurements</h4></div>
+        <h4>Field Measurements and Counts</h4></div>
     <div>
+    <p>Determine total amount of membrane (squares) and number of corner flashings for complete replacement.</p>
         <div class="form-input">
             <div class="item-name">
                 <h3>Field</h3></div>
@@ -26,5 +27,37 @@
             <div class="item-unit">
                 <h3>Qty</h3></div>
         </div>
+        <div class="form-input">
+            <div class="item-name">
+                <h3>Parapet Walls</h3></div>
+
+        </div>
+        <div class="indent">
+         <p>(Use only when membrane wraps up and over wall)</p>
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Height</h3></div>
+                <div class="item-input">
+                <input type="tel" ng-model="Ctrl.PARAMS.CRNRIN"></div>
+                <div class="item-unit">
+                    <h3>Ft</h3>
+                </div>
+                <div class="item-name-small">
+                    <h3>Length</h3></div>
+                <div class="item-input">
+                    <input type="tel" ng-model="Ctrl.PARAMS.CRNRIN"></div>
+                <div class="item-unit">
+                    <h3>Ft</h3>
+                </div>
+                <div class="item-name-small">
+                    <h3>Top</h3></div>
+                <div class="item-input">
+                    <input type="tel" ng-model="Ctrl.PARAMS.CRNRIN"></div>
+                <div class="item-unit">
+                    <h3>In</h3>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

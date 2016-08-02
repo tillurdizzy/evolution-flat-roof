@@ -1,23 +1,25 @@
 'use strict';
-angular.module('app').controller('EdgesCtrl', myFunction);
+angular.module('app').controller('TermsCtrl', myFunction);
 
-myFunction.$inject = ['$scope','ListSrvc','SharedSrvc'];
+myFunction.$inject = ['$scope','$state','ListSrvc','SharedSrvc'];
 
-function myFunction($scope,ListSrvc,SharedSrvc) { 
+function myFunction($scope,$state,ListSrvc,SharedSrvc) { 
 	var vm = this;
 	vm.L = ListSrvc;
 	vm.S = SharedSrvc;
 	vm.SELECT = {};
 	vm.PARAMS = {};
 	vm.DOM = {};
-	
+	vm.currentNavItem = 'edge';
 
 	// Extract the string to be saved from the selected item in dataProvider
 	function getSelectData(){
 		
 		
 	};
-
+	vm.goNav = function(st){
+		$state.transitionTo(st);
+	};
 	
 	function initView(){
 		// Parse the saved data to set the view elements

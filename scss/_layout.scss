@@ -89,7 +89,7 @@ body {
 }
 
 .hrule {
-    border-top: 1px solid #000000;
+    border-top: 2px solid $material-pallette-700;
     width: 100%;
     clear: both;
     content: '';

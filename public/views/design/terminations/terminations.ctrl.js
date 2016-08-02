@@ -10,15 +10,16 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 	vm.SELECT = {};
 	vm.PARAMS = {};
 	vm.DOM = {};
-	vm.currentNavItem = 'page1';
+	vm.currentNavItem = 'edge';
 	
-
+	vm.goNav = function(st){
+		$state.transitionTo(st);
+	};
 	
 	// Extract the string to be saved from the selected item in dataProvider
 	function getSelectData(){
 		vm.PARAMS.EDGETERM = vm.SELECT.edgeTermination.id;
 		vm.PARAMS.CAPMETAL = vm.SELECT.capMetal.id;
-		
 	};
 
 	

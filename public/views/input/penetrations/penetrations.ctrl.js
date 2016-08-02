@@ -9,7 +9,7 @@ function myCtrlFunction($scope,$state,ListSrvc,SharedSrvc) {
 	vm.S = SharedSrvc;
 	vm.SELECT = {};
 	vm.PARAMS = {};
-	
+	vm.currentNavItem = "pipes";
 
 
 	vm.goNav = function(st){

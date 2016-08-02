@@ -1,0 +1,29 @@
+<div class="form-input">
+    <div class="item-name">
+        <h3>Wall Termination</h3></div>
+    <div class="item-select">
+        <md-select ng-model="Ctrl.PARAMS.WALLTERM.X" placeholder="select">
+            <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.yesNo">{{ opt }}</md-option>
+        </md-select>
+    </div>
+</div>
+<div class="indent" ng-show="Ctrl.PARAMS.WALLTERM.X=='Yes'">
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Counterflashing</h3></div>
+        <div class="item-select">
+            <md-select ng-model="Ctrl.PARAMS.WALLTERM.TBAR.COUNTERFLASHING" placeholder="select">
+                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.coverType">{{ opt }}</md-option>
+            </md-select>
+        </div>
+    </div>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Cost Per Ft</h3></div>
+        <div class="item-input">
+            <input type="tel" ng-model="Ctrl.PARAMS.SPECIAL.COST">
+        </div>
+        <div class="item-unit">
+            <h3>$</h3></div>
+    </div>
+</div>

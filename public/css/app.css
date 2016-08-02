@@ -427,7 +427,7 @@ body {
     margin-right: 10px; }
 
 .hrule {
-  border-top: 1px solid #000000;
+  border-top: 2px solid #455A64;
   width: 100%;
   clear: both;
   content: '';

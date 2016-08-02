@@ -13,7 +13,10 @@ function myFunction($state,$location) {
 
 	Me.isCurrentPath = function (path) {
         var x = $location.path();
-        return $location.path() == path;
+        var xSplit = x.split('/')
+        var y = xSplit[1];
+       
+        return y == path;
     };
 
 

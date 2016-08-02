@@ -26,18 +26,20 @@
     </div>
     <div class="flex-row">
         <div class="side-nav" ng-controller="NavCtrl as Ctrl">
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('home')}" ng-click="Ctrl.goNav('home');"> Home </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('illustrations')}" ng-click="Ctrl.goNav('illustrations');"> Illustrations </md-button>
             <div class="section-label">
                 <h4>Input</h4></div>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/layers')}" ng-click="Ctrl.goNav('layers');"> Layers </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/field')}" ng-click="Ctrl.goNav('field');"> Field </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/edges')}" ng-click="Ctrl.goNav('edges');"> Edges </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/penetrations')}" ng-click="Ctrl.goNav('penetrations');"> Penetrations </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/hvac')}" ng-click="Ctrl.goNav('hvac');"> HVAC </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('layers')}" ng-click="Ctrl.goNav('layers');"> Layers </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('field')}" ng-click="Ctrl.goNav('field');"> Field </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('terms')}" ng-click="Ctrl.goNav('terms.edge');"> Termination </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('penetrations')}" ng-click="Ctrl.goNav('penetrations.pipes');"> Penetrations </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('hvac')}" ng-click="Ctrl.goNav('hvac');"> HVAC </md-button>
             <div class="section-label">
                 <h4>Design</h4></div>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/membrane')}" ng-click="Ctrl.goNav('membrane');"> Membrane </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/iso')}" ng-click="Ctrl.goNav('iso');"> ISO </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('/terminations')}" ng-click="Ctrl.goNav('terminations');"> Terminations </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('membrane')}" ng-click="Ctrl.goNav('membrane');"> Membrane </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('iso')}" ng-click="Ctrl.goNav('iso');"> ISO </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('terminations')}" ng-click="Ctrl.goNav('terminations.edge');"> Termination </md-button>
         </div>
         <div ui-view class="view-container"></div>
     </div>
@@ -63,7 +65,7 @@
     <script src="views/input/field/field.ctrl.js?v=1"></script>
     <script src="views/input/penetrations/penetrations.ctrl.js?v=1"></script>
     <script src="views/input/layers/layers.ctrl.js?v=1"></script>
-    <script src="views/input/edges/edges.ctrl.js?v=1"></script>
+    <script src="views/input/terms/terms.ctrl.js?v=1"></script>
     <script src="views/input/hvac/hvac.ctrl.js?v=1"></script>
     <script src="views/design/membrane/membrane.ctrl.js?v=1"></script>
     <script src="views/design/terminations/terminations.ctrl.js?v=1"></script>

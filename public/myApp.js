@@ -11,9 +11,14 @@ function initRouter($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/home");
 
     $stateProvider
-        .state('home', {
-            url: "/home",
-            templateUrl: "views/home/home.html"
+    .state('home', {
+        url: "/home",
+        templateUrl: "views/home/home.html"
+    })
+
+    .state('illustrations', {
+            url: "/illustrations",
+            templateUrl: "views/home/illustrations.html"
         })
 
     .state('layers', {
@@ -50,8 +55,8 @@ function initRouter($stateProvider, $urlRouterProvider) {
         templateUrl: "views/input/penetrations/scuppers.html"
     })
     .state('penetrations.star', {
-        url: "/star",
-        templateUrl: "views/input/penetrations/star.html"
+        url: "/star-caps",
+        templateUrl: "views/input/penetrations/star-caps.html"
     })
     .state('penetrations.other', {
         url: "/other",
@@ -59,15 +64,58 @@ function initRouter($stateProvider, $urlRouterProvider) {
     })
 
 
-
-    .state('edges', {
-        url: "/edges",
-        templateUrl: "views/input/edges/edges.html"
+    .state('terms', {
+        url: "/terms",
+        templateUrl: "views/input/terms/terms.html"
+    })
+    .state('terms.edge', {
+        url: "/edge",
+        templateUrl: "views/input/terms/edge.html"
+    })
+    .state('terms.wall', {
+        url: "/wall",
+        templateUrl: "views/input/terms/wall.html"
+    })
+    .state('terms.parapet', {
+        url: "/parapet",
+        templateUrl: "views/input/terms/parapet.html"
+    })
+    .state('terms.cap', {
+        url: "/cap",
+        templateUrl: "views/input/terms/cap.html"
+    })
+    .state('terms.other', {
+        url: "/other",
+        templateUrl: "views/input/terms/other.html"
     })
     
     .state('terminations', {
         url: "/terminations",
         templateUrl: "views/design/terminations/terminations.html"
+    })
+    .state('terminations.edge', {
+        url: "/edge",
+        templateUrl: "views/design/terminations/edge.html"
+    })
+    .state('terminations.wall', {
+        url: "/wall",
+        templateUrl: "views/design/terminations/wall.html"
+    })
+    .state('terminations.parapet', {
+        url: "/parapet",
+        templateUrl: "views/design/terminations/parapet.html"
+    })
+    .state('terminations.cap', {
+        url: "/cap",
+        templateUrl: "views/design/terminations/cap.html"
+    })
+    .state('terminations.other', {
+        url: "/other",
+        templateUrl: "views/design/terminations/other.html"
+    })
+    .state('terminations.examples', {
+        url: "/examples",
+        templateUrl: "views/design/terminations/examples.html"
     })
 
     .state('hvac', {

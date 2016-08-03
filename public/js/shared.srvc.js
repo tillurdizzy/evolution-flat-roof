@@ -67,7 +67,11 @@ function SharedSrvc($rootScope) {
         };
 
         PENETRATIONS = {
-            
+            STARCAPS:[{qty:'2',size:'5',finish:"Painted"},{qty:'3',size:'4',finish:"Galvanized"},{qty:'1',size:'8',finish:"Painted"}],
+            SMVENTS:[],
+            LRGVENTS:[],
+            SMPIPES:[],
+            LRGPIPES:[]
         }
 
         TERMINATIONS = {

@@ -58,6 +58,13 @@ $input-line-height:30px;
         }
     }
 
+    .item-counter {
+        height: $input-line-height;
+        width: 110px;
+        color: $material-pallette-700;
+        margin-left: 5px;
+    }
+
     .item-input {
         width: 70px;
         height: $input-line-height;

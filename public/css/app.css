@@ -393,6 +393,13 @@ body {
     margin: 0;
     font-weight: 600; }
 
+.subTitle h4 {
+  line-height: 1;
+  font-size: 18px;
+  padding: 0;
+  margin: 0 0 10px 0;
+  font-weight: 500; }
+
 .flex-column {
   display: flex;
   flex-direction: column; }
@@ -515,6 +522,11 @@ body {
     padding: 0 0 0 5px; }
     .form-input .item-unit h3 {
       font-size: 16px; }
+  .form-input .item-counter {
+    height: 30px;
+    width: 110px;
+    color: #455A64;
+    margin-left: 5px; }
   .form-input .item-input {
     width: 70px;
     height: 30px;

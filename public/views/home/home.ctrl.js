@@ -1,10 +1,22 @@
-angular.module('app').controller('HomeCtrl', HomeCtrl);
+angular.module('app').controller('HomeCtrl', myFunction);
 
-function HomeCtrl() { 
+myFunction.$inject = ['$scope','SharedSrvc'];
+
+function myFunction($scope,SharedSrvc) { 
 	var vm = this;
 	vm.gallery = "edge";
+	vm.gallery_dp = ["edge","wall","cap","drains"];
 
-	vm.gallery_dp = ["edge","wall","cap"];
+	vm.JobID = "";
+
+	function submitJobID(){
+		console.log('Input ID = '+ vm.JobID);
+	}
+
+
+
+
+	vm.submitJobID = submitJobID;
 
 
 

@@ -17,6 +17,15 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	
 	vm.selectLayerOne=function(){
 		vm.PARAMS.layerOne = vm.SELECT.layerOne.id;
+		if(vm.PARAMS.layerOne!='NONE' && vm.PARAMS.layerOne!='RPANEL'){
+			vm.DOM.layerTwo = true;
+		}else{
+			vm.DOM.layerTwo = false;
+			vm.DOM.layerThree = false;
+			vm.DOM.layerFour = false;
+			vm.DOM.layerFive = false;
+			vm.DOM.layerSix = false;
+		}
 	};
 
 	vm.selectLayerTwo=function(){
@@ -55,18 +64,23 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 		// Parse the saved data to set the view elements
 
 		// Set selected dataObj for Select input components
-		vm.SELECT.layerOne = vm.L.returnObjById(vm.L.roofLayers,vm.PARAMS.layerOne);
-		vm.SELECT.layerTwo = vm.L.returnObjById(vm.L.roofLayers,vm.PARAMS.layerTwo);
-		vm.SELECT.layerThree = vm.L.returnObjById(vm.L.roofLayers,vm.PARAMS.layerThree);
-		vm.SELECT.layerFour = vm.L.returnObjById(vm.L.roofLayers,vm.PARAMS.layerFour);
-		vm.SELECT.layerFive = vm.L.returnObjById(vm.L.roofLayers,vm.PARAMS.layerFive);
-		vm.SELECT.layerSix = vm.L.returnObjById(vm.L.roofLayers,vm.PARAMS.layerSix);
+		vm.SELECT.layerOne = vm.L.returnObjById(vm.L.roofLayersA,vm.PARAMS.layerOne);
+		vm.SELECT.layerTwo = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerTwo);
+		vm.SELECT.layerThree = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerThree);
+		vm.SELECT.layerFour = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerFour);
+		vm.SELECT.layerFive = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerFive);
+		vm.SELECT.layerSix = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerSix);
 
 		// Set ng-view booleans
+		vm.DOM.layerTwo = true;
 		vm.DOM.layerThree = true;
 		vm.DOM.layerFour = true;
 		vm.DOM.layerFive = true;
 		vm.DOM.layerSix = true;
+
+		if(vm.PARAMS.layerOne == '' || vm.PARAMS.layerOne=='NONE' || vm.PARAMS.layerOne=='RPANEL'){
+			vm.DOM.layerTwo = false;
+		}
 
 		if(vm.PARAMS.layerTwo == '' || vm.PARAMS.layerTwo=='NONE'){
 			vm.DOM.layerThree = false;

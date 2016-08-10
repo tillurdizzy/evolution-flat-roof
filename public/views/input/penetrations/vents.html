@@ -3,34 +3,21 @@
     <div class="item-name">
         <h3>Up to 8"</h3></div>
    <div class="item-counter">
-        <counter count="Ctrl.smallVents" min="0" max="100"></counter>
+        <counter count="Ctrl.smallVentCount" min="0" max="100"></counter>
     </div>
 </div>
-<div class="indent" ng-show="Ctrl.smallVents > 0">
-    <div ng-repeat="item in Ctrl.PARAMS.SMVENTS">
-        <div class="form-input">
-            <div class="item-name-small">
-                <h3>Size</h3></div>
-            <div class="item-select-small">
-                <md-select ng-model="Ctrl.SELECT.layerOne" placeholder="Select" ng-change="Ctrl.selectVentSize()">
-                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ventSizes">{{ opt }}</md-option>
-                </md-select>
-            </div>
-            <div class="item-name-small">
-                <h3>Shape</h3></div>
-            <div class="item-select-small">
-                <md-select ng-model="Ctrl.SELECT.layerOne" placeholder="Select" ng-change="Ctrl.selectVentShape()">
-                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ventShapes">{{ opt }}</md-option>
-                </md-select>
-            </div>
-        </div>
-    </div>
+<div class="indent">
+    <vent-small qty="item.qty" size="item.size" shape="item.shape" replace="item.replace" ng-repeat="item in Ctrl.PARAMS.SMVENTS"></vent-small>
 </div>
+
+
 <div class="form-input">
     <div class="item-name">
         <h3>9" and above</h3></div>
     <div class="item-counter">
-        <counter count="Ctrl.largeVents" min="0" max="100"></counter>
+        <counter count="Ctrl.largeVentCount" min="0" max="100"></counter>
     </div>
-  
+</div>
+<div class="indent">
+    <vent-small qty="item.qty" size="item.size" shape="item.shape" replace="item.replace" ng-repeat="item in Ctrl.PARAMS.LRGVENTS"></vent-small>
 </div>

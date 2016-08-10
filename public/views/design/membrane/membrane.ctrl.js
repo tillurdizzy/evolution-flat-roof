@@ -10,25 +10,39 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 
 	vm.SELECT = {};
 	vm.PARAMS = {};
+	vm.gridPosition = "A1";
 
 	// Extract id from user Selected Object
-	function getSelectData(){
-		
+	function formatForStorage(){
+		switch(vm.gridPosition.substr(0,1)){
+			case "A":vm.PARAMS.THICKNESS = 45;
+			case "B":vm.PARAMS.THICKNESS = 45;
+			case "C":vm.PARAMS.THICKNESS = 45;
+			case "D":vm.PARAMS.THICKNESS = 45;
+		}
+		switch(vm.gridPosition.substr(1,1)){
+			case "1":vm.PARAMS.MEMBRANE = "TPO";
+			case "2":vm.PARAMS.MEMBRANE = "PVC";
+			case "3":vm.PARAMS.MEMBRANE = "E4434";
+			case "4":vm.PARAMS.MEMBRANE = "E6722";
+		}
+		vm.PARAMS.GRIDPOS = vm.gridPosition;
 	};
 
 	// Set Selected Object from saved data
-	function setSelectData(){
+	function formatForDisplay(){
+		vm.gridPosition = vm.PARAMS.GRIDPOS;
 		
 	};
 
 	function pushToShared(){
-		getSelectData();
+		formatForStorage();
 		S.pushData(vm.PARAMS,'MEMBRANE');
 	};
 
 	function pullFromShared(){
 		vm.PARAMS = S.returnData('MEMBRANE');
-		setSelectData();
+		formatForDisplay();
 	};
 
 	$scope.$on("$destroy", function(){

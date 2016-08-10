@@ -1,8 +1,8 @@
 <div ng-controller="FieldCtrl as Ctrl">
     <div class="page-title">
-        <h4>Field Measurements and Counts</h4></div>
+        <h4>Membrane Requirements</h4></div>
     <div>
-    <p>Determine total amount of membrane (squares) and number of corner flashings for complete replacement.</p>
+        <p>Determine total amount of membrane (squares) and number of corner flashings for complete replacement.</p>
         <div class="form-input">
             <div class="item-name">
                 <h3>Field</h3></div>
@@ -15,7 +15,8 @@
             <div class="item-name">
                 <h3>Outside Corners</h3></div>
             <div class="item-input">
-                <input type="tel" ng-model="Ctrl.PARAMS.CRNROUT"></div>
+                <input type="tel" ng-model="Ctrl.PARAMS.CRNROUT">
+            </div>
             <div class="item-unit">
                 <h3>Qty</h3></div>
         </div>
@@ -23,41 +24,22 @@
             <div class="item-name">
                 <h3>Inside Corners</h3></div>
             <div class="item-input">
-                <input type="tel" ng-model="Ctrl.PARAMS.CRNRIN"></div>
+                <input type="tel" ng-model="Ctrl.PARAMS.CRNRIN">
+            </div>
             <div class="item-unit">
                 <h3>Qty</h3></div>
         </div>
+       
         <div class="form-input">
             <div class="item-name">
-                <h3>Parapet Walls</h3></div>
-
-        </div>
-        <div class="indent">
-         <p>(Use only when membrane wraps up and over wall)</p>
-            <div class="form-input">
-                <div class="item-name">
-                    <h3>Height</h3></div>
-                <div class="item-input">
-                <input type="tel" ng-model="Ctrl.PARAMS.CRNRIN"></div>
-                <div class="item-unit">
-                    <h3>Ft</h3>
-                </div>
-                <div class="item-name-small">
-                    <h3>Length</h3></div>
-                <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.PARAMS.CRNRIN"></div>
-                <div class="item-unit">
-                    <h3>Ft</h3>
-                </div>
-                <div class="item-name-small">
-                    <h3>Top</h3></div>
-                <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.PARAMS.CRNRIN"></div>
-                <div class="item-unit">
-                    <h3>In</h3>
-                </div>
+                <h3>Walls</h3></div>
+            <div class="item-counter">
+                <counter count="Ctrl.parapetWallCount" min="0" max="100"></counter>
             </div>
-        </div>
 
+        </div>
+        <div class="indent" >
+            <parapet-wall height="item.height" length="item.length" ng-repeat="item in Ctrl.PARAMS.PARAPET"></parapet-wall>
+        </div>
     </div>
 </div>

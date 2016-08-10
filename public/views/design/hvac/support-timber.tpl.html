@@ -1,0 +1,15 @@
+<div class="form-input">
+    <div class="item-name-small">
+        <h3>Qty</h3></div>
+    <div class="item-input">
+        <input type="tel" ng-model="$ctrl.qty">
+    </div>
+    <div class="item-name-small">
+        <h3>Width</h3></div>
+    <div class="item-select-small">
+        <md-select ng-model="$ctrl.width" placeholder="select">
+            <md-option value="{{opt}}" ng-repeat="opt in $ctrl.width_dp">{{ opt }}</md-option>
+        </md-select>
+    </div>
+    
+</div>

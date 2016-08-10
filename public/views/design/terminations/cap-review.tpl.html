@@ -1,0 +1,26 @@
+<div class="form-input">
+    <div class="item-name-small">
+        <h3>Length</h3></div>
+    <div class="item-output">
+        <h3>{{$ctrl.length}} ft</h3>
+    </div>
+    <div class="item-name-small">
+        <h3>Stretchout</h3></div>
+    <div class="item-output">
+        <h3>{{$ctrl.stretchout}} in</h3>
+    </div>
+    <div class="item-name-small">
+        <h3>Cleated</h3></div>
+    <div class="item-select-small">
+        <md-select ng-model="$ctrl.cleated" placeholder="select">
+            <md-option ng-value="opt" ng-repeat="opt in $ctrl.option_dp">{{ opt }}</md-option>
+        </md-select>
+    </div>
+    <div class="item-name-small">
+        <h3>Material</h3></div>
+    <div class="item-select-small">
+        <md-select ng-model="$ctrl.material" placeholder="select">
+            <md-option ng-value="opt" ng-repeat="opt in $ctrl.material_dp">{{ opt }}</md-option>
+        </md-select>
+    </div>
+</div>

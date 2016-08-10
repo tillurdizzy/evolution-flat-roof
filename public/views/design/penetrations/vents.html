@@ -1,0 +1,19 @@
+<div class="subTitle"><h4>Vents</h4></div>
+<div class="form-input">
+    <div class="item-name">
+        <h3>Up to 8"</h3></div>
+</div>
+
+<div class="indent">
+    <vent-review qty="item.qty" size="item.size" shape="item.shape" replace="item.replace" ng-repeat="item in Ctrl.PARAMS.SMVENTS"></vent-small>
+</div>
+
+
+<div class="form-input">
+    <div class="item-name">
+        <h3>9" and above</h3></div>
+</div>
+
+<div class="indent">
+    <vent-review qty="item.qty" size="item.size" shape="item.shape" replace="item.replace" ng-repeat="item in Ctrl.PARAMS.LRGVENTS"></vent-small>
+</div>

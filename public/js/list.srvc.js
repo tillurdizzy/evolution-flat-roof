@@ -11,12 +11,19 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
 
     self.adhereMethod = ["Screws","Foam A+B"];
 
-    self.roofLayers = [
+    self.roofLayersA = [
+        { label: "TPO / PVC", id: "PCV" },
+        { label: "Tar & Gravel", id: "TRGRVL" },
+        { label: "Modified Bitumen", id: "MODBTMN" },
+        { label: "R-Panel", id: "RPANEL" },
+        { label: "None", id: "NONE" }
+    ];
+
+    self.roofLayersB = [
         { label: "TPO / PVC", id: "PCV" },
         { label: "Tar & Gravel", id: "TRGRVL" },
         { label: "Modified Bitumen", id: "MODBTMN" },
         { label: "Insulation", id: "INSLTN" },
-        { label: "R-Panel", id: "RPANEL" },
         { label: "None", id: "NONE" }
     ];
 

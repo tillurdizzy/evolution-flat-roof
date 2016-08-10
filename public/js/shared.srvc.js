@@ -9,12 +9,12 @@ function SharedSrvc($rootScope) {
 
     var LAYERS = {};
     var FIELD = {};
-    var EDGES = {};
+    var TERMINATIONS = {};
     var PENETRATIONS = {};
     var HVAC = {};
     var MEMBRANE = {};
     var ISO = {};
-    var TERMINATIONS = {};
+    
 
     var service = {
         pushData:pushData,
@@ -27,66 +27,75 @@ function SharedSrvc($rootScope) {
 
     function pushData(obj,set){
         switch(set){
+            case "LAYERS":LAYERS = obj;break;
+            case "FIELD":FIELD = obj;break;
+            case "TERMINATIONS":TERMINATIONS = obj;break;
+            case "PENETRATIONS":PENETRATIONS = obj;break;
+            case "HVAC":HVAC = obj;break;
             case "ISO":ISO = obj;break;
             case "MEMBRANE":MEMBRANE = obj;break;
-            case "HVAC":HVAC = obj;break;
-            case "PENETRATIONS":PENETRATIONS = obj;break;
-            case "EDGES":EDGES = obj;break;
-            case "FIELD":FIELD = obj;break;
-            case "LAYERS":LAYERS = obj;break;
-            case "TERMINATIONS":TERMINATIONS = obj;break;
         }
     };
 
     function returnData(set){
         var rtnObj = {};
         switch(set){
-            case "ISO":rtnObj=ISO;break;
-            case "MEMBRANE":rtnObj=MEMBRANE;break;
-            case "HVAC":rtnObj=HVAC;break;
-            case "PENETRATIONS":rtnObj=PENETRATIONS;break;
-            case "EDGES":rtnObj=EDGES;break;
-            case "FIELD":rtnObj=FIELD;break;
             case "LAYERS":rtnObj=LAYERS;break;
+            case "FIELD":rtnObj=FIELD;break;
             case "TERMINATIONS":rtnObj=TERMINATIONS;break;
+            case "PENETRATIONS":rtnObj=PENETRATIONS;break;
+             case "HVAC":rtnObj=HVAC;break;
+            case "ISO":rtnObj=ISO;break;
+            case "MEMBRANE":rtnObj=MEMBRANE;break; 
         };
         return rtnObj;
     };
 
     function setTempData(){
+        // INPUT
         LAYERS = {layerOne:'',layerTwo:'',layerThree:'',layerFour:'',layerFive:'',layerSix:'',
         rPanel_height:'',rPanel_width:'',rPanel_winged:'',rPanel_insulation:''};
 
-        FIELD = {SQUARES:'',CRNROUT:'',CRNRIN:''};
-
-        EDGES = {
-            PERIMITER:'0',
-            WALL:'0',
-            PARAPET:{QTY:'0',STRETCHOUT:'0'},
-            CAPMETAL:{QTY:'0',STRETCHOUT:'0'}
+        FIELD = {
+            SQUARES:'',
+            CRNROUT:'',
+            CRNRIN:'',
+            PARAPET:[{height:"",length:"",top:""}]
         };
+
 
         PENETRATIONS = {
             STARCAPS:[{qty:'2',size:'5',finish:"Painted"},{qty:'3',size:'4',finish:"Galvanized"},{qty:'1',size:'8',finish:"Painted"}],
-            SMVENTS:[],
-            LRGVENTS:[],
-            SMPIPES:[],
-            LRGPIPES:[]
-        }
+            SMVENTS:[{qty:'2',size:'5',shape:"Square",replace:true}],
+            LRGVENTS:[{qty:'2',size:'12',shape:"Round",replace:false}],
+            SMPIPES:'2',
+            LRGPIPES:'5',
+            DRAINS:{INTERNAL:[{qty:'2',size:'4',method:"Boot"}],SCUPPER:[{qty:'2',width:'4',downspout:true}]},
+            GUTTERS:{EAVESTROUGH:{length:"",size:""},DOWNSPOUTS:{length:"",qty:""},CORNERS:{inside:"",outside:""},ELBOWS:{front:"",side:""},
+                HARDWARE:{hangers:"",downspouts:"",endcaps:""}}
+        };
 
         TERMINATIONS = {
-            EDGETERM:'TBAR',
-            TBAR:{STRETCHOUT:'3.5'},
-            CLADMETAL:{STRETCHOUT:'',STRIPIN:'2'},
-            CAPMETAL:{X:'No',STRETCHOUT:'0',CLEATED:'No'},
+            PERIMETER:'0',
+            WALL:'0',
+            PARAPET:[{ length: '12', stretchout: '24',cleated:'No',material:''}],
             SPECIAL:{X:'No',DESCRIPTION:'',COST:''},
-            WALLTERM:{TBAR:{X:'',COUNTERFLASHING:'NA',REGLET:'',STRETCHOUT:'0'}}
+            WALLTERM:[{type:'T-Bar',length:'35'}]
+        };
+
+        HVAC = {
+            UNITS:[{qty:"3",footprintX:"4",footprintY:"3.5"}],
+            SUPPORT:{
+                TIMBER:[{qty:"35",width:""}],
+                CONES:[{qty:"",ring:false,attached:false}]
+            }
         };
 
         MEMBRANE = {
+            GRIDPOS:'A1',
             MEMBRANE:'',
             THICKNESS:''
-        }
+        };
     };
 
     

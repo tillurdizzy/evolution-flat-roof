@@ -1,5 +1,5 @@
 'use strict';
-angular.module('app').controller('TerminationsCtrl', myFunction);
+angular.module('app').controller('TermsCtrl', myFunction);
 
 myFunction.$inject = ['$scope','$state','ListSrvc','SharedSrvc'];
 
@@ -11,35 +11,30 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 	vm.PARAMS = {};
 	vm.DOM = {};
 	vm.currentNavItem = 'edge';
-	
+	vm.capMetalCount = 0;
+
 	vm.goNav = function(st){
 		$state.transitionTo(st);
 	};
-	
-	// Extract the string to be saved from the selected item in dataProvider
-	function getSelectData(){
-		vm.PARAMS.EDGETERM = vm.SELECT.edgeTermination.id;
-		vm.PARAMS.CAPMETAL = vm.SELECT.capMetal.id;
-	};
 
+	// Extract the string to be saved from the selected item in dataProvider
+	function formatForStorage(){
+		
+		
+	};
+	
 	
 	function initView(){
-		// Parse the saved data to set the view elements
-
-		// Set selected dataObj for Select input components
-		vm.SELECT.edgeTermination = vm.L.returnObjById(vm.L.edgeTermination,vm.PARAMS.EDGETERM);
-		vm.SELECT.capMetal = vm.L.returnObjById(vm.L.twoThruFortyEight,vm.PARAMS.CAPMTL);
-	
-
+		vm.capMetalCount = vm.PARAMS.PARAPET.length;
 	};
 
 	function pushToShared(){
-		getSelectData();
-		vm.S.pushData(vm.PARAMS,'PERIMITER');
+		formatForStorage();
+		vm.S.pushData(vm.PARAMS,'TERMINATIONS');
 	};
 
 	function pullFromShared(){
-		vm.PARAMS = vm.S.returnData('PERIMITER');
+		vm.PARAMS = vm.S.returnData('TERMINATIONS');
 		initView();
 	};
 
@@ -49,6 +44,15 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 
     $scope.$watch('$viewContentLoaded', function() {
  		pullFromShared();
+    });
+
+    $scope.$watch('Ctrl.capMetalCount', function() {
+        var currentCount = vm.PARAMS.PARAPET.length;
+        if (vm.capMetalCount > currentCount) {
+            vm.PARAMS.PARAPET.push({ length: '0', stretchout: '0',cleated:'No'});
+        } else if (vm.capMetalCount < currentCount) {
+            vm.PARAMS.PARAPET.pop();
+        }
     });
 
 };

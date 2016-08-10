@@ -1,0 +1,24 @@
+<div class="subTitle">
+    <h4>Drains</h4></div>
+<div class="form-input">
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Internal</h3></div>
+       
+    </div>
+</div>
+<div class="indent">
+    <interior-drain-review qty="item.qty" size="item.size" method="item.method" ng-repeat="item in Ctrl.PARAMS.DRAINS.INTERNAL"></interior-drain-review>
+</div>
+<div class="form-input">
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Scupper</h3></div>
+       
+    </div>
+</div>
+<div class="indent">
+    <scupper-drain-review qty="item.qty" width="item.width" downspout="item.downspout" ng-repeat="item in Ctrl.PARAMS.DRAINS.SCUPPER"></scupper-drain-review>
+</div>
+
+

@@ -47,6 +47,17 @@ $input-line-height:30px;
         overflow: hidden;
     }
 
+    .item-output {
+        height: $input-line-height;
+        width: 65px;
+        background-color: #FFF;
+        color: #000;
+        margin: 0;
+        padding-left: 5px;
+        overflow: hidden;
+        font-size: 14px;
+    }
+
     .item-unit {
         height: $input-line-height;
         width: 60px;
@@ -95,6 +106,16 @@ $input-line-height:30px;
         }
     }
 
+    .item-select-wide {
+        width: 200px;
+        height: $input-line-height;
+        margin-left: 5px;
+        padding: 0;
+        md-select {
+            width: 200px;
+        }
+    }
+
     .item-select-small {
         width: 100px;
         height: $input-line-height;
@@ -103,6 +124,12 @@ $input-line-height:30px;
         md-select {
             width: 100px;
         }
+    }
+
+    .item-cb{
+        height: $input-line-height;
+        padding-top: 5px;
+        margin-left: 10px;
     }
 
 }

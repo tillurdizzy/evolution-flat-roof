@@ -2,26 +2,59 @@
     <div class="page-title">
         <h4>Membrane Selection</h4></div>
     <div>
-    <div>
-        <div class="form-input">
-            <div class="item-name">
-                <h3>Membrane</h3></div>
-            <div class="item-select">
-                <md-select ng-model="Ctrl.PARAM.MEMBRANE" placeholder="Select membrane" ng-change="Ctrl.selectMembrane()">
-                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.membraneTypes">{{ opt }}</md-option>
-                </md-select>
-            </div>
-        </div>
+    <div class="">
+        
     </div>
+    <add-space heightpx="30"></add-space>
+    <div class="table-title-row">
+        <div class="first-item"></div>
+        <div class="item">TPO</div>
+        <div class="item">PVC</div>
+        <div class="item">E/PVC</div>
+        <div class="item">E/PVC</div>
+    </div>
+    
+    <div class="table-row">
+        <div class="first-item">45 MIL</div>
+        <div ng-class="Ctrl.gridPosition=='A1' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='A1'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='A1'"></i></div>
+        <div ng-class="Ctrl.gridPosition=='A2' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='A2'" ><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='A2'"></i></div>
+        <div ng-class="Ctrl.gridPosition=='A3' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='A3'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='A3'"></i></div>
+        <div ng-class="Ctrl.gridPosition=='A4' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='A4'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='A4'"></i></div>
+    </div>
+
+    <div class="table-row">
+        <div class="first-item">50 MIL</div>
+        <div ng-class="Ctrl.gridPosition=='B1' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='B1'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='B1'"></i></div>
+        <div ng-class="Ctrl.gridPosition=='B2' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='B2'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='B2'"></i></div>
+        <div ng-class="Ctrl.gridPosition=='B3' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='B3'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='B3'"></i></div>
+        <div ng-class="Ctrl.gridPosition=='B4' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='B4'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='B4'"></i></div>
+    </div>
+
+    <div class="table-row">
+        <div class="first-item">60 MIL</div>
+        <div ng-class="Ctrl.gridPosition=='C1' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='C1'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='C1'"></i></div>
+        <div ng-class="Ctrl.gridPosition=='C2' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='C2'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='C2'"></i></div>
+        <div ng-class="Ctrl.gridPosition=='C3' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='C3'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='C3'"></i></div>
+        <div ng-class="Ctrl.gridPosition=='C4' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='C4'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='C4'"></i></div>
+    </div>
+
+    <div class="table-row">
+        <div class="first-item">80 MIL</div>
+        <div ng-class="Ctrl.gridPosition=='D1' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='D1'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='D1'"></i></div>
+        <div ng-class="Ctrl.gridPosition=='D2' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='D2'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='D2'"></i></div>
+        <div ng-class="Ctrl.gridPosition=='D3' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='D3'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='D3'"></i></div>
+        <div ng-class="Ctrl.gridPosition=='D4' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='D4'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='D4'"></i></div>
+    </div>
+
+    <div class="table-title-row">
+        <div class="first-item"></div>
+        <div class="item">D4434</div>
+        <div class="item">D4434</div>
+        <div class="item">D4434</div>
+        <div class="item">6722</div>
+    </div>
+
     <div>
-        <div class="form-input">
-            <div class="item-name">
-                <h3>Thickness</h3></div>
-            <div class="item-select">
-                <md-select ng-model="Ctrl.PARAM.THICKNESS" placeholder="Select thickness" ng-change="Ctrl.selectThickness()">
-                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.membraneThickness">{{ opt }}</md-option>
-                </md-select>
-            </div>
-        </div>
-    </div>  
+        
+    </div>
 </div>

@@ -1,0 +1,29 @@
+<div ng-controller="hvacDesignCtrl as Ctrl">
+    <div class="page-title">
+        <h4>HVAC</h4></div>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Units By Size</h3></div>
+    </div>
+    <div class="indent">
+        <hvac-review qty="item.qty" footprint-x="item.footprintX" footprint-y="item.footprintY" ng-repeat="item in Ctrl.PARAMS.UNITS">
+            </vent-small>
+    </div>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Support</h3></div>
+    </div>
+    <div class="indent">
+        <div class="form-input">
+            <div class="item-name">
+                <h3>Timber</h3></div>
+                <support-timber qty="item.qty" width="item.width" ng-repeat="item in Ctrl.PARAMS.SUPPORT.TIMBER"></support-timber>
+        </div>
+        
+        <div class="form-input">
+            <div class="item-name">
+                <h3>Cones</h3></div>
+                 <support-cones qty="item.qty" ring="item.ring" attached="item.attached" ng-repeat="item in Ctrl.PARAMS.SUPPORT.CONES"></support-timber>
+        </div>
+    </div>
+</div>

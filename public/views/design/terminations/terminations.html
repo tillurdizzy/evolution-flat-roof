@@ -1,12 +1,9 @@
-<div ng-controller="TerminationsCtrl as Ctrl">
-    <div class="page-title"><h4>Edges, Walls and Caps</h4></div>
+<div ng-controller="TerminationsDesignCtrl as Ctrl">
+    <div class="page-title"><h4>Edges, Walls and Parapets</h4></div>
     <md-nav-bar md-selected-nav-item="Ctrl.currentNavItem" nav-bar-aria-label="navigation links">
-        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('terminations.edge')" name="pipes">EDGE</md-nav-item>
-        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('terminations.wall')" name="vents">WALL</md-nav-item>
-        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('terminations.parapet')" name="drains">PARAPET</md-nav-item>
-        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('terminations.caps')" name="scuppers">CAP METAL</md-nav-item>
-        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('terminations.other')" name="other">OTHER</md-nav-item>
-        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('terminations.examples')" name="examples">EXAMPLES</md-nav-item>
+        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('terminationsB.edge')" name="pipes">EDGES</md-nav-item>
+        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('terminationsB.wall')" name="vents">WALLS</md-nav-item>
+        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('terminationsB.parapet')" name="drains">PARAPETS</md-nav-item>
     </md-nav-bar>
     <horiz-rule marginbottom="10"></horiz-rule>
     <div ui-view></div>

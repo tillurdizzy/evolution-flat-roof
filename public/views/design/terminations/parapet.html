@@ -1,32 +1,7 @@
-<div class="form-input">
-    <div class="item-name">
-        <h3>Parapet/Cap Metal</h3></div>
-    <div class="item-select">
-        <md-select ng-model="Ctrl.PARAMS.CAPMETAL.X" placeholder="select">
-            <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.yesNo">{{ opt }}</md-option>
-        </md-select>
-    </div>
+<div class="subTitle">
+    <h4>Termination at Parapet</h4>
 </div>
-<div class="indent" ng-show="Ctrl.PARAMS.CAPMETAL.X=='Yes'">
-    <div class="form-input">
-        <div class="item-name">
-            <h3>Stretch out</h3></div>
-        <div class="item-select">
-            <md-select ng-model="Ctrl.PARAMS.CAPMETAL.STRETCHOUT" placeholder="select">
-                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.twoThruFortyEight">{{ opt }}</md-option>
-            </md-select>
-        </div>
-        <div class="item-unit">
-            <h3>inches</h3>
-        </div>
-    </div>
-    <div class="form-input">
-        <div class="item-name">
-            <h3>Cleated</h3></div>
-        <div class="item-select">
-            <md-select ng-model="Ctrl.PARAMS.CAPMETAL.CLEATED" placeholder="select">
-                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.yesNo">{{ opt }}</md-option>
-            </md-select>
-        </div>
-    </div>
+<div class="input-description">
+    <h4>Cap Metal</h4>
 </div>
+<cap-review length="item.length" stretchout="item.stretchout" material="item.material" cleated="item.cleated" ng-repeat="item in Ctrl.PARAMS.PARAPET"></cap-review>

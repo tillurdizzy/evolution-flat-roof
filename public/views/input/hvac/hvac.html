@@ -1,45 +1,16 @@
-<div ng-controller="HVAC_Ctrl as Ctrl">
+<div ng-controller="HVACCtrl as Ctrl">
     <div class="page-title">
-        <h4>HVAC</h4></div><div>
-        <div class="form-input">
-            <div class="item-name">
-                <h3>Units</h3></div>
-            <div class="item-input">
-                <input type="tel" ng-model="Ctrl.PARAMS.HVAC_UNITS"></div>
-            <div class="item-unit">
-                <h3>Qty</h3></div>
+        <h4>HVAC</h4></div>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Units By Size</h3></div>
+        <div class="item-counter">
+            <counter count="Ctrl.hvacSizeCount" min="0" max="1000"></counter>
         </div>
-        <div class="form-input">
-            <div class="item-name">
-                <h3>Foam Timber</h3></div>
-            <div class="item-input">
-                <input type="tel" ng-model="Ctrl.PARAMS.HVAC_FOAM"></div>
-            <div class="item-unit">
-                <h3>Qty</h3></div>
-        </div>
-        <div class="form-input">
-            <div class="item-name">
-                <h3>Pipe Support</h3></div>
-        </div>
-        
-        <div class="indent">
-            <div class="form-input">
-                <div class="item-name">
-                    <h3>Electric</h3></div>
-                <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.PARAMS.HVAC_SUPPORT_ELEC"></div>
-                <div class="item-unit">
-                <h3>Ft</h3></div>
-            </div>
-            <div class="form-input">
-                <div class="item-name">
-                    <h3>Cond</h3></div>
-                <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.PARAMS.xxx"></div>
-                <div class="item-unit">
-                <h3>Ft</h3></div>
-            </div>
-            
+    </div>
+    <div class="indent">
+        <div>
+            <hvac-footprints qty="item.qty" footprint-x="item.footprintX" footprint-y="item.footprintY" ng-repeat="item in Ctrl.PARAMS.UNITS"></hvac-footprints>
         </div>
     </div>
 </div>

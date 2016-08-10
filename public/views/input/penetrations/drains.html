@@ -1,15 +1,28 @@
-<div class="subTitle"><h4>Drains</h4></div>
+<div class="subTitle">
+    <h4>Drains</h4></div>
 <div class="form-input">
-    <div class="item-name">
-        <h3>Drains</h3></div>
-    <div class="item-input">
-        <input type="tel" name="qtyInput" ng-model="Ctrl.PARAMS.VENTS_LG">
-    </div>
-    <div class="item-unit">
-        <h3>Qty</h3></div>
-    <div class="item-select-small">
-        <md-select ng-model="Ctrl.PARAMS.Drains" placeholder="size">
-            <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.drainSizes">{{ opt }}</md-option>
-        </md-select>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Internal</h3></div>
+        <div class="item-counter">
+            <counter count="Ctrl.internalDrainCount" min="0" max="100"></counter>
+        </div>
     </div>
 </div>
+<div class="indent">
+    <interior-drain qty="item.qty" size="item.size" method="item.method" ng-repeat="item in Ctrl.PARAMS.DRAINS.INTERNAL"></interior-drain>
+</div>
+<div class="form-input">
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Scupper</h3></div>
+        <div class="item-counter">
+            <counter count="Ctrl.scupperDrainCount" min="0" max="100"></counter>
+        </div>
+    </div>
+</div>
+<div class="indent">
+    <scupper-drain qty="item.qty" width="item.width" downspout="item.downspout" ng-repeat="item in Ctrl.PARAMS.DRAINS.SCUPPER"></scupper-drain>
+</div>
+
+

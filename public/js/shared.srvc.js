@@ -13,7 +13,7 @@ function SharedSrvc($rootScope) {
     var PENETRATIONS = {};
     var HVAC = {};
     var MEMBRANE = {};
-    var ISO = {};
+    var ROOFBASE = {};
     
 
     var service = {
@@ -32,7 +32,7 @@ function SharedSrvc($rootScope) {
             case "TERMINATIONS":TERMINATIONS = obj;break;
             case "PENETRATIONS":PENETRATIONS = obj;break;
             case "HVAC":HVAC = obj;break;
-            case "ISO":ISO = obj;break;
+            case "ROOFBASE":ROOFBASE = obj;break;
             case "MEMBRANE":MEMBRANE = obj;break;
         }
     };
@@ -45,7 +45,7 @@ function SharedSrvc($rootScope) {
             case "TERMINATIONS":rtnObj=TERMINATIONS;break;
             case "PENETRATIONS":rtnObj=PENETRATIONS;break;
              case "HVAC":rtnObj=HVAC;break;
-            case "ISO":rtnObj=ISO;break;
+            case "ROOFBASE":rtnObj=ROOFBASE;break;
             case "MEMBRANE":rtnObj=MEMBRANE;break; 
         };
         return rtnObj;
@@ -59,17 +59,14 @@ function SharedSrvc($rootScope) {
         FIELD = {
             SQUARES:'',
             CRNROUT:'',
-            CRNRIN:'',
-            PARAPET:[{height:"",length:"",top:""}]
+            CRNRIN:''
         };
 
 
         PENETRATIONS = {
             STARCAPS:[{qty:'2',size:'5',finish:"Painted"},{qty:'3',size:'4',finish:"Galvanized"},{qty:'1',size:'8',finish:"Painted"}],
-            SMVENTS:[{qty:'2',size:'5',shape:"Square",replace:true}],
-            LRGVENTS:[{qty:'2',size:'12',shape:"Round",replace:false}],
-            SMPIPES:'2',
-            LRGPIPES:'5',
+            VENTS:{SMALL:[{qty:'2',size:'5',shape:"Square",replace:true}],LARGE:[{qty:'2',size:'12',shape:"Round",replace:false}]},
+            PIPES:{small:'2',medium:'3',large:'1'},
             DRAINS:{INTERNAL:[{qty:'2',size:'4',method:"Boot"}],SCUPPER:[{qty:'2',width:'4',downspout:true}]},
             GUTTERS:{EAVESTROUGH:{length:"",size:""},DOWNSPOUTS:{length:"",qty:""},CORNERS:{inside:"",outside:""},ELBOWS:{front:"",side:""},
                 HARDWARE:{hangers:"",downspouts:"",endcaps:""}}
@@ -94,8 +91,18 @@ function SharedSrvc($rootScope) {
         MEMBRANE = {
             GRIDPOS:'A1',
             MEMBRANE:'',
-            THICKNESS:''
+            THICKNESS:'',
+            ATTACH:'',
+            TYPE:''
         };
+
+        ROOFBASE = {
+            LAYERS:[],
+            ATTACHMENT:'',
+            SPECIAL:{}
+        }
+
+        
     };
 
     

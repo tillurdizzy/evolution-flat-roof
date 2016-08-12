@@ -10,6 +10,7 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 
 	vm.SELECT = {};
 	vm.PARAMS = {};
+	vm.FIELD = {};
 	vm.gridPosition = "A1";
 
 	// Extract id from user Selected Object
@@ -32,6 +33,7 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	// Set Selected Object from saved data
 	function formatForDisplay(){
 		vm.gridPosition = vm.PARAMS.GRIDPOS;
+
 		
 	};
 
@@ -42,6 +44,7 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 
 	function pullFromShared(){
 		vm.PARAMS = S.returnData('MEMBRANE');
+		vm.FIELD = S.returnData('FIELD');
 		formatForDisplay();
 	};
 

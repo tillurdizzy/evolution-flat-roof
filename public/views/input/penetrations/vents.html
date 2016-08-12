@@ -7,17 +7,17 @@
     </div>
 </div>
 <div class="indent">
-    <vent-small qty="item.qty" size="item.size" shape="item.shape" replace="item.replace" ng-repeat="item in Ctrl.PARAMS.SMVENTS"></vent-small>
+    <vent-small qty="item.qty" size="item.size" shape="item.shape" replace="item.replace" ng-repeat="item in Ctrl.PARAMS.VENTS.SMALL"></vent-small>
 </div>
 
 
 <div class="form-input">
     <div class="item-name">
-        <h3>9" and above</h3></div>
+        <h3>Over 8"</h3></div>
     <div class="item-counter">
         <counter count="Ctrl.largeVentCount" min="0" max="100"></counter>
     </div>
 </div>
 <div class="indent">
-    <vent-small qty="item.qty" size="item.size" shape="item.shape" replace="item.replace" ng-repeat="item in Ctrl.PARAMS.LRGVENTS"></vent-small>
+    <vent-small qty="item.qty" size="item.size" shape="item.shape" replace="item.replace" ng-repeat="item in Ctrl.PARAMS.VENTS.LARGE"></vent-small>
 </div>

@@ -47,6 +47,16 @@ $input-line-height:30px;
         overflow: hidden;
     }
 
+    .item-name-med {
+        height: $input-line-height;
+        width: 150px;
+        background-color: $material-pallette-800;
+        color: #fff;
+        margin: 0;
+        padding-left: 5px;
+        overflow: hidden;
+    }
+
     .item-output {
         height: $input-line-height;
         width: 65px;
@@ -99,7 +109,7 @@ $input-line-height:30px;
     .item-select {
         width: 170px;
         height: $input-line-height;
-        margin-left: 5px;
+        margin: 0 5px;
         padding: 0;
         md-select {
             min-width: 170px;
@@ -109,7 +119,7 @@ $input-line-height:30px;
     .item-select-wide {
         width: 200px;
         height: $input-line-height;
-        margin-left: 5px;
+        margin: 0 5px;
         padding: 0;
         md-select {
             width: 200px;
@@ -119,7 +129,7 @@ $input-line-height:30px;
     .item-select-small {
         width: 100px;
         height: $input-line-height;
-        margin-left: 5px;
+        margin: 0 5px;
         padding: 0;
         md-select {
             width: 100px;
@@ -149,5 +159,10 @@ $input-line-height:30px;
 
 .indent .form-input .item-name-small {
     width: 80px;
+    background-color: $material-pallette-500;
+}
+
+.indent .form-input .item-name-med {
+    width: 120px;
     background-color: $material-pallette-500;
 }

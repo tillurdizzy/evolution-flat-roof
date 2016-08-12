@@ -10,6 +10,9 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
     self.ISO = ["0.50","0.75","1.00","1.25","1.50","2.00","2.50","3.00","3.10","3.25","3.50","4.00","4.50"];
 
     self.adhereMethod = ["Screws","Foam A+B"];
+    self.attachMethod = ["Fully Adhered","Mechanically Attached"];
+    self.membraneType = ["Standard","Fleece Back"];
+    self.baseLayerMaterials = ['Plywood',"ISO","Densdeck"];
 
     self.roofLayersA = [
         { label: "TPO / PVC", id: "PCV" },

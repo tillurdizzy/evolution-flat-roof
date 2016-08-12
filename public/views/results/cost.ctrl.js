@@ -1,21 +1,38 @@
 angular.module('app').controller('CostCtrl', myFunction);
 
-myFunction.$inject = ['$scope','SharedSrvc'];
+myFunction.$inject = ['$scope','SharedSrvc','ResultsSrvc'];
 
-function myFunction($scope,SharedSrvc) { 
+function myFunction($scope,SharedSrvc,ResultsSrvc) { 
 	var vm = this;
-	
-
+	var S = SharedSrvc;
+	var R = ResultsSrvc;
 	vm.JobID = "";
+	var summary = {tearOff:0,field:0,terms:0,pens:0,hvac:0};
 
-	function xxx(){
-		console.log('Input ID = '+ vm.JobID);
-	}
+	 function tearOff(){
+    	var x = S.returnData('LAYERS');
+    }
 
+	function initView() {
+        
+    };
 
+ 	function pushToShared() {
+        S.pushData(vm.PARAMS, 'XXX');
+    };
 
+    function pullFromShared() {
+        vm.PARAMS = S.returnData('XXX');
+        initView();
+    };
 
-	vm.xxx = xxx;
+    $scope.$on("$destroy", function() {
+        pushToShared();
+    });
+
+    $scope.$watch('$viewContentLoaded', function() {
+        pullFromShared();
+    });
 
 
 

@@ -9,8 +9,9 @@ body {
     justify-content: space-around;
     align-items: center;
     background-color: $material-pallette-800;
+    background-color: $material-accent-light;
     h1 {
-        color: #fff;
+        color: #000;
         line-height: 1;
         vertical-align: middle;
         margin: 0 0 0 .5rem;
@@ -32,11 +33,12 @@ body {
 .page-title {
     height: 26px;
     margin:0 0 5px 0;
-    background-color: $material-accent-light;
+    background-color: $material-pallette-800;
     display: flex;
     justify-content: space-around;
     align-items: center;
     h4 {
+         color: #fff;
         line-height: 1;
         font-size: 1rem;
         padding: 0;

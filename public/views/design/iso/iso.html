@@ -1,52 +1,55 @@
 <div ng-controller="ISO_Ctrl as Ctrl">
     <div class="page-title">
-        <h4>Polyisocyanurate Insulation</h4></div>
-    <div>
+        <h4>Roof Base</h4></div>
+    
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Base Layers</h3></div>
+        <div class="item-counter">
+            <counter count="Ctrl.layerCount" min="1" max="6"></counter>
+        </div>
+    </div>
+    <div class="indent">
+        <base-layer material="item.material" size="item.size" thickness="item.thickness" ng-repeat="item in Ctrl.PARAMS.LAYERS"></base-layer>
+    </div>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Attachment</h3></div>
+        <div class="item-select">
+            <md-select ng-model="Ctrl.PARAMS.ATTACHMENT" placeholder="method">
+                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.adhereMethod">{{ opt }}</md-option>
+            </md-select>
+        </div>
+    </div>
+    <add-space heightpx="10"></add-space>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Special Taper</h3></div>
+    </div>
+    <div class="indent">
         <div class="form-input">
             <div class="item-name">
-                <h3>ISO Thickness</h3></div>
-            <div class="item-select">
-                <md-select ng-model="Ctrl.SELECT.iso" placeholder="thickness">
-                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ISO">{{ opt }}</md-option>
-                </md-select>
+                <h3>Quote</h3></div>
+            <div class="item-input">
+                <input type="text" ng-model="Ctrl.PARAMS.quote">
             </div>
         </div>
         <div class="form-input">
             <div class="item-name">
-                <h3>Adhere</h3></div>
-            <div class="item-select">
-                <md-select ng-model="Ctrl.SELECT.adhere" placeholder="method">
-                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.adhereMethod">{{ opt }}</md-option>
-                </md-select>
+                <h3>Supplier</h3></div>
+            <div class="item-input">
+                <input type="text" ng-model="Ctrl.PARAMS.supplier">
             </div>
         </div>
-        <add-space heightpx="10"></add-space>
         <div class="form-input">
             <div class="item-name">
-                <h3>Special Taper</h3></div>
-        </div>
-        <div class="indent">
-            <div class="form-input">
-                <div class="item-name">
-                    <h3>Quote</h3></div>
-                <div class="item-input">
-                    <input type="text" ng-model="Ctrl.PARAMS.quote">
-                </div>
-            </div>
-            <div class="form-input">
-                <div class="item-name">
-                    <h3>Supplier</h3></div>
-                <div class="item-input">
-                    <input type="text" ng-model="Ctrl.PARAMS.supplier">
-                </div>
-            </div>
-            <div class="form-input">
-                <div class="item-name">
-                    <h3>Price</h3></div>
-                <div class="item-input">
-                    <input type="text" ng-model="Ctrl.PARAMS.price">
-                </div>
+                <h3>Price</h3></div>
+            <div class="item-input">
+                <input type="text" ng-model="Ctrl.PARAMS.price">
             </div>
         </div>
+    </div>
+    <div class="input-description">
+        <h5>Field Total = {{Ctrl.FIELD.SQUARES}} Sqs</h5>
     </div>
 </div>

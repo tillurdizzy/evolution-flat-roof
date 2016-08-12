@@ -14,9 +14,11 @@
         </div>
         <div class="item-name-small">
             <h3>Shape</h3></div>
-        <md-select ng-model="$ctrl.shape" placeholder="select">
-            <md-option value="{{opt}}" ng-repeat="opt in $ctrl.shape_dp">{{ opt }}</md-option>
-        </md-select>
+        <div class="item-select-small">    
+            <md-select ng-model="$ctrl.shape" placeholder="select">
+                <md-option value="{{opt}}" ng-repeat="opt in $ctrl.shape_dp">{{ opt }}</md-option>
+            </md-select>
+        </div>
         <div class="item-cb">
             <md-checkbox ng-model="$ctrl.replace" aria-label="Replace">
                 Replace

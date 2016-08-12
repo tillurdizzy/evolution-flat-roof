@@ -8,29 +8,28 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	vm.L = ListSrvc;
 	var S = SharedSrvc;
 
+	vm.layerCount = 0;
+
 	vm.SELECT = {};
 	vm.PARAMS = {};
+	vm.FIELD = {};
+	vm.LAYERS = {};
 
-	// Extract id from user Selected Object
-	function getSelectData(){
-		vm.PARAMS.iso = vm.SELECT.iso.id;
-		vm.PARAMS.adhere = vm.SELECT.adhere.id;
-	};
-
-	// Set Selected Object from saved data
-	function setSelectData(){
-		vm.SELECT.iso = vm.L.returnObjById(vm.L.ISO,vm.PARAMS.iso);
-		vm.SELECT.adhere = vm.L.returnObjById(vm.L.adhereMethod,vm.PARAMS.adhere);
+	
+	
+	function initView(){
+		vm.layerCount = vm.PARAMS.LAYERS.length;
 	};
 
 	function pushToShared(){
-		getSelectData();
-		S.pushData(vm.PARAMS,'ISO');
+		S.pushData(vm.PARAMS,'ROOFBASE');
 	};
 
 	function pullFromShared(){
-		vm.PARAMS = S.returnData('ISO');
-		setSelectData();
+		vm.PARAMS = S.returnData('ROOFBASE');
+		vm.LAYERS = S.returnData('LAYERS');
+		vm.FIELD = S.returnData('FIELD');
+		initView();
 	};
 
 	$scope.$on("$destroy", function(){
@@ -39,6 +38,15 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 
     $scope.$watch('$viewContentLoaded', function() {
  		pullFromShared();
+    });
+
+     $scope.$watch('Ctrl.layerCount', function() {
+        var currentCount = vm.PARAMS.LAYERS.length;
+        if (vm.layerCount > currentCount) {
+            vm.PARAMS.LAYERS.push({ material: '', thickness: '', size: ''});
+        } else if (vm.layerCount < currentCount) {
+            vm.PARAMS.LAYERS.pop();
+        }
     });
 
 };

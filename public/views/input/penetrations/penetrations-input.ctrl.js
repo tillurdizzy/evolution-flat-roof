@@ -45,9 +45,8 @@ function myCtrlFunction($scope, $state, SharedSrvc) {
 
     function initView() {
         vm.StarCount = vm.PARAMS.STARCAPS.length;
-        
-        vm.smallVentCount = vm.PARAMS.SMVENTS.length;
-        vm.largeVentCount = vm.PARAMS.LRGVENTS.length;
+        vm.smallVentCount = vm.PARAMS.VENTS.SMALL.length;
+        vm.largeVentCount = vm.PARAMS.VENTS.LARGE.length;
         vm.internalDrainCount = vm.PARAMS.DRAINS.INTERNAL.length;
     	vm.scupperDrainCount = vm.PARAMS.DRAINS.SCUPPER.length;
     };
@@ -72,20 +71,20 @@ function myCtrlFunction($scope, $state, SharedSrvc) {
 
    
     $scope.$watch('Ctrl.smallVentCount', function() {
-        var currentCount = vm.PARAMS.SMVENTS.length;
+        var currentCount = vm.PARAMS.VENTS.SMALL.length;
         if (vm.smallVentCount > currentCount) {
-            vm.PARAMS.SMVENTS.push({ qty: '', size: '', shape: '',replace:''});
+            vm.PARAMS.VENTS.SMALL.push({ qty: '', size: '', shape: '',replace:''});
         } else if (vm.smallVentCount < currentCount) {
-            vm.PARAMS.SMVENTS.pop();
+            vm.PARAMS.VENTS.SMALL.pop();
         }
     });
 
     $scope.$watch('Ctrl.largeVentCount', function() {
-        var currentCount = vm.PARAMS.LRGVENTS.length;
+        var currentCount = vm.PARAMS.VENTS.LARGE.length;
         if (vm.largeVentCount > currentCount) {
-            vm.PARAMS.LRGVENTS.push({ qty: '', size: '', shape: '',replace:''});
+            vm.PARAMS.VENTS.LARGE.push({ qty: '', size: '', shape: '',replace:''});
         } else if (vm.largeVentCount < currentCount) {
-            vm.PARAMS.LRGVENTS.pop();
+            vm.PARAMS.VENTS.LARGE.pop();
         }
     });
 

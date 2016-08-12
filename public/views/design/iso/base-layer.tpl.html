@@ -1,0 +1,29 @@
+<div class="form-input">
+    <div class="item-name">
+        <h3>Material</h3></div>
+    <div class="item-select-small">
+        <md-select ng-model="$ctrl.material" placeholder="select">
+            <md-option value="{{opt}}" ng-repeat="opt in $ctrl.materials_dp">{{ opt }}</md-option>
+        </md-select>
+    </div>
+    <div class="item-name-med">
+        <h3>Thickness</h3></div>
+    <div class="item-select-small">
+        <md-select ng-model="$ctrl.thickness" placeholder="select" ng-show="$ctrl.material=='Plywood'">
+            <md-option value="{{opt}}" ng-repeat="opt in $ctrl.plywood_dp">{{ opt }}</md-option>
+        </md-select>
+        <md-select ng-model="$ctrl.thickness" placeholder="select" ng-show="$ctrl.material=='Densdeck'">
+            <md-option value="{{opt}}" ng-repeat="opt in $ctrl.densdeck_dp">{{ opt }}</md-option>
+        </md-select>
+        <md-select ng-model="$ctrl.thickness" placeholder="select" ng-show="$ctrl.material=='ISO'">
+            <md-option value="{{opt}}" ng-repeat="opt in $ctrl.iso_dp">{{ opt }}</md-option>
+        </md-select>
+    </div>
+    <div class="item-name-small" ng-show="$ctrl.material=='ISO'">
+        <h3>Size</h3></div>
+    <div class="item-select-small" ng-show="$ctrl.material=='ISO'">
+        <md-select ng-model="$ctrl.size" placeholder="select">
+            <md-option value="{{opt}}" ng-repeat="opt in $ctrl.isoSize">{{ opt }}</md-option>
+        </md-select>
+    </div>
+</div>

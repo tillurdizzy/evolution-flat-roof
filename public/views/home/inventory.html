@@ -1,0 +1,100 @@
+<div ng-controller="InvtCtrl as Ctrl">
+    <div class="page-title">
+        <h4>Inventory</h4></div>
+    <div>
+        <div class="form-input">
+            <div class="item-name">
+                <h3>Category</h3></div>
+            <div class="item-select">
+                <md-select ng-model="Ctrl.categorySelected" placeholder="select" ng-change="Ctrl.getInventory();">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.invtCategories">{{ opt }}</md-option>
+                </md-select>
+            </div>
+        </div>
+        <p>{{Ctrl.itemSelected.qty}} {{Ctrl.itemSelected.pkg}} of {{Ctrl.itemSelected.item}} costs {{Ctrl.itemSelected.price | currency:"$":2}} and covers {{Ctrl.itemSelected.num}} {{Ctrl.itemSelected.unit}} of {{Ctrl.itemSelected.component}}</p>
+        <horiz-rule margintop="5" marginbottom="15"></horiz-rule>
+        <div>
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Item</h3></div>
+                <div class="item-input" style="width:300px;">
+                    <input type="text" ng-model="Ctrl.itemSelected.item" style="width:300px;"></div>
+            </div>
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Qty</h3></div>
+                <div class="item-input">
+                    <input type="tel" ng-model="Ctrl.itemSelected.qty"></div>
+            </div>
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Pkg</h3></div>
+                <div class="item-select">
+                    <md-select ng-model="Ctrl.itemSelected.pkg" placeholder="select">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.pkgList">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+            </div>
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Price</h3></div>
+                <div class="item-input">
+                    <input type="tel" ng-model="Ctrl.itemSelected.price"></div>
+            </div>
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Num</h3></div>
+                <div class="item-input">
+                    <input type="tel" ng-model="Ctrl.itemSelected.num"></div>
+            </div>
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Unit</h3></div>
+                <div class="item-select">
+                    <md-select ng-model="Ctrl.itemSelected.unit" placeholder="select">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.unitList">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+            </div>
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Component</h3></div>
+                <div class="item-select">
+                    <md-select ng-model="Ctrl.itemSelected.component" placeholder="select">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.compList">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+            </div>
+             <md-button class="md-raised" ng-click="Ctrl.submitEdit();"> Submit </md-button>
+            
+        </div>
+        <horiz-rule margintop="15" marginbottom="15"></horiz-rule>
+        <div style="overflow:auto;height:400px;">
+            <table st-table="Ctrl.selectedCategoryList" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="width:250px;">Item</th>
+                        <th style="width:50px;">Qty</th>
+                        <th style="width:50px;">Pkg</th>
+                        <th style="width:80px;">Price</th>
+                        <th style="width:50px;">Num</th>
+                        <th style="width:50px;">Unit</th>
+                        <th style="width:80px;">Comp</th>
+                        <th style="width:40px;">Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in Ctrl.selectedCategoryList">
+                        <td>{{row.item}}</td>
+                        <td>{{row.qty}}</td>
+                        <td>{{row.pkg}}</td>
+                        <td>{{row.price}}</td>
+                        <td>{{row.num}}</td>
+                        <td>{{row.unit}}</td>
+                        <td>{{row.component}}</td>
+                        <td><i class="fa fa-pencil" ng-click="Ctrl.editRowItem(row)" style="cursor:pointer;"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

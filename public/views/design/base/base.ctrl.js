@@ -1,5 +1,5 @@
 'use strict';
-angular.module('app').controller('ISO_Ctrl', myFunction);
+angular.module('app').controller('BaseCtrl', myFunction);
 
 myFunction.$inject = ['$scope','ListSrvc','SharedSrvc'];
 
@@ -14,11 +14,37 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	vm.PARAMS = {};
 	vm.FIELD = {};
 	vm.LAYERS = {};
-
+	vm.existingLayers = [];
 	
 	
 	function initView(){
 		vm.layerCount = vm.PARAMS.LAYERS.length;
+		vm.existingLayers = [];
+		if(vm.LAYERS.layerOne != ""){
+			vm.existingLayers.push({layerNum:"1",material:vm.LAYERS.layerOne});
+		};
+
+		if(vm.LAYERS.layerTwo != ""){
+			vm.existingLayers.push({layerNum:"2",material:vm.LAYERS.layerTwo});
+		};
+
+		if(vm.LAYERS.layerThree != ""){
+			vm.existingLayers.push({layerNum:"3",material:vm.LAYERS.layerThree});
+		};
+
+		if(vm.LAYERS.layerFour != ""){
+			vm.existingLayers.push({layerNum:"4",material:vm.LAYERS.layerFour});
+		};
+
+		if(vm.LAYERS.layerFive != ""){
+			vm.existingLayers.push({layerNum:"5",material:vm.LAYERS.layerFive});
+		};
+
+		if(vm.LAYERS.layerSix != ""){
+			vm.existingLayers.push({layerNum:"6",material:vm.LAYERS.layerSix});
+		};
+
+		
 	};
 
 	function pushToShared(){

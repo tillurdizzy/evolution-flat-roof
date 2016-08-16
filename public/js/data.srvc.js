@@ -5,13 +5,25 @@ eventQueries.$inject = ['$http', '$q'];
 
 function eventQueries($http, $q) {
     var self = this;
-    self.ME = "DB: ";
+    self.name = "DB: ";
 
-    var globalPathPrefix = "js/php/";
     var httpPathPrefix = "http/";
 
     var queryPaths = {
-        getRoof: httpPathPrefix + "getRoof.php",
+        Adhesives: httpPathPrefix + "getAdhesives.php",
+        Edging: httpPathPrefix + "getEdging.php",
+        Fasteners: httpPathPrefix + "getFasteners.php",
+        Flashing: httpPathPrefix + "getFlashing.php",
+        Insulation: httpPathPrefix + "getInsulation.php",
+        Membranes: httpPathPrefix + "getMembranes.php",
+        Walkway: httpPathPrefix + "getWalkway.php",
+        updateAdhesives: httpPathPrefix + "updateAdhesives.php",
+        updateEdging: httpPathPrefix + "updateEdging.php",
+        updateFasteners: httpPathPrefix + "updateFasteners.php",
+        updateFlashing: httpPathPrefix + "updateFlashing.php",
+        updateInsulation: httpPathPrefix + "updateInsulation.php",
+        updateMembranes: httpPathPrefix + "updateMembranes.php",
+        updateWalkways: httpPathPrefix + "updateWalkways.php"
     };
 
     self.query = function(query, dataObj) {

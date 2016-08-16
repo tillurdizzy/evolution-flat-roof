@@ -1,4 +1,4 @@
-<div ng-controller="ISO_Ctrl as Ctrl">
+<div ng-controller="BaseCtrl as Ctrl">
     <div class="page-title">
         <h4>Roof Base</h4></div>
     
@@ -51,5 +51,16 @@
     </div>
     <div class="input-description">
         <h5>Field Total = {{Ctrl.FIELD.SQUARES}} Sqs</h5>
+        <add-space heightpx="20"></add-space>
+        <h5>Existing Layers:</h5>
+        <div style="margin-left:20px">
+            <h5 ng-repeat="item in Ctrl.existingLayers">Layer {{item.layerNum}}: {{item.material}}</h5>
+        </div>
+        <div style="margin-left:40px" ng-show="Ctrl.LAYERS.layerOne=='RPANEL'">
+            <h5>- Rib Height: {{Ctrl.LAYERS.RPANEL.height}} in.</h5>
+            <h5>- Rib Width Top: {{Ctrl.LAYERS.RPANEL.width}} in.</h5>
+            <h5>- Winged Fill: {{Ctrl.LAYERS.RPANEL.winged}}</h5>
+            <h5>- Top Insulation: {{Ctrl.LAYERS.RPANEL.insulation}} in.</h5>
+        </div>
     </div>
 </div>

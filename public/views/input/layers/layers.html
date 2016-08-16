@@ -11,6 +11,9 @@
             </md-select>
         </div>
     </div>
+    <div class="indent" ng-show="Ctrl.PARAMS.layerOne=='RPANEL'">
+        <rpanel height="Ctrl.PARAMS.RPANEL.height" width="Ctrl.PARAMS.RPANEL.width" winged="Ctrl.PARAMS.RPANEL.winged" insulation="Ctrl.PARAMS.RPANEL.insulation"></rpanel>
+    </div>
     <!-- Layer Two -->
     <div ng-show="Ctrl.DOM.layerTwo">
         <div class="form-input">

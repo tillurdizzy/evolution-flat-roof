@@ -54,20 +54,20 @@ function SharedSrvc($rootScope) {
     function setTempData(){
         // INPUT
         LAYERS = {layerOne:'',layerTwo:'',layerThree:'',layerFour:'',layerFive:'',layerSix:'',
-        rPanel_height:'',rPanel_width:'',rPanel_winged:'',rPanel_insulation:''};
+            RPANEL:{height:'',width:'',winged:'',insulation:''}};
 
         FIELD = {
-            SQUARES:'',
-            CRNROUT:'',
-            CRNRIN:''
+            SQUARES:'0',
+            CRNROUT:'0',
+            CRNRIN:'0',
+            WALLS:[]
         };
-
 
         PENETRATIONS = {
             STARCAPS:[{qty:'2',size:'5',finish:"Painted"},{qty:'3',size:'4',finish:"Galvanized"},{qty:'1',size:'8',finish:"Painted"}],
             VENTS:{SMALL:[{qty:'2',size:'5',shape:"Square",replace:true}],LARGE:[{qty:'2',size:'12',shape:"Round",replace:false}]},
             PIPES:{small:'2',medium:'3',large:'1'},
-            DRAINS:{INTERNAL:[{qty:'2',size:'4',method:"Boot"}],SCUPPER:[{qty:'2',width:'4',downspout:true}]},
+            DRAINS:{INTERNAL:[{qty:'2',size:'4',method:"Boot"}],SCUPPER:[{qty:'2',width:'4',downspout:true,length:'14'}]},
             GUTTERS:{EAVESTROUGH:{length:"",size:""},DOWNSPOUTS:{length:"",qty:""},CORNERS:{inside:"",outside:""},ELBOWS:{front:"",side:""},
                 HARDWARE:{hangers:"",downspouts:"",endcaps:""}}
         };
@@ -83,7 +83,8 @@ function SharedSrvc($rootScope) {
         HVAC = {
             UNITS:[{qty:"3",footprintX:"4",footprintY:"3.5"}],
             SUPPORT:{
-                TIMBER:[{qty:"35",width:""}],
+                WOOD:[{qty:"35",width:""}],
+                FOAM:[{qty:"35",width:""}],
                 CONES:[{qty:"",ring:false,attached:false}]
             }
         };

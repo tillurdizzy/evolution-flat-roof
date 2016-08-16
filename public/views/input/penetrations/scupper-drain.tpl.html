@@ -11,9 +11,18 @@
             <md-option value="{{opt}}" ng-repeat="opt in $ctrl.width_dp">{{ opt }}</md-option>
         </md-select>
     </div>
+    <div class="item-unit">
+        <h3>in.</h3></div>
     <div class="item-cb">
         <md-checkbox ng-model="$ctrl.downspout" aria-label="Downspout">
             Downspout
         </md-checkbox>
     </div>
+    <div class="item-name-small" ng-show="$ctrl.downspout" style="margin-left:10px;">
+        <h3>Length</h3></div>
+    <div class="item-input" ng-show="$ctrl.downspout">
+        <input type="tel" ng-model="$ctrl.length">
+    </div>
+    <div class="item-unit" ng-show="$ctrl.downspout">
+        <h3>Ft.</h3></div>
 </div>

@@ -2,7 +2,8 @@ angular.module('app').component('scupperDrainReview', {
     bindings: {
         qty: '=',
         width:'=',
-        downspout:'='
+        downspout:'=',
+        length:'='
     },
     controller: function() {
        

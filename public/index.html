@@ -28,6 +28,7 @@
         <div class="side-nav" ng-controller="NavCtrl as Ctrl">
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('home')}" ng-click="Ctrl.goNav('home');"> Home </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('illustrations')}" ng-click="Ctrl.goNav('illustrations');"> Illustrations </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('inventory')}" ng-click="Ctrl.goNav('inventory');"> Inventory </md-button>
             <add-space heightpx="20"></add-space>
             <div class="section-label">
                 <h4>Input</h4></div>
@@ -40,7 +41,7 @@
             <div class="section-label">
                 <h4>Design</h4></div>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('membrane')}" ng-click="Ctrl.goNav('membrane');"> Membrane </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('iso')}" ng-click="Ctrl.goNav('iso');"> ROOF BASE </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('base')}" ng-click="Ctrl.goNav('base');"> ROOF BASE </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('terminations-design')}" ng-click="Ctrl.goNav('terminationsB.edge');"> Terminations </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('penetrations-design')}" ng-click="Ctrl.goNav('penetrationsB.pipes');"> Penetrations </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('hvac-design')}" ng-click="Ctrl.goNav('hvacB');"> HVAC </md-button>
@@ -50,6 +51,7 @@
                 <h4>Results</h4></div>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('materials')}" ng-click="Ctrl.goNav('materials');"> Materials </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('cost')}" ng-click="Ctrl.goNav('cost');"> Cost </md-button>
+
         </div>
         <div ui-view class="view-container"></div>
     </div>
@@ -86,12 +88,12 @@
     <script src="views/design/penetrations/vent-review.comp.js?v=2"></script>
     <script src="views/design/penetrations/interior-drain-review.comp.js?v=2"></script>
     <script src="views/design/penetrations/scupper-drain-review.comp.js?v=2"></script>
-    <script src="views/design/iso/base-layer.comp.js?v=2"></script>
+    <script src="views/design/base/base-layer.comp.js?v=2"></script>
     <!--Modules-->
     
     <!--Controllers-->
     <script src="views/home/home.ctrl.js?v=2"></script>
-
+    <script src="views/home/inventory.ctrl.js?v=2"></script>
     <script src="views/input/field/field.ctrl.js?v=2"></script>
     <script src="views/input/layers/layers.ctrl.js?v=2"></script>
     <script src="views/input/terminations/terminations-input.ctrl.js?v=2"></script>
@@ -101,7 +103,7 @@
     <script src="views/design/membrane/membrane.ctrl.js?v=2"></script>
     <script src="views/design/terminations/terminations-design.ctrl.js?v=2"></script>
     <script src="views/design/penetrations/penetrations-design.ctrl.js?v=2"></script>
-    <script src="views/design/iso/iso.ctrl.js?v=2"></script>
+    <script src="views/design/base/base.ctrl.js?v=2"></script>
     <script src="views/design/hvac/hvac-design.ctrl.js?v=2"></script>
     <script src="views/design/rpanel/rpanel.ctrl.js?v=2"></script>
 

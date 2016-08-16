@@ -466,6 +466,97 @@ body {
   content: '';
   display: block; }
 
+table {
+  margin-bottom: 1em;
+  border-radius: 0;
+  border: 1px solid #999999;
+  background-color: #fff; }
+  table caption {
+    font-weight: 700;
+    padding: 4px 8px; }
+  table thead,
+  table tfoot {
+    background: smart-scale(#fff, 2.5%);
+    color: #000; }
+    table thead tr,
+    table tfoot tr {
+      background: transparent; }
+    table thead th,
+    table thead td,
+    table tfoot th,
+    table tfoot td {
+      padding: 4px 8px;
+      font-weight: 700;
+      text-align: left;
+      overflow: hidden; }
+      table thead th .check-radio-container label,
+      table thead td .check-radio-container label,
+      table tfoot th .check-radio-container label,
+      table tfoot td .check-radio-container label {
+        margin-right: 0; }
+  table tbody tr:nth-child(even) {
+    background-color: smart-scale(#fff, 5%); }
+  table tbody th,
+  table tbody td {
+    padding: 4px 8px;
+    overflow: hidden; }
+
+.table-scroll {
+  display: block;
+  width: 100%;
+  overflow-x: auto; }
+
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #eee; }
+
+#jobs-table-container {
+  width: 500px; }
+  #jobs-table-container button {
+    margin-bottom: 10px; }
+
+.status-table {
+  margin: 10px 0 0 10px; }
+
+.jobs-table {
+  min-height: 100px; }
+  .jobs-table .title {
+    height: 1.4em;
+    background-color: #666666; }
+  .jobs-table h2 {
+    color: #FFFFFF;
+    font-size: 1em;
+    margin: 0 0 0 .5em;
+    font-weight: 700;
+    line-height: 1.4em;
+    vertical-align: middle; }
+  .jobs-table table {
+    table-layout: fixed;
+    width: 600px; }
+  .jobs-table th, .jobs-table td {
+    border: 1px solid black;
+    overflow: hidden; }
+  .jobs-table .tbl-btn {
+    margin: 0; }
+  .jobs-table #tbl-width-190 {
+    width: 190px; }
+  .jobs-table #tbl-width-70 {
+    width: 70px; }
+  .jobs-table #tbl-width-100 {
+    width: 100px; }
+  .jobs-table #tbl-width-170 {
+    width: 170px; }
+
+#editForm .btnContainer {
+  width: 350px;
+  height: 80px;
+  border-radius: 10px; }
+  #editForm .btnContainer button {
+    float: left;
+    margin-right: 1em; }
+
+.table-icon-btn {
+  cursor: pointer; }
+
 .counter-component button {
   height: 28px;
   width: 28px;
@@ -559,7 +650,7 @@ body {
     font-size: 14px; }
   .form-input .item-unit {
     height: 30px;
-    width: 60px;
+    width: 40px;
     color: #455A64;
     margin-left: 5px;
     padding: 0 0 0 5px; }

@@ -11,5 +11,5 @@ angular.module('app').component('baseLayer', {
 		this.plywood_dp = ['.50','.75','.625'];
 		this.densdeck_dp = ['.25','.50'];
     },
-    templateUrl: 'views/design/iso/base-layer.tpl.html'
+    templateUrl: 'views/design/base/base-layer.tpl.html'
 });

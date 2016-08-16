@@ -2,7 +2,7 @@
 ini_set('display_errors', 'On');
 error_reporting(E_ALL | E_STRICT);
 $data = json_decode(file_get_contents("php://input"));
-require_once ('vo/membraneVO.php');
+require_once ('vo/inventoryVO.php');
 
 define( "DATABASE_SERVER", "evoflatroof.db.10253438.hostedresource.com");
 define( "DATABASE_USERNAME", "evoflatroof");
@@ -15,11 +15,15 @@ $query = sprintf("SELECT * FROM inv_membranes");
 $result = mysqli_query($con,$query);
 $resultValueObjects = array();
 while ($row = mysqli_fetch_object($result)) {
-	$oneVO = new membraneVO();
+	$oneVO = new inventoryVO();
 	$oneVO->PRIMARY_ID = $row->PRIMARY_ID;
-	$oneVO->Type = $row->Type;
-	$oneVO->Length = $row->Length;
-	$oneVO->Price = $row->Price;
+	$oneVO->item = $row->item;
+	$oneVO->qty = $row->qty;
+	$oneVO->pkg = $row->pkg;
+	$oneVO->price = $row->price;
+	$oneVO->num = $row->num;
+	$oneVO->unit = $row->unit;
+	$oneVO->component = $row->component;
 	
 	array_push( $resultValueObjects, $oneVO );
 }

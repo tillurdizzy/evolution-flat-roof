@@ -11,13 +11,19 @@
     </div>
     <div class="form-input">
         <div class="item-name">
-            <h3>Support</h3></div>
+            <h3>Electrical Support</h3></div>
     </div>
     <div class="indent">
         <div class="form-input">
             <div class="item-name">
-                <h3>Timber</h3></div>
-                <support-timber qty="item.qty" width="item.width" ng-repeat="item in Ctrl.PARAMS.SUPPORT.TIMBER"></support-timber>
+                <h3>Wood</h3></div>
+                <support-timber qty="item.qty" width="item.width" ng-repeat="item in Ctrl.PARAMS.SUPPORT.WOOD"></support-timber>
+        </div>
+
+        <div class="form-input">
+            <div class="item-name">
+                <h3>Foam</h3></div>
+                <support-timber qty="item.qty" width="item.width" ng-repeat="item in Ctrl.PARAMS.SUPPORT.FOAM"></support-timber>
         </div>
         
         <div class="form-input">

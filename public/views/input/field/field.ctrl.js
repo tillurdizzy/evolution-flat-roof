@@ -17,7 +17,7 @@ function myFunction($scope,SharedSrvc) {
 
 	
 	function initView(){
-		vm.parapetWallCount = vm.PARAMS.PARAPET.length;
+		vm.parapetWallCount = vm.PARAMS.WALLS.length;
 	};
 
 	function pushToShared(){
@@ -39,11 +39,11 @@ function myFunction($scope,SharedSrvc) {
     });
 
     $scope.$watch('Ctrl.parapetWallCount', function() {
-        var currentCount = vm.PARAMS.PARAPET.length;
+        var currentCount = vm.PARAMS.WALLS.length;
         if (vm.parapetWallCount > currentCount) {
-            vm.PARAMS.PARAPET.push({ height: '', length: '', width: ''});
+            vm.PARAMS.WALLS.push({ height: '', length: '', width: ''});
         } else if (vm.parapetWallCount < currentCount) {
-            vm.PARAMS.PARAPET.pop();
+            vm.PARAMS.WALLS.pop();
         }
     });
 

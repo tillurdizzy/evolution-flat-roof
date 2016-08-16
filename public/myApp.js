@@ -20,11 +20,18 @@ function initRouter($stateProvider, $urlRouterProvider) {
         url: "/illustrations",
         templateUrl: "views/home/illustrations.html"
     })
+    
+     .state('inventory', {
+        url: "/inventory",
+        templateUrl: "views/home/inventory.html"
+    })
 
     .state('materials', {
         url: "/materials",
         templateUrl: "views/results/materials.html"
     })
+
+   
 
     .state('cost', {
         url: "/cost",
@@ -172,9 +179,9 @@ function initRouter($stateProvider, $urlRouterProvider) {
         templateUrl: "views/design/membrane/membrane.html"
     })
 
-    .state('iso', {
-        url: "/iso",
-        templateUrl: "views/design/iso/iso.html"
+    .state('base', {
+        url: "/base",
+        templateUrl: "views/design/base/base.html"
     })
 
     .state('rpanel', {

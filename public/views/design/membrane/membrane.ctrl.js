@@ -43,6 +43,8 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	};
 
 	function pullFromShared(){
+		vm.JobID = S.selectedJobID;
+        vm.JOB = S.selectedJob;
 		vm.PARAMS = S.returnData('MEMBRANE');
 		vm.FIELD = S.returnData('FIELD');
 		formatForDisplay();

@@ -1,5 +1,6 @@
 <div ng-controller="TerminationsDesignCtrl as Ctrl">
-    <div class="page-title"><h4>Edges, Walls and Parapets</h4></div>
+    <div class="page-title">
+    	<h4>{{Ctrl.JOB.street}}, {{Ctrl.JOB.city}}</h4></div>
     <md-nav-bar md-selected-nav-item="Ctrl.currentNavItem" nav-bar-aria-label="navigation links">
         <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('terminationsB.edge')" name="pipes">EDGES</md-nav-item>
         <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('terminationsB.wall')" name="vents">WALLS</md-nav-item>

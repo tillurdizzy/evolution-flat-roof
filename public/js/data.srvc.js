@@ -5,8 +5,8 @@ eventQueries.$inject = ['$http', '$q'];
 
 function eventQueries($http, $q) {
     var self = this;
-    self.name = "DB: ";
-
+    var ME = "DB: ";
+    var doTrace = true;
     var httpPathPrefix = "http/";
 
     var queryPaths = {
@@ -17,13 +17,28 @@ function eventQueries($http, $q) {
         Insulation: httpPathPrefix + "getInsulation.php",
         Membranes: httpPathPrefix + "getMembranes.php",
         Walkway: httpPathPrefix + "getWalkway.php",
+        getActiveJobs: httpPathPrefix + "getActiveJobs.php",
         updateAdhesives: httpPathPrefix + "updateAdhesives.php",
         updateEdging: httpPathPrefix + "updateEdging.php",
         updateFasteners: httpPathPrefix + "updateFasteners.php",
         updateFlashing: httpPathPrefix + "updateFlashing.php",
         updateInsulation: httpPathPrefix + "updateInsulation.php",
         updateMembranes: httpPathPrefix + "updateMembranes.php",
-        updateWalkways: httpPathPrefix + "updateWalkways.php"
+        updateWalkways: httpPathPrefix + "updateWalkways.php",
+        updateFIELD: httpPathPrefix + "updateField.php",
+        updateLAYERS: httpPathPrefix + "updateLayers.php",
+        updatePENETRATIONS: httpPathPrefix + "updatePenetrations.php",
+        updateTERMINATIONS: httpPathPrefix + "updateTerminations.php",
+        updateHVAC: httpPathPrefix + "updateHvac.php",
+        updateMEMBRANE: httpPathPrefix + "updateMembrane.php",
+        updateROOFBASE: httpPathPrefix + "updateBase.php",
+        insertJob: httpPathPrefix + "insertJob.php"
+    };
+
+    var trace = function(obj){
+        if(doTrace){
+            console.log(ME + obj.result);
+        }
     };
 
     self.query = function(query, dataObj) {
@@ -34,11 +49,13 @@ function eventQueries($http, $q) {
             .success(function(data, status) {
                 rtnObj.result = "Success";
                 rtnObj.data = data;
+                trace(rtnObj);
                 deferred.resolve(rtnObj);
             })
             .error(function(data, status, headers, config) {
                 rtnObj.result = "Error";
                 rtnObj.data = data;
+                trace(rtnObj);
                 deferred.reject(rtnObj);
             });
         return deferred.promise;

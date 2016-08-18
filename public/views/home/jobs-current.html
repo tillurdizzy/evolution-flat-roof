@@ -1,0 +1,19 @@
+
+<div>
+    <table st-table="Ctrl.ACTIVE_JOBS" class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width:50px;">ID</th>
+                <th style="width:200px;">Property</th>
+                <th style="width:200px;">Street</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in Ctrl.ACTIVE_JOBS">
+                <td>{{row.id}}</td>
+                <td>{{row.property}}</td>
+                <td>{{row.street}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -26,12 +26,12 @@
     </div>
     <div class="flex-row">
         <div class="side-nav" ng-controller="NavCtrl as Ctrl">
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('home')}" ng-click="Ctrl.goNav('home');"> Home </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('home')}" ng-click="Ctrl.goNav('home.selected');"> Home </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('illustrations')}" ng-click="Ctrl.goNav('illustrations');"> Illustrations </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('inventory')}" ng-click="Ctrl.goNav('inventory');"> Inventory </md-button>
             <add-space heightpx="20"></add-space>
-            <div class="section-label">
-                <h4>Input</h4></div>
+            <div class="section-label"><h4>Input</h4></div>
+            
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('layers')}" ng-click="Ctrl.goNav('layers');"> Layers </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('field')}" ng-click="Ctrl.goNav('field');"> Field </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('terminations-input')}" ng-click="Ctrl.goNav('terminationsA.edge');"> Terminations </md-button>

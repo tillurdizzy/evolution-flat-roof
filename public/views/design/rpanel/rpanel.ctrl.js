@@ -27,6 +27,8 @@ function myFunction($scope,SharedSrvc) {
 	};
 
 	function pullFromShared(){
+		vm.JobID = S.selectedJobID;
+        vm.JOB = S.selectedJob;
 		vm.PARAMS = S.returnData('RPANEL');
 		setSelectData();
 	};

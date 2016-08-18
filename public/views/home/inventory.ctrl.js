@@ -7,8 +7,8 @@ function myFunction($scope,DB) {
 
 	vm.invtCategories = ["Adhesives","Edging","Fasteners","Flashing","Insulation","Membranes","Walkways"];
 	vm.pkgList = ["Each","Roll","Bdl","Box","Pail","Case","Sheet"];
-	vm.unitList = ["Ft.","Sq","In.","LF","Sq.Ft."];
-	vm.compList = ["FIELD","PERIMETER","WALL","4X4","4X8"];
+	vm.unitList = ["Ft.","Sq","In.","Each","LF","Sq.Ft."];
+	vm.compList = ["FIELD","PERIMETER","WALL","4X4","4X8","CORNERS.inside"];
 	vm.categorySelected = '';
 	vm.selectedCategoryList = [];
 	vm.itemSelected = {};
@@ -24,18 +24,17 @@ function myFunction($scope,DB) {
     };
 
     function updateItem(){
-        DB.query(DBQuery, dataObj).then(function(resultObj) {
+        DB.query(DBQuery, vm.itemSelected).then(function(resultObj) {
             if (resultObj.result == "Error" || typeof resultObj.data === "string") {
                 alert("Query Error - see console for details");
                 console.log("updateItem ---- " + resultObj.data);
             } else {
-                self.tabsSubmitted.margin = true;
-                $rootScope.$broadcast('onSaveMarginConfig');
+               vm.itemSelected = {};
             }
         }, function(error) {
             alert("Query Error - InvtCtrl >> updateItem");
         });
-    }
+    };
 	
 
 	function getInventory() {

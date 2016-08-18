@@ -1,16 +1,11 @@
 <div ng-controller="HomeCtrl as Ctrl">
     <div class="page-title">
         <h4>Home</h4></div>
-    <div>
-        <div class="form-input">
-            <div class="item-name">
-                <h3>Job ID</h3></div>
-            <div class="item-input">
-                <input type="tel" ng-model="Ctrl.JobID">
-            </div>
-        </div>
-        <div class="item-btn">
-            <md-button class="md-raised" ng-click="Ctrl.submitJobID();"> GO </md-button>
-        </div>
-    </div>
+    <md-nav-bar md-selected-nav-item="Ctrl.currentNavItem" nav-bar-aria-label="navigation links">
+        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('home.selected')" name="selected">SELECTED</md-nav-item>
+        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('home.current')" name="active">ACTIVE</md-nav-item>
+        <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('home.new')" name="new">NEW</md-nav-item>
+    </md-nav-bar>
+    <horiz-rule marginbottom="10"></horiz-rule>
+    <div ui-view></div>
 </div>

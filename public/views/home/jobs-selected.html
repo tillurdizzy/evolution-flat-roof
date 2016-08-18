@@ -1,0 +1,29 @@
+<div class="form-input">
+    <div class="item-name">
+        <h3>Enter Job ID</h3></div>
+    <div class="item-input">
+        <input type="tel" ng-model="Ctrl.JobID" placeholder="ID" ng-change="Ctrl.inputChange();">
+    </div>
+</div>
+
+<horiz-rule marginbottom="10" margintop="10"></horiz-rule>
+
+<div ng-show="Ctrl.idStatus=='empty'">
+    <h3>There is no Selected Job.  See ACTIVE tab for list of valid ID's.</h3>
+</div>
+
+<div ng-show="Ctrl.idStatus=='invalid'">
+    <h3 style="color:#DD0000;">Invalid ID.</h3>
+</div>
+
+<div class="selectedJob"  ng-show="Ctrl.idStatus=='valid'">
+    <h3>{{Ctrl.JOB.property}}</h3>
+    <h3>{{Ctrl.JOB.street}}</h3>
+    <h3>{{Ctrl.JOB.city}}, {{Ctrl.JOB.state}} {{Ctrl.JOB.zip}}</h3>
+    <add-space heightpx="5"></add-space>
+    <h3>Client: {{Ctrl.JOB.client}}</h3>
+</div>
+
+
+
+

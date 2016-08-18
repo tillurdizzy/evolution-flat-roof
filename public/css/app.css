@@ -776,3 +776,8 @@ table {
   list-style-type: none;
   margin: 5px 10px;
   padding-left: 0; }
+
+.selectedJob {
+  margin: 10px 5px; }
+  .selectedJob h3 {
+    margin: 0; }

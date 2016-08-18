@@ -66,6 +66,8 @@ function myCtrlFunction($scope, $state, SharedSrvc) {
     });
 
     $scope.$watch('$viewContentLoaded', function() {
+        vm.JobID = vm.S.selectedJobID;
+        vm.JOB = vm.S.selectedJob;
         pullFromShared();
     });
 

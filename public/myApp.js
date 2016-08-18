@@ -8,20 +8,35 @@ initRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 function initRouter($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise("/home");
+    $urlRouterProvider.otherwise("/home/selected-job");
 
     $stateProvider
-        .state('home', {
-            url: "/home",
-            templateUrl: "views/home/home.html"
-        })
+    .state('home', {
+        url: "/home",
+        templateUrl: "views/home/home.html"
+    })
+
+    .state('home.selected', {
+        url: "/selected-job",
+        templateUrl: "views/home/jobs-selected.html"
+    })
+
+    .state('home.current', {
+        url: "/current-jobs",
+        templateUrl: "views/home/jobs-current.html"
+    })
+
+    .state('home.new', {
+        url: "/new-job",
+        templateUrl: "views/home/jobs-new.html"
+    })
 
     .state('illustrations', {
         url: "/illustrations",
         templateUrl: "views/home/illustrations.html"
     })
-    
-     .state('inventory', {
+
+    .state('inventory', {
         url: "/inventory",
         templateUrl: "views/home/inventory.html"
     })
@@ -31,7 +46,7 @@ function initRouter($stateProvider, $urlRouterProvider) {
         templateUrl: "views/results/materials.html"
     })
 
-   
+
 
     .state('cost', {
         url: "/cost",

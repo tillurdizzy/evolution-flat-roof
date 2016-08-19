@@ -26,7 +26,7 @@
     </div>
     <div class="flex-row">
         <div class="side-nav" ng-controller="NavCtrl as Ctrl">
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('home')}" ng-click="Ctrl.goNav('home.selected');"> Home </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('home')}" ng-click="Ctrl.goNav('home.active');"> Home </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('illustrations')}" ng-click="Ctrl.goNav('illustrations');"> Illustrations </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('inventory')}" ng-click="Ctrl.goNav('inventory');"> Inventory </md-button>
             <add-space heightpx="20"></add-space>

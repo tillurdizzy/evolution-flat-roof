@@ -9,7 +9,7 @@ function myFunction($scope,SharedSrvc,$state) {
 	var ME = "HomeCtrl: ";
 	vm.gallery = "edge";
 	vm.gallery_dp = ["edge","wall","cap","drains"];
-	vm.currentNavItem = 'selected';
+	vm.currentNavItem = 'active';
 	vm.JobID = "";
 	vm.idStatus = 'empty';
 	vm.JOB = {id:'',client:'',property:'',street:'',city:'',state:'',zip:''};
@@ -69,6 +69,8 @@ function myFunction($scope,SharedSrvc,$state) {
     $scope.$on('onRefreshActiveJobs', function() {
     	trace('onRefreshActiveJobs');
  		vm.ACTIVE_JOBS = S.returnData('ACTIVE_JOBS');
+ 		$state.transitionTo('home.active');
+ 		vm.currentNavItem = 'active';
     });
 
    

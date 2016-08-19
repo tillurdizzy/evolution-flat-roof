@@ -32,11 +32,18 @@ function eventQueries($http, $q) {
         updateHVAC: httpPathPrefix + "updateHvac.php",
         updateMEMBRANE: httpPathPrefix + "updateMembrane.php",
         updateROOFBASE: httpPathPrefix + "updateBase.php",
-        insertJob: httpPathPrefix + "insertJob.php"
+        insertJob: httpPathPrefix + "insertJob.php",
+        insertBase: httpPathPrefix + "insertBase.php",
+        insertField: httpPathPrefix + "insertField.php",
+        insertLayers: httpPathPrefix + "insertLayers.php",
+        insertMembrane: httpPathPrefix + "insertMembrane.php",
+        insertPenetrations: httpPathPrefix + "insertPenetrations.php",
+        insertTerminations: httpPathPrefix + "insertTerminations.php",
+        insertHvac: httpPathPrefix + "insertHvac.php"
     };
 
-    var trace = function(obj){
-        if(doTrace){
+    var trace = function(obj) {
+        if (doTrace) {
             console.log(ME + obj.result);
         }
     };

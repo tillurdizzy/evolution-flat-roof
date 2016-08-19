@@ -8,7 +8,7 @@ initRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 function initRouter($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise("/home/selected-job");
+    $urlRouterProvider.otherwise("/home/active-jobs");
 
     $stateProvider
     .state('home', {
@@ -21,9 +21,9 @@ function initRouter($stateProvider, $urlRouterProvider) {
         templateUrl: "views/home/jobs-selected.html"
     })
 
-    .state('home.current', {
-        url: "/current-jobs",
-        templateUrl: "views/home/jobs-current.html"
+    .state('home.active', {
+        url: "/active-jobs",
+        templateUrl: "views/home/jobs-active.html"
     })
 
     .state('home.new', {

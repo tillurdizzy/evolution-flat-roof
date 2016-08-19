@@ -7,8 +7,7 @@ function SharedSrvc($rootScope, DB) {
     // public
     var selectedJobID = '';
     var selectedJob = {};
-    var traceMe = true;
-
+    
     var service = {
         pushData: pushData,
         returnData: returnData,
@@ -16,12 +15,13 @@ function SharedSrvc($rootScope, DB) {
         createNewJob: createNewJob,
         setTempData: setTempData,
         clone: clone,
-        selectedJob:selectedJob,
-        selectedJobID:selectedJobID
+        selectedJobID:selectedJobID,
+        selectedJob:selectedJob
     };
 
     return service;
 
+    var traceMe = true;
     //private
     var myID = "SharedSrvc: ";
     var LAYERS = {};
@@ -37,7 +37,7 @@ function SharedSrvc($rootScope, DB) {
         if(traceMe == true){
             console.log(msg);
         }
-    }
+    };
 
     function getJob(strID) {
         var dataObj = {ID:strID};
@@ -73,6 +73,8 @@ function SharedSrvc($rootScope, DB) {
         for (var i = 0; i < arr.length; i++) {
             var json = arr[i].data;
             var obj = JSON.parse(json);
+            obj.id = arr[i].PRIMARY_ID;
+            obj.active = arr[i].active;
             ACTIVE.push(obj);
         }
         $rootScope.$broadcast('onRefreshActiveJobs');
@@ -89,17 +91,43 @@ function SharedSrvc($rootScope, DB) {
                 alert("Query Error - see console for details");
                 console.log("createNewJob ---- " + resultObj.data);
             } else {
+                var id = resultObj.data.id;
                 getActiveJobs();
+                newJobChain(id);
             }
         }, function(error) {
             alert("Query Error - SharedCtrl >> createNewJob");
         });
-    }
+    };
+
+    function newJobChain(id){
+        var dataObj = {};
+        dataObj.jobID = id;
+        dataObj.data = "";
+        DB.query('insertBase',dataObj).then(function(resultObj) {
+            DB.query('insertField',dataObj).then(function(resultObj) {
+                DB.query('insertHvac',dataObj).then(function(resultObj) {
+                    DB.query('insertLayers',dataObj).then(function(resultObj) {
+                        DB.query('insertMembrane',dataObj).then(function(resultObj) {
+                            DB.query('insertPenetrations',dataObj).then(function(resultObj) {
+                                DB.query('insertTerminations',dataObj).then(function(resultObj) {
+                                    console.log('newJobChain Complete');
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    };
 
     function pushData(obj, set) {
         var jsonStr = JSON.stringify(obj);
         var DBQuery = "update" + set;
-        DB.query(DBQuery, jsonStr);
+        var dataObj = {};
+        dataObj.jobID = this.selectedJobID;
+        dataObj.data = jsonStr;
+        DB.query(DBQuery, dataObj);
         switch (set) {
             case "LAYERS":
                 LAYERS = obj;

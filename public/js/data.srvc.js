@@ -39,7 +39,15 @@ function eventQueries($http, $q) {
         insertMembrane: httpPathPrefix + "insertMembrane.php",
         insertPenetrations: httpPathPrefix + "insertPenetrations.php",
         insertTerminations: httpPathPrefix + "insertTerminations.php",
-        insertHvac: httpPathPrefix + "insertHvac.php"
+        insertHvac: httpPathPrefix + "insertHvac.php",
+        getDataJob: httpPathPrefix + "getDataJob.php",
+        getDataBase: httpPathPrefix + "getDataBase.php",
+        getDataField: httpPathPrefix + "getDataField.php",
+        getDataLayers: httpPathPrefix + "getDataLayers.php",
+        getDataMembrane: httpPathPrefix + "getDataMembrane.php",
+        getDataPenetrations: httpPathPrefix + "getDataPenetrations.php",
+        getDataTerminations: httpPathPrefix + "getDataTerminations.php",
+        getDataHvac: httpPathPrefix + "getDataHvac.php"
     };
 
     var trace = function(obj) {

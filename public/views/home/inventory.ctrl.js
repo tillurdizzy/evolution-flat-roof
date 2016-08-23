@@ -50,14 +50,8 @@ function myFunction($scope,DB) {
         });
     };
 
-
-
-
 	vm.getInventory = getInventory;
 	vm.editRowItem = editRowItem;
 	vm.submitEdit = submitEdit;
-
-
-
 
 };

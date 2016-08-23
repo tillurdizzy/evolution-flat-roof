@@ -25,7 +25,18 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 	
 	
 	function initView(){
-		vm.capMetalCount = vm.PARAMS.PARAPET.length;
+		vm.capMetalCount = getParapetCount();
+	};
+
+	function getParapetCount(){
+		var objLength = Object.keys(vm.PARAMS).length;
+		var count = 0;
+		if(objLength != 0){
+			if(vm.PARAMS.PARAPET != undefined){
+				count = vm.PARAMS.PARAPET.length;
+			}
+		}
+		return count;
 	};
 
 	function pushToShared(){
@@ -43,13 +54,13 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
     });
 
     $scope.$watch('$viewContentLoaded', function() {
-    	vm.JobID = vm.S.selectedJobID;
-        vm.JOB = vm.S.selectedJob;
+    	vm.JobID = vm.S.returnSelectedJobID();
+		vm.JOB = vm.S.returnSelectedJob();
  		pullFromShared();
     });
 
     $scope.$watch('Ctrl.capMetalCount', function() {
-        var currentCount = vm.PARAMS.PARAPET.length;
+        var currentCount = getParapetCount();
         if (vm.capMetalCount > currentCount) {
             vm.PARAMS.PARAPET.push({ length: '0', stretchout: '0',cleated:'No'});
         } else if (vm.capMetalCount < currentCount) {

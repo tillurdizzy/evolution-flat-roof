@@ -218,5 +218,5 @@ function mdTheme($mdThemingProvider) {
 runBlock.$inject = ['SharedSrvc'];
 
 function runBlock(SharedSrvc) {
-    SharedSrvc.setTempData();
+    //SharedSrvc.setTempData();
 };

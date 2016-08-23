@@ -581,6 +581,7 @@ table {
     width: 196px;
     margin: 1px 2px; }
   .side-nav .section-label {
+    cursor: pointer;
     background-color: #FF5252;
     height: 36px;
     width: 200px;

@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/app.css?v=5" />
-    
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
@@ -25,37 +24,46 @@
             <h1 class="md-title">Evolution Flat Roof Bid Application</h1></div>
     </div>
     <div class="flex-row">
+        <div>
+        </div>
         <div class="side-nav" ng-controller="NavCtrl as Ctrl">
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('home')}" ng-click="Ctrl.goNav('home.active');"> Home </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('illustrations')}" ng-click="Ctrl.goNav('illustrations');"> Illustrations </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('inventory')}" ng-click="Ctrl.goNav('inventory');"> Inventory </md-button>
             <add-space heightpx="20"></add-space>
-            <div class="section-label"><h4>Input</h4></div>
-            
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('layers')}" ng-click="Ctrl.goNav('layers');"> Layers </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('field')}" ng-click="Ctrl.goNav('field');"> Field </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('terminations-input')}" ng-click="Ctrl.goNav('terminationsA.edge');"> Terminations </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('penetrations-input')}" ng-click="Ctrl.goNav('penetrationsA.pipes');"> Penetrations </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('hvac-input')}" ng-click="Ctrl.goNav('hvacA');"> HVAC </md-button>
-            <add-space heightpx="20"></add-space>
-            <div class="section-label">
-                <h4>Design</h4></div>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('membrane')}" ng-click="Ctrl.goNav('membrane');"> Membrane </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('base')}" ng-click="Ctrl.goNav('base');"> ROOF BASE </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('terminations-design')}" ng-click="Ctrl.goNav('terminationsB.edge');"> Terminations </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('penetrations-design')}" ng-click="Ctrl.goNav('penetrationsB.pipes');"> Penetrations </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('hvac-design')}" ng-click="Ctrl.goNav('hvacB');"> HVAC </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('rpanel')}" ng-click="Ctrl.goNav('rpanel');"> R-Panel </md-button>
-            <add-space heightpx="20"></add-space>
-            <div class="section-label">
-                <h4>Results</h4></div>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('materials')}" ng-click="Ctrl.goNav('materials');"> Materials </md-button>
-            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('cost')}" ng-click="Ctrl.goNav('cost');"> Cost </md-button>
-
+            <div ng-show="Ctrl.jobSelected">
+                <div class="section-label" ng-click="Ctrl.toggleInput()">
+                    <h4>Input</h4></div>
+                <div ng-show="Ctrl.inputOpen">
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('layers')}" ng-click="Ctrl.goNav('layers');"> Layers </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('field')}" ng-click="Ctrl.goNav('field');"> Field </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('terminations-input')}" ng-click="Ctrl.goNav('terminationsA.edge');"> Terminations </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('penetrations-input')}" ng-click="Ctrl.goNav('penetrationsA.pipes');"> Penetrations </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('hvac-input')}" ng-click="Ctrl.goNav('hvacA');"> HVAC </md-button>
+                </div>
+                <add-space heightpx="20"></add-space>
+                <div class="section-label" ng-click="Ctrl.toggleDesign()">
+                    <h4>Design</h4></div>
+                <div ng-show="Ctrl.designOpen">
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('membrane')}" ng-click="Ctrl.goNav('membrane');"> Membrane </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('base')}" ng-click="Ctrl.goNav('base');"> ROOF BASE </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('terminations-design')}" ng-click="Ctrl.goNav('terminationsB.edge');"> Terminations </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('penetrations-design')}" ng-click="Ctrl.goNav('penetrationsB.pipes');"> Penetrations </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('hvac-design')}" ng-click="Ctrl.goNav('hvacB');"> HVAC </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('rpanel')}" ng-click="Ctrl.goNav('rpanel');"> R-Panel </md-button>
+                </div>
+                <add-space heightpx="20"></add-space>
+                <div class="section-label" ng-click="Ctrl.toggleResult()">
+                    <h4>Results</h4></div>
+                <div ng-show="Ctrl.resultOpen">
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('materials')}" ng-click="Ctrl.goNav('materials');"> Materials </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('cost')}" ng-click="Ctrl.goNav('cost');"> Cost </md-button>
+                </div>
+            </div>
         </div>
         <div ui-view class="view-container"></div>
     </div>
-     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
     <script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0-rc.5/angular-material.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-messages.min.js"></script>
     <script src="myApp.js?v=3"></script>
@@ -74,12 +82,12 @@
     <script src="views/input/layers/rpanel.comp.js?v=2"></script>
     <script src="views/input/penetrations/star.comp.js?v=2"></script>
     <script src="views/input/penetrations/vent-sm.comp.js?v=2"></script>
+    <script src="views/input/penetrations/vent-lrg.comp.js?v=2"></script>
     <script src="views/input/penetrations/interior-drain.comp.js?v=2"></script>
     <script src="views/input/penetrations/scupper-drain.comp.js?v=2"></script>
     <script src="views/input/hvac/hvac-footprint.comp.js?v=2"></script>
     <script src="views/input/field/parapet.comp.js?v=2"></script>
     <script src="views/input/terminations/metal-cap.comp.js?v=2"></script>
-
     <script src="views/design/hvac/support-cones.comp.js?v=2"></script>
     <script src="views/design/hvac/support-timber.comp.js?v=2"></script>
     <script src="views/design/hvac/hvac-footprint-review.comp.js?v=2"></script>
@@ -90,23 +98,21 @@
     <script src="views/design/penetrations/scupper-drain-review.comp.js?v=2"></script>
     <script src="views/design/base/base-layer.comp.js?v=2"></script>
     <!--Modules-->
-    
     <!--Controllers-->
     <script src="views/home/home.ctrl.js?v=2"></script>
+    <script src="views/home/illustrations.ctrl.js?v=2"></script>
     <script src="views/home/inventory.ctrl.js?v=2"></script>
     <script src="views/input/field/field.ctrl.js?v=2"></script>
     <script src="views/input/layers/layers.ctrl.js?v=2"></script>
     <script src="views/input/terminations/terminations-input.ctrl.js?v=2"></script>
     <script src="views/input/penetrations/penetrations-input.ctrl.js?v=2"></script>
     <script src="views/input/hvac/hvac.ctrl.js?v=2"></script>
-
     <script src="views/design/membrane/membrane.ctrl.js?v=2"></script>
     <script src="views/design/terminations/terminations-design.ctrl.js?v=2"></script>
     <script src="views/design/penetrations/penetrations-design.ctrl.js?v=2"></script>
     <script src="views/design/base/base.ctrl.js?v=2"></script>
     <script src="views/design/hvac/hvac-design.ctrl.js?v=2"></script>
     <script src="views/design/rpanel/rpanel.ctrl.js?v=2"></script>
-
     <script src="views/results/cost.ctrl.js?v=2"></script>
     <script src="views/results/materials.ctrl.js?v=2"></script>
 </body>

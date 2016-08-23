@@ -17,9 +17,42 @@ function myFunction($scope, SharedSrvc) {
     vm.pipeSupportCones = 0;
 
     function initView() {
-        vm.pipeSupportWood = vm.PARAMS.SUPPORT.WOOD.length;
-        vm.pipeSupportFoam = vm.PARAMS.SUPPORT.FOAM.length;
-        vm.pipeSupportCones = vm.PARAMS.SUPPORT.CONES.length;
+        vm.pipeSupportWood = getWoodCount();
+        vm.pipeSupportFoam = getFoamCount();
+        vm.pipeSupportCones = getConesCount();
+    };
+
+    function getWoodCount(){
+        var objLength = Object.keys(vm.PARAMS).length;
+        var count = 0;
+        if(objLength != 0){
+            if(vm.PARAMS.SUPPORT.WOOD != undefined){
+                count = vm.PARAMS.SUPPORT.WOOD.length;
+            }
+        }
+        return count;
+    };
+
+    function getFoamCount(){
+        var objLength = Object.keys(vm.PARAMS).length;
+        var count = 0;
+        if(objLength != 0){
+            if(vm.PARAMS.SUPPORT.FOAM != undefined){
+                count = vm.PARAMS.SUPPORT.FOAM.length;
+            }
+        }
+        return count;
+    };
+
+    function getConesCount(){
+        var objLength = Object.keys(vm.PARAMS).length;
+        var count = 0;
+        if(objLength != 0){
+            if(vm.PARAMS.SUPPORT.CONES != undefined){
+                count = vm.PARAMS.SUPPORT.CONES.length;
+            }
+        }
+        return count;
     };
 
     function pushToShared() {
@@ -36,13 +69,13 @@ function myFunction($scope, SharedSrvc) {
     });
 
     $scope.$watch('$viewContentLoaded', function() {
-        vm.JobID = vm.S.selectedJobID;
-        vm.JOB = vm.S.selectedJob;
+        vm.JobID = vm.S.returnSelectedJobID();
+        vm.JOB = vm.S.returnSelectedJob();
         pullFromShared();
     });
 
     $scope.$watch('Ctrl.pipeSupportWood', function() {
-        var currentCount = vm.PARAMS.SUPPORT.TIMBER.length;
+        var currentCount = getWoodCount();
         if (vm.pipeSupportWood > currentCount) {
             vm.PARAMS.SUPPORT.TIMBER.push({ qty: '', width: '' });
         } else if (vm.pipeSupportWood < currentCount) {
@@ -51,7 +84,7 @@ function myFunction($scope, SharedSrvc) {
     });
 
     $scope.$watch('Ctrl.pipeSupportFoam', function() {
-        var currentCount = vm.PARAMS.SUPPORT.FOAM.length;
+        var currentCount = getFoamCount();
         if (vm.pipeSupportFoam > currentCount) {
             vm.PARAMS.SUPPORT.FOAM.push({ qty: '', width: '' });
         } else if (vm.pipeSupportFoam < currentCount) {
@@ -60,7 +93,7 @@ function myFunction($scope, SharedSrvc) {
     });
 
     $scope.$watch('Ctrl.pipeSupportCones', function() {
-        var currentCount = vm.PARAMS.SUPPORT.CONES.length;
+        var currentCount = getConesCount();
         if (vm.pipeSupportCones > currentCount) {
             vm.PARAMS.SUPPORT.CONES.push({ qty: '', ring: false, attched: false });
         } else if (vm.pipeSupportCones < currentCount) {

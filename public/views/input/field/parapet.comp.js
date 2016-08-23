@@ -1,8 +1,7 @@
 angular.module('app').component('parapetWall', {
     bindings: {
         height: '=',
-        length:'=',
-        width:'='
+        length:'='
     },
     controller: function() {
         

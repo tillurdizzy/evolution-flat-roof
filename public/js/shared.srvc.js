@@ -4,26 +4,25 @@ angular.module('app').factory('SharedSrvc', SharedSrvc);
 SharedSrvc.$inject = ['$rootScope', 'DB'];
 
 function SharedSrvc($rootScope, DB) {
-    // public
-    var selectedJobID = '';
-    var selectedJob = {};
-    
+    var traceMe = true;
+    var myID = "SharedSrvc: ";
+
     var service = {
         pushData: pushData,
         returnData: returnData,
         getActiveJobs: getActiveJobs,
         createNewJob: createNewJob,
-        setTempData: setTempData,
         clone: clone,
-        selectedJobID:selectedJobID,
-        selectedJob:selectedJob
+        returnSelectedJobID: returnSelectedJobID,
+        returnSelectedJob: returnSelectedJob,
+        setSelectedJobID: setSelectedJobID,
+        setSelectedJob: setSelectedJob
     };
 
     return service;
 
-    var traceMe = true;
-    //private
-    var myID = "SharedSrvc: ";
+    /////////////////////////////////////
+
     var LAYERS = {};
     var FIELD = {};
     var TERMINATIONS = {};
@@ -31,44 +30,120 @@ function SharedSrvc($rootScope, DB) {
     var HVAC = {};
     var MEMBRANE = {};
     var ROOFBASE = {};
-    var ACTIVE = [];// Active jobs
+    var ACTIVE = []; // Active jobs
 
-    function trace(msg){
-        if(traceMe == true){
+    var selectedJobID = '';
+    var selectedJob = {};
+
+    function trace(msg) {
+        if (traceMe == true) {
             console.log(msg);
         }
     };
 
+    function returnSelectedJobID() {
+        return selectedJobID;
+    };
+
+    function returnSelectedJob() {
+        return selectedJob;
+    };
+
+    function setSelectedJobID(str) {
+        selectedJobID = str;
+        if (parseInt(str) > 0) {
+            $rootScope.$broadcast('jobSelectEvent', true);
+            getJob(selectedJobID);
+        } else {
+            $rootScope.$broadcast('jobSelectEvent', false);
+            selectedJob = {};
+        }
+    };
+
+    function setSelectedJob(obj) {
+        selectedJob = obj;
+    };
+
     function getJob(strID) {
-        var dataObj = {ID:strID};
-        DB.query('getJob',dataObj).then(function(resultObj) {
+        var dataObj = { jobID: strID };
+
+        DB.query('getDataField', dataObj).then(function(resultObj) {
             if (resultObj.result == "Error" || typeof resultObj.data === "string") {
-                alert("Query Error - see console for details");
-                console.log("getJob ---- " + resultObj.data);
+                alert("Get Job Error at getDataField");
             } else {
-                selectedJob = resultObj.data;
-            }
-        }, function(error) {
-            alert("Query Error - SharedCtrl >> getJob");
+                if (resultObj.data[0].data == "") {
+                    setField();
+                } else {
+                    FIELD = JSON.parse(resultObj.data[0].data);
+                };
+            };
+        });
+
+        DB.query('getDataHvac', dataObj).then(function(resultObj) {
+            if (resultObj.result == "Error" || typeof resultObj.data === "string") {
+                alert("Get Job Error at getDataHvac");
+            } else {
+                if (resultObj.data[0].data == "") {
+                    setHVAC();
+                } else {
+                    HVAC = JSON.parse(resultObj.data[0].data);
+                };
+            };
+        });
+        DB.query('getDataLayers', dataObj).then(function(resultObj) {
+            if (resultObj.result == "Error" || typeof resultObj.data === "string") { alert("Get Job Error at getDataLayers"); } else {
+                if (resultObj.data[0].data == "") {
+                    setLayers();
+                } else { LAYERS = JSON.parse(resultObj.data[0].data); };
+            };
+        });
+
+        DB.query('getDataMembrane', dataObj).then(function(resultObj) {
+            if (resultObj.result == "Error" || typeof resultObj.data === "string") { alert("Get Job Error at getDataMembrane"); } else {
+                if (resultObj.data[0].data == "") {
+                    setMembrane();
+                } else { MEMBRANE = JSON.parse(resultObj.data[0].data); };
+            };
+        });
+        DB.query('getDataPenetrations', dataObj).then(function(resultObj) {
+            if (resultObj.result == "Error" || typeof resultObj.data === "string") { alert("Get Job Error at getDataPenetrations"); } else {
+                if (resultObj.data[0].data == "") {
+                    setPenetrations();
+                } else { PENETRATIONS = JSON.parse(resultObj.data[0].data); };
+            };
+        });
+        DB.query('getDataTerminations', dataObj).then(function(resultObj) {
+            if (resultObj.result == "Error" || typeof resultObj.data === "string") { alert("Get Job Error at getDataTerminations"); } else {
+                if (resultObj.data[0].data == "") {
+                    setTerminations();
+                } else { TERMINATIONS = JSON.parse(resultObj.data[0].data); };
+            };
+        });
+        DB.query('getDataBase', dataObj).then(function(resultObj) {
+            if (resultObj.result == "Error" || typeof resultObj.data === "string") { alert("Get Job Error at getDataBase"); } else {
+                if (resultObj.data[0].data == "") {
+                    setBase();
+                } else { ROOFBASE = JSON.parse(resultObj.data[0].data); };
+            };
         });
     };
 
     function getActiveJobs() {
-        trace('getActiveJobs');
+        trace(myID + 'getActiveJobs');
         DB.query('getActiveJobs').then(function(resultObj) {
             if (resultObj.result == "Error" || typeof resultObj.data === "string") {
                 alert("Query Error - see console for details");
                 console.log("getActiveJobs ---- " + resultObj.data);
             } else {
-                parseJobs(resultObj.data); 
+                parseJobs(resultObj.data);
             }
         }, function(error) {
             alert("Query Error - SharedCtrl >> getActiveJobs");
         });
     };
 
-    function parseJobs(arr){
-        trace('parseJobs');
+    function parseJobs(arr) {
+        trace(myID + 'parseJobs');
         ACTIVE = [];
         for (var i = 0; i < arr.length; i++) {
             var json = arr[i].data;
@@ -80,13 +155,13 @@ function SharedSrvc($rootScope, DB) {
         $rootScope.$broadcast('onRefreshActiveJobs');
     };
 
-    function createNewJob(obj){
+    function createNewJob(obj) {
         var jsonStr = JSON.stringify(obj);
         var DBQuery = "insertJob";
         var dataObj = {};
         dataObj.client = obj.client;
         dataObj.data = jsonStr;
-        DB.query(DBQuery,dataObj).then(function(resultObj) {
+        DB.query(DBQuery, dataObj).then(function(resultObj) {
             if (resultObj.result == "Error" || typeof resultObj.data === "string") {
                 alert("Query Error - see console for details");
                 console.log("createNewJob ---- " + resultObj.data);
@@ -100,18 +175,18 @@ function SharedSrvc($rootScope, DB) {
         });
     };
 
-    function newJobChain(id){
+    function newJobChain(id) {
         var dataObj = {};
         dataObj.jobID = id;
         dataObj.data = "";
-        DB.query('insertBase',dataObj).then(function(resultObj) {
-            DB.query('insertField',dataObj).then(function(resultObj) {
-                DB.query('insertHvac',dataObj).then(function(resultObj) {
-                    DB.query('insertLayers',dataObj).then(function(resultObj) {
-                        DB.query('insertMembrane',dataObj).then(function(resultObj) {
-                            DB.query('insertPenetrations',dataObj).then(function(resultObj) {
-                                DB.query('insertTerminations',dataObj).then(function(resultObj) {
-                                    console.log('newJobChain Complete');
+        DB.query('insertBase', dataObj).then(function(resultObj) {
+            DB.query('insertField', dataObj).then(function(resultObj) {
+                DB.query('insertHvac', dataObj).then(function(resultObj) {
+                    DB.query('insertLayers', dataObj).then(function(resultObj) {
+                        DB.query('insertMembrane', dataObj).then(function(resultObj) {
+                            DB.query('insertPenetrations', dataObj).then(function(resultObj) {
+                                DB.query('insertTerminations', dataObj).then(function(resultObj) {
+                                    trace('newJobChain Complete');
                                 });
                             });
                         });
@@ -123,9 +198,10 @@ function SharedSrvc($rootScope, DB) {
 
     function pushData(obj, set) {
         var jsonStr = JSON.stringify(obj);
+        trace(myID + "pushData : " + jsonStr);
         var DBQuery = "update" + set;
         var dataObj = {};
-        dataObj.jobID = this.selectedJobID;
+        dataObj.jobID = selectedJobID;
         dataObj.data = jsonStr;
         DB.query(DBQuery, dataObj);
         switch (set) {
@@ -184,32 +260,28 @@ function SharedSrvc($rootScope, DB) {
         return rtnObj;
     };
 
-    
+    function setField() {
+        FIELD = { SQUARES: '0', CRNROUT: '0', CRNRIN: '0', WALLS: [] };
+    };
 
-    function setTempData() {
-        // INPUT
+    function setLayers() {
         LAYERS = {
-            layerOne: '',
-            layerTwo: '',
-            layerThree: '',
-            layerFour: '',
-            layerFive: '',
-            layerSix: '',
+            layerOne: { layer: '', thickness: '' },
+            layerTwo: { layer: '', thickness: '' },
+            layerThree: { layer: '', thickness: '' },
+            layerFour: { layer: '', thickness: '' },
+            layerFive: { layer: '', thickness: '' },
+            layerSix: { layer: '', thickness: '' },
             RPANEL: { height: '', width: '', winged: '', insulation: '' }
         };
+    };
 
-        FIELD = {
-            SQUARES: '0',
-            CRNROUT: '0',
-            CRNRIN: '0',
-            WALLS: []
-        };
-
+    function setPenetrations() {
         PENETRATIONS = {
-            STARCAPS: [{ qty: '2', size: '5', finish: "Painted" }, { qty: '3', size: '4', finish: "Galvanized" }, { qty: '1', size: '8', finish: "Painted" }],
-            VENTS: { SMALL: [{ qty: '2', size: '5', shape: "Square", replace: true }], LARGE: [{ qty: '2', size: '12', shape: "Round", replace: false }] },
-            PIPES: { small: '2', medium: '3', large: '1' },
-            DRAINS: { INTERNAL: [{ qty: '2', size: '4', method: "Boot" }], SCUPPER: [{ qty: '2', width: '4', downspout: true, length: '14' }] },
+            STARCAPS: [],
+            VENTS: { SMALL: [] },
+            PIPES: { small: '', medium: '', large: '' },
+            DRAINS: { INTERNAL: [], SCUPPER: [] },
             GUTTERS: {
                 EAVESTROUGH: { length: "", size: "" },
                 DOWNSPOUTS: { length: "", qty: "" },
@@ -218,24 +290,30 @@ function SharedSrvc($rootScope, DB) {
                 HARDWARE: { hangers: "", downspouts: "", endcaps: "" }
             }
         };
+    };
 
+    function setTerminations() {
         TERMINATIONS = {
             PERIMETER: '0',
             WALL: '0',
-            PARAPET: [{ length: '12', stretchout: '24', cleated: 'No', material: '' }],
+            PARAPET: [],
             SPECIAL: { X: 'No', DESCRIPTION: '', COST: '' },
-            WALLTERM: [{ type: 'T-Bar', length: '35' }]
+            WALLTERM: []
         };
+    };
 
+    function setHVAC() {
         HVAC = {
-            UNITS: [{ qty: "3", footprintX: "4", footprintY: "3.5" }],
+            UNITS: [],
             SUPPORT: {
-                WOOD: [{ qty: "35", width: "" }],
-                FOAM: [{ qty: "35", width: "" }],
-                CONES: [{ qty: "", ring: false, attached: false }]
+                WOOD: [],
+                FOAM: [],
+                CONES: []
             }
         };
+    };
 
+    function setMembrane() {
         MEMBRANE = {
             GRIDPOS: 'A1',
             MEMBRANE: '',
@@ -243,12 +321,21 @@ function SharedSrvc($rootScope, DB) {
             ATTACH: '',
             TYPE: ''
         };
+    };
 
+    function setBase() {
         ROOFBASE = {
             LAYERS: [],
             ATTACHMENT: '',
             SPECIAL: {}
         }
+    };
+
+
+
+    function setTempData() {
+
+
     };
 
     function clone(obj) {

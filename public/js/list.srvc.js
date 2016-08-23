@@ -19,7 +19,7 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
         { label: "Tar & Gravel", id: "TRGRVL" },
         { label: "Modified Bitumen", id: "MODBTMN" },
         { label: "R-Panel", id: "RPANEL" },
-        { label: "None", id: "NONE" }
+        { label: "None", id: "" }
     ];
 
     self.roofLayersB = [
@@ -27,7 +27,7 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
         { label: "Tar & Gravel", id: "TRGRVL" },
         { label: "Modified Bitumen", id: "MODBTMN" },
         { label: "Insulation", id: "INSLTN" },
-        { label: "None", id: "NONE" }
+        { label: "None", id: "" }
     ];
 
     self.ventShapes = ["NA","Round", "Square"];
@@ -49,6 +49,7 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
     self.ventSizes = ['4','6','8'];
 
     self.oneThruEight = ['1','2','3','4','5','6','7','8'];
+    self.NineThruSixteen = ['9','10','11','12','13','14','15','16'];
 
 
     self.numbersToTwelve = [

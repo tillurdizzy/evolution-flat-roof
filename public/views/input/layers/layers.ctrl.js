@@ -16,8 +16,8 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	vm.rPanel = {};
 	
 	vm.selectLayerOne=function(){
-		vm.PARAMS.layerOne = vm.SELECT.layerOne.id;
-		if(vm.PARAMS.layerOne!='NONE' && vm.PARAMS.layerOne!='RPANEL'){
+		vm.PARAMS.layerOne.layer = vm.SELECT.layerOne.id;
+		if(vm.PARAMS.layerOne.layer!='' && vm.PARAMS.layerOne.layer!='RPANEL'){
 			vm.DOM.layerTwo = true;
 		}else{
 			vm.DOM.layerTwo = false;
@@ -29,47 +29,42 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	};
 
 	vm.selectLayerTwo=function(){
-		vm.PARAMS.layerTwo = vm.SELECT.layerTwo.id;
-		vm.DOM.layerThree = vm.PARAMS.layerTwo=="NONE"?false:true;
+		vm.PARAMS.layerTwo.layer = vm.SELECT.layerTwo.id;
+		vm.DOM.layerThree = vm.PARAMS.layerTwo.layer==""?false:true;
 	};
 
 	vm.selectLayerThree=function(){
-		vm.PARAMS.layerThree = vm.SELECT.layerThree.id;
-		vm.DOM.layerFour =  vm.PARAMS.layerThree=="NONE"?false:true;
+		vm.PARAMS.layerThree.layer = vm.SELECT.layerThree.id;
+		vm.DOM.layerFour = vm.PARAMS.layerThree.layer==""?false:true;
 	};
 
 	vm.selectLayerFour=function(){
-		vm.PARAMS.layerFour = vm.SELECT.layerFour.id;
-		vm.DOM.layerFive =  vm.PARAMS.layerFour=="NONE"?false:true;
+		vm.PARAMS.layerFour.layer = vm.SELECT.layerFour.id;
+		vm.DOM.layerFive =  vm.PARAMS.layerFour.layer==""?false:true;
 	};
 
 	vm.selectLayerFive=function(){
-		vm.PARAMS.layerFive = vm.SELECT.layerFive.id;
-		vm.DOM.layerSix =  vm.PARAMS.layerFive=="NONE"?false:true;
+		vm.PARAMS.layerFive.layer = vm.SELECT.layerFive.id;
+		vm.DOM.layerSix = vm.PARAMS.layerFive.layer==""?false:true;
 	};
 
 	vm.selectLayerSix=function(){
-		vm.PARAMS.layerSix = vm.SELECT.layerSix.id;
+		vm.PARAMS.layerSix.layer = vm.SELECT.layerSix.id;
 	};
 	
-
-	// Extract the string to be saved from the selected item in dataProvider
-	function getSelectData(){
-		//  PARAMS are updated real-time for this view
-		
-	};
-
 	
 	function initView(){
 		// Parse the saved data to set the view elements
 
 		// Set selected dataObj for Select input components
-		vm.SELECT.layerOne = vm.L.returnObjById(vm.L.roofLayersA,vm.PARAMS.layerOne);
-		vm.SELECT.layerTwo = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerTwo);
-		vm.SELECT.layerThree = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerThree);
-		vm.SELECT.layerFour = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerFour);
-		vm.SELECT.layerFive = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerFive);
-		vm.SELECT.layerSix = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerSix);
+		vm.SELECT.layerOne = vm.L.returnObjById(vm.L.roofLayersA,vm.PARAMS.layerOne.layer);
+		vm.SELECT.layerTwo = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerTwo.layer);
+		vm.SELECT.layerThree = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerThree.layer);
+		vm.SELECT.layerFour = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerFour.layer);
+		vm.SELECT.layerFive = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerFive.layer);
+		vm.SELECT.layerSix = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerSix.layer);
+
+		
 
 		// Set ng-view booleans
 		vm.DOM.layerTwo = true;
@@ -78,27 +73,25 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 		vm.DOM.layerFive = true;
 		vm.DOM.layerSix = true;
 
-		if(vm.PARAMS.layerOne == '' || vm.PARAMS.layerOne=='NONE' || vm.PARAMS.layerOne=='RPANEL'){
+		if(vm.PARAMS.layerOne.layer == '' || vm.PARAMS.layerOne=='RPANEL'){
 			vm.DOM.layerTwo = false;
 		}
-
-		if(vm.PARAMS.layerTwo == '' || vm.PARAMS.layerTwo=='NONE'){
+		if(vm.PARAMS.layerTwo.layer == ''){
 			vm.DOM.layerThree = false;
 		}
-		if(vm.PARAMS.layerThree == '' || vm.PARAMS.layerThree=='NONE'){
+		if(vm.PARAMS.layerThree.layer == ''){
 			vm.DOM.layerFour = false;
 		}
-		if(vm.PARAMS.layerFour == '' || vm.PARAMS.layerFour=='NONE'){
+		if(vm.PARAMS.layerFour.layer == ''){
 			vm.DOM.layerFive = false;
 		}
-		if(vm.PARAMS.layerFive == '' || vm.PARAMS.layerFive=='NONE'){
+		if(vm.PARAMS.layerFive.layer == ''){
 			vm.DOM.layerSix = false;
 		}
 
 	};
 
 	function pushToShared(){
-		getSelectData();
 		vm.S.pushData(vm.PARAMS,'LAYERS');
 	};
 
@@ -112,8 +105,8 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
     });
 
     $scope.$watch('$viewContentLoaded', function() {
-    	vm.JobID = vm.S.selectedJobID;
-		vm.JOB = vm.S.selectedJob;
+    	vm.JobID = vm.S.returnSelectedJobID();
+		vm.JOB = vm.S.returnSelectedJob();
  		pullFromShared();
     });
 

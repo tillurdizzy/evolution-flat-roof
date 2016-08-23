@@ -11,26 +11,22 @@ function myFunction($scope,SharedSrvc) {
 	vm.SELECT = {};
 	vm.PARAMS = {};
 
-	// Extract id from user Selected Object
-	function getSelectData(){
-		
-	};
-
+	
 	// Set Selected Object from saved data
-	function setSelectData(){
+	function initView(){
 		
 	};
 
 	function pushToShared(){
-		getSelectData();
-		S.pushData(vm.PARAMS,'RPANEL');
+		
+		//S.pushData(vm.PARAMS,'RPANEL');
 	};
 
 	function pullFromShared(){
-		vm.JobID = S.selectedJobID;
-        vm.JOB = S.selectedJob;
+		vm.JobID = S.returnSelectedJobID();
+		vm.JOB = S.returnSelectedJob();
 		vm.PARAMS = S.returnData('RPANEL');
-		setSelectData();
+		initView();
 	};
 
 	$scope.$on("$destroy", function(){

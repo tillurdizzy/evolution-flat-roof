@@ -36,23 +36,71 @@ function myCtrlFunction($scope, $state, SharedSrvc) {
     };
 
 
-
-    // Extract the string to be saved from the selected item in dataProvider
-    function getSelectData() {
-        
-    };
-
-
     function initView() {
-        vm.StarCount = vm.PARAMS.STARCAPS.length;
-        vm.smallVentCount = vm.PARAMS.VENTS.SMALL.length;
-        vm.largeVentCount = vm.PARAMS.VENTS.LARGE.length;
-        vm.internalDrainCount = vm.PARAMS.DRAINS.INTERNAL.length;
-    	vm.scupperDrainCount = vm.PARAMS.DRAINS.SCUPPER.length;
+        vm.StarCount = getStarCount();
+        vm.smallVentCount = getSmallVentCount();
+        vm.largeVentCount = getLargeVentCount();
+        vm.internalDrainCount = getInternalDrainCount();
+    	vm.scupperDrainCount = getScupperDrainCount();
     };
+
+    function getStarCount(){
+        var objLength = Object.keys(vm.PARAMS).length;
+        var count = 0;
+        if(objLength != 0){
+            if(vm.PARAMS.STARCAPS != undefined){
+                count = vm.PARAMS.STARCAPS.length;
+            }
+        }
+        return count;
+    };
+
+    function getSmallVentCount(){
+        var objLength = Object.keys(vm.PARAMS).length;
+        var count = 0;
+        if(objLength != 0){
+            if(vm.PARAMS.VENTS.SMALL != undefined){
+                count = vm.PARAMS.VENTS.SMALL.length;
+            }
+        }
+        return count;
+    };
+
+    function getLargeVentCount(){
+        var objLength = Object.keys(vm.PARAMS).length;
+        var count = 0;
+        if(objLength != 0){
+            if(vm.PARAMS.VENTS.LARGE != undefined){
+                count = vm.PARAMS.VENTS.LARGE.length;
+            }
+        }
+        return count;
+    };
+
+    function getInternalDrainCount(){
+        var objLength = Object.keys(vm.PARAMS).length;
+        var count = 0;
+        if(objLength != 0){
+            if(vm.PARAMS.DRAINS.INTERNAL != undefined){
+                count = vm.PARAMS.DRAINS.INTERNAL.length;
+            }
+        }
+        return count;
+    };
+
+     function getScupperDrainCount(){
+        var objLength = Object.keys(vm.PARAMS).length;
+        var count = 0;
+        if(objLength != 0){
+            if(vm.PARAMS.DRAINS.SCUPPER != undefined){
+                count = vm.PARAMS.DRAINS.SCUPPER.length;
+            }
+        }
+        return count;
+    };
+
 
     function pushToShared() {
-        getSelectData();
         vm.S.pushData(vm.PARAMS, 'PENETRATIONS');
     };
 
@@ -66,14 +114,14 @@ function myCtrlFunction($scope, $state, SharedSrvc) {
     });
 
     $scope.$watch('$viewContentLoaded', function() {
-        vm.JobID = vm.S.selectedJobID;
-        vm.JOB = vm.S.selectedJob;
+        vm.JobID = vm.S.returnSelectedJobID();
+        vm.JOB = vm.S.returnSelectedJob();
         pullFromShared();
     });
 
    
     $scope.$watch('Ctrl.smallVentCount', function() {
-        var currentCount = vm.PARAMS.VENTS.SMALL.length;
+        var currentCount = getSmallVentCount();
         if (vm.smallVentCount > currentCount) {
             vm.PARAMS.VENTS.SMALL.push({ qty: '', size: '', shape: '',replace:''});
         } else if (vm.smallVentCount < currentCount) {
@@ -82,7 +130,7 @@ function myCtrlFunction($scope, $state, SharedSrvc) {
     });
 
     $scope.$watch('Ctrl.largeVentCount', function() {
-        var currentCount = vm.PARAMS.VENTS.LARGE.length;
+        var currentCount = getLargeVentCount();
         if (vm.largeVentCount > currentCount) {
             vm.PARAMS.VENTS.LARGE.push({ qty: '', size: '', shape: '',replace:''});
         } else if (vm.largeVentCount < currentCount) {
@@ -91,7 +139,7 @@ function myCtrlFunction($scope, $state, SharedSrvc) {
     });
 
     $scope.$watch('Ctrl.internalDrainCount', function() {
-        var currentCount = vm.PARAMS.DRAINS.INTERNAL.length;
+        var currentCount = getInternalDrainCount();
         if (vm.internalDrainCount > currentCount) {
             vm.PARAMS.DRAINS.INTERNAL.push({ qty: '', size: ''});
         } else if (vm.internalDrainCount < currentCount) {
@@ -100,7 +148,7 @@ function myCtrlFunction($scope, $state, SharedSrvc) {
     });
 
     $scope.$watch('Ctrl.scupperDrainCount', function() {
-        var currentCount = vm.PARAMS.DRAINS.SCUPPER.length;
+        var currentCount = getScupperDrainCount();
         if (vm.scupperDrainCount > currentCount) {
             vm.PARAMS.DRAINS.SCUPPER.push({ qty: '', width: '',downspout:false});
         } else if (vm.scupperDrainCount < currentCount) {

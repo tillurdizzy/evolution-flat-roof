@@ -28,8 +28,18 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 
 	
 	function initView(){
-		vm.wallTypeCount = vm.PARAMS.WALLTERM.length;
-		
+		vm.wallTypeCount = getWallTermCount();
+	}
+
+	function getWallTermCount(){
+		var objLength = Object.keys(vm.PARAMS).length;
+		var count = 0;
+		if(objLength != 0){
+			if(vm.PARAMS.WALLTERM != undefined){
+				count = vm.PARAMS.WALLTERM.length;
+			}
+		}
+		return count;
 	};
 
 	function pushToShared(){
@@ -38,8 +48,8 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 	};
 
 	function pullFromShared(){
-		vm.JobID = vm.S.selectedJobID;
-        vm.JOB = vm.S.selectedJob;
+		vm.JobID = vm.S.returnSelectedJobID();
+		vm.JOB = vm.S.returnSelectedJob();
 		vm.PARAMS = vm.S.returnData('TERMINATIONS');
 		initView();
 	};
@@ -54,7 +64,7 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
     });
 
     $scope.$watch('Ctrl.wallTypeCount', function() {
-        var currentCount = vm.PARAMS.WALLTERM.length;
+        var currentCount = getWallTermCount();
         if (vm.wallTypeCount > currentCount) {
             vm.PARAMS.WALLTERM.push({type:'',length:'0'});
         } else if (vm.wallTypeCount < currentCount) {

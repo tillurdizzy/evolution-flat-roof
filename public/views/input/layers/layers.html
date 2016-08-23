@@ -1,6 +1,8 @@
 <div ng-controller="LayersCtrl as Ctrl">
     <div class="page-title">
         <h4>{{Ctrl.JOB.street}}, {{Ctrl.JOB.city}}</h4></div>
+    <p>Components of existing roof layers.</p>
+    <horiz-rule margintop="5" marginbottom="10"></horiz-rule>
     <!-- Layer One -->
     <div class="form-input">
         <div class="item-name">
@@ -24,8 +26,8 @@
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayersB">{{ opt.label }}</md-option>
                 </md-select>
             </div>
-            <div ng-show="Ctrl.PARAMS.layerTwo=='INSLTN'" class="item-select-small">
-                <md-select ng-model="Ctrl.SELECT.layerTwoDepth" placeholder="inches">
+            <div ng-show="Ctrl.PARAMS.layerTwo.layer=='INSLTN'" class="item-select-small">
+                <md-select ng-model="Ctrl.PARAMS.layerTwo.thickness" placeholder="inches">
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ISO">{{ opt }}</md-option>
                 </md-select>
             </div>
@@ -41,8 +43,8 @@
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayersB">{{ opt.label }}</md-option>
                 </md-select>
             </div>
-            <div ng-show="Ctrl.PARAMS.layerThree=='INSLTN'" class="item-select-small">
-                <md-select ng-model="Ctrl.SELECT.layerThreeDepth" placeholder="inches">
+            <div ng-show="Ctrl.PARAMS.layerThree.layer=='INSLTN'" class="item-select-small">
+                <md-select ng-model="Ctrl.PARAMS.layerThree.thickness" placeholder="inches">
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ISO">{{ opt }}</md-option>
                 </md-select>
             </div>
@@ -58,8 +60,8 @@
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayersB">{{ opt.label }}</md-option>
                 </md-select>
             </div>
-            <div ng-show="Ctrl.PARAMS.layerFour=='INSLTN'" class="item-select-small">
-                <md-select ng-model="Ctrl.SELECT.layerFourDepth" placeholder="inches">
+            <div ng-show="Ctrl.PARAMS.layerFour.layer=='INSLTN'" class="item-select-small">
+                <md-select ng-model="Ctrl.PARAMS.layerFour.thickness" placeholder="inches">
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ISO">{{ opt }}</md-option>
                 </md-select>
             </div>
@@ -75,8 +77,8 @@
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayersB">{{ opt.label }}</md-option>
                 </md-select>
             </div>
-            <div ng-show="Ctrl.PARAMS.layerFive=='INSLTN'" class="item-select-small">
-                <md-select ng-model="Ctrl.SELECT.layerFiveDepth" placeholder="inches">
+            <div ng-show="Ctrl.PARAMS.layerFive.layer=='INSLTN'" class="item-select-small">
+                <md-select ng-model="Ctrl.PARAMS.layerFive.thickness" placeholder="inches">
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ISO">{{ opt }}</md-option>
                 </md-select>
             </div>
@@ -92,8 +94,8 @@
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.roofLayersB">{{ opt.label }}</md-option>
                 </md-select>
             </div>
-            <div ng-show="Ctrl.PARAMS.layerSix=='INSLTN'" class="item-select-small">
-                <md-select ng-model="Ctrl.SELECT.layerSixDepth" placeholder="inches">
+            <div ng-show="Ctrl.PARAMS.layerSix.layer=='INSLTN'" class="item-select-small">
+                <md-select ng-model="Ctrl.PARAMS.layerSix.thickness" placeholder="inches">
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.ISO">{{ opt }}</md-option>
                 </md-select>
             </div>

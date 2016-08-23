@@ -17,7 +17,18 @@ function myFunction($scope,SharedSrvc) {
 	
 	
 	function initView() {
-        vm.hvacSizeCount = vm.PARAMS.UNITS.length;
+        vm.hvacSizeCount = getUnitCount();
+    };
+
+    function getUnitCount(){
+        var objLength = Object.keys(vm.PARAMS).length;
+        var count = 0;
+        if(objLength != 0){
+            if(vm.PARAMS.UNITS != undefined){
+                count = vm.PARAMS.UNITS.length;
+            }
+        }
+        return count;
     };
 
  	function pushToShared() {
@@ -34,13 +45,13 @@ function myFunction($scope,SharedSrvc) {
     });
 
     $scope.$watch('$viewContentLoaded', function() {
-        vm.JobID = vm.S.selectedJobID;
-        vm.JOB = vm.S.selectedJob;
+        vm.JobID = vm.S.returnSelectedJobID();
+        vm.JOB = vm.S.returnSelectedJob();
         pullFromShared();
     });
 
     $scope.$watch('Ctrl.hvacSizeCount', function() {
-        var currentCount = vm.PARAMS.UNITS.length;
+        var currentCount = getUnitCount();
         if (vm.hvacSizeCount > currentCount) {
             vm.PARAMS.UNITS.push({qty:"0",foorprintX:"0",footprintY:"0"});
         } else if (vm.hvacSizeCount < currentCount) {

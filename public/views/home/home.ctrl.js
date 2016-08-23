@@ -35,11 +35,26 @@ function myFunction($scope,SharedSrvc,$state) {
 			if(vm.JobID == id){
 				vm.JOB = vm.ACTIVE_JOBS[i];
 				vm.idStatus = 'valid';
-				S.selectedJob = vm.ACTIVE_JOBS[i];
-				S.selectedJobID = vm.JobID;
+				S.setSelectedJob(vm.ACTIVE_JOBS[i]);
+				S.setSelectedJobID(vm.JobID);
 				return;
 			}
 		}
+	};
+
+	function editRowItem(row){
+		vm.JobID = row.id;
+		for (var i = 0; i < vm.ACTIVE_JOBS.length; i++) {
+			var id = vm.ACTIVE_JOBS[i].id;
+			if(vm.JobID == id){
+				vm.JOB = vm.ACTIVE_JOBS[i];
+				vm.idStatus = 'valid';
+				S.setSelectedJob(vm.ACTIVE_JOBS[i]);
+				S.setSelectedJobID(vm.JobID);
+			}
+		}
+		$state.transitionTo('home.selected');
+		vm.currentNavItem = 'selected';
 	};
 
 
@@ -47,6 +62,7 @@ function myFunction($scope,SharedSrvc,$state) {
 	vm.submitNewJob = submitNewJob;
 	vm.goNav = goNav;
 	vm.inputChange = inputChange;
+	vm.editRowItem = editRowItem;
 	vm.S = S;
 
 	function trace(msg){
@@ -58,8 +74,8 @@ function myFunction($scope,SharedSrvc,$state) {
 	// $scope Events
 	$scope.$watch('$viewContentLoaded', function() {
 		trace('viewContentLoaded');
-		vm.JobID = S.selectedJobID;
-		vm.JOB = S.selectedJob;
+		vm.JobID = S.returnSelectedJobID();
+		vm.JOB = S.returnSelectedJob();
 		if(vm.JobID !='' && vm.JobID !=undefined){
 			vm.idStatus = 'valid';
 		}

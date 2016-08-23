@@ -33,8 +33,8 @@ function myCtrlFunction($scope, $state, SharedSrvc) {
     };
 
     function pullFromShared() {
-        vm.JobID = vm.S.selectedJobID;
-        vm.JOB = vm.S.selectedJob;
+        vm.JobID = vm.S.returnSelectedJobID();
+        vm.JOB = vm.S.returnSelectedJob();
         vm.PARAMS = vm.S.returnData('PENETRATIONS');
         initView();
     };

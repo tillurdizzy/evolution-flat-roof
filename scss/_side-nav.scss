@@ -12,6 +12,7 @@ $button-width:196px;
     }
 
     .section-label {
+        cursor:pointer;
         background-color: $material-accent-200;
         height: 36px;
         width: $side-nav-width;
@@ -24,7 +25,6 @@ $button-width:196px;
             padding: 0;
             margin: 0;
             font-weight: 600;
-           
         }
     }
 }

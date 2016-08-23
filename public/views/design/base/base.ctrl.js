@@ -63,8 +63,8 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
     });
 
     $scope.$watch('$viewContentLoaded', function() {
-    	vm.JobID = S.selectedJobID;
-        vm.JOB = S.selectedJob;
+    	vm.JobID = S.returnSelectedJobID();
+		vm.JOB = S.returnSelectedJob();
  		pullFromShared();
     });
 

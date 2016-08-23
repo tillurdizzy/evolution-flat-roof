@@ -32,9 +32,8 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 
 	// Set Selected Object from saved data
 	function formatForDisplay(){
-		vm.gridPosition = vm.PARAMS.GRIDPOS;
-
 		
+		vm.gridPosition = vm.PARAMS.GRIDPOS;
 	};
 
 	function pushToShared(){
@@ -43,8 +42,6 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	};
 
 	function pullFromShared(){
-		vm.JobID = S.selectedJobID;
-        vm.JOB = S.selectedJob;
 		vm.PARAMS = S.returnData('MEMBRANE');
 		vm.FIELD = S.returnData('FIELD');
 		formatForDisplay();
@@ -55,6 +52,8 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
     });
 
     $scope.$watch('$viewContentLoaded', function() {
+    	vm.JobID = S.returnSelectedJobID();
+		vm.JOB = S.returnSelectedJob();
  		pullFromShared();
     });
 

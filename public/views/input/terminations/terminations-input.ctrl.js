@@ -17,12 +17,31 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 		$state.transitionTo(st);
 	};
 
-	// Extract the string to be saved from the selected item in dataProvider
-	function formatForStorage(){
-		
-		
-	};
-	
+	vm.clearInput = function(){
+		switch(vm.currentNavItem){
+			case 'edge':resetEdge();break;
+			case 'wall'resetWall();:break;
+			case 'cap':resetCap();break;
+			case 'other':resetOther();break;
+		}
+    };
+
+    function resetEdge(){
+    	vm.PARAMS.PERIMETER = 0;
+    };
+
+    function resetWall(){
+    	vm.PARAMS.WALL = 0;
+    };
+
+    function resetCap(){
+    	vm.PARAMS.PARAPET = [];
+    	initView();
+    };
+
+    function resetOther(){
+    	vm.PARAMS.OTHER = { length:'0',description: '', cost: '0' };
+    };
 	
 	function initView(){
 		vm.capMetalCount = getParapetCount();
@@ -40,7 +59,6 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 	};
 
 	function pushToShared(){
-		formatForStorage();
 		vm.S.pushData(vm.PARAMS,'TERMINATIONS');
 	};
 

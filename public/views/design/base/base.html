@@ -1,6 +1,5 @@
 <div ng-controller="BaseCtrl as Ctrl">
-    <div class="page-title">
-        <h4>{{Ctrl.JOB.street}}, {{Ctrl.JOB.city}}</h4></div>
+    <clear-input callback="Ctrl.clearInput()" title="{{Ctrl.JOB.street}}, {{Ctrl.JOB.city}} {{Ctrl.JOB.state}}"></clear-input>
     <p>Base layer components for new roof design.</p>
     <horiz-rule margintop="5" marginbottom="10"></horiz-rule>
     <div class="form-input">

@@ -51,11 +51,14 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	vm.selectLayerSix=function(){
 		vm.PARAMS.layerSix.layer = vm.SELECT.layerSix.id;
 	};
+
+	vm.clearInput = function(){
+		vm.PARAMS = vm.S.setLayers();
+		initView();
+	};
 	
 	
 	function initView(){
-		// Parse the saved data to set the view elements
-
 		// Set selected dataObj for Select input components
 		vm.SELECT.layerOne = vm.L.returnObjById(vm.L.roofLayersA,vm.PARAMS.layerOne.layer);
 		vm.SELECT.layerTwo = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerTwo.layer);
@@ -63,8 +66,6 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 		vm.SELECT.layerFour = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerFour.layer);
 		vm.SELECT.layerFive = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerFive.layer);
 		vm.SELECT.layerSix = vm.L.returnObjById(vm.L.roofLayersB,vm.PARAMS.layerSix.layer);
-
-		
 
 		// Set ng-view booleans
 		vm.DOM.layerTwo = true;

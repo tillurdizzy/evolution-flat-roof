@@ -16,6 +16,10 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	vm.LAYERS = {};
 	vm.existingLayers = [];
 	
+	vm.clearInput = function(){
+        vm.PARAMS = vm.S.setBase();
+        initView();
+    };
 	
 	function initView(){
 		vm.layerCount = vm.PARAMS.LAYERS.length;

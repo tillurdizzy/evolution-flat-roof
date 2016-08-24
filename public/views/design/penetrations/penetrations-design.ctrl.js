@@ -10,25 +10,22 @@ function myCtrlFunction($scope, $state, SharedSrvc) {
     vm.PARAMS = {};
     vm.currentNavItem = "pipes";
     
-
-
     vm.goNav = function(st) {
         $state.transitionTo(st);
     };
 
 
-    function getSelectData() {
+   
+    vm.clearInput = function(){
         
     };
 
 
     function initView() {
         
-    
     };
 
     function pushToShared() {
-        getSelectData();
         vm.S.pushData(vm.PARAMS, 'PENETRATIONS');
     };
 

@@ -17,15 +17,10 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 	vm.goNav = function(st){
 		$state.transitionTo(st);
 	};
-	
-	function formatForStorage(){
-		
-	};
 
-	function formatForControl(){
-		
-	};
-
+	vm.clearInput = function(){
+        
+    };
 	
 	function initView(){
 		vm.wallTypeCount = getWallTermCount();
@@ -43,7 +38,6 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 	};
 
 	function pushToShared(){
-		formatForStorage();
 		vm.S.pushData(vm.PARAMS,'TERMINATIONS');
 	};
 
@@ -60,7 +54,7 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 
     $scope.$watch('$viewContentLoaded', function() {
  		pullFromShared();
- 		formatForControl();
+ 		
     });
 
     $scope.$watch('Ctrl.wallTypeCount', function() {

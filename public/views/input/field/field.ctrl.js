@@ -5,7 +5,7 @@ myFunction.$inject = ['$scope','SharedSrvc'];
 
 function myFunction($scope,SharedSrvc) { 
 	var vm =this;
-	var S = SharedSrvc;
+	vm.S = SharedSrvc;
 
 	vm.PARAMS = {};
 	vm.parapetWallCount = 0;
@@ -15,7 +15,11 @@ function myFunction($scope,SharedSrvc) {
 		
 	};
 
-	
+	vm.clearInput = function(){
+		vm.PARAMS = vm.S.setField();
+		initView();
+	};
+
 	function initView(){
 		vm.parapetWallCount = getWallCount();
 	};
@@ -33,11 +37,11 @@ function myFunction($scope,SharedSrvc) {
 
 	function pushToShared(){
 		getSelectData();
-		S.pushData(vm.PARAMS,'FIELD');
+		vm.S.pushData(vm.PARAMS,'FIELD');
 	};
 
 	function pullFromShared(){
-		vm.PARAMS = S.returnData('FIELD');
+		vm.PARAMS = vm.S.returnData('FIELD');
 		initView();
 	};
 
@@ -46,8 +50,8 @@ function myFunction($scope,SharedSrvc) {
     });
 
     $scope.$watch('$viewContentLoaded', function() {
-    	vm.JobID = S.returnSelectedJobID();
-		vm.JOB = S.returnSelectedJob();
+    	vm.JobID = vm.S.returnSelectedJobID();
+		vm.JOB = vm.S.returnSelectedJob();
  		pullFromShared();
     });
 

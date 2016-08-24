@@ -35,6 +35,10 @@ function myCtrlFunction($scope, $state, SharedSrvc) {
         }
     };
 
+    vm.clearInput = function(){
+        vm.PARAMS = vm.S.setPenetrations();
+        initView();
+    };
 
     function initView() {
         vm.StarCount = getStarCount();

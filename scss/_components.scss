@@ -21,3 +21,29 @@
 .star-caps{
     
 }
+
+.clearBtnContainer{
+    height: 26px;
+    margin:0 0 5px 0;
+    background-color: $material-pallette-800;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    i{
+       
+        margin-right:10px;
+        color:#FFF;
+        cursor:pointer;
+        font-size: 1rem;
+    }
+    h4 {
+        color: #fff;
+        line-height: 1;
+        font-size: 1rem;
+        padding: 0;
+        margin: 0 0 0 10px;
+        font-weight: 500;
+    }
+    
+
+}

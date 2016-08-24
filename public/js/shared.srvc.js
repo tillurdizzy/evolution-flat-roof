@@ -16,7 +16,14 @@ function SharedSrvc($rootScope, DB) {
         returnSelectedJobID: returnSelectedJobID,
         returnSelectedJob: returnSelectedJob,
         setSelectedJobID: setSelectedJobID,
-        setSelectedJob: setSelectedJob
+        setSelectedJob: setSelectedJob,
+        setField: setField,
+        setHVAC: setHVAC,
+        setLayers: setLayers,
+        setMembrane: setMembrane,
+        setPenetrations: setPenetrations,
+        setTerminations: setTerminations,
+        setBase: setBase
     };
 
     return service;
@@ -262,6 +269,7 @@ function SharedSrvc($rootScope, DB) {
 
     function setField() {
         FIELD = { SQUARES: '0', CRNROUT: '0', CRNRIN: '0', WALLS: [] };
+        return FIELD;
     };
 
     function setLayers() {
@@ -274,6 +282,7 @@ function SharedSrvc($rootScope, DB) {
             layerSix: { layer: '', thickness: '' },
             RPANEL: { height: '', width: '', winged: '', insulation: '' }
         };
+        return LAYERS;
     };
 
     function setPenetrations() {
@@ -290,6 +299,7 @@ function SharedSrvc($rootScope, DB) {
                 HARDWARE: { hangers: "", downspouts: "", endcaps: "" }
             }
         };
+        return PENETRATIONS;
     };
 
     function setTerminations() {
@@ -297,9 +307,10 @@ function SharedSrvc($rootScope, DB) {
             PERIMETER: '0',
             WALL: '0',
             PARAPET: [],
-            SPECIAL: { X: 'No', DESCRIPTION: '', COST: '' },
+            OTHER: { length:'0',description: '', cost: '0' },
             WALLTERM: []
         };
+        return TERMINATIONS;
     };
 
     function setHVAC() {
@@ -311,6 +322,7 @@ function SharedSrvc($rootScope, DB) {
                 CONES: []
             }
         };
+        return HVAC;
     };
 
     function setMembrane() {
@@ -321,6 +333,7 @@ function SharedSrvc($rootScope, DB) {
             ATTACH: '',
             TYPE: ''
         };
+        return MEMBRANE;
     };
 
     function setBase() {
@@ -329,6 +342,7 @@ function SharedSrvc($rootScope, DB) {
             ATTACHMENT: '',
             SPECIAL: {}
         }
+        return ROOFBASE;
     };
 
 

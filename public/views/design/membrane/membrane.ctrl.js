@@ -30,9 +30,13 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 		vm.PARAMS.GRIDPOS = vm.gridPosition;
 	};
 
+	vm.clearInput = function(){
+        vm.PARAMS = vm.S.setMembrane();
+        initView();
+    };
+
 	// Set Selected Object from saved data
-	function formatForDisplay(){
-		
+	function initView(){
 		vm.gridPosition = vm.PARAMS.GRIDPOS;
 	};
 
@@ -44,7 +48,7 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	function pullFromShared(){
 		vm.PARAMS = S.returnData('MEMBRANE');
 		vm.FIELD = S.returnData('FIELD');
-		formatForDisplay();
+		initView();
 	};
 
 	$scope.$on("$destroy", function(){

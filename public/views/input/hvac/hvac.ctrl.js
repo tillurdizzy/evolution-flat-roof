@@ -15,7 +15,11 @@ function myFunction($scope,SharedSrvc) {
 	// Counters
 	vm.hvacSizeCount = 0;
 	
-	
+	vm.clearInput = function(){
+        vm.PARAMS = vm.S.setHVAC();
+        initView();
+    };
+
 	function initView() {
         vm.hvacSizeCount = getUnitCount();
     };

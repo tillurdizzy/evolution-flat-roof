@@ -1,8 +1,8 @@
 <div ng-controller="LayersCtrl as Ctrl">
-    <div class="page-title">
-        <h4>{{Ctrl.JOB.street}}, {{Ctrl.JOB.city}}</h4></div>
-    <p>Components of existing roof layers.</p>
+    <clear-input callback="Ctrl.clearInput()" title="{{Ctrl.JOB.street}}, {{Ctrl.JOB.city}} {{Ctrl.JOB.state}}"></clear-input>
+    <p>Structure of existing roof layers.</p>
     <horiz-rule margintop="5" marginbottom="10"></horiz-rule>
+
     <!-- Layer One -->
     <div class="form-input">
         <div class="item-name">

@@ -1,5 +1,5 @@
 'use strict';
-angular.module('app', ['ngMaterial', 'ui.router'])
+angular.module('app', ['ngMaterial', 'ui.router','ngUnderscore'])
     .config(initRouter)
     .config(mdTheme)
     .run(runBlock);
@@ -46,7 +46,15 @@ function initRouter($stateProvider, $urlRouterProvider) {
         templateUrl: "views/results/materials.html"
     })
 
+    .state('labor', {
+        url: "/labor",
+        templateUrl: "views/results/labor.html"
+    })
 
+    .state('summary', {
+        url: "/summary",
+        templateUrl: "views/results/summary.html"
+    })
 
     .state('cost', {
         url: "/cost",

@@ -31,7 +31,7 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	};
 
 	vm.clearInput = function(){
-        vm.PARAMS = vm.S.setMembrane();
+        vm.PARAMS = S.setMembrane();
         initView();
     };
 

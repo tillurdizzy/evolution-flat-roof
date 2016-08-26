@@ -5,10 +5,8 @@ myFunction.$inject = ['$scope','SharedSrvc','ResultsSrvc'];
 function myFunction($scope,SharedSrvc,ResultsSrvc) { 
 	var vm = this;
 	var S = SharedSrvc;
-	var R = ResultsSrvc;
+	vm.R = ResultsSrvc;
 	
-	
-
 	vm.MATERIALS = {
         membrane:'',plasticSheet:'',seamPlates:'',cornerIn:'',cornerOut:'',
         iso:'',screws:'',foam:'',insulPlate:'',
@@ -25,19 +23,18 @@ function myFunction($scope,SharedSrvc,ResultsSrvc) {
     };
 
  	function pushToShared() {
-        S.pushData(vm.PARAMS, 'xxx');
+        //S.pushData(vm.PARAMS, 'xxx');
     };
 
-    function pullFromShared() {
-        vm.PARAMS = S.returnData('xx');
-        initView();
+    function initSrvc() {
+        vm.R.initSrvc();
     };
 
     $scope.$on("$destroy", function() {
-        pushToShared();
+        //pushToShared();
     });
 
     $scope.$watch('$viewContentLoaded', function() {
-        pullFromShared();
+        initSrvc();
     });
 };

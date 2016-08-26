@@ -288,8 +288,8 @@ function SharedSrvc($rootScope, DB) {
     function setPenetrations() {
         PENETRATIONS = {
             STARCAPS: [],
-            VENTS: { SMALL: [] },
-            PIPES: { small: '', medium: '', large: '' },
+            VENTS: { SMALL: [] ,LARGE:[]},
+            PIPES: { small: '0', medium: '0', large: '0' },
             DRAINS: { INTERNAL: [], SCUPPER: [] },
             GUTTERS: {
                 EAVESTROUGH: { length: "", size: "" },
@@ -308,7 +308,7 @@ function SharedSrvc($rootScope, DB) {
             WALL: '0',
             PARAPET: [],
             OTHER: { length:'0',description: '', cost: '0' },
-            WALLTERM: []
+            DESIGN: {WALLS:[],EDGES:{type:'',stretchout:'',stripin:''},PARAPETS:[]}
         };
         return TERMINATIONS;
     };

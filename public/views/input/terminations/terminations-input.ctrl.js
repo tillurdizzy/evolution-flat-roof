@@ -20,7 +20,7 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 	vm.clearInput = function(){
 		switch(vm.currentNavItem){
 			case 'edge':resetEdge();break;
-			case 'wall'resetWall();:break;
+			case 'wall':resetWall();break;
 			case 'cap':resetCap();break;
 			case 'other':resetOther();break;
 		}
@@ -80,7 +80,7 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
     $scope.$watch('Ctrl.capMetalCount', function() {
         var currentCount = getParapetCount();
         if (vm.capMetalCount > currentCount) {
-            vm.PARAMS.PARAPET.push({ length: '0', stretchout: '0',cleated:'No'});
+            vm.PARAMS.PARAPET.push({ length: '0', stretchout: '0',cleated:'No',material:''});
         } else if (vm.capMetalCount < currentCount) {
             vm.PARAMS.PARAPET.pop();
         }

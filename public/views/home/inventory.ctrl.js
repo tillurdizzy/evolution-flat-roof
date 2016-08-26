@@ -1,8 +1,8 @@
 angular.module('app').controller('InvtCtrl', myFunction);
 
-myFunction.$inject = ['$scope','DB'];
+myFunction.$inject = ['$scope','DB','underscore'];
 
-function myFunction($scope,DB) { 
+function myFunction($scope,DB,underscore) { 
 	var vm = this;
 
 	vm.invtCategories = ["Adhesives","Edging","Fasteners","Flashing","Insulation","Membranes","Walkways"];
@@ -36,7 +36,6 @@ function myFunction($scope,DB) {
         });
     };
 	
-
 	function getInventory() {
         DB.query(vm.categorySelected).then(function(resultObj) {
             if (resultObj.result == "Error" || typeof resultObj.data === "string") {
@@ -44,6 +43,12 @@ function myFunction($scope,DB) {
                 console.log("getProposalsByJob ---- " + resultObj.data);
             } else {
                 vm.selectedCategoryList = resultObj.data;
+                if(vm.categorySelected == 'Membranes'){
+                    for (var i = 0; i < vm.selectedCategoryList.length; i++) {
+                        vm.selectedCategoryList[i].sort = parseInt(vm.selectedCategoryList[i].sort);
+                    }
+                    vm.selectedCategoryList = underscore.sortBy(vm.selectedCategoryList, 'sort');
+                }
             }
         }, function(error) {
             alert("Query Error - InvtCtrl >> getInventory");

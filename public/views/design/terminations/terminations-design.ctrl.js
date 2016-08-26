@@ -19,8 +19,10 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 	};
 
 	vm.clearInput = function(){
-        
+        alert('Delete Terminations from their Input page.');
     };
+
+   
 	
 	function initView(){
 		vm.wallTypeCount = getWallTermCount();
@@ -30,8 +32,8 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 		var objLength = Object.keys(vm.PARAMS).length;
 		var count = 0;
 		if(objLength != 0){
-			if(vm.PARAMS.WALLTERM != undefined){
-				count = vm.PARAMS.WALLTERM.length;
+			if(vm.PARAMS.DESIGN.WALLS != undefined){
+				count = vm.PARAMS.DESIGN.WALLS.length;
 			}
 		}
 		return count;
@@ -60,9 +62,9 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
     $scope.$watch('Ctrl.wallTypeCount', function() {
         var currentCount = getWallTermCount();
         if (vm.wallTypeCount > currentCount) {
-            vm.PARAMS.WALLTERM.push({type:'',length:'0'});
+            vm.PARAMS.DESIGN.WALLS.push({type:'',length:'0'});
         } else if (vm.wallTypeCount < currentCount) {
-            vm.PARAMS.WALLTERM.pop();
+            vm.PARAMS.DESIGN.WALLS.pop();
         }
     });
 

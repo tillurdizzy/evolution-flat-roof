@@ -17,38 +17,37 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	vm.existingLayers = [];
 	
 	vm.clearInput = function(){
-        vm.PARAMS = vm.S.setBase();
+        vm.PARAMS = S.setBase();
         initView();
     };
 	
 	function initView(){
 		vm.layerCount = vm.PARAMS.LAYERS.length;
 		vm.existingLayers = [];
-		if(vm.LAYERS.layerOne != ""){
+		if(vm.LAYERS.layerOne.layer != ""){
 			vm.existingLayers.push({layerNum:"1",material:vm.LAYERS.layerOne});
 		};
 
-		if(vm.LAYERS.layerTwo != ""){
+		if(vm.LAYERS.layerTwo.layer != ""){
 			vm.existingLayers.push({layerNum:"2",material:vm.LAYERS.layerTwo});
 		};
 
-		if(vm.LAYERS.layerThree != ""){
+		if(vm.LAYERS.layerThree.layer != ""){
 			vm.existingLayers.push({layerNum:"3",material:vm.LAYERS.layerThree});
 		};
 
-		if(vm.LAYERS.layerFour != ""){
+		if(vm.LAYERS.layerFour.layer != ""){
 			vm.existingLayers.push({layerNum:"4",material:vm.LAYERS.layerFour});
 		};
 
-		if(vm.LAYERS.layerFive != ""){
+		if(vm.LAYERS.layerFive.layer != ""){
 			vm.existingLayers.push({layerNum:"5",material:vm.LAYERS.layerFive});
 		};
 
-		if(vm.LAYERS.layerSix != ""){
+		if(vm.LAYERS.layerSix.layer != ""){
 			vm.existingLayers.push({layerNum:"6",material:vm.LAYERS.layerSix});
 		};
 
-		
 	};
 
 	function pushToShared(){

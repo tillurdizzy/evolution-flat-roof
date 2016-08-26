@@ -36,8 +36,37 @@ function myCtrlFunction($scope, $state, SharedSrvc) {
     };
 
     vm.clearInput = function(){
-        vm.PARAMS = vm.S.setPenetrations();
-        initView();
+        switch(vm.currentNavItem){
+            case 'pipes':resetPipes();break;
+            case 'vents':resetVents();break;
+            case 'drains':resetDrains();break;
+            case 'gutters':resetGutters();break;
+        }
+    };
+
+    function resetPipes(){
+        vm.PARAMS.PIPES = { small: '0', medium: '0', large: '0' };
+    };
+
+    function resetVents(){
+        vm.PARAMS.VENTS = { SMALL: [] , LARGE:[] };
+        vm.smallVentCount = getSmallVentCount();
+        vm.largeVentCount = getLargeVentCount();
+    };
+
+    function resetDrains(){
+        vm.PARAMS.DRAINS = { INTERNAL: [], SCUPPER: [] };
+        vm.internalDrainCount = getInternalDrainCount();
+        vm.scupperDrainCount = getScupperDrainCount();
+    };
+
+    function resetGutters(){
+        vm.PARAMS.GUTTERS = {
+                EAVESTROUGH: { length: "", size: "" },
+                DOWNSPOUTS: { length: "", qty: "" },
+                CORNERS: { inside: "", outside: "" },
+                ELBOWS: { front: "", side: "" },
+                HARDWARE: { hangers: "", downspouts: "", endcaps: "" }};
     };
 
     function initView() {

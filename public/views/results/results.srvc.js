@@ -1,18 +1,16 @@
 'use strict';
 angular.module('app').factory('ResultsSrvc', ResultsSrvc);
 
-ResultsSrvc.$inject = ['SharedSrvc','DB'];
+ResultsSrvc.$inject = ['SharedSrvc','DB','InventorySrvc'];
 
-function ResultsSrvc(SharedSrvc,DB) {
+function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
+
+    var self = this;
     var S = SharedSrvc;
-
-    var service = {
-        initSrvc:initSrvc
-    };
-
-    return service;
+    var I = InventorySrvc;
 
     var myID = "ResultsSrvc: ";
+
     var FIELD = [];
     var MEM = [];
     var BASE = [];
@@ -20,21 +18,74 @@ function ResultsSrvc(SharedSrvc,DB) {
     var TERM = [];
     var HVAC = [];
     var RPAN = [];
-    var INVENTORY = [];
-    
-    var WALKWAYS = [];
+
+    var baseThickness = 0;
+    var field = 0;
+    self.MATERIALS = {plywood:[],insulation:[],screws:[],glue:[]};
+    // item, qty, pkg, cost
+
     var invtCategories = ["Adhesives","Edging","Fasteners","Flashing","Insulation","Membranes","Walkways"];
 
     // Step 1: Collect data to determine materials needed
-    function initSrvc(){
+    self.initSrvc = function(){
         FIELD = S.returnData('FIELD');
-        MEM = S.returnData('MEMBRANE');
         BASE = S.returnData('ROOFBASE');
+        MEM = S.returnData('MEMBRANE');
         PEN = S.returnData('PENETRATIONS');
         TERM = S.returnData('TERMINATIONS');
         HVAC = S.returnData('HVAC');
-        //RPAN = S.returnData('HVAC');
+        RPAN = S.returnData('LAYERS');
+
+        field = returnNumber(FIELD.SQUARES,'num');
+        self.MATERIALS = {plywood:[],insulation:[],screws:[],glue:[]};
+        processBase();
+    }
+
+    function processBase(){
+        // Calculate base thickness total... mainly for screw length
+        // ?Assume all existing layers are torn off?
+        // ?Include plywood layer?
+        baseThickness = 0;
+        for (var i = 0; i < BASE.LAYERS.length; i++) {
+           var t = returnNumber(BASE.LAYERS[i].thickness,'num');
+           baseThickness+=t;
+        }
+
+        // Base layers
+        // ?Different types if insulation?  Or just "ISO"  Gypsum?
+        for (var i = 0; i < BASE.LAYERS.length; i++) {
+           var item = BASE.LAYERS[i].material;
+           var pkg = BASE.LAYERS[i].size;
+           var t = BASE.LAYERS[i].thickness;
+           var itemData = I.returnBase(item,pkg,t);
+           var result = {price:"1.50",num:".32"};
+           var price = returnNumber(result.price,'num');
+           var num = returnNumber(result.num,'num');
+           var qty = field / result.num;
+           var total = decimalPrecisionTwo(qty * price);
+
+           if(item == "ISO"){
+                self.MATERIALS.insulation.push({item:item,qty:qty,price:price,total:total});
+           }else if(item=="Plywood"){
+                self.MATERIALS.plywood.push({item:item,qty:qty,price:price,total:total});
+           }
+        }
+
+        // Attachment
+        // Does each layer of ISO get attached independently?  
+        var method = BASE.ATTACHMENT.class;
+        if(method == "Screw"){
+            var rate = BASE.ATTACHMENT.rate;
+            //var numberOfScrews = 
+
+        }
+        itemData =  I.returnBase(item,pkg,t);
+        
         processMembrane();
+    }
+
+    function getFastener(type){
+
     }
 
     function processMembrane(){
@@ -48,7 +99,14 @@ function ResultsSrvc(SharedSrvc,DB) {
             sqFt+=(h*l);
         }
         SQUARES+=(sqFt/10);
-    }
+        var attachMethod = MEM.ATTACH;
+        if(attachMethod == "Mechanically Attached"){
+
+        }else if(attachMethod == "Fully Adhered"){
+
+        }
+
+    };
 
     function decimalPrecisionTwo(data) {
         var num = returnNumber(data,'num');
@@ -107,5 +165,7 @@ function ResultsSrvc(SharedSrvc,DB) {
             alert("Query Error - InvtCtrl >> getInventory");
         });
     };
+
+    return self;
 
 };

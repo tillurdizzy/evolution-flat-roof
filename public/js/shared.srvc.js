@@ -339,10 +339,14 @@ function SharedSrvc($rootScope, DB) {
     function setBase() {
         ROOFBASE = {
             LAYERS: [],
-            ATTACHMENT: '',
+            ATTACHMENT:{class:'',item:'',rate:''},
             SPECIAL: {}
         }
         return ROOFBASE;
+    };
+
+    function setPanel() {
+       // RPANEL is saved in Layers!!
     };
 
 

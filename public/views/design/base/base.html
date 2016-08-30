@@ -15,10 +15,43 @@
     <div class="form-input">
         <div class="item-name">
             <h3>Attachment</h3></div>
-        <div class="item-select">
-            <md-select ng-model="Ctrl.PARAMS.ATTACHMENT" placeholder="method">
-                <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.adhereMethod">{{ opt }}</md-option>
-            </md-select>
+    </div>
+    <div class="indent">
+        <div class="form-input">
+            <div class="item-name">
+                <h3>Method</h3></div>
+            <div class="item-select-small">
+                <md-select ng-model="Ctrl.PARAMS.ATTACHMENT.class" placeholder="method">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.attachMethod">{{ opt }}</md-option>
+                </md-select>
+            </div>
+            <div class="flex-row" ng-show="Ctrl.PARAMS.ATTACHMENT.class=='Glue'">
+                <div class="item-name-small">
+                    <h3>Type</h3></div>
+                <div class="item-select">
+                    <md-select ng-model="Ctrl.PARAMS.ATTACHMENT.item" placeholder="glue">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.listOfGlue">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+            </div>
+            <div class="flex-row" ng-show="Ctrl.PARAMS.ATTACHMENT.class=='Screw'">
+                <div class="item-name-small">
+                    <h3>Size</h3></div>
+                <div class="item-select">
+                    <md-select ng-model="Ctrl.PARAMS.ATTACHMENT.item" placeholder="screw">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.listOfScrews">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+            </div>
+            <div class="flex-row" ng-show="Ctrl.PARAMS.ATTACHMENT.class=='Screw'">
+                <div class="item-name-small">
+                    <h3>Rate</h3></div>
+                <div class="item-select-small">
+                    <md-select ng-model="Ctrl.PARAMS.ATTACHMENT.rate" placeholder="pattern">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.attachPattern">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+            </div>
         </div>
     </div>
     <add-space heightpx="10"></add-space>

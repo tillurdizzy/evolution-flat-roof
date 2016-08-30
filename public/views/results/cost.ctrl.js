@@ -18,7 +18,7 @@ function myFunction($scope,SharedSrvc,ResultsSrvc) {
     };
 
  	function pushToShared() {
-        S.pushData(vm.PARAMS, 'XXX');
+        //S.pushData(vm.PARAMS, 'XXX');
     };
 
     function pullFromShared() {

@@ -74,7 +74,7 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
      $scope.$watch('Ctrl.layerCount', function() {
         var currentCount = vm.PARAMS.LAYERS.length;
         if (vm.layerCount > currentCount) {
-            vm.PARAMS.LAYERS.push({ material: '', thickness: '', size: ''});
+            vm.PARAMS.LAYERS.push({ material: '', thickness: '', size: '4x8'});
         } else if (vm.layerCount < currentCount) {
             vm.PARAMS.LAYERS.pop();
         }

@@ -6,14 +6,11 @@ myFunction.$inject = ['$scope', 'SharedSrvc'];
 function myFunction($scope, SharedSrvc) {
     var vm = this;
     vm.S = SharedSrvc;
-
-    vm.SELECT = {};
     vm.PARAMS = {};
-
-    vm.DOM = {};
 
     // Counters
     vm.pipeSupportWood = 0;
+    vm.pipeSupportFoam = 0;
     vm.pipeSupportCones = 0;
 
     function initView() {
@@ -77,9 +74,9 @@ function myFunction($scope, SharedSrvc) {
     $scope.$watch('Ctrl.pipeSupportWood', function() {
         var currentCount = getWoodCount();
         if (vm.pipeSupportWood > currentCount) {
-            vm.PARAMS.SUPPORT.TIMBER.push({ qty: '', width: '' });
+            vm.PARAMS.SUPPORT.WOOD.push({ qty: '', width: '' });
         } else if (vm.pipeSupportWood < currentCount) {
-            vm.PARAMS.SUPPORT.TIMBER.pop();
+            vm.PARAMS.SUPPORT.WOOD.pop();
         }
     });
 

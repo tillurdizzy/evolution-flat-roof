@@ -18,6 +18,7 @@ while ($row = mysqli_fetch_object($result)) {
 	$oneVO = new inventoryVO();
 	$oneVO->PRIMARY_ID = $row->PRIMARY_ID;
 	$oneVO->item = $row->item;
+	$oneVO->class = $row->class;
 	$oneVO->qty = $row->qty;
 	$oneVO->pkg = $row->pkg;
 	$oneVO->price = $row->price;

@@ -12,6 +12,7 @@ $con = mysqli_connect(DATABASE_SERVER, DATABASE_USERNAME, DATABASE_PASSWORD,DATA
 
 $PRIMARY_ID = mysqli_real_escape_string($con,$input->PRIMARY_ID);
 $item = mysqli_real_escape_string($con,$input->item);
+$class = mysqli_real_escape_string($con,$input->class);
 $qty = mysqli_real_escape_string($con,$input->qty);
 $pkg = mysqli_real_escape_string($con,$input->pkg);
 $price = mysqli_real_escape_string($con,$input->price);
@@ -21,6 +22,7 @@ $component = mysqli_real_escape_string($con,$input->component);
 
 $query = "UPDATE inv_fasteners SET 
 item='".$item."',
+class='".$class."',
 qty='".$qty."',
 pkg='".$pkg."',
 price='".$price."',

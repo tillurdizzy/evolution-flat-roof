@@ -2,6 +2,67 @@
     <div class="page-title">
         <h4>Materials</h4></div>
     <div>
-       
+        <table st-table="Ctrl.R.MATERIALS.plywood" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in Ctrl.R.MATERIALS.plywood">
+                    <td>{{row.item}}</td>
+                    <td>{{row.qty}}</td>
+                    <td>{{row.price}}</td>
+                    <td>{{row.total}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+
+    <div>
+        <table st-table="Ctrl.R.MATERIALS.insulation" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in Ctrl.R.MATERIALS.insulation">
+                    <td>{{row.item}}</td>
+                    <td>{{row.qty}}</td>
+                    <td>{{row.price}}</td>
+                    <td>{{row.total}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <table st-table="Ctrl.MATERIALS.R.fasteners" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in Ctrl.R.MATERIALS.fasteners">
+                    <td>{{row.item}}</td>
+                    <td>{{row.qty}}</td>
+                    <td>{{row.price}}</td>
+                    <td>{{row.total}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
 </div>

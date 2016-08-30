@@ -18,19 +18,30 @@
         <div class="form-input">
             <div class="item-name">
                 <h3>Wood</h3></div>
-                <support-timber qty="item.qty" width="item.width" ng-repeat="item in Ctrl.PARAMS.SUPPORT.WOOD"></support-timber>
+            <div class="item-counter">
+                <counter count="Ctrl.pipeSupportWood" min="0" max="1000"></counter>
+            </div>
         </div>
-
+        <support-timber qty="item.qty" width="item.width" ng-repeat="item in Ctrl.PARAMS.SUPPORT.WOOD"></support-timber>
+    </div>
+    <div class="indent">
         <div class="form-input">
             <div class="item-name">
                 <h3>Foam</h3></div>
-                <support-timber qty="item.qty" width="item.width" ng-repeat="item in Ctrl.PARAMS.SUPPORT.FOAM"></support-timber>
+            <div class="item-counter">
+                <counter count="Ctrl.pipeSupportFoam" min="0" max="1000"></counter>
+            </div>
         </div>
-        
+        <support-timber qty="item.qty" width="item.width" ng-repeat="item in Ctrl.PARAMS.SUPPORT.FOAM"></support-timber>
+    </div>
+    <div class="indent">
         <div class="form-input">
             <div class="item-name">
                 <h3>Cones</h3></div>
-                 <support-cones qty="item.qty" ring="item.ring" attached="item.attached" ng-repeat="item in Ctrl.PARAMS.SUPPORT.CONES"></support-timber>
+            <div class="item-counter">
+                <counter count="Ctrl.pipeSupportCones" min="0" max="1000"></counter>
+            </div>
         </div>
+        <support-cones qty="item.qty" ring="item.ring" attached="item.attached" ng-repeat="item in Ctrl.PARAMS.SUPPORT.CONES"></support-timber>
     </div>
 </div>

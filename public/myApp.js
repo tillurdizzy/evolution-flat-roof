@@ -223,8 +223,8 @@ function mdTheme($mdThemingProvider) {
         .accentPalette('red');
 };
 
-runBlock.$inject = ['SharedSrvc'];
+runBlock.$inject = ['SharedSrvc','InventorySrvc'];
 
-function runBlock(SharedSrvc) {
-    //SharedSrvc.setTempData();
+function runBlock(SharedSrvc,InventorySrvc) {
+    InventorySrvc.initSrvc();
 };

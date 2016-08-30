@@ -1,16 +1,11 @@
 <?php
-class membraneVO{
+class baseVO{
 	var $PRIMARY_ID;
 	var $item;
 	var $class;
-	var $sort;
-	var $mil;
-	var $fleece;
+	var $thickness;
 	var $qty;
 	var $pkg;
-	var $width;
-	var $length;
-	var $sqft;
 	var $price;
 	var $num;
 	var $unit;

@@ -12,6 +12,7 @@ $con = mysqli_connect(DATABASE_SERVER, DATABASE_USERNAME, DATABASE_PASSWORD,DATA
 
 $PRIMARY_ID = mysqli_real_escape_string($con,$input->PRIMARY_ID);
 $item = mysqli_real_escape_string($con,$input->item);
+$class = mysqli_real_escape_string($con,$input->class);
 $sort = mysqli_real_escape_string($con,$input->sort);
 $mil = mysqli_real_escape_string($con,$input->mil);
 $fleece = mysqli_real_escape_string($con,$input->fleece);
@@ -26,6 +27,7 @@ $component = mysqli_real_escape_string($con,$input->component);
 
 $query = "UPDATE inv_membranes SET 
 item='".$item."',
+class='".$class."',
 qty='".$qty."',
 sort='".$sort."',
 mil='".$mil."',

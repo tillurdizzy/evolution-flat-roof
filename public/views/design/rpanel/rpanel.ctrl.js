@@ -7,8 +7,6 @@ function myFunction($scope,SharedSrvc) {
 	var vm =this;
 	
 	var S = SharedSrvc;
-
-	vm.SELECT = {};
 	vm.PARAMS = {};
 
 	
@@ -26,6 +24,7 @@ function myFunction($scope,SharedSrvc) {
 		vm.JobID = S.returnSelectedJobID();
 		vm.JOB = S.returnSelectedJob();
 		vm.PARAMS = S.returnData('RPANEL');
+		vm.LAYERS = S.returnData('LAYERS');
 		initView();
 	};
 

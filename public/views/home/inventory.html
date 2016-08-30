@@ -22,6 +22,54 @@
             </div>
             <div class="form-input">
                 <div class="item-name">
+                    <h3>Class</h3></div>
+                <div class="item-input" style="width:300px;">
+                    <input type="text" ng-model="Ctrl.itemSelected.class" style="width:300px;"></div>
+            </div>
+            <div class="form-input" ng-show="Ctrl.DOM.thickness">
+                <div class="item-name">
+                    <h3>Thickness</h3></div>
+                <div class="item-input">
+                    <input type="tel" ng-model="Ctrl.itemSelected.thickness"></div>
+            </div>
+
+            <div class="form-input" ng-show="Ctrl.DOM.membrane">
+                <div class="item-name">
+                    <h3>Mil</h3></div>
+                <div class="item-input">
+                    <input type="tel" ng-model="Ctrl.itemSelected.mil"></div>
+            </div>
+
+            <div class="form-input" ng-show="Ctrl.DOM.membrane">
+                <div class="item-name">
+                    <h3>Fleece</h3></div>
+                <div class="item-input">
+                    <input type="tel" ng-model="Ctrl.itemSelected.fleece"></div>
+            </div>
+
+            <div class="form-input" ng-show="Ctrl.DOM.membrane">
+                <div class="item-name">
+                    <h3>Width</h3></div>
+                <div class="item-input">
+                    <input type="tel" ng-model="Ctrl.itemSelected.width"></div>
+            </div>
+
+            <div class="form-input" ng-show="Ctrl.DOM.membrane">
+                <div class="item-name">
+                    <h3>Length</h3></div>
+                <div class="item-input">
+                    <input type="tel" ng-model="Ctrl.itemSelected.length"></div>
+            </div>
+
+             <div class="form-input" ng-show="Ctrl.DOM.membrane">
+                <div class="item-name">
+                    <h3>Sq Ft.</h3></div>
+                <div class="item-input">
+                    <input type="tel" ng-model="Ctrl.itemSelected.sqft"></div>
+            </div>
+
+            <div class="form-input">
+                <div class="item-name">
                     <h3>Qty</h3></div>
                 <div class="item-input">
                     <input type="tel" ng-model="Ctrl.itemSelected.qty"></div>
@@ -72,10 +120,10 @@
         <div style="overflow:auto;height:400px;">
             <table st-table="Ctrl.selectedCategoryList" class="table table-striped">
                 <thead>
-                    <tr>
-                        <th style="width:250px;">Item</th>
+                    <tr  style="overflow:hidden;">
+                        <th style="width:200px;">Item</th>
                         <th style="width:50px;">Qty</th>
-                        <th style="width:50px;">Pkg</th>
+                        <th style="width:100px;">Pkg</th>
                         <th style="width:80px;">Price</th>
                         <th style="width:50px;">Num</th>
                         <th style="width:50px;">Unit</th>

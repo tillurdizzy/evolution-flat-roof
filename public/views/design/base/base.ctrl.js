@@ -9,12 +9,13 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	var S = SharedSrvc;
 
 	vm.layerCount = 0;
-
+	
 	vm.SELECT = {};
 	vm.PARAMS = {};
 	vm.FIELD = {};
 	vm.LAYERS = {};
 	vm.existingLayers = [];
+	var initialRuns = {corners:false,perimeter:false,field:false}
 	
 	vm.clearInput = function(){
         vm.PARAMS = S.setBase();
@@ -48,6 +49,11 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 			vm.existingLayers.push({layerNum:"6",material:vm.LAYERS.layerSix});
 		};
 
+		vm.PARAMS.RATIO.corners = parseInt(vm.PARAMS.RATIO.corners);
+		vm.PARAMS.RATIO.perimeter = parseInt(vm.PARAMS.RATIO.perimeter);
+		vm.PARAMS.RATIO.field = parseInt(vm.PARAMS.RATIO.field);
+		vm.PARAMS.RATIO.total = parseInt(vm.PARAMS.RATIO.total);
+
 	};
 
 	function pushToShared(){
@@ -71,12 +77,53 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
  		pullFromShared();
     });
 
-     $scope.$watch('Ctrl.layerCount', function() {
+    $scope.$watch('Ctrl.layerCount', function() {
         var currentCount = vm.PARAMS.LAYERS.length;
         if (vm.layerCount > currentCount) {
             vm.PARAMS.LAYERS.push({ material: '', thickness: '', size: '4x8'});
         } else if (vm.layerCount < currentCount) {
             vm.PARAMS.LAYERS.pop();
+        }
+    });
+
+    $scope.$watch('Ctrl.PARAMS.RATIO.corners', function() {
+    	if(initialRuns.corners){
+    		vm.PARAMS.RATIO.total = parseInt(vm.PARAMS.RATIO.perimeter) + parseInt(vm.PARAMS.RATIO.corners) + parseInt(vm.PARAMS.RATIO.field);
+    	}else{
+    		initialRuns.corners = true;
+    	}
+    	
+        if(vm.PARAMS.RATIO.total == 100){
+        	
+        }else{
+        	
+        }
+    });
+
+    $scope.$watch('Ctrl.PARAMS.RATIO.perimeter', function() {
+    	if(initialRuns.perimeter){
+    		vm.PARAMS.RATIO.total = parseInt(vm.PARAMS.RATIO.perimeter) + parseInt(vm.PARAMS.RATIO.corners) + parseInt(vm.PARAMS.RATIO.field);
+    	}else{
+    		initialRuns.perimeter = true;
+    	}
+        if(vm.PARAMS.RATIO.total == 100){
+        	
+        }else{
+        	
+        }
+    });
+
+    $scope.$watch('Ctrl.PARAMS.RATIO.field', function() {
+    	if(initialRuns.field){
+    	vm.PARAMS.RATIO.total = parseInt(vm.PARAMS.RATIO.perimeter) + parseInt(vm.PARAMS.RATIO.corners) + parseInt(vm.PARAMS.RATIO.field);
+    	}else{
+    		initialRuns.field = true;
+    	}
+    	
+        if(vm.PARAMS.RATIO.total == 100){
+        	
+        }else{
+        	
         }
     });
 

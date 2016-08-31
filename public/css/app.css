@@ -636,6 +636,17 @@ table {
     vertical-align: middle;
     text-align: left;
     font-weight: 400; }
+  .form-input .big-number {
+    height: 30px;
+    width: 70px;
+    color: #303F9F;
+    margin: 0;
+    vertical-align: middle;
+    padding: 0 5px 0 0; }
+    .form-input .big-number h3 {
+      font-size: 20px;
+      font-weight: 700;
+      text-align: right; }
   .form-input .item-name {
     height: 30px;
     width: 200px;

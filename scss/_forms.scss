@@ -10,6 +10,8 @@ $input-line-height:30px;
     }
 }
 
+
+
 .form-input {
     display: flex;
     margin: 0 0 5px 0;
@@ -19,12 +21,27 @@ $input-line-height:30px;
         min-width: 100px;
     }
 
+
     h3 {
         margin: 0;
         line-height: $input-line-height;
         vertical-align: middle;
         text-align: left;
         font-weight: 400;
+    }
+
+    .big-number{
+        height: $input-line-height;
+        width: 70px;
+        color:$indigo-accent-700;
+        margin: 0;
+        vertical-align: middle;
+        padding: 0 5px 0 0;
+        h3{
+            font-size: 20px;
+            font-weight: 700;
+            text-align: right;
+        }
     }
 
     .item-name {

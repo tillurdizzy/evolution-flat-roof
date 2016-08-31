@@ -340,6 +340,7 @@ function SharedSrvc($rootScope, DB) {
         ROOFBASE = {
             LAYERS: [],
             ATTACHMENT:{class:'',item:'',rate:''},
+            RATIO:{corners:'20',perimeter:'40',field:'40',total:'100'},
             SPECIAL: {}
         }
         return ROOFBASE;

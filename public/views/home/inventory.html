@@ -87,7 +87,7 @@
                 <div class="item-name">
                     <h3>Price</h3></div>
                 <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.itemSelected.price"></div>
+                    <input type="text" ng-model="Ctrl.itemSelected.price"></div>
             </div>
             <div class="form-input">
                 <div class="item-name">
@@ -113,7 +113,15 @@
                     </md-select>
                 </div>
             </div>
-             <md-button class="md-raised" ng-click="Ctrl.submitEdit();"> Submit </md-button>
+            <div class="flex-space-between">
+                <md-button class="md-raised" ng-click="Ctrl.submitEdit();"> SUBMIT </md-button>
+                <div class="input-description" style="padding-top: 20px;">  
+                    <h4 ng-show="Ctrl.actionMode=='update'">MODE: UPDATE ITEM</h4>
+                    <h4 ng-show="Ctrl.actionMode=='create'">MODE: CREATE NEW ITEM</h4>
+                </div>
+                <md-button class="md-raised" ng-click="Ctrl.toggleMode();"> MODE </md-button>
+            </div>
+             
             
         </div>
         <horiz-rule margintop="15" marginbottom="15"></horiz-rule>

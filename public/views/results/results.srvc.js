@@ -20,7 +20,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
     var RPAN = [];
 
     var baseThickness = 0;
-    var field = 0;
+    var FIELDSQ = 0;
     self.MATERIALS = {plywood:[],insulation:[],screws:[],glue:[]};
     // item, qty, pkg, cost
 
@@ -36,7 +36,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
         HVAC = S.returnData('HVAC');
         RPAN = S.returnData('LAYERS');
 
-        field = returnNumber(FIELD.SQUARES,'num');
+        FIELDSQ = returnNumber(FIELD.SQUARES,'num');
         self.MATERIALS = {plywood:[],insulation:[],screws:[],glue:[]};
         processBase();
     }
@@ -56,12 +56,12 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
         for (var i = 0; i < BASE.LAYERS.length; i++) {
            var item = BASE.LAYERS[i].material;
            var pkg = BASE.LAYERS[i].size;
-           var t = BASE.LAYERS[i].thickness;
-           var itemData = I.returnBase(item,pkg,t);
-           var result = {price:"1.50",num:".32"};
-           var price = returnNumber(result.price,'num');
-           var num = returnNumber(result.num,'num');
-           var qty = field / result.num;
+           var thick = returnNumber(BASE.LAYERS[i].thickness);
+           var itemData = I.returnBase(item,pkg,thick);
+           
+           var price = returnNumber(itemData.price,'num');
+           var num = returnNumber(itemData.num,'num');
+           var qty = FIELDSQ / num;
            var total = decimalPrecisionTwo(qty * price);
 
            if(item == "ISO"){
@@ -110,7 +110,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
 
     function decimalPrecisionTwo(data) {
         var num = returnNumber(data,'num');
-        var result = Math.round(num * 100) / 100
+        var result = Math.round(num * 100) / 100;
         return result;
     }
 

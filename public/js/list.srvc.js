@@ -7,7 +7,7 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
 
     self.membraneThickness = ["45 mil","50 mil","60 mil","80 mil"];
 
-    self.ISO = ["0.50","0.75","1.00","1.25","1.50","2.00","2.50","3.00","3.10","3.25","3.50","4.00","4.50"];
+    self.ISO = ["0.50","0.75","1.00","1.25","1.50","2.00","2.50","3.00","3.25","3.50","4.00","4.50"];
 
     self.attachMethod = ["Screw","Glue"];
     self.listOfScrews = ['#15 - 1.25 in.','#15 - 2 in.','#15 - 3 in.','#15 - 4 in.','#15 - 5 in.','#15 - 6 in.','#15 - 7 in.','#15 - 8 in.','#15 - 10 in.','#15 - 12 in.','#15 - 14 in.'];

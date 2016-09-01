@@ -1,14 +1,14 @@
 <div ng-controller="MaterialsCtrl as Ctrl">
     <div class="page-title">
         <h4>Materials</h4></div>
-    <div>
+    <div ng-show="Ctrl.R.MATERIALS.plywood.length > 0">
         <table st-table="Ctrl.R.MATERIALS.plywood" class="table table-striped">
             <thead>
                 <tr>
-                    <th>Item</th>
-                    <th>Qty</th>
-                    <th>Price</th>
-                    <th>Total</th>
+                    <th style="width:400px;">Item</th>
+                    <th style="width:100px;">Qty</th>
+                    <th style="width:100px;">Price</th>
+                    <th style="width:200px;">Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,10 +26,10 @@
         <table st-table="Ctrl.R.MATERIALS.insulation" class="table table-striped">
             <thead>
                 <tr>
-                    <th>Item</th>
-                    <th>Qty</th>
-                    <th>Price</th>
-                    <th>Total</th>
+                    <th style="width:400px;">Item</th>
+                    <th style="width:100px;">Qty</th>
+                    <th style="width:100px;">Price</th>
+                    <th style="width:200px;">Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,10 +47,10 @@
         <table st-table="Ctrl.MATERIALS.R.fasteners" class="table table-striped">
             <thead>
                 <tr>
-                    <th>Item</th>
-                    <th>Qty</th>
-                    <th>Price</th>
-                    <th>Total</th>
+                    <th style="width:400px;">Item</th>
+                    <th style="width:100px;">Qty</th>
+                    <th style="width:100px;">Price</th>
+                    <th style="width:200px;">Total</th>
                 </tr>
             </thead>
             <tbody>

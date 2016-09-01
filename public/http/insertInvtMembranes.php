@@ -9,30 +9,42 @@ define( "DATABASE_PASSWORD", "Sadie9954!");
 define( "DATABASE_NAME", "evoflatroof");
 
 $con = mysqli_connect(DATABASE_SERVER, DATABASE_USERNAME, DATABASE_PASSWORD,DATABASE_NAME) or die ('ERROR!!!');
-
-$PRIMARY_ID = mysqli_real_escape_string($con,$input->PRIMARY_ID);
+$soet = mysqli_real_escape_string($con,$input->sort);
 $item = mysqli_real_escape_string($con,$input->item);
 $class = mysqli_real_escape_string($con,$input->class);
+$mil = mysqli_real_escape_string($con,$input->mil);
+$fleece = mysqli_real_escape_string($con,$input->fleece);
 $qty = mysqli_real_escape_string($con,$input->qty);
 $pkg = mysqli_real_escape_string($con,$input->pkg);
+$width = mysqli_real_escape_string($con,$input->width);
+$height = mysqli_real_escape_string($con,$input->height);
+$sqft = mysqli_real_escape_string($con,$input->sqft);
 $price = mysqli_real_escape_string($con,$input->price);
 $num = mysqli_real_escape_string($con,$input->num);
 $unit = mysqli_real_escape_string($con,$input->unit);
 $component = mysqli_real_escape_string($con,$input->component);
 
-$query = "UPDATE inv_insulation SET 
-item='".$item."',
-class='".$class."',
-qty='".$qty."',
-pkg='".$pkg."',
-price='".$price."',
-num='".$num."',
-unit='".$unit."',
-component='".$component."'
-WHERE PRIMARY_ID='".$PRIMARY_ID."'";
+$query = sprintf("INSERT INTO inv_membranes (sort,item,class,mil,fleece,qty,pkg,width,height,sqft,price,num,unit,component) VALUES (
+'" . $sort . "', " .
+"'" . $item . "', " .
+"'" . $class . "', " .
+"'" . $mil . "', " .
+"'" . $fleece . "', " .
+"'" . $qty . "', " .
+"'" . $pkg . "', " .
+"'" . $width . "', " .
+"'" . $height . "', " .
+"'" . $sqft . "', " .
+"'" . $price . "', " .
+"'" . $num . "', " .
+"'" . $unit . "', " .
+"'" . $component . "')");
+
 $qry_res = mysqli_query($con,$query);
+
 if ($qry_res) {
-	$arr = array('msg' => "Success", 'result' => $qry_res);
+	$last_id = mysqli_insert_id($con);
+	$arr = array('msg' => "Success", 'result' => $qry_res, 'id' => $last_id);
 	$jsn = json_encode($arr);
 	echo($jsn);
 } else {

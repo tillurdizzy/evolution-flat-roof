@@ -2,7 +2,6 @@
 angular.module('app').service('ListSrvc', [function sharedLists() {
     var self = this;
 
-
     self.membraneTypes = ["TPO - D4434","PVC - D4434","E/PVC - D4434","E/PVC - 6722"];
 
     self.membraneThickness = ["45 mil","50 mil","60 mil","80 mil"];
@@ -10,7 +9,7 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
     self.ISO = ["0.50","0.75","1.00","1.25","1.50","2.00","2.50","3.00","3.25","3.50","4.00","4.50"];
 
     self.attachMethod = ["Screw","Glue"];
-    self.listOfScrews = ['#15 - 1.25 in.','#15 - 2 in.','#15 - 3 in.','#15 - 4 in.','#15 - 5 in.','#15 - 6 in.','#15 - 7 in.','#15 - 8 in.','#15 - 10 in.','#15 - 12 in.','#15 - 14 in.'];
+    self.listOfScrews = ['#15 - 2 in.','#15 - 3 in.','#15 - 4 in.','#15 - 5 in.','#15 - 6 in.','#15 - 7 in.','#15 - 8 in.','#15 - 10 in.','#15 - 12 in.','#15 - 14 in.'];
     self.attachPattern = ['4','5','6','8','10','12','14'];
     self.listOfGlue = ['OlyBond','3M Foam'];
     self.spikeMethod = ['Spike 1.25 in.','Spike 1.50 in.','Spike 2 in.','Spike 3 in.','Spike 4 in.','Spike 5 in.','Spike 6 in.','Spike 7 in.','Spike 8 in.','Spike 9 in.','Spike 10 in.'];

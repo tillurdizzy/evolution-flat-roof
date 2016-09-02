@@ -9,7 +9,7 @@ function InventorySrvc(DB,underscore) {
     var service = {
         initSrvc:initSrvc,
         returnEdging:returnEdging,
-        returnFasteners:returnFasteners,
+        returnFastener:returnFastener,
         returnFlashing:returnFlashing,
         returnBase:returnBase,
         returnMembranes:returnMembranes,
@@ -44,9 +44,7 @@ function InventorySrvc(DB,underscore) {
     function returnEdging(p){
 
     };
-    function returnFasteners(p){
-
-    };
+    
     function returnFlashing(p){
 
     };
@@ -57,6 +55,17 @@ function InventorySrvc(DB,underscore) {
            if(Base[i].class == c && Base[i].pkg == p && Base[i].thickness == t){
                 rtnObj = Base[i];
                 break;
+           }
+        }
+        return rtnObj;
+    };
+
+    function returnFastener(itemName){
+        var rtnObj = {qty:0,price:0};
+        for (var i = 0; i < Fasteners.length; i++) {
+           if(Fasteners[i].item == itemName){
+                rtnObj = Fasteners[i];
+                return rtnObj;
            }
         }
         return rtnObj;

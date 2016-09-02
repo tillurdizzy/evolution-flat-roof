@@ -21,8 +21,10 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
 
     var baseThickness = 0;
     var FIELDSQ = 0;
-    self.MATERIALS = {plywood:[],insulation:[],screws:[],glue:[]};
+    self.MATERIALS = {base:[],membrane:[],terminations:[],penetrations:[],hvac:[],rpanel:[]};
     // item, qty, pkg, cost
+
+    self.footnotes = {screws:{ratioField:0,field:0,ratioCorners:0,corners:0,ratioPerimeter:0,perimeter:0}};
 
     var invtCategories = ["Adhesives","Edging","Fasteners","Flashing","Insulation","Membranes","Walkways"];
 
@@ -37,7 +39,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
         RPAN = S.returnData('LAYERS');
 
         FIELDSQ = returnNumber(FIELD.SQUARES,'num');
-        self.MATERIALS = {plywood:[],insulation:[],screws:[],glue:[]};
+        self.MATERIALS = {base:[],membrane:[],terminations:[],penetrations:[],hvac:[],rpanel:[]};
         processBase();
     }
 
@@ -52,34 +54,64 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
         }
 
         // Base layers
-        // ?Different types if insulation?  Or just "ISO"  Gypsum?
         for (var i = 0; i < BASE.LAYERS.length; i++) {
-           var item = BASE.LAYERS[i].material;
+           var itemClass = BASE.LAYERS[i].material;
            var pkg = BASE.LAYERS[i].size;
-           var thick = returnNumber(BASE.LAYERS[i].thickness);
-           var itemData = I.returnBase(item,pkg,thick);
-           
-           var price = returnNumber(itemData.price,'num');
-           var num = returnNumber(itemData.num,'num');
+           var thick = returnNumber(BASE.LAYERS[i].thickness,'num');
+           var itemDataObj = I.returnBase(itemClass,pkg,thick);
+           if(itemDataObj.price==0 && itemDataObj.num==0){
+                alert("Inventory Error: Did not find match for " + itemClass + " : " + pkg + " : "+ thick);
+                return;
+           };
+           var itemName = itemDataObj.item;
+           var price = returnNumber(itemDataObj.price,'num');
+           var num = returnNumber(itemDataObj.num,'num');
            var qty = FIELDSQ / num;
            var total = decimalPrecisionTwo(qty * price);
-
-           if(item == "ISO"){
-                self.MATERIALS.insulation.push({item:item,qty:qty,price:price,total:total});
-           }else if(item=="Plywood"){
-                self.MATERIALS.plywood.push({item:item,qty:qty,price:price,total:total});
-           }
+           var id = itemName + " (" + itemDataObj.pkg + ")";
+           self.MATERIALS.base.push({item:id,qty:qty,price:price,total:total});
         }
 
         // Attachment
-        // Does each layer of ISO get attached independently?  
-        var method = BASE.ATTACHMENT.class;
-        if(method == "Screw"){
-            var rate = BASE.ATTACHMENT.rate;
-            //var numberOfScrews = 
+        itemClass = BASE.ATTACHMENT.class;
+        itemName = BASE.ATTACHMENT.item;
+        itemDataObj = I.returnFastener(itemName);
+        if(itemDataObj.price==0){
+            alert("Inventory Error: Did not find match for Fastener " + itemName);
+            return;
+        };
+        
+
+        if(itemClass == "Screw"){
+            var rateField = returnNumber(BASE.ATTACHMENT.rate,'num');
+            var rateCorner = rateField * 1.5;
+            var ratePerimeter = rateField * 1.2;
+
+            self.footnotes.screws.ratioField = returnNumber(BASE.RATIO.field,'int');
+            self.footnotes.screws.ratioCorners = returnNumber(BASE.RATIO.corners,'int');
+            self.footnotes.screws.ratioPerimeter = returnNumber(BASE.RATIO.perimeter,'int');
+
+            var ratioField = returnNumber(BASE.RATIO.field,'int') / 100;
+            var ratioCorners = returnNumber(BASE.RATIO.corners,'int') / 100;
+            var ratioPerimeter = returnNumber(BASE.RATIO.perimeter,'int') / 100;
+
+            self.footnotes.screws.field = decimalPrecisionTwo(FIELDSQ * ratioField * rateField);
+            self.footnotes.screws.corners = decimalPrecisionTwo(FIELDSQ * ratioCorners * rateCorner);
+            self.footnotes.screws.perimeter = decimalPrecisionTwo(FIELDSQ * ratioPerimeter * ratePerimeter);
+            var numberOfScrews = self.footnotes.screws.field + self.footnotes.screws.corners + self.footnotes.screws.perimeter;
+
+            var screwsPerPail = returnNumber(itemDataObj.qty,'int');
+            var numberOfPails = Math.ceil(numberOfScrews / screwsPerPail);
+
+            price = returnNumber(itemDataObj.price,'num');
+            total = decimalPrecisionTwo(numberOfPails * price);
+            id = itemName + " (" + itemDataObj.pkg + ")";
+            self.MATERIALS.base.push({item:id,qty:numberOfPails,price:price,total:total});
+
+        }else if(itemClass == "Glue"){
 
         }
-        itemData =  I.returnBase(item,pkg,t);
+       
         
         processMembrane();
     }

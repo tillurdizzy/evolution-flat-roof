@@ -1,8 +1,9 @@
 <div ng-controller="MaterialsCtrl as Ctrl">
     <div class="page-title">
         <h4>Materials</h4></div>
-    <div ng-show="Ctrl.R.MATERIALS.plywood.length > 0">
-        <table st-table="Ctrl.R.MATERIALS.plywood" class="table table-striped">
+    <div ng-show="Ctrl.R.MATERIALS.base.length > 0">
+        <h3>Decking and Base</h3>
+        <table st-table="Ctrl.R.MATERIALS.base" class="table table-striped">
             <thead>
                 <tr>
                     <th style="width:400px;">Item</th>
@@ -12,17 +13,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="row in Ctrl.R.MATERIALS.plywood">
+                <tr ng-repeat="row in Ctrl.R.MATERIALS.base">
                     <td>{{row.item}}</td>
                     <td>{{row.qty}}</td>
-                    <td>{{row.price}}</td>
-                    <td>{{row.total}}</td>
+                    <td>{{row.price | currency:"$":2}}</td>
+                    <td>{{row.total | currency:"$":2}}</td>
                 </tr>
             </tbody>
         </table>
+        <div class="footnotes">
+            <p>Screws - Field:{{Ctrl.R.footnotes.screws.ratioField}}% ({{Ctrl.R.footnotes.screws.field}} pieces), Corners:{{Ctrl.R.footnotes.screws.ratioCorners}}% ({{Ctrl.R.footnotes.screws.corners}} pieces), Perimeter:{{Ctrl.R.footnotes.screws.ratioPerimeter}}% ({{Ctrl.R.footnotes.screws.perimeter}} pieces)</p>
+        </div>
     </div>
-
+    
     <div>
+        <h3>Membrane</h3>
         <table st-table="Ctrl.R.MATERIALS.insulation" class="table table-striped">
             <thead>
                 <tr>
@@ -36,8 +41,8 @@
                 <tr ng-repeat="row in Ctrl.R.MATERIALS.insulation">
                     <td>{{row.item}}</td>
                     <td>{{row.qty}}</td>
-                    <td>{{row.price}}</td>
-                    <td>{{row.total}}</td>
+                    <td>{{row.price | currency:"$":2}}</td>
+                    <td>{{row.total | currency:"$":2}}</td>
                 </tr>
             </tbody>
         </table>
@@ -57,12 +62,10 @@
                 <tr ng-repeat="row in Ctrl.R.MATERIALS.fasteners">
                     <td>{{row.item}}</td>
                     <td>{{row.qty}}</td>
-                    <td>{{row.price}}</td>
-                    <td>{{row.total}}</td>
+                    <td>{{row.price | currency:"$":2}}</td>
+                    <td>{{row.total | currency:"$":2}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
-
-
 </div>

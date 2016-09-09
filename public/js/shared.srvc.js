@@ -299,6 +299,8 @@ function SharedSrvc($rootScope, DB) {
                 HARDWARE: { hangers: "", downspouts: "", endcaps: "" }
             }
         };
+        //vents = { qty: '', size: '', shape: '',replace:''}
+        // drains = { qty: '', size: ''}
         return PENETRATIONS;
     };
 
@@ -308,9 +310,12 @@ function SharedSrvc($rootScope, DB) {
             WALL: '0',
             PARAPET: [],
             OTHER: { length:'0',description: '', cost: '0' },
-            DESIGN: {WALLS:[],EDGES:{type:'',stretchout:'',stripin:''},PARAPETS:[]}
+            DESIGN: {WALLS:[],EDGES:[]}
         };
         return TERMINATIONS;
+        // walls = {type:'',length:'0',stretchout:'',cover:''}
+        // Edges = {type:'',length:'0',stretchout:'',stripin:''}
+        // parapet {length: '0', stretchout: '0',cleated:'No',material:''}
     };
 
     function setHVAC() {
@@ -328,8 +333,8 @@ function SharedSrvc($rootScope, DB) {
     function setMembrane() {
         MEMBRANE = {
             GRIDPOS: 'A1',
-            MEMBRANE: '',
-            THICKNESS: '',
+            CLASS: '',
+            MIL: '',
             ATTACH: '',
             TYPE: ''
         };

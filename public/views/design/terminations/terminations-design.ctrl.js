@@ -13,6 +13,7 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 	vm.currentNavItem = 'edge';
 
 	vm.wallTypeCount = 0;
+	vm.edgeTypeCount = 0;
 	
 	vm.goNav = function(st){
 		$state.transitionTo(st);
@@ -23,10 +24,10 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
     };
 
    
-	
 	function initView(){
 		vm.wallTypeCount = getWallTermCount();
-	}
+		vm.edgeTypeCount = getEdgeTermCount();
+	};
 
 	function getWallTermCount(){
 		var objLength = Object.keys(vm.PARAMS).length;
@@ -34,6 +35,17 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 		if(objLength != 0){
 			if(vm.PARAMS.DESIGN.WALLS != undefined){
 				count = vm.PARAMS.DESIGN.WALLS.length;
+			}
+		}
+		return count;
+	};
+
+	function getEdgeTermCount(){
+		var objLength = Object.keys(vm.PARAMS).length;
+		var count = 0;
+		if(objLength != 0){
+			if(vm.PARAMS.DESIGN.EDGES != undefined){
+				count = vm.PARAMS.DESIGN.EDGES.length;
 			}
 		}
 		return count;
@@ -56,15 +68,23 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
 
     $scope.$watch('$viewContentLoaded', function() {
  		pullFromShared();
- 		
     });
 
     $scope.$watch('Ctrl.wallTypeCount', function() {
         var currentCount = getWallTermCount();
         if (vm.wallTypeCount > currentCount) {
-            vm.PARAMS.DESIGN.WALLS.push({type:'',length:'0'});
+            vm.PARAMS.DESIGN.WALLS.push({type:'',length:'0',stretchout:'',cover:''});
         } else if (vm.wallTypeCount < currentCount) {
             vm.PARAMS.DESIGN.WALLS.pop();
+        }
+    });
+
+    $scope.$watch('Ctrl.edgeTypeCount', function() {
+        var currentCount = getEdgeTermCount();
+        if (vm.edgeTypeCount > currentCount) {
+            vm.PARAMS.DESIGN.EDGES.push({type:'',length:'0',stretchout:'',stripin:''});
+        } else if (vm.edgeTypeCount < currentCount) {
+            vm.PARAMS.DESIGN.EDGES.pop();
         }
     });
 

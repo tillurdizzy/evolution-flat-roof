@@ -156,7 +156,7 @@ function myCtrlFunction($scope, $state, SharedSrvc) {
     $scope.$watch('Ctrl.smallVentCount', function() {
         var currentCount = getSmallVentCount();
         if (vm.smallVentCount > currentCount) {
-            vm.PARAMS.VENTS.SMALL.push({ qty: '', size: '', shape: '',replace:''});
+            vm.PARAMS.VENTS.SMALL.push({ qty: '', size: '', shape: '',replace:false});
         } else if (vm.smallVentCount < currentCount) {
             vm.PARAMS.VENTS.SMALL.pop();
         }
@@ -165,7 +165,7 @@ function myCtrlFunction($scope, $state, SharedSrvc) {
     $scope.$watch('Ctrl.largeVentCount', function() {
         var currentCount = getLargeVentCount();
         if (vm.largeVentCount > currentCount) {
-            vm.PARAMS.VENTS.LARGE.push({ qty: '', size: '', shape: '',replace:''});
+            vm.PARAMS.VENTS.LARGE.push({ qty: '', size: '', shape: '',replace:false});
         } else if (vm.largeVentCount < currentCount) {
             vm.PARAMS.VENTS.LARGE.pop();
         }

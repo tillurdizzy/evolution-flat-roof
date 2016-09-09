@@ -2,7 +2,7 @@
     <div class="page-title">
         <h4>Materials</h4></div>
     <div ng-show="Ctrl.R.MATERIALS.base.length > 0">
-        <h3>Decking and Base</h3>
+        <h3>Decking and Base - {{Ctrl.R.totals.base | currency:"$":2}}</h3>
         <table st-table="Ctrl.R.MATERIALS.base" class="table table-striped">
             <thead>
                 <tr>
@@ -25,10 +25,10 @@
             <p>Screws - Field:{{Ctrl.R.footnotes.screws.ratioField}}% ({{Ctrl.R.footnotes.screws.field}} pieces), Corners:{{Ctrl.R.footnotes.screws.ratioCorners}}% ({{Ctrl.R.footnotes.screws.corners}} pieces), Perimeter:{{Ctrl.R.footnotes.screws.ratioPerimeter}}% ({{Ctrl.R.footnotes.screws.perimeter}} pieces)</p>
         </div>
     </div>
-    
+    <horiz-rule margintop="5" marginbottom="15"></horiz-rule>
     <div>
-        <h3>Membrane</h3>
-        <table st-table="Ctrl.R.MATERIALS.insulation" class="table table-striped">
+        <h3>Membrane - {{Ctrl.R.totals.membrane | currency:"$":2}}</h3>
+        <table st-table="Ctrl.R.MATERIALS.membrane" class="table table-striped">
             <thead>
                 <tr>
                     <th style="width:400px;">Item</th>
@@ -38,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="row in Ctrl.R.MATERIALS.insulation">
+                <tr ng-repeat="row in Ctrl.R.MATERIALS.membrane">
                     <td>{{row.item}}</td>
                     <td>{{row.qty}}</td>
                     <td>{{row.price | currency:"$":2}}</td>
@@ -47,9 +47,10 @@
             </tbody>
         </table>
     </div>
-
+    <horiz-rule margintop="5" marginbottom="15"></horiz-rule>
     <div>
-        <table st-table="Ctrl.MATERIALS.R.fasteners" class="table table-striped">
+         <h3>Terminations - {{Ctrl.R.totals.terminations | currency:"$":2}}</h3>
+        <table st-table="Ctrl.MATERIALS.R.terminations" class="table table-striped">
             <thead>
                 <tr>
                     <th style="width:400px;">Item</th>
@@ -59,7 +60,29 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="row in Ctrl.R.MATERIALS.fasteners">
+                <tr ng-repeat="row in Ctrl.R.MATERIALS.terminations">
+                    <td>{{row.item}}</td>
+                    <td>{{row.qty}}</td>
+                    <td>{{row.price | currency:"$":2}}</td>
+                    <td>{{row.total | currency:"$":2}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <horiz-rule margintop="5" marginbottom="15"></horiz-rule>
+    <div>
+         <h3>Flashing - {{Ctrl.R.totals.penetrations | currency:"$":2}}</h3>
+        <table st-table="Ctrl.MATERIALS.R.penetrations" class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:400px;">Item</th>
+                    <th style="width:100px;">Qty</th>
+                    <th style="width:100px;">Price</th>
+                    <th style="width:200px;">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in Ctrl.R.MATERIALS.penetrations">
                     <td>{{row.item}}</td>
                     <td>{{row.qty}}</td>
                     <td>{{row.price | currency:"$":2}}</td>

@@ -33,13 +33,13 @@ $input-line-height:30px;
     .big-number{
         height: $input-line-height;
         width: 70px;
-        color:$indigo-accent-700;
+        color: $material-pallette-700;
         margin: 0;
         vertical-align: middle;
         padding: 0 5px 0 0;
         h3{
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 18px;
+            font-weight: 500;
             text-align: right;
         }
     }
@@ -70,6 +70,16 @@ $input-line-height:30px;
         background-color: $material-pallette-800;
         color: #fff;
         margin: 0;
+        padding-left: 5px;
+        overflow: hidden;
+    }
+
+    .item-name-sub {
+        height: $input-line-height;
+        width: 140px;
+        background-color: $material-pallette-500;
+        color: #fff;
+        margin: 0 0 0 30px;
         padding-left: 5px;
         overflow: hidden;
     }
@@ -143,6 +153,16 @@ $input-line-height:30px;
         }
     }
 
+    .item-select-x-wide {
+        width: 250px;
+        height: $input-line-height;
+        margin: 0 5px;
+        padding: 0;
+        md-select {
+            width: 250px;
+        }
+    }
+
     .item-select-small {
         width: 100px;
         height: $input-line-height;
@@ -171,6 +191,11 @@ $input-line-height:30px;
 
 .indent .form-input .item-name {
     width: 170px;
+    background-color: $material-pallette-500;
+}
+
+.indent .form-input .item-name-sub {
+    width: 140px;
     background-color: $material-pallette-500;
 }
 

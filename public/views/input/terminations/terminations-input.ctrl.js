@@ -80,7 +80,7 @@ function myFunction($scope,$state,ListSrvc,SharedSrvc) {
     $scope.$watch('Ctrl.capMetalCount', function() {
         var currentCount = getParapetCount();
         if (vm.capMetalCount > currentCount) {
-            vm.PARAMS.PARAPET.push({ length: '0', stretchout: '0',cleated:'No',material:''});
+            vm.PARAMS.PARAPET.push({ length: '0', stretchout: '0',cleated:'No',material:'Galvanized'});
         } else if (vm.capMetalCount < currentCount) {
             vm.PARAMS.PARAPET.pop();
         }

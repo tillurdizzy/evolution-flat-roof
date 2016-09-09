@@ -15,17 +15,20 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 
 	// Extract id from user Selected Object
 	function formatForStorage(){
-		switch(vm.gridPosition.substr(0,1)){
-			case "A":vm.PARAMS.THICKNESS = 45;
-			case "B":vm.PARAMS.THICKNESS = 45;
-			case "C":vm.PARAMS.THICKNESS = 45;
-			case "D":vm.PARAMS.THICKNESS = 45;
+		var x = vm.gridPosition.substr(0,1);
+		switch(x){
+			case "A":vm.PARAMS.MIL = 36;break;
+			case "B":vm.PARAMS.MIL = 45;break;
+			case "C":vm.PARAMS.MIL = 50;break;
+			case "D":vm.PARAMS.MIL = 60;break;
+			case "E":vm.PARAMS.MIL = 80;break;
 		}
-		switch(vm.gridPosition.substr(1,1)){
-			case "1":vm.PARAMS.MEMBRANE = "TPO";
-			case "2":vm.PARAMS.MEMBRANE = "PVC";
-			case "3":vm.PARAMS.MEMBRANE = "E4434";
-			case "4":vm.PARAMS.MEMBRANE = "E6722";
+		var y = vm.gridPosition.substr(1,1);
+		switch(y){
+			case "1":vm.PARAMS.CLASS = "TPO";break;
+			case "2":vm.PARAMS.CLASS = "PVC";break;
+			case "3":vm.PARAMS.CLASS = "E4434";break;
+			case "4":vm.PARAMS.CLASS = "D6754";break;
 		}
 		vm.PARAMS.GRIDPOS = vm.gridPosition;
 	};

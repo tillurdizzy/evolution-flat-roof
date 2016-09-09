@@ -1,0 +1,16 @@
+<div class="subTitle">
+    <h4>Termination at Edge</h4>
+    <p>Total Linear Footage of all membrane termination at perimeter edge.</p>
+</div>
+<div class="input-description">
+    <h5>Edge Total = {{Ctrl.PARAMS.PERIMETER}} LF</h5>
+</div>
+
+<div class="form-input">
+    <div class="item-name">
+        <h3>Edge Terminations</h3></div>
+    <div class="item-counter">
+        <counter count="Ctrl.edgeTypeCount" min="0" max="100"></counter>
+    </div>
+</div>
+<edge-term type="item.type" length="item.length" stretchout="item.stretchout" stripin="item.stripin" ng-repeat="item in Ctrl.PARAMS.DESIGN.EDGES"></edge-term>

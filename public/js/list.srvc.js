@@ -36,7 +36,12 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
 
     self.coverType = ['NA',"Plastic", "Metal"];
 
-    self.edgeTermination = ["NA","T-Bar","Clad Metal"];
+    self.edgeTermination = [
+        { label:"PVC Clad Metal", id: 1001 },
+        { label:"PVC Elvaloy Clad Metal", id: 1002 },
+        { label:"TPO Clad Metal", id: 1003 },
+        { label:"Aluminum T-Bar", id: 2001 },
+        { label:"PVC T-Bar", id: 2002 }];
 
     self.wallTermination = ["NA","T-Bar","Unknown"];
 

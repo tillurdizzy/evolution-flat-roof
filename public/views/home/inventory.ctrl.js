@@ -93,4 +93,9 @@ function myFunction($scope,DB,underscore) {
 	vm.submitEdit = submitEdit;
     vm.toggleMode = toggleMode;
 
+
+    $scope.$on("$destroy", function(){
+        vm.selectedCategoryList = null;
+    });
+
 };

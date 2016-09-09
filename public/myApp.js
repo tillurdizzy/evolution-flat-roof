@@ -164,7 +164,7 @@ function initRouter($stateProvider, $urlRouterProvider) {
         })
         .state('terminationsB.edge', {
             url: "/edge",
-            templateUrl: "views/design/terminations/edge.html"
+            templateUrl: "views/design/terminations/edges.html"
         })
         .state('terminationsB.wall', {
             url: "/wall",

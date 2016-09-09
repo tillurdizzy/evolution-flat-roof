@@ -8,18 +8,19 @@
 <div class="form-input">
     <div class="item-name">
         <h3>Edge Termination</h3></div>
-    <div class="item-select">
-        <md-select ng-model="Ctrl.PARAMS.EDGETERM" placeholder="select">
-            <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.edgeTermination">{{ opt }}</md-option>
+    <div class="item-select-wide">
+        <md-select ng-model="Ctrl.PARAMS.DESIGN.EDGES.type" placeholder="select">
+            <md-option><em>None</em></md-option>
+            <md-option ng-value="opt.label" ng-repeat="opt in Ctrl.L.edgeTermination">{{ opt.label }}</md-option>
         </md-select>
     </div>
 </div>
-<div class="indent" ng-show="Ctrl.PARAMS.EDGETERM=='T-Bar'">
+<div class="indent" ng-show="Ctrl.PARAMS.DESIGN.EDGES.type=='T-Bar'">
     <div class="form-input">
         <div class="item-name">
             <h3>Stretch-out</h3></div>
         <div class="item-select">
-            <md-select ng-model="Ctrl.PARAMS.TBAR.STRETCHOUT" placeholder="select">
+            <md-select ng-model="Ctrl.PARAMS.DESIGN.EDGES.stretchout" placeholder="select">
                 <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.twoThruFortyEight">{{ opt }}</md-option>
             </md-select>
         </div>
@@ -28,12 +29,12 @@
         </div>
     </div>
 </div>
-<div class="indent" ng-show="Ctrl.PARAMS.EDGETERM=='Clad Metal'">
+<div class="indent" ng-show="Ctrl.PARAMS.DESIGN.EDGES.type=='Clad Metal'">
     <div class="form-input">
         <div class="item-name">
             <h3>Stretch-out</h3></div>
         <div class="item-select">
-            <md-select ng-model="Ctrl.PARAMS.CLADMETAL.STRETCHOUT" placeholder="select">
+            <md-select ng-model="Ctrl.PARAMS.DESIGN.EDGES.stretchout" placeholder="select">
                 <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.twoThruFortyEight">{{ opt }}</md-option>
             </md-select>
         </div>
@@ -45,7 +46,7 @@
         <div class="item-name">
             <h3>Strip-in width</h3></div>
         <div class="item-select">
-            <md-select ng-model="Ctrl.PARAMS.CLADMETAL.STRIPIN" placeholder="select">
+            <md-select ng-model="Ctrl.PARAMS.DESIGN.EDGES.stripin" placeholder="select">
                 <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.twoThruFortyEight">{{ opt }}</md-option>
             </md-select>
         </div>

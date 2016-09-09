@@ -4,7 +4,7 @@
             <h3>Type</h3></div>
         <div class="item-select-wide">
             <md-select ng-model="$ctrl.type" placeholder="select">
-                <md-option ng-value="opt" ng-repeat="opt in $ctrl.type_dp">{{ opt }}</md-option>
+                <md-option ng-value="opt.id" ng-repeat="opt in $ctrl.type_dp">{{ opt.label }}</md-option>
             </md-select>
         </div>
         <div class="item-name-small">
@@ -14,6 +14,36 @@
         </div>
         <div class="item-unit">
             <h3>Ft</h3>
+        </div>
+    </div>
+
+    <div class="form-input" ng-show="$ctrl.type == 3000">
+        <div class="item-name-sub">
+            <h3>Cover 1.75 in.</h3></div>
+        <div class="item-select">
+            <md-select ng-model="$ctrl.cover" placeholder="select">
+                <md-option ng-value="opt.id" ng-repeat="opt in $ctrl.coverA_dp">{{ opt.label }}</md-option>
+            </md-select>
+        </div>
+    </div>
+
+    <div class="form-input" ng-show="$ctrl.type == 3001">
+        <div class="item-name-sub" >
+            <h3>Cover 4 in.</h3></div>
+        <div class="item-select">
+            <md-select ng-model="$ctrl.cover" placeholder="select">
+                <md-option ng-value="opt.id" ng-repeat="opt in $ctrl.coverB_dp">{{ opt.label }}</md-option>
+            </md-select>
+        </div>
+    </div>
+
+    <div class="form-input" ng-show="$ctrl.type == 2001 || $ctrl.type == 2002">
+        <div class="item-name-sub">
+            <h3>Stretch-out</h3></div>
+        <div class="item-select">
+            <md-select ng-model="$ctrl.stretchout" placeholder="select">
+                <md-option ng-value="opt" ng-repeat="opt in $ctrl.twoThruFortyEight">{{ opt }}</md-option>
+            </md-select>
         </div>
     </div>
 </div>

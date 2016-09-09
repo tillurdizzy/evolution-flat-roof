@@ -1,0 +1,46 @@
+<div class="indent">
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Type</h3></div>
+        <div class="item-select-x-wide">
+            <md-select ng-model="$ctrl.type" placeholder="select">
+                <md-option ng-value="opt.id" ng-repeat="opt in $ctrl.type_dp">{{ opt.label }}</md-option>
+            </md-select>
+        </div>
+        <div class="item-name-small">
+            <h3>Length</h3></div>
+        <div class="item-input">
+            <input type="tel" ng-model="$ctrl.length">
+        </div>
+        <div class="item-unit">
+            <h3>Ft</h3>
+        </div>
+    </div>
+
+    <div class="form-input">
+        <div class="item-name-sub">
+            <h3>Stretch-out</h3></div>
+        <div class="item-select-small">
+            <md-select ng-model="$ctrl.stretchout" placeholder="select">
+                <md-option ng-value="opt" ng-repeat="opt in $ctrl.twoThruFortyEight">{{ opt }}</md-option>
+            </md-select>
+        </div>
+        <div class="item-unit">
+            <h3>in.</h3>
+        </div>
+    </div>
+
+    <div class="form-input" ng-show="$ctrl.type > 1000 && $ctrl.type < 2000">
+        <div class="item-name-sub" >
+            <h3>Strip-in</h3></div>
+        <div class="item-select-small">
+            <md-select ng-model="$ctrl.stripin" placeholder="select">
+                <md-option ng-value="opt" ng-repeat="opt in $ctrl.twoThruFortyEight">{{ opt }}</md-option>
+            </md-select>
+        </div>
+        <div class="item-unit">
+            <h3>in.</h3>
+        </div>
+    </div>
+
+</div>

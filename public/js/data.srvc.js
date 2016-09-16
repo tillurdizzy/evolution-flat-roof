@@ -54,7 +54,8 @@ function eventQueries($http, $q) {
         getDataMembrane: httpPathPrefix + "getDataMembrane.php",
         getDataPenetrations: httpPathPrefix + "getDataPenetrations.php",
         getDataTerminations: httpPathPrefix + "getDataTerminations.php",
-        getDataHvac: httpPathPrefix + "getDataHvac.php"
+        getDataHvac: httpPathPrefix + "getDataHvac.php",
+        getAdmin: httpPathPrefix + "getAdmin.php"
     };
 
     var trace = function(obj) {

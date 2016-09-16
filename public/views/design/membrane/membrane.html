@@ -11,7 +11,6 @@
             <div class="item">E/PVC</div>
             <div class="item">E/PVC</div>
         </div>
-       
         <div class="table-row">
             <div class="first-item">36 MIL</div>
             <div ng-class="Ctrl.gridPosition=='A1' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='A1'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='A1'"></i></div>
@@ -40,7 +39,7 @@
             <div ng-class="Ctrl.gridPosition=='D3' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='D3'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='D3'"></i></div>
             <div ng-class="Ctrl.gridPosition=='D4' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='D4'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='D4'"></i></div>
         </div>
-         <div class="table-row">
+        <div class="table-row">
             <div class="first-item">80 MIL</div>
             <div ng-class="Ctrl.gridPosition=='E1' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='E1'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='E1'"></i></div>
             <div ng-class="Ctrl.gridPosition=='E2' ? 'item-selected' : 'item'" ng-click="Ctrl.gridPosition='E2'"><i class="fa fa-check fa-2x" ng-show="Ctrl.gridPosition=='E2'"></i></div>
@@ -72,6 +71,38 @@
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.attachMethod">{{ opt }}</md-option>
                 </md-select>
             </div>
+        </div>
+        <div class="indent" ng-show="Ctrl.PARAMS.ATTACH=='Screw'">
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Size</h3></div>
+                <div class="item-select">
+                    <md-select ng-model="Ctrl.PARAMS.SCREWS.size" placeholder="size">
+                        <md-option ng-value="opt.id" ng-repeat="opt in Ctrl.L.listOfScrews">{{ opt.label }}</md-option>
+                    </md-select>
+                </div>
+            </div>
+
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Field Rate</h3></div>
+                <div class="item-select">
+                    <md-select ng-model="Ctrl.PARAMS.SCREWS.fieldRate" placeholder="rate">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.attachPattern">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+            </div>
+
+            <div class="form-input">
+                <div class="item-name">
+                    <h3>Edge Rate</h3></div>
+                <div class="item-select">
+                    <md-select ng-model="Ctrl.PARAMS.SCREWS.edgeRate" placeholder="rate">
+                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.attachPattern">{{ opt }}</md-option>
+                    </md-select>
+                </div>
+            </div>
+
         </div>
         <add-space heightpx="20"></add-space>
         <div class="input-description">

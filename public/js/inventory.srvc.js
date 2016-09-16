@@ -13,7 +13,6 @@ function InventorySrvc(DB,underscore) {
         returnBase:returnBase,
         returnEdge:returnEdge,
         returnMembrane:returnMembrane,
-        returnPlate:returnPlate,
         returnWalkway:returnWalkway
     };
 
@@ -65,10 +64,10 @@ function InventorySrvc(DB,underscore) {
         return rtnObj;
     };
 
-    function returnFastener(itemName){
+    function returnFastener(id){
         var rtnObj = {qty:0,price:0};
         for (var i = 0; i < Fasteners.length; i++) {
-           if(Fasteners[i].item == itemName){
+           if(Fasteners[i].PRIMARY_ID == id){
                 rtnObj = Fasteners[i];
                 return rtnObj;
            }
@@ -76,16 +75,7 @@ function InventorySrvc(DB,underscore) {
         return rtnObj;
     };
 
-    function returnPlate(itemclass){
-        var rtnObj = {qty:0,price:0};
-        for (var i = 0; i < Fasteners.length; i++) {
-           if(Fasteners[i].class == itemclass){
-                rtnObj = Fasteners[i];
-                return rtnObj;
-           }
-        }
-        return rtnObj;
-    };
+   
 
     function returnEdge(id){
         var rtnObj = {qty:0,price:0};

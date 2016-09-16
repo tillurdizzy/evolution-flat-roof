@@ -51,9 +51,9 @@ function initRouter($stateProvider, $urlRouterProvider) {
         templateUrl: "views/results/labor.html"
     })
 
-    .state('summary', {
-        url: "/summary",
-        templateUrl: "views/results/summary.html"
+    .state('invoice', {
+        url: "/invoice",
+        templateUrl: "views/results/invoice.html"
     })
 
     .state('cost', {

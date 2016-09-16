@@ -57,9 +57,9 @@
                     <h4>Results</h4></div>
                 <div ng-show="Ctrl.resultOpen">
                     <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('materials')}" ng-click="Ctrl.goNav('materials');"> Materials </md-button>
-                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('labor')}" ng-click="Ctrl.goNav('labor');"> Labor </md-button>
-                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('summary')}" ng-click="Ctrl.goNav('summary');"> Summary </md-button>
-                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('cost')}" ng-click="Ctrl.goNav('cost');"> Cost </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('labor')}" ng-click="Ctrl.goNav('labor');" ng-disabled="!Ctrl.materialsComplete"> Labor </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('invoice')}" ng-click="Ctrl.goNav('invoice');" ng-disabled="!Ctrl.laborComplete"> Invoice </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('contract')}" ng-click="Ctrl.goNav('contract');" ng-disabled="!Ctrl.invoiceComplete"> Contract </md-button>
                 </div>
             </div>
         </div>
@@ -75,6 +75,7 @@
     <script src="js/shared.srvc.js?v=3"></script>
     <script src="js/inventory.srvc.js?v=3"></script>
     <script src="views/results/results.srvc.js?v=3"></script>
+    <script src="views/results/labor.srvc.js?v=3"></script>
     <script src="js/list.srvc.js?v=3"></script>
     <script src="js/tabbedMenu.ctrl.js?v=3"></script>
     <script src="js/nav.ctrl.js?v=2"></script>
@@ -95,6 +96,7 @@
     <script src="views/input/terminations/metal-cap.comp.js?v=2"></script>
     <script src="views/design/hvac/support-cones.comp.js?v=2"></script>
     <script src="views/design/hvac/support-timber.comp.js?v=2"></script>
+    <script src="views/design/hvac/support-foam.comp.js?v=2"></script>
     <script src="views/design/hvac/hvac-footprint-review.comp.js?v=2"></script>
     <script src="views/design/terminations/wall-term.comp.js?v=2"></script>
     <script src="views/design/terminations/edge-term.comp.js?v=2"></script>
@@ -122,7 +124,7 @@
     <script src="views/results/cost.ctrl.js?v=2"></script>
     <script src="views/results/materials.ctrl.js?v=2"></script>
     <script src="views/results/labor.ctrl.js?v=2"></script>
-    <script src="views/results/summary.ctrl.js?v=2"></script>
+    <script src="views/results/invoice.ctrl.js?v=2"></script>
 </body>
 
 </html>

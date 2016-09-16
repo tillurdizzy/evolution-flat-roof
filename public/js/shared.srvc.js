@@ -37,6 +37,7 @@ function SharedSrvc($rootScope, DB) {
     var HVAC = {};
     var MEMBRANE = {};
     var ROOFBASE = {};
+    var ADMIN = {};
     var ACTIVE = []; // Active jobs
 
     var selectedJobID = '';
@@ -131,6 +132,11 @@ function SharedSrvc($rootScope, DB) {
                 if (resultObj.data[0].data == "") {
                     setBase();
                 } else { ROOFBASE = JSON.parse(resultObj.data[0].data); };
+            };
+        });
+        DB.query('getAdmin', dataObj).then(function(resultObj) {
+            if (resultObj.result == "Error" || typeof resultObj.data === "string") { alert("Get Job Error at getAdmin"); } else {
+                ADMIN = resultObj.data[0];
             };
         });
     };
@@ -239,6 +245,9 @@ function SharedSrvc($rootScope, DB) {
     function returnData(set) {
         var rtnObj = {};
         switch (set) {
+            case "ADMIN":
+                rtnObj = ADMIN;
+                break;
             case "LAYERS":
                 rtnObj = LAYERS;
                 break;
@@ -335,8 +344,9 @@ function SharedSrvc($rootScope, DB) {
             GRIDPOS: 'A1',
             CLASS: '',
             MIL: '',
-            ATTACH: '',
-            TYPE: ''
+            ATTACH: 'Screw',
+            SCREWS:{EDGE:{size:'',rate:''},FIELD:{size:'',rate:''}},
+            TYPE: 'Standard'
         };
         return MEMBRANE;
     };

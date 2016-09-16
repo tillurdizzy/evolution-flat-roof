@@ -92,7 +92,7 @@ function myFunction($scope, SharedSrvc) {
     $scope.$watch('Ctrl.pipeSupportCones', function() {
         var currentCount = getConesCount();
         if (vm.pipeSupportCones > currentCount) {
-            vm.PARAMS.SUPPORT.CONES.push({ qty: '', ring: false, attched: false });
+            vm.PARAMS.SUPPORT.CONES.push({ qty: '', ring: false, attached: false });
         } else if (vm.pipeSupportCones < currentCount) {
             vm.PARAMS.SUPPORT.CONES.pop();
         }

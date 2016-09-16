@@ -50,7 +50,7 @@
     <horiz-rule margintop="5" marginbottom="15"></horiz-rule>
     <div>
          <h3>Terminations - {{Ctrl.R.totals.terminations | currency:"$":2}}</h3>
-        <table st-table="Ctrl.MATERIALS.R.terminations" class="table table-striped">
+        <table st-table="Ctrl.R.MATERIALS.terminations" class="table table-striped">
             <thead>
                 <tr>
                     <th style="width:400px;">Item</th>
@@ -72,7 +72,7 @@
     <horiz-rule margintop="5" marginbottom="15"></horiz-rule>
     <div>
          <h3>Flashing - {{Ctrl.R.totals.penetrations | currency:"$":2}}</h3>
-        <table st-table="Ctrl.MATERIALS.R.penetrations" class="table table-striped">
+        <table st-table="Ctrl.R.MATERIALS.penetrations" class="table table-striped">
             <thead>
                 <tr>
                     <th style="width:400px;">Item</th>
@@ -83,6 +83,29 @@
             </thead>
             <tbody>
                 <tr ng-repeat="row in Ctrl.R.MATERIALS.penetrations">
+                    <td>{{row.item}}</td>
+                    <td>{{row.qty}}</td>
+                    <td>{{row.price | currency:"$":2}}</td>
+                    <td>{{row.total | currency:"$":2}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <horiz-rule margintop="5" marginbottom="15"></horiz-rule>
+    <div>
+         <h3>Electrical Support - {{Ctrl.R.totals.elecSupport | currency:"$":2}}</h3>
+        <table st-table="Ctrl.R.MATERIALS.elecSupport" class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:400px;">Item</th>
+                    <th style="width:100px;">Qty</th>
+                    <th style="width:100px;">Price</th>
+                    <th style="width:200px;">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in Ctrl.R.MATERIALS.elecSupport">
                     <td>{{row.item}}</td>
                     <td>{{row.qty}}</td>
                     <td>{{row.price | currency:"$":2}}</td>

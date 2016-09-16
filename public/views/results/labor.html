@@ -2,6 +2,27 @@
     <div class="page-title">
         <h4>Labor</h4></div>
     <div>
-       
+        <h3>Labor - {{Ctrl.L.laborTotal | currency:"$":2}}</h3>
+        <table st-table="Ctrl.L.LABOR" class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:400px;">Item</th>
+                    <th style="width:100px;">Qty</th>
+                    <th style="width:100px;">Price</th>
+                    <th style="width:200px;">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in Ctrl.L.LABOR">
+                    <td>{{row.item}}</td>
+                    <td>{{row.qty}}</td>
+                    <td>{{row.price | currency:"$":2}}</td>
+                    <td>{{row.total | currency:"$":2}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="footnotes">
+            <p></p>
+        </div>
     </div>
 </div>

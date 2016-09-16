@@ -7,8 +7,7 @@
             <h3>Units By Size</h3></div>
     </div>
     <div class="indent">
-        <hvac-review qty="item.qty" footprint-x="item.footprintX" footprint-y="item.footprintY" ng-repeat="item in Ctrl.PARAMS.UNITS">
-            </vent-small>
+        <hvac-review qty="item.qty" footprint-x="item.footprintX" footprint-y="item.footprintY" ng-repeat="item in Ctrl.PARAMS.UNITS"></hvac-review>
     </div>
     <div class="form-input">
         <div class="item-name">
@@ -32,7 +31,7 @@
                 <counter count="Ctrl.pipeSupportFoam" min="0" max="1000"></counter>
             </div>
         </div>
-        <support-timber qty="item.qty" width="item.width" ng-repeat="item in Ctrl.PARAMS.SUPPORT.FOAM"></support-timber>
+        <support-foam qty="item.qty" width="item.width" ng-repeat="item in Ctrl.PARAMS.SUPPORT.FOAM"></support-foam>
     </div>
     <div class="indent">
         <div class="form-input">
@@ -42,6 +41,6 @@
                 <counter count="Ctrl.pipeSupportCones" min="0" max="1000"></counter>
             </div>
         </div>
-        <support-cones qty="item.qty" ring="item.ring" attached="item.attached" ng-repeat="item in Ctrl.PARAMS.SUPPORT.CONES"></support-timber>
+        <support-cones qty="item.qty" ring="item.ring" attached="item.attached" ng-repeat="item in Ctrl.PARAMS.SUPPORT.CONES"></support-cones>
     </div>
 </div>

@@ -1,9 +1,9 @@
 'use strict';
 angular.module('app').factory('ResultsSrvc', ResultsSrvc);
 
-ResultsSrvc.$inject = ['SharedSrvc','DB','InventorySrvc'];
+ResultsSrvc.$inject = ['SharedSrvc','DB','InventorySrvc','$rootScope'];
 
-function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
+function ResultsSrvc(SharedSrvc,DB,InventorySrvc,$rootScope) {
 
     var self = this;
     var S = SharedSrvc;
@@ -21,17 +21,19 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
 
     var baseThickness = 0;
     var FIELDSQ = 0;
-    self.MATERIALS = {base:[],membrane:[],terminations:[],penetrations:[],hvac:[],rpanel:[]};
-    self.totals = {base:0,membrane:0,terminations:0,penetrations:0,hvac:0,rpanel:0};
+    self.MATERIALS = {};
+    self.totals = {};
+    self.totalMaterials = 0;
 
-    // item, qty, pkg, cost
-
-    self.footnotes = {screws:{ratioField:0,field:0,ratioCorners:0,corners:0,ratioPerimeter:0,perimeter:0}};
+    self.footnotes = {};
 
     var invtCategories = ["Adhesives","Edging","Fasteners","Flashing","Insulation","Membranes","Walkways"];
 
-    // Step 1: Collect data to determine materials needed
+
     self.initSrvc = function(){
+        self.MATERIALS = {base:[],membrane:[],terminations:[],penetrations:[],elecSupport:[],rpanel:[]};
+        self.totals = {base:0,membrane:0,terminations:0,penetrations:0,elecSupport:0,rpanel:0};
+        self.footnotes = {screws:{ratioField:0,field:0,ratioCorners:0,corners:0,ratioPerimeter:0,perimeter:0}};
         FIELD = S.returnData('FIELD');
         BASE = S.returnData('ROOFBASE');
         MEM = S.returnData('MEMBRANE');
@@ -41,10 +43,25 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
         RPAN = S.returnData('LAYERS');
 
         FIELDSQ = returnNumber(FIELD.SQUARES,'num');
-        self.MATERIALS = {base:[],membrane:[],terminations:[],penetrations:[],hvac:[],rpanel:[]};
+        
         processBase();
+       
+    };
+
+    function materialsComplete(){
+        self.totalMaterials = 0;
+        self.totalMaterials = 
+                self.totals.base + 
+                self.totals.membrane + 
+                self.totals.terminations + 
+                self.totals.penetrations + 
+                self.totals.elecSupport + 
+                self.totals.rpanel;
+        $rootScope.$broadcast('materialsComplete', true);
     }
 
+
+    // Beginning of function chain
     function processBase(){
         self.totals.base = 0;
         // Calculate base thickness total... mainly for screw length
@@ -54,7 +71,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
         for (var i = 0; i < BASE.LAYERS.length; i++) {
            var t = returnNumber(BASE.LAYERS[i].thickness,'num');
            baseThickness+=t;
-        }
+        };
 
         // Base layers
         for (var i = 0; i < BASE.LAYERS.length; i++) {
@@ -74,17 +91,18 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
            var id = itemName + " (" + itemDataObj.pkg + ")";
            self.MATERIALS.base.push({item:id,qty:qty,price:price,total:total});
            self.totals.base += total;
-        }
+        };
 
         // Attachment
         itemClass = BASE.ATTACHMENT.class;
-        itemName = BASE.ATTACHMENT.item;
-        itemDataObj = I.returnFastener(itemName);
+        
+        var itemID = BASE.ATTACHMENT.item;
+        itemDataObj = I.returnFastener(itemID);
         if(itemDataObj.price==0){
-            alert("Inventory Error: Did not find match for Fastener " + itemName);
+            alert("Inventory Error: Did not find match for Fastener " + itemID);
             return;
         };
-        
+        itemName = itemDataObj.item;
 
         if(itemClass == "Screw"){
             var rateField = returnNumber(BASE.ATTACHMENT.rate,'num');
@@ -113,7 +131,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
             self.MATERIALS.base.push({item:id,qty:numberOfPails,price:price,total:total});
             self.totals.base += total;
 
-            itemDataObj = I.returnPlate("metal");
+            itemDataObj = I.returnFastener(3001);
             itemName = itemDataObj.item;
             var platesPerBox = returnNumber(itemDataObj.qty,'int');
             var numberOfBoxes = Math.ceil(numberOfScrews / platesPerBox);
@@ -126,11 +144,10 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
 
         }else if(itemClass == "Glue"){
 
-        }
+        };
        
-        
         processMembrane();
-    }
+    };
 
    
     // explain mechanically attached and glue
@@ -154,7 +171,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
         if(sqFt > 0){
            sqFt = sqFt/10; 
            SQUARES+=sqFt;
-        }
+        };
         
         var dataObj = {};
         dataObj.class = MEM.CLASS;
@@ -163,7 +180,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
             dataObj.fleece = 0;
         }else{
             dataObj.fleece = 1;
-        }
+        };
        
         var inventoryDataObj = I.returnMembrane(dataObj);
         var squaresPerRoll = returnNumber(inventoryDataObj.num);
@@ -187,9 +204,44 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
         self.totals.membrane += total;
 
         var attachMethod = MEM.ATTACH;
-        if(attachMethod == "Mechanically Attached"){
+        if(attachMethod == "Screw"){
+            var ratioField = returnNumber(BASE.RATIO.field,'int') / 100;
+            var ratioCorners = returnNumber(BASE.RATIO.corners,'int') / 100;
+            var ratioPerimeter = returnNumber(BASE.RATIO.perimeter,'int') / 100;
 
-        }else if(attachMethod == "Fully Adhered"){
+            var rateField = returnNumber(MEM.SCREWS.fieldRate,'int');
+            var rateEdge = returnNumber(MEM.SCREWS.edgeRate,'int');
+
+            var screwsFieldNum = decimalPrecisionTwo(FIELDSQ * ratioField * rateField);
+            var screwsCornersNum = decimalPrecisionTwo(FIELDSQ * ratioCorners * rateEdge);
+            var screwsEdgeNum = decimalPrecisionTwo(FIELDSQ * ratioPerimeter * rateEdge);
+
+            var numberOfScrews = screwsFieldNum + screwsCornersNum + screwsEdgeNum;
+
+            // Screw 
+            var itemID = returnNumber(MEM.SCREWS.size,'num');
+            inventoryDataObj = I.returnFastener(itemID);
+            var itemName = inventoryDataObj.item;
+            var screwsPerPail = returnNumber(inventoryDataObj.qty,'int');
+            var numberOfPails = Math.ceil(numberOfScrews / screwsPerPail);
+
+            price = returnNumber(inventoryDataObj.price,'num');
+            total = decimalPrecisionTwo(numberOfPails * price);
+            var id = itemName + " (" + inventoryDataObj.pkg + ")";
+            self.MATERIALS.membrane.push({item:id,qty:numberOfPails,price:price,total:total});
+            self.totals.membrane += total;
+
+            inventoryDataObj = I.returnFastener(3002);
+            itemName = inventoryDataObj.item;
+            var platesPerBox = returnNumber(inventoryDataObj.qty,'int');
+            var numberOfBoxes = Math.ceil(numberOfScrews / platesPerBox);
+            price = returnNumber(inventoryDataObj.price,'num');
+            total = decimalPrecisionTwo(numberOfBoxes * price);
+            id = itemName + " (" + inventoryDataObj.pkg + ")";
+            self.MATERIALS.membrane.push({item:id,qty:numberOfBoxes,price:price,total:total});
+            self.totals.membrane += total;
+
+        }else if(attachMethod == "Glue"){
 
         }
         processTerminations();
@@ -267,7 +319,6 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
             self.totals.terminations += price;
         };
 
-
         processPenetrations();
     };
 
@@ -316,7 +367,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
             price = inventoryDataObj.price;
             total = decimalPrecisionTwo(vents * price);
             self.MATERIALS.penetrations.push({item:inventoryDataObj.item,qty:vents,price:price,total:total});
-            self.totals.penetrations += price;
+            self.totals.penetrations += total;
         }
 
         vents = 0;
@@ -328,7 +379,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
             price = inventoryDataObj.price;
             total = decimalPrecisionTwo(vents * price);
             self.MATERIALS.penetrations.push({item:inventoryDataObj.item,qty:vents,price:price,total:total});
-            self.totals.penetrations += price;
+            self.totals.penetrations += total;
         }
 
         var caps = 0;
@@ -346,7 +397,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
                 price = inventoryDataObj.price;
                 total = decimalPrecisionTwo(qtyNum * price);
                 self.MATERIALS.penetrations.push({item:inventoryDataObj.item + ' (' +capShape+ ')' ,qty:qtyNum,price:price,total:total});
-                self.totals.penetrations += price;
+                self.totals.penetrations += total;
             }
         }
 
@@ -361,19 +412,78 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc) {
                 price = inventoryDataObj.price;
                 total = decimalPrecisionTwo(qtyNum * price);
                 self.MATERIALS.penetrations.push({item:inventoryDataObj.item + ' (' +capShape+ ')' ,qty:qtyNum,price:price,total:total});
-                self.totals.penetrations += price;
+                self.totals.penetrations += total;
             }
         }
-
-
-        
-
-        processHVAC();
+        processElec();
     };
 
-    function processHVAC() {
-        
+    function processElec() {
+        var qtyNum = 0;
+        var price = 0;
+        var total = 0;
+        var inventoryDataObj = {};
+        self.totals.elecSupport = 0;
+
+        for(var i = 0; i < HVAC.SUPPORT.WOOD.length; i++){
+            var itemID = returnNumber(HVAC.SUPPORT.WOOD[i].width);
+            qtyNum = returnNumber(HVAC.SUPPORT.WOOD[i].qty);
+            inventoryDataObj = I.returnFastener(itemID);
+            price = inventoryDataObj.price;
+            total = decimalPrecisionTwo(qtyNum * price);
+            self.MATERIALS.elecSupport.push({item:inventoryDataObj.item,qty:qtyNum,price:price,total:total});
+            self.totals.elecSupport += total;
+        };
+
+        for(var i = 0; i < HVAC.SUPPORT.FOAM.length; i++){
+            var itemID = returnNumber(HVAC.SUPPORT.FOAM[i].width);
+            qtyNum = returnNumber(HVAC.SUPPORT.FOAM[i].qty);
+            inventoryDataObj = I.returnFastener(itemID);
+            price = inventoryDataObj.price;
+            total = decimalPrecisionTwo(qtyNum * price);
+            self.MATERIALS.elecSupport.push({item:inventoryDataObj.item,qty:qtyNum,price:price,total:total});
+            self.totals.elecSupport += total;
+        };
+
+        var coneInvtObj = I.returnFastener(4040);
+        var ringInvtObj = I.returnFastener(4041);
+        var coneTotal = 0;
+        var ringTotal = 0;
+        var attachedTotal = 0;
+
+        for(var i = 0; i < HVAC.SUPPORT.CONES.length; i++){
+            qtyNum = returnNumber(HVAC.SUPPORT.CONES[i].qty);
+            coneTotal += qtyNum;
+
+            var ring = convertToBoolean(HVAC.SUPPORT.CONES[i].ring);
+            if(ring){
+                ringTotal+=qtyNum;
+            }
+            var attached = convertToBoolean(HVAC.SUPPORT.CONES[i].attached);
+            if(attached){
+                attachedTotal+=qtyNum;
+            }
+        };
+
+        price = coneInvtObj.price;
+        total = decimalPrecisionTwo(coneTotal * price);
+        self.MATERIALS.elecSupport.push({item:coneInvtObj.item,qty:coneTotal,price:price,total:total});
+        self.totals.elecSupport += total;
+
+        price = ringInvtObj.price;
+        total = decimalPrecisionTwo(ringTotal * price);
+        self.MATERIALS.elecSupport.push({item:ringInvtObj.item,qty:ringTotal,price:price,total:total});
+        self.totals.elecSupport += total;
+
+        price = 0;
+        total = decimalPrecisionTwo(attachedTotal * price);
+        self.MATERIALS.elecSupport.push({item:"Attached",qty:attachedTotal,price:price,total:total});
+        self.totals.elecSupport += total;
+
+        materialsComplete();
     };
+
+
 
     function decimalPrecisionTwo(data) {
         var num = returnNumber(data,'num');

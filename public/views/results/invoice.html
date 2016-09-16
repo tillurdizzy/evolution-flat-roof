@@ -1,0 +1,46 @@
+<div ng-controller="InvoiceCtrl as Ctrl">
+    <div class="page-title">
+        <h4>Invoice</h4></div>
+    <div>
+        <h3>Total - {{Ctrl.invoiceTotal | currency:"$":2}}</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:400px;">Item</th>
+                    <th style="width:200px;">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Materials</td>
+                    <td>{{Ctrl.INVOICE.materials | currency:"$":2}}</td>
+                </tr>
+
+                <tr>
+                    <td>Labor</td>
+                    <td>{{Ctrl.INVOICE.labor | currency:"$":2}}</td>
+                </tr>
+
+                <tr>
+                    <td>Subtotal</td>
+                    <td>{{Ctrl.INVOICE.subtotal | currency:"$":2}}</td>
+                </tr>
+
+                <tr>
+                    <td>Markup</td>
+                    <td>{{Ctrl.INVOICE.markup | currency:"$":2}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="footnotes">
+            <p></p>
+        </div>
+    </div>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Markup Percent</h3></div>
+        <div class="item-counter">
+            <counter count="Ctrl.markup" min="0" max="100"></counter>
+        </div>
+    </div>
+</div>

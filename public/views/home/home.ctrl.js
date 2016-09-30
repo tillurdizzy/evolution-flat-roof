@@ -42,6 +42,7 @@ function myFunction($scope,SharedSrvc,$state) {
 		}
 	};
 
+	// Select a Job
 	function editRowItem(row){
 		vm.JobID = row.id;
 		for (var i = 0; i < vm.ACTIVE_JOBS.length; i++) {

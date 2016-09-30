@@ -1,0 +1,26 @@
+<div ng-controller="ProposalCtrl as Ctrl">
+    <div class="page-title">
+        <h4>Proposal</h4></div>
+    <div>
+        <h3>Total - {{Ctrl.contractTotals.contract | currency:"$":2}}</h3>
+        <div ng-show="Ctrl.lastUpdated==0">
+            <button type="button" ng-click="Ctrl.submitContract()">Save Pricing</button>
+        </div>
+        <div ng-hide="Ctrl.lastUpdated==0">
+            <h5>Last submitted on {{Ctrl.lastUpdated | date : "longDate"}}</h5>
+            <button type="button" ng-click="Ctrl.submitContract()">Update Proposal</button>
+        </div>
+    </div>
+    <div id='cssmenu'>
+        <ul>
+            <li ng-class="{ active: Ctrl.isCurrentPath('/proposal/inspection')}"><a ui-sref='proposal.inspection'>Inspection</a></li>
+            <li ng-class="{ active: Ctrl.isCurrentPath('/proposal/overview')}"><a ui-sref='proposal.overview'>Overview</a></li>
+            <li ng-class="{ active: Ctrl.isCurrentPath('/proposal/scope')}"><a ui-sref='proposal.scope'>Scope</a></li>
+            <li ng-class="{ active: Ctrl.isCurrentPath('/proposal/options')}"><a ui-sref='proposal.options'>Options</a></li>
+            <li ng-class="{ active: Ctrl.isCurrentPath('/proposal/exclusions')}"><a ui-sref='proposal.exclusions'>Exclusions</a></li>
+            <li ng-class="{ active: Ctrl.isCurrentPath('/proposal/warranty')}"><a ui-sref='proposal.warranty'>Warranty</a></li>
+        </ul>
+    </div>
+    
+    <div ui-view></div>
+</div>

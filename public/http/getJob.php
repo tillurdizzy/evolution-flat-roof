@@ -9,10 +9,10 @@ define( "DATABASE_USERNAME", "flatroofjobs");
 define( "DATABASE_PASSWORD", "Sadie9954!");
 define( "DATABASE_NAME", "flatroofjobs");
 
-//connect to the database.
 $con = mysqli_connect(DATABASE_SERVER, DATABASE_USERNAME, DATABASE_PASSWORD,DATABASE_NAME) or die ('ERROR!!!');
-$ID = mysqli_real_escape_string($con,$data->ID);
-$query = sprintf("SELECT * FROM jobs WHERE PRIMARY_ID = '".$ID."'");
+$jobID = mysqli_real_escape_string($con,$data->jobID);
+
+$query = sprintf("SELECT * FROM jobs WHERE PRIMARY_ID = '".$jobID."'");
 $result = mysqli_query($con,$query);
 $resultValueObjects = array();
 while ($row = mysqli_fetch_object($result)) {
@@ -20,6 +20,9 @@ while ($row = mysqli_fetch_object($result)) {
 	$oneVO->PRIMARY_ID = $row->PRIMARY_ID;
 	$oneVO->client = $row->client;
 	$oneVO->data = $row->data;
+	$oneVO->contract = $row->contract;
+	$oneVO->status = $row->status;
+	$oneVO->submitted = $row->submitted;
 	
 	array_push( $resultValueObjects, $oneVO );
 }

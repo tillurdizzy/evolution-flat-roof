@@ -11,7 +11,7 @@ define( "DATABASE_NAME", "flatroofjobs");
 //connect to the database.
 $con = mysqli_connect(DATABASE_SERVER, DATABASE_USERNAME, DATABASE_PASSWORD,DATABASE_NAME) or die ('ERROR!!!');
 
-$query = sprintf("SELECT * FROM jobs WHERE active = 1");
+$query = sprintf("SELECT * FROM jobs WHERE status > 0");
 $result = mysqli_query($con,$query);
 $resultValueObjects = array();
 while ($row = mysqli_fetch_object($result)) {
@@ -19,6 +19,8 @@ while ($row = mysqli_fetch_object($result)) {
 	$oneVO->PRIMARY_ID = $row->PRIMARY_ID;
 	$oneVO->client = $row->client;
 	$oneVO->data = $row->data;
+	$oneVO->status = $row->status;
+	$oneVO->submitted = $row->submitted;
 	
 	array_push( $resultValueObjects, $oneVO );
 }

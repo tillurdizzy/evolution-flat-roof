@@ -30,6 +30,7 @@
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('home')}" ng-click="Ctrl.goNav('home.active');"> Home </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('illustrations')}" ng-click="Ctrl.goNav('illustrations');"> Illustrations </md-button>
             <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('inventory')}" ng-click="Ctrl.goNav('inventory');"> Inventory </md-button>
+            <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('library')}" ng-click="Ctrl.goNav('library');"> LIBRARY </md-button>
             <add-space heightpx="20"></add-space>
             <div ng-show="Ctrl.jobSelected">
                 <div class="section-label" ng-click="Ctrl.toggleInput()">
@@ -59,7 +60,7 @@
                     <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('materials')}" ng-click="Ctrl.goNav('materials');"> Materials </md-button>
                     <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('labor')}" ng-click="Ctrl.goNav('labor');" ng-disabled="!Ctrl.materialsComplete"> Labor </md-button>
                     <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('invoice')}" ng-click="Ctrl.goNav('invoice');" ng-disabled="!Ctrl.laborComplete"> Invoice </md-button>
-                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('contract')}" ng-click="Ctrl.goNav('contract');" ng-disabled="!Ctrl.invoiceComplete"> Contract </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('proposal')}" ng-click="Ctrl.goNav('proposal.inspection');" ng-disabled="!Ctrl.invoiceComplete"> PROPOSAL </md-button>
                 </div>
             </div>
         </div>
@@ -110,6 +111,7 @@
     <script src="views/home/home.ctrl.js?v=2"></script>
     <script src="views/home/illustrations.ctrl.js?v=2"></script>
     <script src="views/home/inventory.ctrl.js?v=2"></script>
+    <script src="views/home/library.ctrl.js?v=2"></script>
     <script src="views/input/field/field.ctrl.js?v=2"></script>
     <script src="views/input/layers/layers.ctrl.js?v=2"></script>
     <script src="views/input/terminations/terminations-input.ctrl.js?v=2"></script>
@@ -121,7 +123,7 @@
     <script src="views/design/base/base.ctrl.js?v=2"></script>
     <script src="views/design/hvac/hvac-design.ctrl.js?v=2"></script>
     <script src="views/design/rpanel/rpanel.ctrl.js?v=2"></script>
-    <script src="views/results/cost.ctrl.js?v=2"></script>
+    <script src="views/results/proposal.ctrl.js?v=2"></script>
     <script src="views/results/materials.ctrl.js?v=2"></script>
     <script src="views/results/labor.ctrl.js?v=2"></script>
     <script src="views/results/invoice.ctrl.js?v=2"></script>

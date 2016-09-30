@@ -1,26 +1,16 @@
 'use strict';
 angular.module('app').factory('InventorySrvc', InventorySrvc);
 
-InventorySrvc.$inject = ['DB','underscore'];
+InventorySrvc.$inject = ['SharedSrvc','DB','underscore'];
 
-function InventorySrvc(DB,underscore) {
+function InventorySrvc(SharedSrvc,DB,underscore) {
    
-
-    var service = {
-        initSrvc:initSrvc,
-        returnFastener:returnFastener,
-        returnFlashing:returnFlashing,
-        returnBase:returnBase,
-        returnEdge:returnEdge,
-        returnMembrane:returnMembrane,
-        returnWalkway:returnWalkway
-    };
-
-    return service;
-    //////////////////////////////////////////////
+    var self = this;
 
     var myID = "InventorySrvc: ";
+    var traceMe = true;
 
+    var jobStatus = 0;
    
     var Edging = [];
     var Fasteners = [];
@@ -29,8 +19,12 @@ function InventorySrvc(DB,underscore) {
     var Membranes = [];
     var Walkway = [];
 
-    function initSrvc(){
-       
+    var INV = {};
+    var promiseCount = 0;
+
+    self.initSrvc = function(){
+        promiseCount = 0;
+        INV = {Edging:'',Fasteners:'',Flashing:'',Base:'',Membranes:'',Walkway:''};
         Edging = getEdging();
         Fasteners = getFasteners();
         Flashing = getFlashing();
@@ -40,9 +34,7 @@ function InventorySrvc(DB,underscore) {
     };
 
 
-    
-   
-    function returnFlashing(ID){
+    self.returnFlashing = function(ID){
         var rtnObj = {item:'',pkg:'',price:0,num:0};
         for (var i = 0; i < Flashing.length; i++) {
            if(Flashing[i].PRIMARY_ID == ID){
@@ -53,7 +45,7 @@ function InventorySrvc(DB,underscore) {
         return rtnObj;
     };
 
-    function returnBase(c,p,t){
+    self.returnBase = function(c,p,t){
        var rtnObj = {class:c,pkg:p,thickness:t,price:0,num:0};
         for (var i = 0; i < Base.length; i++) {
            if(Base[i].class == c && Base[i].pkg == p && Base[i].thickness == t){
@@ -64,7 +56,7 @@ function InventorySrvc(DB,underscore) {
         return rtnObj;
     };
 
-    function returnFastener(id){
+    self.returnFastener = function(id){
         var rtnObj = {qty:0,price:0};
         for (var i = 0; i < Fasteners.length; i++) {
            if(Fasteners[i].PRIMARY_ID == id){
@@ -77,7 +69,7 @@ function InventorySrvc(DB,underscore) {
 
    
 
-    function returnEdge(id){
+    self.returnEdge = function(id){
         var rtnObj = {qty:0,price:0};
         for (var i = 0; i < Edging.length; i++) {
            if(Edging[i].PRIMARY_ID == id){
@@ -89,7 +81,7 @@ function InventorySrvc(DB,underscore) {
     };
 
 
-    function returnMembrane(obj){
+    self.returnMembrane = function(obj){
         var rtnObj = {price:0,num:0};
         for (var i = 0; i < Membranes.length; i++) {
            if(Membranes[i].class == obj.class && Membranes[i].mil == obj.mil && Membranes[i].fleece == obj.fleece){
@@ -100,12 +92,18 @@ function InventorySrvc(DB,underscore) {
         return rtnObj;
     };
 
-    function returnWalkway(p){
+    self.returnWalkway = function(p){
 
     };
 
-   
+    function promiseKept(){
+        promiseCount += 1;
+        if(promiseCount === 6){
+            //trace(JSON.stringify(INV));
+        }
+    }
 
+   
     function getEdging() {
         DB.query('Edging').then(function(resultObj) {
             if (resultObj.result == "Error" || typeof resultObj.data === "string") {
@@ -119,6 +117,8 @@ function InventorySrvc(DB,underscore) {
                     Edging[i].num = returnNumber(Edging[i].num,'num');
                 }
                 Edging = underscore.sortBy(Edging, 'PRIMARY_ID');
+                INV.Edging = JSON.stringify(Edging);
+                promiseKept();
             }
         }, function(error) {
             alert("Query Error - InventorySrvc >> getEdging");
@@ -138,6 +138,8 @@ function InventorySrvc(DB,underscore) {
                     Fasteners[i].num = returnNumber(Fasteners[i].num,'num');
                 }
                 Fasteners = underscore.sortBy(Fasteners, 'PRIMARY_ID');
+                INV.Fasteners = JSON.stringify(Fasteners);
+                promiseKept();
             }
         }, function(error) {
             alert("Query Error - InventorySrvc >> getFasteners");
@@ -157,6 +159,8 @@ function InventorySrvc(DB,underscore) {
                     Flashing[i].num = returnNumber(Flashing[i].num,'num');
                 }
                 Flashing = underscore.sortBy(Flashing, 'PRIMARY_ID');
+                INV.Flashing = JSON.stringify(Flashing);
+                promiseKept();
             }
         }, function(error) {
             alert("Query Error - InventorySrvc >> getFlashing");
@@ -177,6 +181,8 @@ function InventorySrvc(DB,underscore) {
                     Base[i].num = returnNumber(Base[i].num,'num');
                 }
                 Base = underscore.sortBy(Base, 'PRIMARY_ID');
+                INV.Base = JSON.stringify(Base);
+                promiseKept();
             }
         }, function(error) {
             alert("Query Error - InventorySrvc >> getInsulation");
@@ -200,6 +206,8 @@ function InventorySrvc(DB,underscore) {
                     Membranes[i].num = returnNumber(Membranes[i].num,'num');
                 }
                 Membranes = underscore.sortBy(Membranes, 'sort');
+                INV.Membranes = JSON.stringify(Membranes);
+                promiseKept();
             }
         }, function(error) {
             alert("Query Error - InventorySrvc >> getMembranes");
@@ -213,10 +221,18 @@ function InventorySrvc(DB,underscore) {
                 console.log("getWalkway ---- " + resultObj.data);
             } else {
                 Walkway = resultObj.data;
+                INV.Walkway = JSON.stringify(Walkway);
+                promiseKept();
             }
         }, function(error) {
             alert("Query Error - InventorySrvc >> getWalkway");
         });
+    };
+
+    function trace(msg) {
+        if (traceMe == true) {
+            console.log(msg);
+        }
     };
 
     function returnNumber(input,type){
@@ -238,5 +254,7 @@ function InventorySrvc(DB,underscore) {
         }
         return rtn;
     };
+
+    return self;
 
 };

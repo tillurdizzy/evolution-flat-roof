@@ -22,6 +22,7 @@ function myFunction($scope,SharedSrvc,ResultsSrvc,LaborSrvc,$rootScope) {
         var percent = vm.markup * .01;
         vm.INVOICE.markup = vm.INVOICE.subtotal * percent;
         vm.invoiceTotal = vm.INVOICE.subtotal + vm.INVOICE.markup;
+        R.setInvoiceTotal(vm.invoiceTotal);
         $rootScope.$broadcast('invoiceComplete', true);
     };
 

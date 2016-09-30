@@ -41,6 +41,11 @@ function initRouter($stateProvider, $urlRouterProvider) {
         templateUrl: "views/home/inventory.html"
     })
 
+    .state('library', {
+        url: "/library",
+        templateUrl: "views/home/library.html"
+    })
+
     .state('materials', {
         url: "/materials",
         templateUrl: "views/results/materials.html"
@@ -56,9 +61,39 @@ function initRouter($stateProvider, $urlRouterProvider) {
         templateUrl: "views/results/invoice.html"
     })
 
-    .state('cost', {
-        url: "/cost",
-        templateUrl: "views/results/cost.html"
+    .state('proposal', {
+        url: "/proposal",
+        templateUrl: "views/results/proposal.html"
+    })
+
+    .state('proposal.inspection', {
+        url: "/inspection",
+        templateUrl: "views/results/proposal/inspection.html"
+    })
+
+    .state('proposal.overview', {
+        url: "/overview",
+        templateUrl: "views/results/proposal/overview.html"
+    })
+
+    .state('proposal.scope', {
+        url: "/scope",
+        templateUrl: "views/results/proposal/scope.html"
+    })
+
+    .state('proposal.options', {
+        url: "/options",
+        templateUrl: "views/results/proposal/options.html"
+    })
+
+    .state('proposal.exclusions', {
+        url: "/exclusions",
+        templateUrl: "views/results/proposal/exclusions.html"
+    })
+
+    .state('proposal.warranty', {
+        url: "/warranty",
+        templateUrl: "views/results/proposal/warranty.html"
     })
 
     .state('layers', {

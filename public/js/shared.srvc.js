@@ -4,31 +4,9 @@ angular.module('app').factory('SharedSrvc', SharedSrvc);
 SharedSrvc.$inject = ['$rootScope', 'DB'];
 
 function SharedSrvc($rootScope, DB) {
+    var self = this;
     var traceMe = true;
     var myID = "SharedSrvc: ";
-
-    var service = {
-        pushData: pushData,
-        returnData: returnData,
-        getActiveJobs: getActiveJobs,
-        createNewJob: createNewJob,
-        clone: clone,
-        returnSelectedJobID: returnSelectedJobID,
-        returnSelectedJob: returnSelectedJob,
-        setSelectedJobID: setSelectedJobID,
-        setSelectedJob: setSelectedJob,
-        setField: setField,
-        setHVAC: setHVAC,
-        setLayers: setLayers,
-        setMembrane: setMembrane,
-        setPenetrations: setPenetrations,
-        setTerminations: setTerminations,
-        setBase: setBase
-    };
-
-    return service;
-
-    /////////////////////////////////////
 
     var LAYERS = {};
     var FIELD = {};
@@ -39,9 +17,11 @@ function SharedSrvc($rootScope, DB) {
     var ROOFBASE = {};
     var ADMIN = {};
     var ACTIVE = []; // Active jobs
+    var CONTRACT = {};
 
-    var selectedJobID = '';
-    var selectedJob = {};
+    self.selectedJobID = '';
+    self.selectedJob = {};
+
 
     function trace(msg) {
         if (traceMe == true) {
@@ -49,35 +29,68 @@ function SharedSrvc($rootScope, DB) {
         }
     };
 
-    function returnSelectedJobID() {
-        return selectedJobID;
+    self.returnSelectedJobID = function() {
+        return self.selectedJobID;
     };
 
-    function returnSelectedJob() {
-        return selectedJob;
+    self.returnSelectedJob = function() {
+        return self.selectedJob.data;
     };
 
-    function setSelectedJobID(str) {
-        selectedJobID = str;
+    self.returnJobStatus = function() {
+        return self.selectedJob.status;
+    };
+
+    self.returnContract = function() {
+        return CONTRACT;
+    };
+
+    self.returnLastSubmitted = function(){
+        var rtn = 0;
+        var d =  self.selectedJob.submitted;
+        if(d == "" || d == 0 || d == undefined){
+            return 0;
+        }else{
+            return parseInt(d);
+        }
+    }
+
+    self.setSelectedJobID = function(str) {
+        self.selectedJobID = str;
         if (parseInt(str) > 0) {
             $rootScope.$broadcast('jobSelectEvent', true);
-            getJob(selectedJobID);
+            getJob(self.selectedJobID);
         } else {
             $rootScope.$broadcast('jobSelectEvent', false);
-            selectedJob = {};
+            self.selectedJob = {};
         }
     };
 
-    function setSelectedJob(obj) {
-        selectedJob = obj;
+    self.setSelectedJob = function(obj) {
+        self.selectedJob = obj;
     };
 
     function getJob(strID) {
         var dataObj = { jobID: strID };
 
+        DB.query('getJob', dataObj).then(function(resultObj) {
+            if (resultObj.result == "Error" || typeof resultObj.data === "string") {
+                alert("GetJob Error at getJob");
+            } else {
+                if (resultObj.data[0].contract == "") {
+                    CONTRACT = {};
+                } else {
+                    self.selectedJob = resultObj.data[0];
+                    self.selectedJob.data = JSON.parse(resultObj.data[0].data);
+                    self.selectedJob.contract = JSON.parse(resultObj.data[0].contract);
+                    CONTRACT = self.clone(self.selectedJob.contract);
+                };
+            };
+        });
+
         DB.query('getDataField', dataObj).then(function(resultObj) {
             if (resultObj.result == "Error" || typeof resultObj.data === "string") {
-                alert("Get Job Error at getDataField");
+                alert("GetJob Error at getDataField");
             } else {
                 if (resultObj.data[0].data == "") {
                     setField();
@@ -141,7 +154,7 @@ function SharedSrvc($rootScope, DB) {
         });
     };
 
-    function getActiveJobs() {
+    self.getActiveJobs = function() {
         trace(myID + 'getActiveJobs');
         DB.query('getActiveJobs').then(function(resultObj) {
             if (resultObj.result == "Error" || typeof resultObj.data === "string") {
@@ -162,13 +175,13 @@ function SharedSrvc($rootScope, DB) {
             var json = arr[i].data;
             var obj = JSON.parse(json);
             obj.id = arr[i].PRIMARY_ID;
-            obj.active = arr[i].active;
+            obj.status = arr[i].status;
             ACTIVE.push(obj);
         }
         $rootScope.$broadcast('onRefreshActiveJobs');
     };
 
-    function createNewJob(obj) {
+    self.createNewJob = function(obj) {
         var jsonStr = JSON.stringify(obj);
         var DBQuery = "insertJob";
         var dataObj = {};
@@ -209,7 +222,7 @@ function SharedSrvc($rootScope, DB) {
         });
     };
 
-    function pushData(obj, set) {
+    self.pushData = function(obj, set) {
         var jsonStr = JSON.stringify(obj);
         trace(myID + "pushData : " + jsonStr);
         var DBQuery = "update" + set;
@@ -242,7 +255,7 @@ function SharedSrvc($rootScope, DB) {
         }
     };
 
-    function returnData(set) {
+    self.returnData = function(set) {
         var rtnObj = {};
         switch (set) {
             case "ADMIN":
@@ -276,12 +289,12 @@ function SharedSrvc($rootScope, DB) {
         return rtnObj;
     };
 
-    function setField() {
+    self.setField = function() {
         FIELD = { SQUARES: '0', CRNROUT: '0', CRNRIN: '0', WALLS: [] };
         return FIELD;
     };
 
-    function setLayers() {
+    self.setLayers = function() {
         LAYERS = {
             layerOne: { layer: '', thickness: '' },
             layerTwo: { layer: '', thickness: '' },
@@ -294,7 +307,7 @@ function SharedSrvc($rootScope, DB) {
         return LAYERS;
     };
 
-    function setPenetrations() {
+    self.setPenetrations = function() {
         PENETRATIONS = {
             STARCAPS: [],
             VENTS: { SMALL: [] ,LARGE:[]},
@@ -313,7 +326,7 @@ function SharedSrvc($rootScope, DB) {
         return PENETRATIONS;
     };
 
-    function setTerminations() {
+    self.setTerminations = function() {
         TERMINATIONS = {
             PERIMETER: '0',
             WALL: '0',
@@ -327,7 +340,7 @@ function SharedSrvc($rootScope, DB) {
         // parapet {length: '0', stretchout: '0',cleated:'No',material:''}
     };
 
-    function setHVAC() {
+    self.setHVAC = function() {
         HVAC = {
             UNITS: [],
             SUPPORT: {
@@ -339,7 +352,7 @@ function SharedSrvc($rootScope, DB) {
         return HVAC;
     };
 
-    function setMembrane() {
+    self.setMembrane = function() {
         MEMBRANE = {
             GRIDPOS: 'A1',
             CLASS: '',
@@ -351,7 +364,7 @@ function SharedSrvc($rootScope, DB) {
         return MEMBRANE;
     };
 
-    function setBase() {
+    self.setBase = function() {
         ROOFBASE = {
             LAYERS: [],
             ATTACHMENT:{class:'',item:'',rate:''},
@@ -361,7 +374,7 @@ function SharedSrvc($rootScope, DB) {
         return ROOFBASE;
     };
 
-    function setPanel() {
+    self.setPanel = function() {
        // RPANEL is saved in Layers!!
     };
 
@@ -372,7 +385,7 @@ function SharedSrvc($rootScope, DB) {
 
     };
 
-    function clone(obj) {
+    self.clone = function(obj) {
         var copy;
         if (null == obj || "object" != typeof obj) return obj;
         if (obj instanceof Date) {
@@ -396,5 +409,7 @@ function SharedSrvc($rootScope, DB) {
         }
         throw new Error("Unable to copy obj! Its type isn't supported.");
     };
+
+    return self;
 
 };

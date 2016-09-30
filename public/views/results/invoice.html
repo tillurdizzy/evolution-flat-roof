@@ -7,28 +7,28 @@
             <thead>
                 <tr>
                     <th style="width:400px;">Item</th>
-                    <th style="width:200px;">Total</th>
+                    <th style="width:200px;text-align:right;padding-right:50px;">Total</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Materials</td>
-                    <td>{{Ctrl.INVOICE.materials | currency:"$":2}}</td>
+                    <td style="text-align:right;padding-right:50px;">{{Ctrl.INVOICE.materials | currency:"$":2}}</td>
                 </tr>
 
                 <tr>
                     <td>Labor</td>
-                    <td>{{Ctrl.INVOICE.labor | currency:"$":2}}</td>
+                    <td style="text-align:right;padding-right:50px;">{{Ctrl.INVOICE.labor | currency:"$":2}}</td>
                 </tr>
 
                 <tr>
                     <td>Subtotal</td>
-                    <td>{{Ctrl.INVOICE.subtotal | currency:"$":2}}</td>
+                    <td style="text-align:right;padding-right:50px;">{{Ctrl.INVOICE.subtotal | currency:"$":2}}</td>
                 </tr>
 
                 <tr>
                     <td>Markup</td>
-                    <td>{{Ctrl.INVOICE.markup | currency:"$":2}}</td>
+                    <td style="text-align:right;padding-right:50px;">{{Ctrl.INVOICE.markup | currency:"$":2}}</td>
                 </tr>
             </tbody>
         </table>

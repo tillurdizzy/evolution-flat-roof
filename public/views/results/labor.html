@@ -7,17 +7,17 @@
             <thead>
                 <tr>
                     <th style="width:400px;">Item</th>
-                    <th style="width:100px;">Qty</th>
-                    <th style="width:100px;">Price</th>
-                    <th style="width:200px;">Total</th>
+                    <th style="width:100px;text-align:right">Qty</th>
+                    <th style="width:100px;text-align:right">Price</th>
+                    <th style="width:200px;text-align:right">Total</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="row in Ctrl.L.LABOR">
                     <td>{{row.item}}</td>
-                    <td>{{row.qty}}</td>
-                    <td>{{row.price | currency:"$":2}}</td>
-                    <td>{{row.total | currency:"$":2}}</td>
+                    <td style="text-align:right;">{{row.qty}}</td>
+                    <td style="text-align:right;">{{row.price | currency:"$":2}}</td>
+                    <td style="text-align:right;">{{row.total | currency:"$":2}}</td>
                 </tr>
             </tbody>
         </table>

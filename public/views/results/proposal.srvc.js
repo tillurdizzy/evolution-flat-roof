@@ -1,31 +1,21 @@
 'use strict';
-angular.module('app').factory('LaborSrvc', LaborSrvc);
+angular.module('app').factory('ProposalSrvc', ProposalSrvc);
 
-LaborSrvc.$inject = ['SharedSrvc','ResultsSrvc','$rootScope'];
+ProposalSrvc.$inject = ['SharedSrvc','ResultsSrvc','DB'];
 
-function LaborSrvc(SharedSrvc,ResultsSrvc,$rootScope) {
+function ProposalSrvc(SharedSrvc,ResultsSrvc,DB) {
 
     var self = this;
-    var S = SharedSrvc;
-    var myID = "LaborSrvc: ";
+    var myID = "ProposalSrvc: ";
 
-    var FIELD = [];
-    var MEM = [];
-    var BASE = [];
-    var PEN = [];
-    var TERM = [];
-    var HVAC = [];
-    var RPAN = [];
-    var ADMIN = [];
-
-    self.LABOR = [];
-    self.laborTotal = 0;
-    self.footnotes = {};
-
+    self.INSPECTION = [];
+    self.OVERVIEW = [];
+    self.SCOPE = [];
+    self.OPTIONS = [];
+    self.EXCLUSIONS = [];
+   
     self.initSrvc = function(){
-        self.totals = {tearout:0,membrane:0,terminations:0,penetrations:0,elecSupport:0,rpanel:0};
-        self.laborTotal = 0;
-        self.footnotes = {};
+       
         FIELD = S.returnData('FIELD');
         BASE = S.returnData('ROOFBASE');
         MEM = S.returnData('MEMBRANE');
@@ -60,6 +50,8 @@ function LaborSrvc(SharedSrvc,ResultsSrvc,$rootScope) {
         var result = Math.round(num * 100) / 100;
         return result;
     };
+
+    
 
     function convertToBoolean(input) {
         var boolOut = false;

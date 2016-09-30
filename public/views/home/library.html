@@ -1,0 +1,36 @@
+<div ng-controller="LibCtrl as Ctrl">
+    <div class="page-title">
+        <h4>Library of Standard Paragraphs</h4></div>
+    <div>
+        <div class="form-input">
+            <div class="item-name">
+                <h3>Category</h3></div>
+            <div class="item-select">
+                <md-select ng-model="Ctrl.categorySelected" placeholder="select" ng-change="Ctrl.getLibraryCategory();">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.libCategories">{{ opt }}</md-option>
+                </md-select>
+            </div>
+        </div>
+     </div>  
+    <horiz-rule margintop="5" marginbottom="15"></horiz-rule>
+    <div style="overflow:auto;height:400px;">
+            <table st-table="Ctrl.selectedCategoryList" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="width:200px;">File</th>
+                        <th style="width:50px;">Text</th>
+                        <th style="width:40px;">Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in Ctrl.selectedCategoryList">
+                        <td>{{row.file}}</td>
+                        <td>{{row.text}}</td>
+                        <td><i class="fa fa-pencil" ng-click="Ctrl.editRowItem(row)" style="cursor:pointer;"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+       
+
+</div>

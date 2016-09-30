@@ -7,7 +7,7 @@ function myFunction($scope,$state,$location,SharedSrvc) {
 	
 	var Me = this;
 	var S = SharedSrvc;
-    var resultPaths = ['materials','labor','invoice','contract'];
+    var resultPaths = ['materials','labor','invoice','contract','proposal'];
 
 	Me.jobSelected = false;
 	Me.inputOpen = false;
@@ -16,7 +16,7 @@ function myFunction($scope,$state,$location,SharedSrvc) {
 
     Me.materialsComplete = false;
     Me.laborComplete = false;
-    Me.contractComplete = false;
+    Me.invoiceComplete = false;
 
 	Me.goNav = function(st){
         var flag = true;
@@ -29,7 +29,7 @@ function myFunction($scope,$state,$location,SharedSrvc) {
         if(flag == true){
             Me.materialsComplete = false;
             Me.laborComplete = false;
-            Me.contractComplete = false;
+            Me.invoiceComplete = false;
         }
 
 		$state.transitionTo(st);
@@ -68,7 +68,7 @@ function myFunction($scope,$state,$location,SharedSrvc) {
     });
 
     $scope.$on("invoiceComplete", function(event,bol) {
-        Me.contractComplete = true;
+        Me.invoiceComplete = true;
     });
 
 

@@ -8,6 +8,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc,$rootScope) {
     var self = this;
     var S = SharedSrvc;
     var I = InventorySrvc;
+    var traceMe = true;
 
     var myID = "ResultsSrvc: ";
 
@@ -22,13 +23,15 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc,$rootScope) {
     var baseThickness = 0;
     var FIELDSQ = 0;
     self.MATERIALS = {};
-    self.totals = {};
+    self.totals = {};// material totals broken down in categories
+
     self.totalMaterials = 0;
+    self.totalLabor = 0;
+    self.totalContract = 0;
 
     self.footnotes = {};
 
     var invtCategories = ["Adhesives","Edging","Fasteners","Flashing","Insulation","Membranes","Walkways"];
-
 
     self.initSrvc = function(){
         self.MATERIALS = {base:[],membrane:[],terminations:[],penetrations:[],elecSupport:[],rpanel:[]};
@@ -45,7 +48,11 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc,$rootScope) {
         FIELDSQ = returnNumber(FIELD.SQUARES,'num');
         
         processBase();
-       
+        processMembrane();
+        processTerminations();
+        processPenetrations();
+        processElec();
+        materialsComplete();
     };
 
     function materialsComplete(){
@@ -58,15 +65,48 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc,$rootScope) {
                 self.totals.elecSupport + 
                 self.totals.rpanel;
         $rootScope.$broadcast('materialsComplete', true);
-    }
+    };
 
+    self.setLaborTotal = function(x){
+        self.totalLabor = x;
+    };
+
+    self.setInvoiceTotal = function(x){
+        self.totalContract = x;
+    };
+
+    self.returnTotals = function(){
+        var dataObj = {};
+        dataObj.materials = self.totalMaterials;
+        dataObj.labor = self.totalLabor;
+        dataObj.contract = self.totalContract;
+        return dataObj;
+    };
+
+    self.submitContract = function(){
+        var dataObj = {};
+        dataObj.jobID = S.returnSelectedJobID();
+        var dataJSON = JSON.stringify(self.MATERIALS);
+        dataObj.data = dataJSON;
+        var d = new Date();
+        dataObj.submitted = d.getTime();
+
+        DB.query("updateContract", dataObj).then(function(resultObj) {
+            if (resultObj.result == "Error" || typeof resultObj.data === "string") {
+                alert("Query Error - see console for details");
+                console.log("doQuery ---- " + resultObj.data);
+            } else {
+               alert('saved');
+            }
+        }, function(error) {
+            alert("Query Error - InvtCtrl >> doQuery");
+        });
+    };
 
     // Beginning of function chain
     function processBase(){
         self.totals.base = 0;
-        // Calculate base thickness total... mainly for screw length
-        // ?Assume all existing layers are torn off?
-        // ?Include plywood layer?
+       
         baseThickness = 0;
         for (var i = 0; i < BASE.LAYERS.length; i++) {
            var t = returnNumber(BASE.LAYERS[i].thickness,'num');
@@ -146,7 +186,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc,$rootScope) {
 
         };
        
-        processMembrane();
+       
     };
 
    
@@ -244,7 +284,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc,$rootScope) {
         }else if(attachMethod == "Glue"){
 
         }
-        processTerminations();
+        
     };
 
     
@@ -319,7 +359,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc,$rootScope) {
             self.totals.terminations += price;
         };
 
-        processPenetrations();
+        
     };
 
     // What inventory items do we need for vents?
@@ -415,7 +455,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc,$rootScope) {
                 self.totals.penetrations += total;
             }
         }
-        processElec();
+        
     };
 
     function processElec() {
@@ -480,7 +520,7 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc,$rootScope) {
         self.MATERIALS.elecSupport.push({item:"Attached",qty:attachedTotal,price:price,total:total});
         self.totals.elecSupport += total;
 
-        materialsComplete();
+       
     };
 
 
@@ -504,6 +544,12 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc,$rootScope) {
             }
         }
         return boolOut;
+    };
+
+    function trace(msg) {
+        if (traceMe == true) {
+            console.log(msg);
+        }
     };
 
     function convertDateToString(m) {

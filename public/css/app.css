@@ -376,11 +376,11 @@ body {
 
 .view-container {
   margin: 5px 0 0 20px;
-  width: 810px; }
+  width: 1000px; }
 
 .photos {
   margin-top: 20px;
-  width: 810px; }
+  width: 1000px; }
 
 .page-title {
   height: 26px;
@@ -957,3 +957,10 @@ table {
   margin: 10px 5px; }
   .selectedJob h3 {
     margin: 0; }
+
+.library-textarea {
+  margin: 0 0 10px 0; }
+  .library-textarea textarea {
+    width: 100%;
+    display: inline-block;
+    height: 100px; }

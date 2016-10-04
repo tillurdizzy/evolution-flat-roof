@@ -57,7 +57,17 @@ function eventQueries($http, $q) {
         getDataPenetrations: httpPathPrefix + "getDataPenetrations.php",
         getDataTerminations: httpPathPrefix + "getDataTerminations.php",
         getDataHvac: httpPathPrefix + "getDataHvac.php",
-        getAdmin: httpPathPrefix + "getAdmin.php"
+        getAdmin: httpPathPrefix + "getAdmin.php",
+        getLibrary: httpPathPrefix + "getLibrary.php",
+        updateLib_introduction: httpPathPrefix + "updateLib_introduction.php",
+        updateLib_overview: httpPathPrefix + "updateLib_overview.php",
+        updateLib_preinstall: httpPathPrefix + "updateLib_preinstall.php",
+        updateLib_insulation: httpPathPrefix + "updateLib_insulation.php",
+        updateLib_membrane: httpPathPrefix + "updateLib_membrane.php",
+        updateLib_scope: httpPathPrefix + "updateLib_scope.php",
+        updateLib_exclusions: httpPathPrefix + "updateLib_exclusions.php",
+        updateLib_warranty: httpPathPrefix + "updateLib_warranty.php",
+        updateLib_options: httpPathPrefix + "updateLib_options.php",
     };
 
     var trace = function(obj) {

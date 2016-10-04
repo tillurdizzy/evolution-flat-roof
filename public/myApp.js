@@ -46,6 +46,39 @@ function initRouter($stateProvider, $urlRouterProvider) {
         templateUrl: "views/home/library.html"
     })
 
+    .state('library.introduction', {
+        url: "/introduction",
+        templateUrl: "views/home/library/introduction.html"
+    })
+    .state('library.overview', {
+        url: "/overview",
+        templateUrl: "views/home/library/overview.html"
+    })
+    .state('library.preinstall', {
+        url: "/preinstall",
+        templateUrl: "views/home/library/preinstall.html"
+    })
+    .state('library.insulation', {
+        url: "/insulation",
+        templateUrl: "views/home/library/insulation.html"
+    })
+    .state('library.membrane', {
+        url: "/membrane",
+        templateUrl: "views/home/library/membrane.html"
+    })
+    .state('library.postinstall', {
+        url: "/postinstall",
+        templateUrl: "views/home/library/postinstall.html"
+    })
+    .state('library.exclusions', {
+        url: "/exclusions",
+        templateUrl: "views/home/library/exclusions.html"
+    })
+    .state('library.warranty', {
+        url: "/warranty",
+        templateUrl: "views/home/library/warranty.html"
+    })
+
     .state('materials', {
         url: "/materials",
         templateUrl: "views/results/materials.html"

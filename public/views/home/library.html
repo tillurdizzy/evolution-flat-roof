@@ -2,35 +2,17 @@
     <div class="page-title">
         <h4>Library of Standard Paragraphs</h4></div>
     <div>
-        <div class="form-input">
-            <div class="item-name">
-                <h3>Category</h3></div>
-            <div class="item-select">
-                <md-select ng-model="Ctrl.categorySelected" placeholder="select" ng-change="Ctrl.getLibraryCategory();">
-                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.libCategories">{{ opt }}</md-option>
-                </md-select>
-            </div>
-        </div>
-     </div>  
+        <md-nav-bar md-selected-nav-item="Ctrl.currentNavItem" nav-bar-aria-label="navigation links">
+            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.introduction')" name="introduction">INTRODUCTION</md-nav-item>
+            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.overview')" name="overview">OVERVIEW</md-nav-item>
+            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.preinstall')" name="preinstall">PRE-INSTALL</md-nav-item>
+            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.insulation')" name="insulation">INSULATION</md-nav-item>
+            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.membrane')" name="membrane">MEMBRANE</md-nav-item>
+            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.postinstall')" name="postinstall">POST-INSTALL</md-nav-item>
+            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.exclusions')" name="exclusions">EXCLUSIONS</md-nav-item>
+            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.warranty')" name="warranty">WARRANTY</md-nav-item>
+        </md-nav-bar>
+    </div>
     <horiz-rule margintop="5" marginbottom="15"></horiz-rule>
-    <div style="overflow:auto;height:400px;">
-            <table st-table="Ctrl.selectedCategoryList" class="table table-striped">
-                <thead>
-                    <tr>
-                        <th style="width:200px;">File</th>
-                        <th style="width:50px;">Text</th>
-                        <th style="width:40px;">Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="row in Ctrl.selectedCategoryList">
-                        <td>{{row.file}}</td>
-                        <td>{{row.text}}</td>
-                        <td><i class="fa fa-pencil" ng-click="Ctrl.editRowItem(row)" style="cursor:pointer;"></i></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-       
-
+    <div ui-view></div>
 </div>

@@ -6,11 +6,16 @@
         <div class="item-name">
             <h3>Base Layers</h3></div>
         <div class="item-counter">
-            <counter count="Ctrl.layerCount" min="1" max="6"></counter>
+            <counter count="Ctrl.layerCount" min="0" max="6"></counter>
         </div>
     </div>
     <div class="indent">
-        <base-layer material="item.material" size="item.size" thickness="item.thickness" ng-repeat="item in Ctrl.PARAMS.LAYERS"></base-layer>
+        <div class="item-cb">
+            <md-checkbox ng-model="Ctrl.PARAMS.REPLACE" change="Ctrl.replaceEntireDeckToggle()" aria-label="Replace Deck">
+                Replace Entire Deck ({{Ctrl.FIELD.SQUARES}} Sqs)
+            </md-checkbox>
+        </div>
+        <base-layer material="item.material" size="item.size" thickness="item.thickness" qty="item.qty" ng-repeat="item in Ctrl.PARAMS.LAYERS"></base-layer>
     </div>
     <div class="form-input">
         <div class="item-name">

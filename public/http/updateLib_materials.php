@@ -12,7 +12,7 @@ $con = mysqli_connect(DATABASE_SERVER, DATABASE_USERNAME, DATABASE_PASSWORD,DATA
 
 $strTxt = mysqli_real_escape_string($con,$input->strTxt);
 
-$query = "UPDATE library SET scope='".$strTxt."'";
+$query = "UPDATE library SET materials='".$strTxt."'";
 
 $qry_res = mysqli_query($con,$query);
 if ($qry_res) {

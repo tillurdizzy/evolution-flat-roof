@@ -1,9 +1,7 @@
 <div class="subTitle">
     <h4>Introduction</h4></div>
 <div class="library-textarea">
-    <textarea ng-model="Ctrl.introductionTxt">
-        
-    </textarea>
+	<button type="button" ng-click="Ctrl.submitEdit('introduction')">Update</button>
+    <textarea style="height:250px;" ng-model="Ctrl.introductionTxt"></textarea>
 </div>
 
-<button type="button" ng-click="Ctrl.submitEdit('introduction')">Update</button>

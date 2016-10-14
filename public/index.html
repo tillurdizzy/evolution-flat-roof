@@ -60,7 +60,7 @@
                     <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('materials')}" ng-click="Ctrl.goNav('materials');"> Materials </md-button>
                     <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('labor')}" ng-click="Ctrl.goNav('labor');" ng-disabled="!Ctrl.materialsComplete"> Labor </md-button>
                     <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('invoice')}" ng-click="Ctrl.goNav('invoice');" ng-disabled="!Ctrl.laborComplete"> Invoice </md-button>
-                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('proposal')}" ng-click="Ctrl.goNav('proposal.inspection');" ng-disabled="!Ctrl.invoiceComplete"> PROPOSAL </md-button>
+                    <md-button class="md-raised btn" ng-class="{ 'md-primary': Ctrl.isCurrentPath('proposal')}" ng-click="Ctrl.goNav('proposal.introduction');" ng-disabled="!Ctrl.invoiceComplete"> PROPOSAL </md-button>
                 </div>
             </div>
         </div>
@@ -106,6 +106,7 @@
     <script src="views/design/penetrations/interior-drain-review.comp.js?v=2"></script>
     <script src="views/design/penetrations/scupper-drain-review.comp.js?v=2"></script>
     <script src="views/design/base/base-layer.comp.js?v=2"></script>
+    <script src="views/results/proposal/materials-item.comp.js?v=2"></script>
     <!--Modules-->
     <!--Controllers-->
     <script src="views/home/home.ctrl.js?v=2"></script>

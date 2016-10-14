@@ -7,7 +7,7 @@ function myFunction($scope,$state,$location,SharedSrvc) {
 	
 	var Me = this;
 	var S = SharedSrvc;
-    var resultPaths = ['materials','labor','invoice','contract','proposal'];
+    var resultPaths = ['materials','labor','invoice','proposal.introduction'];
 
 	Me.jobSelected = false;
 	Me.inputOpen = false;

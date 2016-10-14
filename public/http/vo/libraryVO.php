@@ -1,14 +1,12 @@
 <?php
 class libraryVO{
 	var $introduction;
-	var $overview;
-	var $scope;
-	var $options;
-	var $exclusions;
-	var $warranty;
-	var $preinstall;
-	var $postinstall;
+	var $materials;
+	var $deck;
 	var $insulation;
 	var $membrane;
+	var $postinstall;
+	var $exclusions;
+	var $warranty;
 }
 ?>

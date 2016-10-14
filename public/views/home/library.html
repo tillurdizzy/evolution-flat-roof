@@ -1,18 +1,18 @@
 <div ng-controller="LibCtrl as Ctrl">
     <div class="page-title">
         <h4>Library of Standard Paragraphs</h4></div>
-    <div>
-        <md-nav-bar md-selected-nav-item="Ctrl.currentNavItem" nav-bar-aria-label="navigation links">
-            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.introduction')" name="introduction">INTRODUCTION</md-nav-item>
-            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.overview')" name="overview">OVERVIEW</md-nav-item>
-            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.preinstall')" name="preinstall">PRE-INSTALL</md-nav-item>
-            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.insulation')" name="insulation">INSULATION</md-nav-item>
-            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.membrane')" name="membrane">MEMBRANE</md-nav-item>
-            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.postinstall')" name="postinstall">POST-INSTALL</md-nav-item>
-            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.exclusions')" name="exclusions">EXCLUSIONS</md-nav-item>
-            <md-nav-item md-nav-click="" ng-click="Ctrl.goNav('library.warranty')" name="warranty">WARRANTY</md-nav-item>
-        </md-nav-bar>
+    
+    <div id='cssmenu'>
+        <ul>
+            <li ng-class="{ active: Ctrl.isCurrentPath('/library/introduction')}"><a ui-sref='library.introduction'>Introduction</a></li>
+            <li ng-class="{ active: Ctrl.isCurrentPath('/library/materials')}"><a ui-sref='library.materials'>Materials</a></li>
+            <li ng-class="{ active: Ctrl.isCurrentPath('/library/deck')}"><a ui-sref='library.deck'>Deck</a></li>
+            <li ng-class="{ active: Ctrl.isCurrentPath('/library/insulation')}"><a ui-sref='library.insulation'>Insulation</a></li>
+            <li ng-class="{ active: Ctrl.isCurrentPath('/library/options')}"><a ui-sref='library.membrane'>Membrane</a></li>
+            <li ng-class="{ active: Ctrl.isCurrentPath('/library/postinstall')}"><a ui-sref='library.postinstall'>Post</a></li>
+            <li ng-class="{ active: Ctrl.isCurrentPath('/library/exclusions')}"><a ui-sref='library.exclusions'>Exclusions</a></li>
+            <li ng-class="{ active: Ctrl.isCurrentPath('/library/warranty')}"><a ui-sref='library.warranty'>Warranty</a></li>
+        </ul>
     </div>
-    <horiz-rule margintop="5" marginbottom="15"></horiz-rule>
     <div ui-view></div>
 </div>

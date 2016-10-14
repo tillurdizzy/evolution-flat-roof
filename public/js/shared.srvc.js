@@ -93,7 +93,7 @@ function SharedSrvc($rootScope, DB) {
                 alert("GetJob Error at getDataField");
             } else {
                 if (resultObj.data[0].data == "") {
-                    setField();
+                    self.setField();
                 } else {
                     FIELD = JSON.parse(resultObj.data[0].data);
                 };
@@ -105,7 +105,7 @@ function SharedSrvc($rootScope, DB) {
                 alert("Get Job Error at getDataHvac");
             } else {
                 if (resultObj.data[0].data == "") {
-                    setHVAC();
+                    self.setHVAC();
                 } else {
                     HVAC = JSON.parse(resultObj.data[0].data);
                 };
@@ -114,7 +114,7 @@ function SharedSrvc($rootScope, DB) {
         DB.query('getDataLayers', dataObj).then(function(resultObj) {
             if (resultObj.result == "Error" || typeof resultObj.data === "string") { alert("Get Job Error at getDataLayers"); } else {
                 if (resultObj.data[0].data == "") {
-                    setLayers();
+                    self.setLayers();
                 } else { LAYERS = JSON.parse(resultObj.data[0].data); };
             };
         });
@@ -122,28 +122,28 @@ function SharedSrvc($rootScope, DB) {
         DB.query('getDataMembrane', dataObj).then(function(resultObj) {
             if (resultObj.result == "Error" || typeof resultObj.data === "string") { alert("Get Job Error at getDataMembrane"); } else {
                 if (resultObj.data[0].data == "") {
-                    setMembrane();
+                    self.setMembrane();
                 } else { MEMBRANE = JSON.parse(resultObj.data[0].data); };
             };
         });
         DB.query('getDataPenetrations', dataObj).then(function(resultObj) {
             if (resultObj.result == "Error" || typeof resultObj.data === "string") { alert("Get Job Error at getDataPenetrations"); } else {
                 if (resultObj.data[0].data == "") {
-                    setPenetrations();
+                    self.setPenetrations();
                 } else { PENETRATIONS = JSON.parse(resultObj.data[0].data); };
             };
         });
         DB.query('getDataTerminations', dataObj).then(function(resultObj) {
             if (resultObj.result == "Error" || typeof resultObj.data === "string") { alert("Get Job Error at getDataTerminations"); } else {
                 if (resultObj.data[0].data == "") {
-                    setTerminations();
+                    self.setTerminations();
                 } else { TERMINATIONS = JSON.parse(resultObj.data[0].data); };
             };
         });
         DB.query('getDataBase', dataObj).then(function(resultObj) {
             if (resultObj.result == "Error" || typeof resultObj.data === "string") { alert("Get Job Error at getDataBase"); } else {
                 if (resultObj.data[0].data == "") {
-                    setBase();
+                    self.setBase();
                 } else { ROOFBASE = JSON.parse(resultObj.data[0].data); };
             };
         });
@@ -192,18 +192,18 @@ function SharedSrvc($rootScope, DB) {
                 alert("Query Error - see console for details");
                 console.log("createNewJob ---- " + resultObj.data);
             } else {
-                var id = resultObj.data.id;
-                getActiveJobs();
-                newJobChain(id);
+                self.selectedJobID = resultObj.data.id;
+                self.getActiveJobs();
+                newJobChain();
             }
         }, function(error) {
             alert("Query Error - SharedCtrl >> createNewJob");
         });
     };
 
-    function newJobChain(id) {
+    function newJobChain() {
         var dataObj = {};
-        dataObj.jobID = id;
+        dataObj.jobID = self.selectedJobID;
         dataObj.data = "";
         DB.query('insertBase', dataObj).then(function(resultObj) {
             DB.query('insertField', dataObj).then(function(resultObj) {
@@ -213,6 +213,7 @@ function SharedSrvc($rootScope, DB) {
                             DB.query('insertPenetrations', dataObj).then(function(resultObj) {
                                 DB.query('insertTerminations', dataObj).then(function(resultObj) {
                                     trace('newJobChain Complete');
+                                    getLibrary();
                                 });
                             });
                         });
@@ -222,12 +223,52 @@ function SharedSrvc($rootScope, DB) {
         });
     };
 
+    function getLibrary(){
+        var getQuery = "getLibrary";
+        DB.query(getQuery).then(function(resultObj) {
+            if (resultObj.result == "Error" || typeof resultObj.data === "string") {
+                alert("Query Error - see console for details");
+                console.log("LibCtrl >> getLibraryCategory ---- " + resultObj.data);
+            } else {
+                insertProposal(resultObj.data[0]);
+            }
+        }, function(error) {
+            alert("Query Error - LibCtrl >> getLibraryCategory");
+        });
+    }
+
+    function insertProposal(resultObj) {
+        var dataObj = {};
+        dataObj.jobID = self.selectedJobID;
+        dataObj.introduction = resultObj.introduction;
+        dataObj.materials = resultObj.materials;
+        dataObj.deck = resultObj.deck;
+        dataObj.insulation = resultObj.insulation;
+        dataObj.membrane = resultObj.membrane;
+        dataObj.postinstall = resultObj.postinstall;
+        dataObj.exclusions = resultObj.exclusions;
+        dataObj.warranty = resultObj.warranty;
+
+        DB.query('insertProposal',dataObj).then(function(resultObj) {
+            if (resultObj.result == "Error" || typeof resultObj.data === "string") {
+                alert("Query Error - see console for details");
+                console.log("LibCtrl >> insertProposal ---- " + resultObj.data);
+            } else {
+                
+            }
+        }, function(error) {
+            alert("Query Error - LibCtrl >> insertProposal");
+        });
+
+    };
+
+
     self.pushData = function(obj, set) {
         var jsonStr = JSON.stringify(obj);
         trace(myID + "pushData : " + jsonStr);
         var DBQuery = "update" + set;
         var dataObj = {};
-        dataObj.jobID = selectedJobID;
+        dataObj.jobID = self.selectedJobID;
         dataObj.data = jsonStr;
         DB.query(DBQuery, dataObj);
         switch (set) {
@@ -364,8 +405,11 @@ function SharedSrvc($rootScope, DB) {
         return MEMBRANE;
     };
 
+
+    // layers = { material: '', thickness: '', size: '4x8', qty:''}
     self.setBase = function() {
         ROOFBASE = {
+            REPLACE:'false',
             LAYERS: [],
             ATTACHMENT:{class:'',item:'',rate:''},
             RATIO:{corners:'20',perimeter:'40',field:'40',total:'100'},

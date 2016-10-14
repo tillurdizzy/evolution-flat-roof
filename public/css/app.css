@@ -599,6 +599,16 @@ table {
   font-size: 16px;
   box-sizing: border-box; }
 
+.material-list p {
+  margin: 1rem 0 .5rem 0; }
+
+.materials-item {
+  margin: 0;
+  padding: 0; }
+  .materials-item p {
+    margin: 0;
+    padding: 0; }
+
 .clearBtnContainer {
   height: 26px;
   margin: 0 0 5px 0;
@@ -645,7 +655,7 @@ table {
 
 #cssmenu {
   width: auto;
-  margin-top: 1rem;
+  margin: 1rem 0 .5rem 0;
   border-bottom: 3px solid #000;
   font-family: Raleway, sans-serif;
   line-height: 1; }
@@ -963,4 +973,5 @@ table {
   .library-textarea textarea {
     width: 100%;
     display: inline-block;
-    height: 100px; }
+    height: 600px;
+    margin: 10px 0 0 0; }

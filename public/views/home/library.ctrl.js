@@ -1,37 +1,33 @@
 angular.module('app').controller('LibCtrl', myFunction);
 
-myFunction.$inject = ['$scope', '$state', 'DB'];
+myFunction.$inject = ['$scope', '$state', 'DB','$location'];
 
-function myFunction($scope, $state, DB) {
+function myFunction($scope, $state, DB,$location) {
     var me = this;
 
     me.introductionTxt = "";
-    me.overviewTxt = "";
-    me.scopeTxt = "";
-    me.optionsTxt = "";
+    me.materialsTxt = "";
+    me.deckTxt = "";
     me.exclusionsTxt = "";
     me.warrantyTxt = "";
-    me.preinstallTxt = "";
     me.insulationTxt = "";
     me.membraneTxt = "";
     me.postinstallTxt = "";
 
-    var catSelected = '';
+    me.categorySelected = 'introduction';
 
     var DBQuery = "";
     var paramObj = {};
     var getQuery = '';
 
-    var INTRODUCTION = {};
-    var OVERVIEW = {};
-    var PRE = {};
-    var INSULATION = {};
-    var MEMBRANE = {};
-    var POST = {};
-
     me.goNav = function(st) {
         me.categorySelected = st;
         $state.transitionTo(st);
+    };
+
+    me.isCurrentPath = function(path) {
+        var x = $location.path();
+        return $location.path() == path;
     };
 
     function initCtrl() {
@@ -39,7 +35,6 @@ function myFunction($scope, $state, DB) {
     };
 
     me.submitEdit = function(cat) {
-        catSelected = cat;
         paramObj = {};
         paramObj.strTxt = '';
         DBQuery = "updateLib_" + cat;
@@ -47,8 +42,11 @@ function myFunction($scope, $state, DB) {
             case 'introduction':
                 paramObj.strTxt = me.introductionTxt;
                 break;
-            case 'preinstall':
-                paramObj.strTxt = me.preinstallTxt;
+            case 'materials':
+                paramObj.strTxt = me.materialsTxt;
+                break;
+            case 'deck':
+                paramObj.strTxt = me.deckTxt;
                 break;
             case 'insulation':
                 paramObj.strTxt = me.insulationTxt;
@@ -58,15 +56,6 @@ function myFunction($scope, $state, DB) {
                 break;
             case 'postinstall':
                 paramObj.strTxt = me.postinstallTxt;
-                break;
-            case 'overview':
-                paramObj.strTxt = me.overviewTxt;
-                break;
-            case 'scope':
-                paramObj.strTxt = me.scopeTxt;
-                break;
-            case 'options':
-                paramObj.strTxt = me.optionsTxt;
                 break;
             case 'exclusions':
                 paramObj.strTxt = me.exclusionsTxt;
@@ -80,13 +69,11 @@ function myFunction($scope, $state, DB) {
 
     function setCategoryText(resultObj) {
         me.introductionTxt = resultObj.introduction;
-        me.preinstallTxt = resultObj.preinstall;
+        me.materialsTxt = resultObj.materials;
         me.insulationTxt = resultObj.insulation;
         me.membraneTxt = resultObj.membrane;
         me.postinstallTxt = resultObj.postinstall;
-        me.overviewTxt = resultObj.overview;
-        me.scopeTxt = resultObj.scope;
-        me.optionsTxt = resultObj.options;
+        me.deckTxt = resultObj.deck;
         me.exclusionsTxt = resultObj.exclusions;
         me.warrantyTxt = resultObj.warranty;
     };
@@ -121,10 +108,4 @@ function myFunction($scope, $state, DB) {
     $scope.$watch('$viewContentLoaded', function() {
         initCtrl();
     });
-
-
-    $scope.$on("$destroy", function() {
-        me.selectedCategoryList = null;
-    });
-
 };

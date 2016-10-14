@@ -50,13 +50,13 @@ function initRouter($stateProvider, $urlRouterProvider) {
         url: "/introduction",
         templateUrl: "views/home/library/introduction.html"
     })
-    .state('library.overview', {
-        url: "/overview",
-        templateUrl: "views/home/library/overview.html"
+    .state('library.materials', {
+        url: "/materials",
+        templateUrl: "views/home/library/materials.html"
     })
-    .state('library.preinstall', {
-        url: "/preinstall",
-        templateUrl: "views/home/library/preinstall.html"
+    .state('library.deck', {
+        url: "/deck",
+        templateUrl: "views/home/library/deck.html"
     })
     .state('library.insulation', {
         url: "/insulation",
@@ -99,24 +99,34 @@ function initRouter($stateProvider, $urlRouterProvider) {
         templateUrl: "views/results/proposal.html"
     })
 
-    .state('proposal.inspection', {
-        url: "/inspection",
-        templateUrl: "views/results/proposal/inspection.html"
+    .state('proposal.introduction', {
+        url: "/introduction",
+        templateUrl: "views/results/proposal/introduction.html"
     })
 
-    .state('proposal.overview', {
-        url: "/overview",
-        templateUrl: "views/results/proposal/overview.html"
+    .state('proposal.deck', {
+        url: "/deck",
+        templateUrl: "views/results/proposal/deck.html"
     })
 
-    .state('proposal.scope', {
-        url: "/scope",
-        templateUrl: "views/results/proposal/scope.html"
+    .state('proposal.materials', {
+        url: "/materials",
+        templateUrl: "views/results/proposal/materials.html"
     })
 
-    .state('proposal.options', {
-        url: "/options",
-        templateUrl: "views/results/proposal/options.html"
+    .state('proposal.membrane', {
+        url: "/membrane",
+        templateUrl: "views/results/proposal/membrane.html"
+    })
+
+    .state('proposal.insulation', {
+        url: "/insulation",
+        templateUrl: "views/results/proposal/insulation.html"
+    })
+
+    .state('proposal.postinstall', {
+        url: "/postinstall",
+        templateUrl: "views/results/proposal/postinstall.html"
     })
 
     .state('proposal.exclusions', {

@@ -1,0 +1,28 @@
+<button type="button" ng-click="Ctrl.submitEdit('materials')">Update</button>
+<div class="section-heading">
+    <h3>Materials</h3></div>
+<div class="section-input">
+    <textarea style="height:100px;" ng-model="Ctrl.materialsTxt"></textarea>
+</div>
+<div class="material-list">
+    <div>
+        <p style="font-weight: 500;">Deck and Insulation</p>
+        <materials-item material="item.item" qty="item.qty" ng-repeat="item in Ctrl.R.MATERIALS.base"></materials-item>
+    </div>
+    <div>
+        <p style="font-weight: 500;">Membrane</p>
+        <materials-item material="item.item" qty="item.qty" ng-repeat="item in Ctrl.R.MATERIALS.membrane"></materials-item>
+    </div>
+    <div>
+        <p style="font-weight: 500;">Edges and Terminations</p>
+        <materials-item material="item.item" qty="item.qty" ng-repeat="item in Ctrl.R.MATERIALS.terminations"></materials-item>
+    </div>
+    <div>
+        <p style="font-weight: 500;">Penetrations and Flashing</p>
+        <materials-item material="item.item" qty="item.qty" ng-repeat="item in Ctrl.R.MATERIALS.penetrations"></materials-item>
+    </div>
+    <div>
+        <p style="font-weight: 500;">Other Items</p>
+        <materials-item material="item.item" qty="item.qty" ng-repeat="item in Ctrl.R.MATERIALS.elecSupport"></materials-item>
+    </div>
+</div>

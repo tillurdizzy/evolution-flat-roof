@@ -9,15 +9,10 @@ define( "DATABASE_PASSWORD", "Sadie9954!");
 define( "DATABASE_NAME", "flatroofjobs");
 
 $con = mysqli_connect(DATABASE_SERVER, DATABASE_USERNAME, DATABASE_PASSWORD,DATABASE_NAME) or die ('ERROR!!!');
-$client = mysqli_real_escape_string($con,$input->client);
+$jobID = mysqli_real_escape_string($con,$input->jobID);
 $data = mysqli_real_escape_string($con,$input->data);
-$status = 1;
 
-$query = sprintf("INSERT INTO jobs(client,data,status)
-VALUES(
-'" . $client . "', " .
-"'" . $data . "', " .
-"'" . $status . "')");
+$query = "UPDATE proposal SET exclusions='".$data."' WHERE jobID='".$jobID."'";
 
 $qry_res = mysqli_query($con,$query);
 

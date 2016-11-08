@@ -1,4 +1,4 @@
-angular.module('app').component('baseLayer', {
+angular.module('app').component('deckLayer', {
     bindings: {
         material: '=',
         thickness:'=',
@@ -6,10 +6,10 @@ angular.module('app').component('baseLayer', {
         qty:'='
     },
     controller: function() {
-    	this.materials_dp = ['ISO','Fanfold'];
+    	this.materials_dp = ['Plywood','Densdeck'];
     	this.isoSize = ['4x4','4x8'];
-    	this.iso_dp = ["0.50","0.75","1.00","1.25","1.50","2.00","2.50","3.00","3.10","3.25","3.50","4.00","4.50"];
-		this.fanfold_dp = ['.50'];
+		this.plywood_dp = ['.50','.75','.625'];
+		this.densdeck_dp = ['.25','.50'];
 
         function selectMaterial(){
             if(this.material == "Plywood" || this.material == "Densdeck"){
@@ -19,5 +19,5 @@ angular.module('app').component('baseLayer', {
         }
         this.selectMaterial = selectMaterial;
     },
-    templateUrl: 'views/design/base/base-layer.tpl.html'
+    templateUrl: 'views/design/base/deck-layer.tpl.html'
 });

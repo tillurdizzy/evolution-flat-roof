@@ -25,8 +25,8 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
     self.listOfGlue = ['OlyBond','3M Foam'];
     self.spikeMethod = ['Spike 1.25 in.','Spike 1.50 in.','Spike 2 in.','Spike 3 in.','Spike 4 in.','Spike 5 in.','Spike 6 in.','Spike 7 in.','Spike 8 in.','Spike 9 in.','Spike 10 in.'];
     self.membraneType = ["Standard","Fleece Back"];
-    self.baseLayerMaterials = ['Plywood',"ISO","Densdeck"];
-
+    self.baseLayerMaterials = ['ISO',"Fanfold"];
+    self.deckLayerMaterials = ['Plywood',"Densdeck"];
     self.roofLayersA = [
         { label: "TPO / PVC", id: "PCV" },
         { label: "Tar & Gravel", id: "TRGRVL" },
@@ -42,6 +42,8 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
         { label: "Insulation", id: "INSLTN" },
         { label: "None", id: "" }
     ];
+
+     self.deckOptions = ["None","Partial","All"];
 
     self.ventShapes = ["NA","Round", "Square"];
 
@@ -68,6 +70,7 @@ angular.module('app').service('ListSrvc', [function sharedLists() {
 
     self.oneThruEight = ['1','2','3','4','5','6','7','8'];
     self.NineThruSixteen = ['9','10','11','12','13','14','15','16'];
+
 
 
     self.numbersToTwelve = [

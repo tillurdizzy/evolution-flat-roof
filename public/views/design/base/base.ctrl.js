@@ -9,7 +9,8 @@ function myFunction($scope, ListSrvc, SharedSrvc) {
     var S = SharedSrvc;
     var traceMe = true;
 
-    vm.layerCount = 0;
+   
+    vm.isoLayerCount = 0;
 
     vm.SELECT = {};
     vm.PARAMS = {};
@@ -23,23 +24,6 @@ function myFunction($scope, ListSrvc, SharedSrvc) {
         initView();
     };
 
-    vm.replaceEntireDeckToggle = function() {
-        var r = vm.PARAMS.REPLACE;
-        trace(r);
-        if (r == true) {
-            if (vm.layerCount == 0) {
-                // Add a layer of plywood with qty set at entire field
-                var sheetCount = materialNeededBySq(vm.FIELD.SQUARES,'4x8');
-                vm.layerCount = 1;
-                vm.PARAMS.LAYERS.push({ material: 'Plywood', thickness: '.75', size: '4x8', qty: sheetCount });
-            }else{
-                //
-            }
-        }else{
-
-        }
-
-    };
 
     function materialNeededBySq(totalSqs, sheetSize) {
         var total = 0;
@@ -55,11 +39,12 @@ function myFunction($scope, ListSrvc, SharedSrvc) {
         if (totalSqs > 0 && singleSheetInSqs > 0) {
             total = totalSqs / singleSheetInSqs;
         }
-        return total;
+        return Math.ceil(total);
     };
 
     function initView() {
-        vm.layerCount = vm.PARAMS.LAYERS.length;
+        vm.isoLayerCount = vm.PARAMS.ISO.length;
+
         vm.existingLayers = [];
         if (vm.LAYERS.layerOne.layer != "") {
             vm.existingLayers.push({ layerNum: "1", material: vm.LAYERS.layerOne });
@@ -89,6 +74,7 @@ function myFunction($scope, ListSrvc, SharedSrvc) {
         vm.PARAMS.RATIO.perimeter = parseInt(vm.PARAMS.RATIO.perimeter);
         vm.PARAMS.RATIO.field = parseInt(vm.PARAMS.RATIO.field);
         vm.PARAMS.RATIO.total = parseInt(vm.PARAMS.RATIO.total);
+        vm.PARAMS.DECK.partial = parseInt(vm.PARAMS.DECK.partial);
 
     };
 
@@ -119,12 +105,38 @@ function myFunction($scope, ListSrvc, SharedSrvc) {
         pullFromShared();
     });
 
-    $scope.$watch('Ctrl.layerCount', function() {
-        var currentCount = vm.PARAMS.LAYERS.length;
-        if (vm.layerCount > currentCount) {
-            vm.PARAMS.LAYERS.push({ material: '', thickness: '', size: '4x8', qty: '' });
-        } else if (vm.layerCount < currentCount) {
-            vm.PARAMS.LAYERS.pop();
+    $scope.$watch('Ctrl.PARAMS.DECK.replace', function() {
+        var r = vm.PARAMS.DECK.replace;
+        var sheetCount = 0;
+        
+        if (r=='None') {
+            
+        } else if (r=='Partial') {
+            vm.PARAMS.DECK.partial = 5;// Reset to lowest percentage
+            var p = .05;
+            var f = vm.FIELD.SQUARES * p;
+            sheetCount = materialNeededBySq(f,'4x8');
+        }else if (r=='All'){
+            sheetCount = materialNeededBySq(vm.FIELD.SQUARES,'4x8');
+        }
+        vm.PARAMS.DECK.qty = sheetCount;
+    });
+
+     $scope.$watch('Ctrl.PARAMS.DECK.partial', function() {
+        var n = parseInt(vm.PARAMS.DECK.partial);
+        var p = n * .01;
+        var f = vm.FIELD.SQUARES * p;
+        var sheetCount = materialNeededBySq(f,'4x8');
+        vm.PARAMS.DECK.qty = sheetCount;
+    });
+
+    // non-deck layers  i.e. insulation
+    $scope.$watch('Ctrl.isoLayerCount', function() {
+        var currentCount = vm.PARAMS.ISO.length;
+        if (vm.isoLayerCount > currentCount) {
+            vm.PARAMS.ISO.push({ material: 'ISO', thickness: '', size: '4x8', qty: '' });
+        } else if (vm.isoLayerCount < currentCount) {
+            vm.PARAMS.ISO.pop();
         }
     });
 

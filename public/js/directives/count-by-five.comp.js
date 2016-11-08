@@ -5,15 +5,22 @@ angular.module('app').component('counterFive', {
         min:'='
     },
     controller: function() {
+
+        this.$onInit = function() {
+            this.count = parseInt(this.count);
+            this.max = parseInt(this.max);
+            this.min = parseInt(this.min);
+        };
+
         function increment() {
-        	var countPlus = this.count + 5;
+        	var countPlus = parseInt(this.count) + 5;
         	if(countPlus <= this.max){
         		this.count = countPlus;
         	} 
         };
 
         function decrement() {
-        	var countMinus = this.count - 5;
+        	var countMinus = parseInt(this.count) - 5;
             if(countMinus >= this.min){
         		this.count = countMinus;
         	} 

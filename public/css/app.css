@@ -492,6 +492,9 @@ body {
   content: '';
   display: block; }
 
+.spacerH5 {
+  width: 5px; }
+
 table {
   margin-bottom: 1em;
   border-radius: 0;
@@ -770,7 +773,8 @@ table {
     line-height: 30px;
     vertical-align: middle;
     text-align: left;
-    font-weight: 400; }
+    font-weight: 400;
+    display: inline-block; }
   .form-input .big-number {
     height: 30px;
     width: 70px;
@@ -787,7 +791,7 @@ table {
     width: 200px;
     background-color: #37474F;
     color: #fff;
-    margin: 0;
+    margin: 0 0 0 5px;
     padding-left: 5px;
     overflow: hidden; }
   .form-input .item-name-small {
@@ -795,7 +799,7 @@ table {
     width: 100px;
     background-color: #37474F;
     color: #fff;
-    margin: 0;
+    margin: 0 0 0 5px;
     padding-left: 5px;
     overflow: hidden; }
   .form-input .item-name-med {
@@ -803,7 +807,7 @@ table {
     width: 150px;
     background-color: #37474F;
     color: #fff;
-    margin: 0;
+    margin: 0 0 0 5px;
     padding-left: 5px;
     overflow: hidden; }
   .form-input .item-name-sub {
@@ -828,7 +832,7 @@ table {
     width: 40px;
     color: #455A64;
     margin-left: 5px;
-    padding: 0 0 0 5px; }
+    display: inline; }
     .form-input .item-unit h3 {
       font-size: 16px; }
   .form-input .item-counter {
@@ -837,14 +841,14 @@ table {
     color: #455A64;
     margin-left: 5px; }
   .form-input .item-input {
-    width: 70px;
+    display: inline;
     height: 30px;
     margin-left: 5px;
-    padding: 1px 9px;
+    padding: 1px 0px;
     box-sizing: border-box; }
     .form-input .item-input input[type="tel"] {
       height: 22px;
-      display: inline-block;
+      display: inline;
       width: 50px;
       text-align: right;
       font-size: 18px; }
@@ -880,6 +884,13 @@ table {
     margin: 0 5px;
     padding: 0; }
     .form-input .item-select-small md-select {
+      width: 100px; }
+  .form-input .item-select-med {
+    width: 135px;
+    height: 30px;
+    margin: 0 5px;
+    padding: 0; }
+    .form-input .item-select-med md-select {
       width: 100px; }
   .form-input .item-cb {
     height: 30px;

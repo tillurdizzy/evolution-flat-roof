@@ -108,27 +108,55 @@ function ResultsSrvc(SharedSrvc,DB,InventorySrvc,$rootScope) {
         self.totals.base = 0;
        
         baseThickness = 0;
-        for (var i = 0; i < BASE.LAYERS.length; i++) {
-           var t = returnNumber(BASE.LAYERS[i].thickness,'num');
+        var t = 0;
+        // Deck
+        t = returnNumber(BASE.DECK.thickness,'num');
+        baseThickness+=t;
+
+        var itemClass = BASE.DECK.material;
+        var pkg = BASE.DECK.size;
+        var thick = t;
+        var qty = BASE.DECK.qty;
+        // Ask Inventory for full material ID
+        var itemDataObj = I.returnBase(itemClass,pkg,thick);
+        if(itemDataObj.price==0 && itemDataObj.num==0){
+            alert("A. Inventory Error: Did not find match for " + itemClass + " : " + pkg + " : "+ thick);
+            return;
+        };
+
+        var itemName = itemDataObj.item;
+        var price = returnNumber(itemDataObj.price,'num');
+        var num = returnNumber(itemDataObj.num,'num');
+
+        var total = decimalPrecisionTwo(qty * price);
+        var id = itemName + " (" + itemDataObj.pkg + ")";
+        self.MATERIALS.base.push({item:id,qty:qty,price:price,total:total});
+        self.totals.base += total;
+
+        // ISO
+        for (var i = 0; i < BASE.ISO.length; i++) {
+           t = returnNumber(BASE.ISO[i].thickness,'num');
            baseThickness+=t;
         };
 
-        // Base layers
-        for (var i = 0; i < BASE.LAYERS.length; i++) {
-           var itemClass = BASE.LAYERS[i].material;
-           var pkg = BASE.LAYERS[i].size;
-           var thick = returnNumber(BASE.LAYERS[i].thickness,'num');
-           var itemDataObj = I.returnBase(itemClass,pkg,thick);
+        for (i = 0; i < BASE.ISO.length; i++) {
+        // Collect custom material data
+           itemClass = "ISO";
+           pkg = BASE.ISO[i].size;
+           thick = returnNumber(BASE.ISO[i].thickness,'num');
+           qty = BASE.ISO[i].qty;
+           // Ask Inventory for full material description
+           itemDataObj = I.returnBase(itemClass,pkg,thick);
            if(itemDataObj.price==0 && itemDataObj.num==0){
-                alert("Inventory Error: Did not find match for " + itemClass + " : " + pkg + " : "+ thick);
+                alert("B. Inventory Error: Did not find match for " + itemClass + " : " + pkg + " : "+ thick);
                 return;
            };
-           var itemName = itemDataObj.item;
-           var price = returnNumber(itemDataObj.price,'num');
-           var num = returnNumber(itemDataObj.num,'num');
-           var qty = Math.ceil(FIELDSQ / num);
-           var total = decimalPrecisionTwo(qty * price);
-           var id = itemName + " (" + itemDataObj.pkg + ")";
+           // Push into var
+           itemName = itemDataObj.item;
+           price = returnNumber(itemDataObj.price,'num');
+           num = returnNumber(itemDataObj.num,'num');
+           total = decimalPrecisionTwo(qty * price);
+           id = itemName + " (" + itemDataObj.pkg + ")";
            self.MATERIALS.base.push({item:id,qty:qty,price:price,total:total});
            self.totals.base += total;
         };

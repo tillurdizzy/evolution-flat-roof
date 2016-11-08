@@ -406,11 +406,11 @@ function SharedSrvc($rootScope, DB) {
     };
 
 
-    // layers = { material: '', thickness: '', size: '4x8', qty:''}
+    // ISO = { material: '', thickness: '', size: '4x8', qty:''}
     self.setBase = function() {
         ROOFBASE = {
-            REPLACE:'false',
-            LAYERS: [],
+            DECK:{replace:'None',partial:'5',material: 'Plywood', thickness: '.75', size: '4x8', qty:''},
+            ISO: [],
             ATTACHMENT:{class:'',item:'',rate:''},
             RATIO:{corners:'20',perimeter:'40',field:'40',total:'100'},
             SPECIAL: {}

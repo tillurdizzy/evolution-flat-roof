@@ -1,7 +1,7 @@
 <div class="form-input">
     <div class="item-name">
         <h3>Material</h3></div>
-    <div class="item-select-small">
+    <div class="item-select">
         <md-select ng-model="$ctrl.material" placeholder="select" md-on-close="$ctrl.selectMaterial()">
             <md-option value="{{opt}}" ng-repeat="opt in $ctrl.materials_dp">{{ opt }}</md-option>
         </md-select>
@@ -9,11 +9,9 @@
     <div class="item-name-med">
         <h3>Thickness</h3></div>
     <div class="item-select-small">
-        <md-select ng-model="$ctrl.thickness" placeholder="select" ng-show="$ctrl.material=='Plywood'">
-            <md-option value="{{opt}}" ng-repeat="opt in $ctrl.plywood_dp">{{ opt }}</md-option>
-        </md-select>
-        <md-select ng-model="$ctrl.thickness" placeholder="select" ng-show="$ctrl.material=='Densdeck'">
-            <md-option value="{{opt}}" ng-repeat="opt in $ctrl.densdeck_dp">{{ opt }}</md-option>
+       
+        <md-select ng-model="$ctrl.thickness" placeholder="select" ng-show="$ctrl.material=='Fanfold'">
+            <md-option value="{{opt}}" ng-repeat="opt in $ctrl.fanfold_dp">{{ opt }}</md-option>
         </md-select>
         <md-select ng-model="$ctrl.thickness" placeholder="select" ng-show="$ctrl.material=='ISO'">
             <md-option value="{{opt}}" ng-repeat="opt in $ctrl.iso_dp">{{ opt }}</md-option>
@@ -30,7 +28,7 @@
     <div class="item-name-small">
         <h3>Qty</h3></div>
     <div class="item-input">
-        <input type="text" ng-model="$ctrl.qty">
+        <input type="text" style="width:80px" ng-model="$ctrl.qty">
     </div>
     
 </div>

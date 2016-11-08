@@ -4,29 +4,43 @@
     <horiz-rule margintop="5" marginbottom="10"></horiz-rule>
     <div class="form-input">
         <div class="item-name">
-            <h3>Base Layers</h3></div>
-        <div class="item-counter">
-            <counter count="Ctrl.layerCount" min="0" max="6"></counter>
-        </div>
-    </div>
-    <div class="indent">
-        <div class="item-cb">
-            <md-checkbox ng-model="Ctrl.PARAMS.REPLACE" change="Ctrl.replaceEntireDeckToggle()" aria-label="Replace Deck">
-                Replace Entire Deck ({{Ctrl.FIELD.SQUARES}} Sqs)
-            </md-checkbox>
-        </div>
-        <base-layer material="item.material" size="item.size" thickness="item.thickness" qty="item.qty" ng-repeat="item in Ctrl.PARAMS.LAYERS"></base-layer>
-    </div>
-    <div class="form-input">
-        <div class="item-name">
-            <h3>Attachment</h3></div>
+            <h3>Deck</h3></div>
     </div>
     <div class="indent">
         <div class="form-input">
             <div class="item-name">
-                <h3>Method</h3></div>
+                <h3>Replace</h3></div>
+            <div class="item-select">
+                <md-select ng-model="Ctrl.PARAMS.DECK.replace" placeholder="select">
+                    <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.deckOptions">{{ opt }}</md-option>
+                </md-select>
+            </div>
+            <div class="item-name-med" ng-show="Ctrl.PARAMS.DECK.replace=='Partial'">
+                <h3>Partial %</h3></div>
+            <div class="item-select" ng-show="Ctrl.PARAMS.DECK.replace=='Partial'">
+                <div class="item-counter">
+                    <counter-five count="Ctrl.PARAMS.DECK.partial" min="5" max="80"></counter>
+                </div>
+            </div>
+        </div>
+        <div ng-hide="Ctrl.PARAMS.DECK.replace=='None'">
+            <deck-layer material="Ctrl.PARAMS.DECK.material" size="Ctrl.PARAMS.DECK.size" thickness="Ctrl.PARAMS.DECK.thickness" qty="Ctrl.PARAMS.DECK.qty"></deck-layer>
+        </div>
+    </div>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>ISO Layers</h3></div>
+        <div class="item-counter">
+            <counter count="Ctrl.isoLayerCount" min="0" max="100"></counter>
+        </div>
+    </div>
+    <div class="indent">
+        <iso-layer material="item.material" size="item.size" thickness="item.thickness" qty="item.qty" ng-repeat="item in Ctrl.PARAMS.ISO"></iso-layer>
+        <div class="form-input" ng-show="Ctrl.PARAMS.ISO.length > 0">
+            <div class="item-name">
+                <h3>Attachment</h3></div>
             <div class="item-select-small">
-                <md-select ng-model="Ctrl.PARAMS.ATTACHMENT.class" placeholder="method">
+                <md-select ng-model="Ctrl.PARAMS.ATTACHMENT.class" placeholder="select">
                     <md-option ng-value="opt" ng-repeat="opt in Ctrl.L.attachMethod">{{ opt }}</md-option>
                 </md-select>
             </div>
@@ -42,7 +56,7 @@
             <div class="flex-row" ng-show="Ctrl.PARAMS.ATTACHMENT.class=='Screw'">
                 <div class="item-name-small">
                     <h3>Size</h3></div>
-                <div class="item-select">
+                <div class="item-select-med">
                     <md-select ng-model="Ctrl.PARAMS.ATTACHMENT.item" placeholder="screw">
                         <md-option ng-value="opt.id" ng-repeat="opt in Ctrl.L.listOfScrews">{{ opt.label }}</md-option>
                     </md-select>
@@ -73,65 +87,65 @@
         <div class="form-input">
             <div class="item-name">
                 <h3>Corners</h3></div>
-            <div class="item-counter">
-                <counter-five count="Ctrl.PARAMS.RATIO.corners" min="5" max="80"></counter>
-            </div>
-        </div>
-        <div class="form-input">
-            <div class="item-name">
-                <h3>Perimeter</h3></div>
-            <div class="item-counter">
-                <counter-five count="Ctrl.PARAMS.RATIO.perimeter" min="5" max="80"></counter>
-            </div>
-        </div>
-        <div class="form-input">
-            <div class="item-name">
-                <h3>Field</h3></div>
-            <div class="item-counter">
-                <counter-five count="Ctrl.PARAMS.RATIO.field" min="5" max="80"></counter>
-            </div>
+        <div class="item-counter">
+            <counter-five count="Ctrl.PARAMS.RATIO.corners" min="5" max="80"></counter>
         </div>
     </div>
-    <add-space heightpx="10"></add-space>
     <div class="form-input">
         <div class="item-name">
-            <h3>Special Taper</h3></div>
-    </div>
-    <div class="indent">
-        <div class="form-input">
-            <div class="item-name">
-                <h3>Quote</h3></div>
-            <div class="item-input">
-                <input type="text" ng-model="Ctrl.PARAMS.quote">
-            </div>
-        </div>
-        <div class="form-input">
-            <div class="item-name">
-                <h3>Supplier</h3></div>
-            <div class="item-input">
-                <input type="text" ng-model="Ctrl.PARAMS.supplier">
-            </div>
-        </div>
-        <div class="form-input">
-            <div class="item-name">
-                <h3>Price</h3></div>
-            <div class="item-input">
-                <input type="text" ng-model="Ctrl.PARAMS.price">
-            </div>
+            <h3>Perimeter</h3></div>
+        <div class="item-counter">
+            <counter-five count="Ctrl.PARAMS.RATIO.perimeter" min="5" max="80"></counter>
         </div>
     </div>
-    <div class="input-description" style="margin-top:20px;">
-        <h5>Field Total = {{Ctrl.FIELD.SQUARES}} Sqs</h5>
-        <add-space heightpx="20"></add-space>
-        <h5>Existing Layers:</h5>
-        <div style="margin-left:20px">
-            <h5 ng-repeat="item in Ctrl.existingLayers">Layer {{item.layerNum}}: {{item.material}}</h5>
-        </div>
-        <div style="margin-left:40px" ng-show="Ctrl.LAYERS.layerOne=='RPANEL'">
-            <h5>- Rib Height: {{Ctrl.LAYERS.RPANEL.height}} in.</h5>
-            <h5>- Rib Width Top: {{Ctrl.LAYERS.RPANEL.width}} in.</h5>
-            <h5>- Winged Fill: {{Ctrl.LAYERS.RPANEL.winged}}</h5>
-            <h5>- Top Insulation: {{Ctrl.LAYERS.RPANEL.insulation}} in.</h5>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Field</h3></div>
+        <div class="item-counter">
+            <counter-five count="Ctrl.PARAMS.RATIO.field" min="5" max="80"></counter>
         </div>
     </div>
+</div>
+<add-space heightpx="10"></add-space>
+<div class="form-input">
+    <div class="item-name">
+        <h3>Special Taper</h3></div>
+</div>
+<div class="indent">
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Quote</h3></div>
+        <div class="item-input">
+            <input type="text" ng-model="Ctrl.PARAMS.quote">
+        </div>
+    </div>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Supplier</h3></div>
+        <div class="item-input">
+            <input type="text" ng-model="Ctrl.PARAMS.supplier">
+        </div>
+    </div>
+    <div class="form-input">
+        <div class="item-name">
+            <h3>Price</h3></div>
+        <div class="item-input">
+            <input type="text" ng-model="Ctrl.PARAMS.price">
+        </div>
+    </div>
+</div>
+<div class="input-description" style="margin-top:20px;">
+    <h5>Field Total = {{Ctrl.FIELD.SQUARES}} Sqs</h5>
+    <add-space heightpx="20"></add-space>
+    <h5>Existing Layers:</h5>
+    <div style="margin-left:20px">
+        <h5 ng-repeat="item in Ctrl.existingLayers">Layer {{item.layerNum}}: {{item.material}}</h5>
+    </div>
+    <div style="margin-left:40px" ng-show="Ctrl.LAYERS.layerOne=='RPANEL'">
+        <h5>- Rib Height: {{Ctrl.LAYERS.RPANEL.height}} in.</h5>
+        <h5>- Rib Width Top: {{Ctrl.LAYERS.RPANEL.width}} in.</h5>
+        <h5>- Winged Fill: {{Ctrl.LAYERS.RPANEL.winged}}</h5>
+        <h5>- Top Insulation: {{Ctrl.LAYERS.RPANEL.insulation}} in.</h5>
+    </div>
+</div>
 </div>

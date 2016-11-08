@@ -10,8 +10,6 @@ $input-line-height:30px;
     }
 }
 
-
-
 .form-input {
     display: flex;
     margin: 0 0 5px 0;
@@ -20,31 +18,27 @@ $input-line-height:30px;
         margin: 0;
         min-width: 100px;
     }
-
-
     h3 {
         margin: 0;
         line-height: $input-line-height;
         vertical-align: middle;
         text-align: left;
         font-weight: 400;
-        display:inline-block;
+        display: inline-block;
     }
-
-    .big-number{
+    .big-number {
         height: $input-line-height;
         width: 70px;
         color: $material-pallette-700;
         margin: 0;
         vertical-align: middle;
         padding: 0 5px 0 0;
-        h3{
+        h3 {
             font-size: 18px;
             font-weight: 500;
             text-align: right;
         }
     }
-
     .item-name {
         height: $input-line-height;
         width: 200px;
@@ -54,7 +48,6 @@ $input-line-height:30px;
         padding-left: 5px;
         overflow: hidden;
     }
-
     .item-name-small {
         height: $input-line-height;
         width: 100px;
@@ -64,7 +57,6 @@ $input-line-height:30px;
         padding-left: 5px;
         overflow: hidden;
     }
-
     .item-name-med {
         height: $input-line-height;
         width: 150px;
@@ -74,7 +66,6 @@ $input-line-height:30px;
         padding-left: 5px;
         overflow: hidden;
     }
-
     .item-name-sub {
         height: $input-line-height;
         width: 140px;
@@ -84,7 +75,6 @@ $input-line-height:30px;
         padding-left: 5px;
         overflow: hidden;
     }
-
     .item-output {
         height: $input-line-height;
         width: 65px;
@@ -95,31 +85,26 @@ $input-line-height:30px;
         overflow: hidden;
         font-size: 14px;
     }
-
     .item-unit {
         height: $input-line-height;
         width: 40px;
         color: $material-pallette-700;
         margin-left: 5px;
         display: inline;
-        
-        h3{
+        h3 {
             font-size: 16px;
         }
     }
-
     .item-counter {
         height: $input-line-height;
         width: 110px;
         color: $material-pallette-700;
         margin-left: 5px;
     }
-
     .item-input {
-        display:inline;
+        display: inline;
         height: $input-line-height;
         margin-left: 5px;
-        //padding: 1px 9px;
         padding: 1px 0px;
         box-sizing: border-box;
         input[type="tel"] {
@@ -136,16 +121,32 @@ $input-line-height:30px;
             font-size: 18px;
         }
     }
+
+
+    .text-100{
+        input[type="text"] {
+           width:100px;
+        }
+    }
+    .text-300{
+        input[type="text"] {
+           width:300px;
+        }
+    }
+    .tel-80 {
+        input[type="tel"] {
+            width: 80px;
+        }
+    }
     .item-select {
         width: 170px;
         height: $input-line-height;
         margin: 0 5px;
         padding: 0;
         md-select {
-            min-width: 170px;
+            width: 170px;
         }
     }
-
     .item-select-wide {
         width: 200px;
         height: $input-line-height;
@@ -155,7 +156,6 @@ $input-line-height:30px;
             width: 200px;
         }
     }
-
     .item-select-x-wide {
         width: 250px;
         height: $input-line-height;
@@ -166,6 +166,11 @@ $input-line-height:30px;
         }
     }
 
+    .select-100{
+        md-select {
+            width: 100px;
+        }
+    }
     .item-select-small {
         width: 100px;
         height: $input-line-height;
@@ -175,7 +180,6 @@ $input-line-height:30px;
             width: 100px;
         }
     }
-
     .item-select-med {
         width: 135px;
         height: $input-line-height;
@@ -185,21 +189,19 @@ $input-line-height:30px;
             width: 100px;
         }
     }
-
-    .item-cb{
+    .item-cb {
         height: $input-line-height;
         padding-top: 5px;
         margin-left: 10px;
     }
-
 }
 
 
 /* change size and bkg clr when indented */
 
 .indent {
-    border-bottom:2px solid $material-pallette-700;
-    margin:0 0 10px 30px;
+    border-bottom: 2px solid $material-pallette-700;
+    margin: 0 0 10px 30px;
 }
 
 .indent .form-input .item-name {

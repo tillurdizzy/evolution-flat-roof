@@ -13,129 +13,135 @@
         </div>
         <p>{{Ctrl.itemSelected.qty}} {{Ctrl.itemSelected.pkg}} of {{Ctrl.itemSelected.item}} costs {{Ctrl.itemSelected.price | currency:"$":2}} and covers {{Ctrl.itemSelected.num}} {{Ctrl.itemSelected.unit}} of {{Ctrl.itemSelected.component}}</p>
         <horiz-rule margintop="5" marginbottom="15"></horiz-rule>
-        <div>
-            <div class="form-input">
-                <div class="item-name">
-                    <h3>Item</h3></div>
-                <div class="item-input" style="width:300px;">
-                    <input type="text" ng-model="Ctrl.itemSelected.item" style="width:300px;"></div>
-            </div>
-            <div class="form-input">
-                <div class="item-name">
-                    <h3>Class</h3></div>
-                <div class="item-input" style="width:300px;">
-                    <input type="text" ng-model="Ctrl.itemSelected.class" style="width:300px;"></div>
-            </div>
-            <div class="form-input" ng-show="Ctrl.DOM.thickness">
-                <div class="item-name">
-                    <h3>Thickness</h3></div>
-                <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.itemSelected.thickness"></div>
-            </div>
-
-            <div class="form-input" ng-show="Ctrl.DOM.membrane">
-                <div class="item-name">
-                    <h3>Mil</h3></div>
-                <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.itemSelected.mil"></div>
-            </div>
-
-            <div class="form-input" ng-show="Ctrl.DOM.membrane">
-                <div class="item-name">
-                    <h3>Sort</h3></div>
-                <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.itemSelected.sort"></div>
-            </div>
-
-            <div class="form-input" ng-show="Ctrl.DOM.membrane">
-                <div class="item-name">
-                    <h3>Fleece</h3></div>
-                <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.itemSelected.fleece"></div>
-            </div>
-
-            <div class="form-input" ng-show="Ctrl.DOM.membrane">
-                <div class="item-name">
-                    <h3>Width</h3></div>
-                <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.itemSelected.width"></div>
-            </div>
-
-            <div class="form-input" ng-show="Ctrl.DOM.membrane">
-                <div class="item-name">
-                    <h3>Length</h3></div>
-                <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.itemSelected.length"></div>
-            </div>
-
-             <div class="form-input" ng-show="Ctrl.DOM.membrane">
-                <div class="item-name">
-                    <h3>Sq Ft.</h3></div>
-                <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.itemSelected.sqft"></div>
-            </div>
-
-            <div class="form-input">
-                <div class="item-name">
-                    <h3>Qty</h3></div>
-                <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.itemSelected.qty"></div>
-            </div>
-            <div class="form-input">
-                <div class="item-name">
-                    <h3>Pkg</h3></div>
-                <div class="item-select">
-                    <md-select ng-model="Ctrl.itemSelected.pkg" placeholder="select">
-                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.pkgList">{{ opt }}</md-option>
-                    </md-select>
-                </div>
-            </div>
-            <div class="form-input">
-                <div class="item-name">
-                    <h3>Price</h3></div>
-                <div class="item-input">
-                    <input type="text" ng-model="Ctrl.itemSelected.price"></div>
-            </div>
-            <div class="form-input">
-                <div class="item-name">
-                    <h3>Num</h3></div>
-                <div class="item-input">
-                    <input type="tel" ng-model="Ctrl.itemSelected.num"></div>
-            </div>
-            <div class="form-input">
-                <div class="item-name">
-                    <h3>Unit</h3></div>
-                <div class="item-select">
-                    <md-select ng-model="Ctrl.itemSelected.unit" placeholder="select">
-                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.unitList">{{ opt }}</md-option>
-                    </md-select>
-                </div>
-            </div>
-            <div class="form-input">
-                <div class="item-name">
-                    <h3>Component</h3></div>
-                <div class="item-select">
-                    <md-select ng-model="Ctrl.itemSelected.component" placeholder="select">
-                        <md-option ng-value="opt" ng-repeat="opt in Ctrl.compList">{{ opt }}</md-option>
-                    </md-select>
-                </div>
-            </div>
-            <div class="flex-space-between">
-                <md-button class="md-raised" ng-click="Ctrl.submitEdit();"> SUBMIT </md-button>
-                <div class="input-description" style="padding-top: 20px;">  
-                    <h4 ng-show="Ctrl.actionMode=='update'">MODE: UPDATE ITEM</h4>
-                    <h4 ng-show="Ctrl.actionMode=='create'">MODE: CREATE NEW ITEM</h4>
-                </div>
+        <div class="flex-row">
+            <div style="width:200px;">
                 <md-button class="md-raised" ng-click="Ctrl.toggleMode();"> MODE </md-button>
+                <div class="input-description" style="padding-top: 20px;">
+                    <h4 ng-show="Ctrl.actionMode=='update'">UPDATE ITEM</h4>
+                    <h4 ng-show="Ctrl.actionMode=='create'">NEW ITEM</h4>
+                </div>
+                <md-button class="md-raised" ng-click="Ctrl.submitEdit();"> SUBMIT </md-button>
+                
             </div>
-             
-            
+            <div>
+                <div class="form-input">
+                    <div class="item-name">
+                        <h3>Item</h3></div>
+                    <div class="item-input text-300">
+                        <input type="text" ng-model="Ctrl.itemSelected.item">
+                    </div>
+                </div>
+                <div class="form-input">
+                    <div class="item-name">
+                        <h3>Class</h3></div>
+                    <div class="item-input text-100">
+                        <input type="text" ng-model="Ctrl.itemSelected.class">
+                    </div>
+                </div>
+                <div class="form-input" ng-show="Ctrl.DOM.thickness">
+                    <div class="item-name">
+                        <h3>Thickness</h3></div>
+                    <div class="item-input">
+                        <input type="tel" ng-model="Ctrl.itemSelected.thickness">
+                    </div>
+                </div>
+                <div class="form-input" ng-show="Ctrl.DOM.membrane">
+                    <div class="item-name">
+                        <h3>Mil</h3></div>
+                    <div class="item-input">
+                        <input type="tel" ng-model="Ctrl.itemSelected.mil">
+                    </div>
+                </div>
+                <div class="form-input" ng-show="Ctrl.DOM.membrane">
+                    <div class="item-name">
+                        <h3>Sort</h3></div>
+                    <div class="item-input">
+                        <input type="tel" ng-model="Ctrl.itemSelected.sort">
+                    </div>
+                </div>
+                <div class="form-input" ng-show="Ctrl.DOM.membrane">
+                    <div class="item-name">
+                        <h3>Fleece</h3></div>
+                    <div class="item-input">
+                        <input type="tel" ng-model="Ctrl.itemSelected.fleece">
+                    </div>
+                </div>
+                <div class="form-input" ng-show="Ctrl.DOM.membrane">
+                    <div class="item-name">
+                        <h3>Width</h3></div>
+                    <div class="item-input">
+                        <input type="tel" ng-model="Ctrl.itemSelected.width">
+                    </div>
+                </div>
+                <div class="form-input" ng-show="Ctrl.DOM.membrane">
+                    <div class="item-name">
+                        <h3>Length</h3></div>
+                    <div class="item-input">
+                        <input type="tel" ng-model="Ctrl.itemSelected.length">
+                    </div>
+                </div>
+                <div class="form-input" ng-show="Ctrl.DOM.membrane">
+                    <div class="item-name">
+                        <h3>Sq Ft.</h3></div>
+                    <div class="item-input">
+                        <input type="tel" ng-model="Ctrl.itemSelected.sqft">
+                    </div>
+                </div>
+                <div class="form-input">
+                    <div class="item-name">
+                        <h3>Qty</h3></div>
+                    <div class="item-input">
+                        <input type="tel" ng-model="Ctrl.itemSelected.qty">
+                    </div>
+                </div>
+                <div class="form-input">
+                    <div class="item-name">
+                        <h3>Pkg</h3></div>
+                    <div class="item-select select-100">
+                        <md-select ng-model="Ctrl.itemSelected.pkg" placeholder="select">
+                            <md-option ng-value="opt" ng-repeat="opt in Ctrl.pkgList">{{ opt }}</md-option>
+                        </md-select>
+                    </div>
+                </div>
+                <div class="form-input">
+                    <div class="item-name">
+                        <h3>Price</h3></div>
+                    <div class="item-input tel-80">
+                        <input type="tel" ng-model="Ctrl.itemSelected.price">
+                    </div>
+                </div>
+                <div class="form-input">
+                    <div class="item-name">
+                        <h3>Num</h3></div>
+                    <div class="item-input">
+                        <input type="tel" ng-model="Ctrl.itemSelected.num">
+                    </div>
+                </div>
+                <div class="form-input">
+                    <div class="item-name">
+                        <h3>Unit</h3></div>
+                    <div class="item-select select-100">
+                        <md-select ng-model="Ctrl.itemSelected.unit" placeholder="select">
+                            <md-option ng-value="opt" ng-repeat="opt in Ctrl.unitList">{{ opt }}</md-option>
+                        </md-select>
+                    </div>
+                </div>
+                <!-- <div class="form-input">
+                    <div class="item-name">
+                        <h3>Component</h3></div>
+                    <div class="item-select select-100">
+                        <md-select ng-model="Ctrl.itemSelected.component" placeholder="select">
+                            <md-option ng-value="opt" ng-repeat="opt in Ctrl.compList">{{ opt }}</md-option>
+                        </md-select>
+                    </div>
+                </div> -->
+            </div>
         </div>
         <horiz-rule margintop="15" marginbottom="15"></horiz-rule>
         <div style="overflow:auto;height:400px;">
             <table st-table="Ctrl.selectedCategoryList" class="table table-striped">
                 <thead>
-                    <tr  style="overflow:hidden;">
+                    <tr style="overflow:hidden;">
                         <th style="width:200px;">Item</th>
                         <th style="width:50px;">Qty</th>
                         <th style="width:100px;">Pkg</th>

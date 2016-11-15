@@ -17,44 +17,102 @@ function myFunction($scope,ListSrvc,SharedSrvc) {
 	
 	vm.selectLayerOne=function(){
 		vm.PARAMS.layerOne.layer = vm.SELECT.layerOne.id;
+		clearLayers(vm.SELECT.layerOne.id,1);
 		if(vm.PARAMS.layerOne.layer!='' && vm.PARAMS.layerOne.layer!='RPANEL'){
 			vm.DOM.layerTwo = true;
-		}else{
-			vm.DOM.layerTwo = false;
-			vm.DOM.layerThree = false;
-			vm.DOM.layerFour = false;
-			vm.DOM.layerFive = false;
-			vm.DOM.layerSix = false;
 		}
 	};
 
 	vm.selectLayerTwo=function(){
 		vm.PARAMS.layerTwo.layer = vm.SELECT.layerTwo.id;
+		clearLayers(vm.SELECT.layerTwo.id,2);
 		vm.DOM.layerThree = vm.PARAMS.layerTwo.layer==""?false:true;
 	};
 
 	vm.selectLayerThree=function(){
 		vm.PARAMS.layerThree.layer = vm.SELECT.layerThree.id;
+		clearLayers(vm.SELECT.layerThree.id,3);
 		vm.DOM.layerFour = vm.PARAMS.layerThree.layer==""?false:true;
 	};
 
 	vm.selectLayerFour=function(){
 		vm.PARAMS.layerFour.layer = vm.SELECT.layerFour.id;
+		clearLayers(vm.SELECT.layerFour.id,4);
 		vm.DOM.layerFive =  vm.PARAMS.layerFour.layer==""?false:true;
 	};
 
 	vm.selectLayerFive=function(){
 		vm.PARAMS.layerFive.layer = vm.SELECT.layerFive.id;
+		clearLayers(vm.SELECT.layerFive.id,5);
 		vm.DOM.layerSix = vm.PARAMS.layerFive.layer==""?false:true;
 	};
 
 	vm.selectLayerSix=function(){
 		vm.PARAMS.layerSix.layer = vm.SELECT.layerSix.id;
+
 	};
 
 	vm.clearInput = function(){
 		vm.PARAMS = vm.S.setLayers();
 		initView();
+	};
+
+	function clearLayers(id,layer){
+		if(id == ""){
+			if(layer == 1){
+				vm.DOM.layerTwo = false;
+				vm.DOM.layerThree = false;
+				vm.DOM.layerFour = false;
+				vm.DOM.layerFive = false;
+				vm.DOM.layerSix = false;
+				vm.PARAMS.layerTwo.thickness = "";
+				vm.PARAMS.layerThree.thickness = "";
+				vm.PARAMS.layerFour.thickness = "";
+				vm.PARAMS.layerFive.thickness = "";
+				vm.PARAMS.layerSix.thickness = "";
+				vm.PARAMS.layerTwo.layer = "";
+				vm.PARAMS.layerThree.layer = "";
+				vm.PARAMS.layerFour.layer = "";
+				vm.PARAMS.layerFive.layer = "";
+				vm.PARAMS.layerSix.layer = "";
+			}else if (layer == 2){
+				vm.DOM.layerThree = false;
+				vm.DOM.layerFour = false;
+				vm.DOM.layerFive = false;
+				vm.DOM.layerSix = false;
+				vm.PARAMS.layerTwo.thickness = "";
+				vm.PARAMS.layerThree.thickness = "";
+				vm.PARAMS.layerFour.thickness = "";
+				vm.PARAMS.layerFive.thickness = "";
+				vm.PARAMS.layerSix.thickness = "";
+				vm.PARAMS.layerThree.layer = "";
+				vm.PARAMS.layerFour.layer = "";
+				vm.PARAMS.layerFive.layer = "";
+				vm.PARAMS.layerSix.layer = "";
+			}else if (layer == 3){
+				vm.DOM.layerFour = false;
+				vm.DOM.layerFive = false;
+				vm.DOM.layerSix = false;
+				vm.PARAMS.layerThree.thickness = "";
+				vm.PARAMS.layerFour.thickness = "";
+				vm.PARAMS.layerFive.thickness = "";
+				vm.PARAMS.layerSix.thickness = "";
+				vm.PARAMS.layerFour.layer = "";
+				vm.PARAMS.layerFive.layer = "";
+				vm.PARAMS.layerSix.layer = "";
+			}else if (layer == 4){
+				vm.DOM.layerFive = false;
+				vm.DOM.layerSix = false;
+				vm.PARAMS.layerFour.thickness = "";
+				vm.PARAMS.layerFive.thickness = "";
+				vm.PARAMS.layerSix.thickness = "";
+				vm.PARAMS.layerFive.layer = "";
+				vm.PARAMS.layerSix.layer = "";
+			}else if (layer == 5){
+				vm.DOM.layerSix = false;
+				vm.PARAMS.layerSix.thickness = "";
+			}
+		}
 	};
 	
 	

@@ -123,7 +123,7 @@ function myFunction($scope, ListSrvc, SharedSrvc) {
     });
 
      $scope.$watch('Ctrl.PARAMS.DECK.partial', function() {
-        var n = parseInt(vm.PARAMS.DECK.partial);
+        var n = vm.PARAMS.DECK.partial;
         var p = n * .01;
         var f = vm.FIELD.SQUARES * p;
         var sheetCount = materialNeededBySq(f,'4x8');

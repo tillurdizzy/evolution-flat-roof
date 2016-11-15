@@ -904,6 +904,19 @@ table {
     height: 30px;
     padding-top: 5px;
     margin-left: 10px; }
+  .form-input .read-only-small {
+    height: 30px;
+    width: 70px;
+    color: #455A64;
+    margin: 0;
+    vertical-align: middle;
+    padding: 0 5px;
+    border-bottom: 1px #455A64 solid; }
+    .form-input .read-only-small h3 {
+      width: 70px;
+      font-size: 18px;
+      font-weight: 500;
+      text-align: center; }
 
 /* change size and bkg clr when indented */
 .indent {

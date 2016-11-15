@@ -12,7 +12,7 @@ function myFunction($scope,DB,underscore) {
 	vm.categorySelected = '';
     vm.DOM = {thickness:false};
 	vm.selectedCategoryList = [];
-	vm.itemSelected = {};
+	vm.itemSelected = {qty:"0",pkg:"X",item:"X",price:"0",num:"0",unit:"X",component:"X"};
     vm.actionMode = 'update';
 	var DBQuery = "";
 
